@@ -1,3 +1,8 @@
+---
+layout: page
+title: Page personnelle de Robin Michaud
+---
+
 # Bienvenue sur la page personnelle de Robin Michaud
 
 Vous trouverez ici la plupart les documents de mes cours de mathématiques en hypokhâgne et khâgne BL
