@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Page personnelle de Robin Michaud
-email: michaudmaths@gmail.com
+#email: michaudmaths@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Page personnelle de Robin Michaud
 baseurl: "michaudmaths.github.io" # the subpath of your site, e.g. /blog
