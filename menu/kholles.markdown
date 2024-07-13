@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Programmes de khôlles
-permalink: /test/
+permalink: /kholles/
 ---
 
 
