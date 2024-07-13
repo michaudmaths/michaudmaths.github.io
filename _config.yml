@@ -21,11 +21,11 @@
 title: Page personnelle de Robin Michaud
 #email: michaudmaths@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Page personnelle de Robin Michaud
+  Mes documents de cours
 baseurl: "michaudmaths.github.io" # the subpath of your site, e.g. /blog
 url: "michaudmaths.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
-github_username:  michaudmaths
+#github_username:  michaudmaths
 
 # Build settings
 theme: minima

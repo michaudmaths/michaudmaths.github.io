@@ -5,6 +5,4 @@
 layout: home
 ---
 
-# Test
 
-test 1
