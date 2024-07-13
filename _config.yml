@@ -22,7 +22,7 @@ title: Page personnelle de Robin Michaud
 #email: michaudmaths@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Mes documents de cours
-baseurl: "michaudmaths.github.io" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "michaudmaths.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 header_pages:
