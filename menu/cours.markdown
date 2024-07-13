@@ -4,8 +4,9 @@ title: Cours & TD
 permalink: /cours/
 ---
 
+# Cours
 
-<ul> Cours
+<ul> 
 
 {% assign cours_counter = 1 %}
 {% for pdf in site.static_files %}
@@ -20,9 +21,9 @@ permalink: /cours/
 
 </ul>
 
+# TD
 
-<ul> TD
-  <li>TD 1</li>
-  <li>TD 2</li>
-  <li>TD 3</li>
-</ul>
+
+- TD 1
+- TD 2
+- TD 3
