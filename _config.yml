@@ -28,7 +28,7 @@ twitter_username:
 #github_username:  michaudmaths
 
 # Build settings
-theme: minima
+theme: jekyll-theme-minima
 plugins:
   - jekyll-feed
 
