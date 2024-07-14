@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Cours & TD
+title: Cours & TD (Hypokhâgne)
 permalink: /cours/
 ---
 

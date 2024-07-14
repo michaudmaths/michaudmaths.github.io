@@ -8,7 +8,7 @@ permalink: /kholles/
 
 # Programmes de khôlles
 
-- Semaine 1 (du *** au ***)
-- Semaine 1 (du *** au ***)
-- Semaine 1 (du *** au ***)
+- Programme 1 (du *** au ***)
+- Programme 2 (du *** au ***)
+- Programme 3 (du *** au ***)
 
