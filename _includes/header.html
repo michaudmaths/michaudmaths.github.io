@@ -5,7 +5,7 @@
     <!-- Menu Hypokhagne -->
     <div class="dropdown">
       <button class="dropbtn">
-        Hypokhâgne 
+        Hypokhâgne <i class="ri-arrow-down-s-line dropdown-arrow"></i>
       </button>
       <div class="dropdown-content">
         <a href="{{"/cours/" | relative_url }}">Cours et TD</a>
@@ -17,7 +17,7 @@
     <!-- Menu Khâgne -->
     <div class="dropdown">
       <button class="dropbtn">
-        Khâgne
+        Khâgne <i class="ri-arrow-down-s-line dropdown-arrow"></i>
       </button>
       <div class="dropdown-content">
         <a href="{{"/td_khagne/" |relative_url }}">TD (Khâgne)</a>
@@ -26,8 +26,12 @@
 
     <!-- Liens utiles -->
       <a href="{{"/liens/" | relative_url }}">Liens utiles</a>
+    </nav>
     
     <!-- Icone toggle menu -->
-    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">&#9776;</a>
-  </nav>
+    <div class="nav-toggle" id="nav-toggle">
+      <i class="ri-menu-line nav-display"></i>
+      <i class="ri-close-line nav-close"></i>
+    </div>
+    
 </header>

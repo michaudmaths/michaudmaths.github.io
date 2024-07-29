@@ -4,7 +4,8 @@ title: Cours & TD (Hypokhâgne)
 permalink: /cours/
 ---
 
-# Cours
+
+En construction...
 
 <ul> 
 
@@ -21,9 +22,4 @@ permalink: /cours/
 
 </ul>
 
-# TD
 
-
-- TD 1
-- TD 2
-- TD 3

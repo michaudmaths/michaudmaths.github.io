@@ -5,9 +5,4 @@ permalink: /devoirs/
 ---
 
 
-
-# Devoirs
-  
-  - DST 1
-  - DST 2
-
+En constrution...
