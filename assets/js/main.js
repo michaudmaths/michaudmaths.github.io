@@ -17,16 +17,15 @@ const dropdownButtons = document.querySelectorAll('.dropbtn')
   // Show/hide the elements in the clicked menu
 
 dropdownItems.forEach((dropdown) => {
-      var dropbtn = dropdown.querySelector('.dropbtn')
-      dropbtn.addEventListener('click', () => {
-        dropdown.classList.toggle('show')
-        for (let i=0; i < dropdownItems.length; i++){
-          if (dropdown !== dropdownItems[i]){
-            dropdownItems[i].classList.remove('show')
-          }
-        }
-      })
-      
+  var dropbtn = dropdown.querySelector('.dropbtn')
+  dropbtn.addEventListener('click', () => {
+    dropdown.classList.toggle('show')
+    for (let i=0; i < dropdownItems.length; i++){
+      if (dropdown !== dropdownItems[i]){
+        dropdownItems[i].classList.remove('show')
+      }
+    }
+  })  
 })
 
 function closeOpenDropdowns() {

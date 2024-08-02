@@ -17,7 +17,7 @@
   overflow: visible;
   height:inherit;
   padding-left:200px;
-  transition: .5s ease all ;
+  // transition: .5s ;
   background-color: #333;
 }
 
@@ -105,10 +105,10 @@
 .dropdown-content {
   overflow:hidden;
   max-height:0;
-  transition: max-height .4s;
+  // transition: max-height .4s;
   position: absolute;
   background-color: #f9f9f9;
-  min-width:150px;
+  min-width:160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   margin-top:14px;
   z-index: 1;
