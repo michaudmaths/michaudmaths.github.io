@@ -2,7 +2,7 @@
  * Site header
  */
 .site-header {
-  height: $spacing-unit * 1.865;
+  height: 53.5px;
   // Positioning context for the mobile navigation icon
   position: relative;
   background-color: #333;
@@ -14,10 +14,10 @@
 
 /* Add a black background color to the top navigation */
 .topnav {
-  overflow: hidden;
+  overflow: visible;
   height:inherit;
   padding-left:200px;
-  transition: ease all .5s;
+  transition: .5s ease all ;
   background-color: #333;
 }
 
@@ -59,9 +59,10 @@
   float:left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  margin: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  position:relative;
 }
 
 
@@ -73,33 +74,43 @@
 /* Dropdown container - needed to position the dropdown content */
 .dropdown {
   float:left;
+  position:relative;
   overflow: visible;
+  margin: 14px 16px;
+  padding:0;
+  line-height: 1.5;
+}
+
+.link-text {
+  position:relative;
 }
 
 /* Style the dropdown button to fit inside the topnav */
 .dropdown .dropbtn {
+  position:relative;
+  text-align: center;
   font-size: 17px;
-  line-height:1.5;
+  text-decoration: none;
   border: none;
   outline: none;
-  color: white;
-  padding: 14px 16px;
+  color: #f2f2f2;
   background-color: inherit;
   font-family: inherit;
-  margin: 0;
   cursor:pointer;
 }
+
 
 
 /* Style the dropdown content (hidden by default) */
 .dropdown-content {
   overflow:hidden;
   max-height:0;
-  transition:max-height .4s;
+  transition: max-height .4s;
   position: absolute;
   background-color: #f9f9f9;
   min-width:150px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  margin-top:14px;
   z-index: 1;
 }
 
@@ -114,10 +125,10 @@
 }
 
 /* Add a dark background on topnav links and the dropdown button on hover */
-.topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #555;
-  color: white;
-}
+// .topnav a:hover, .dropdown:hover .dropbtn {
+//   background-color: #555;
+//   color: white;
+// }
 
 /* Add a grey background to dropdown links on hover */
 .dropdown-content a:hover {
@@ -126,21 +137,42 @@
 }
 
 /* Show the dropdown menu when the user moves the mouse over the dropdown button */
-.dropdown:hover .dropdown-content {
+// .dropdown:hover .dropdown-content {
+//   max-height:1000px;
+//   transition:max-height .4s ease-in;
+// }
+
+.show .dropdown-content{
   max-height:1000px;
   transition:max-height .4s ease-in;
 }
 
 /* Change the orientation of the arrow on dropdown title*/
 
-
 .dropdown-arrow{
   display: inline-block;
   transition: transform .4s;
 }
 
-.dropdown:hover .dropdown-arrow{
+.show .dropdown-arrow{
   transform: rotate(180deg);
+}
+
+// Souligne chaque titre, le surlignage apparait en hover
+.topnav a:after, .topnav .dropdown .dropbtn .link-text:after{
+  background-color: #f2f2f2;
+  bottom: -6px;
+  content: "";
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: width .25s cubic-bezier(.25,.46,.45,.94);
+  width: 0
+}
+
+.topnav a:hover:after, .dropdown .dropbtn:hover .link-text:after {
+  width: 100%
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -151,7 +183,7 @@
     width:fit-content;
     height:100vh;
     left:-100vh;
-    transition: .5s ease-out;
+    transition: .5s ease-in-out;
   }
 
 

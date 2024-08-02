@@ -1,11 +1,15 @@
 <header class="site-header" role="banner">
+  <script src="{{ base.url | prepend: site.url }}/assets/js/main.js" defer></script>
   <nav class="topnav" id="myTopnav">
-    <a rel="author" href="{{ "/" | relative_url }}">Accueil</a>
+    <a rel="author" href="{{ "/" | relative_url }}">
+      <span class="link-text">Accueil</span>
+    </a>
 
     <!-- Menu Hypokhagne -->
     <div class="dropdown">
       <button class="dropbtn">
-        Hypokhâgne <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+        <span class="link-text">Hypokhâgne</span> 
+        <i class="ri-arrow-down-s-line dropdown-arrow"></i>
       </button>
       <div class="dropdown-content">
         <a href="{{"/cours/" | relative_url }}">Cours et TD</a>
@@ -17,7 +21,8 @@
     <!-- Menu Khâgne -->
     <div class="dropdown">
       <button class="dropbtn">
-        Khâgne <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+        <span class="link-text">Khâgne</span> 
+        <i class="ri-arrow-down-s-line dropdown-arrow"></i>
       </button>
       <div class="dropdown-content">
         <a href="{{"/td_khagne/" |relative_url }}">TD (Khâgne)</a>
@@ -25,7 +30,9 @@
     </div>
 
     <!-- Liens utiles -->
-      <a href="{{"/liens/" | relative_url }}">Liens utiles</a>
+      <a href="{{"/liens/" | relative_url }}">
+        <span class="link-text">Liens utiles</span>
+      </a>
     </nav>
     
     <!-- Icone toggle menu -->
