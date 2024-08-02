@@ -236,15 +236,31 @@ table {
   border-collapse: collapse;
   border: 1px solid $grey-color-light;
   tr {
-    &:nth-child(even) {
-      background-color: lighten($grey-color-light, 6%);
+    &:nth-child(odd) {
+      background-color: #f0f3f4;
+      &:hover {
+        background-color :#ecf0f1
+      }
     }
   }
+
+  tr {
+    &:nth-child(even) {
+      background-color: #f8f9f9;
+      &:hover {
+        background-color :#f2f3f4
+      }
+    }
+  }
+
+
+
+
   th, td {
     padding: ($spacing-unit / 3) ($spacing-unit / 2);
   }
   th {
-    background-color: lighten($grey-color-light, 3%);
+    background-color: #f8f9f9;
     border: 1px solid darken($grey-color-light, 4%);
     border-bottom-color: darken($grey-color-light, 12%);
   }
