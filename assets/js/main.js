@@ -48,28 +48,4 @@ window.addEventListener('click', function(event) {
     }
   });
 
-      // dropbtn.addEventListener('mouseover', () => {
-      //   dropdown_content.classList.add('show')
-      // })
-      // dropbtn.addEventListener('mouseout', () => {
-      //   dropdown_content.classList.remove('show')
-      // })
-
-
-
-// Evaluate screen size before adding eventlisteners.
-
-// function windowSizeCheck() {
-//   $('.dropdown').off('click.mobile'); // Prevent duplicate bindings
-//   if($(window).width() < '720') {
-//       $('.dropdown').on('click.mobile', function(e) {
-//           var childMenu = e.currentTarget.children[1];
-//           if($(childMenu).hasClass('visible')) {
-//               $(childMenu).removeClass('visible');
-//           }else{
-//               $(childMenu).addClass('visible');
-//           }
-//       });
-//    }
-// }
 
