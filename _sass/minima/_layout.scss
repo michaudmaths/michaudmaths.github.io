@@ -15,7 +15,7 @@
 .topnav {
   overflow: visible;
   height:inherit;
-  padding-left:200px;
+  padding-left:10vw;
   background-color: inherit;
 }
 
@@ -68,7 +68,7 @@
   color: #f2f2f2;
   text-align: center;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
   position:relative;
   margin:14px 16px;
   display:inline-block;
@@ -162,9 +162,12 @@
   width: 0
 }
 
-.nav-item>a:hover::after, .dropdown .dropbtn:hover>.link-text::after {
-  width: 100%
+@media screen and (min-width:600px){
+  .nav-item>a:hover::after, .dropdown .dropbtn:hover>.link-text::after {
+    width: 100%
+  }
 }
+
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
@@ -175,13 +178,13 @@
   }
 
   .topnav {
+    display:none;
     position:absolute;
-    padding-right:40px;
-    padding-left:0px;
-    width:fit-content;
-    height:fit-content;
-    right:-100vh;
-    transition: .5s ease-in-out;
+    padding:0;
+    margin:0;
+    right:-100vw;
+    height:100vh;
+    transition: width .5s ease-in-out;
   }
 
   .nav-item-container {
@@ -199,6 +202,7 @@
     float: none;
     display:block;
     text-align: left;
+    color : #f2f2f2;
   }
   .topnav .dropdown {float: none;}
   .topnav .dropdown-content {
@@ -206,6 +210,8 @@
     width:100%;
     margin-left:20px;
     transition:none;
+    background-color: #333;
+    box-shadow: none;
   }
 
   .show .dropdown-content{
@@ -235,7 +241,9 @@
 @media screen and (max-width: 800px) {
   .responsive {
     right:0;
-    transition : right .5s;
+    padding-right:40px;
+    transition :  width .5s ;
+    display:block;
   }
 
 

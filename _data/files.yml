@@ -1,0 +1,40 @@
+cours_folder : 'pdf/cours'
+exercices_folder : 'pdf/exercices hk'
+annexes_folder : 'pdf/annexes hk'
+kholles_folder : 'pdf/kholles hk'
+
+chapitres_hk:
+  - title : Trigonométrie
+    cours : '1.Trigonométrie'
+    exercices :
+    annexes :
+      - name : test
+        path : 'test.pdf'
+      - name : test 2
+        path : 'test2.pdf'
+
+  - title : Logique
+    cours : '2.Logique'
+    exercices :
+    annexes :
+
+  - title : Ensembles et applications
+    cours : '3.Ensembles et applications'
+    exercices:
+    annexes :
+      - name : test
+        path : 'test.pdf'
+
+kholles_hk :    
+  - num : 1
+    date_debut : '16/09/24'
+    date_fin : '29/09/24'
+    path : 'programme de kholle 1.pdf'
+
+  - num : 2
+    date_debut : '30/09/24'
+    date_fin : '13/10/24'
+
+  - num : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
