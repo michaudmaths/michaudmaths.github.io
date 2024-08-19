@@ -18,17 +18,17 @@ permalink: /cours/
 	<div class="cours-exo">
 	{% if chapter.cours %}
 		<a href="{{cours_folder}}/{{chapter.cours}}.pdf"> 
-			Cours 
+			<i class="ri-book-2-fill"></i> Cours 
 		</a> 
 	{% else %}
-		<div class="link-placeholder"> Cours </div>
+		<div class="link-placeholder"> <i class="ri-book-2-fill"></i> Cours </div>
 	{% endif%}
 	{% if chapter.exercices %}
 		<a href="{{exercices_folder}}/{{chapter.exercices}}.pdf">
-			Exercices
+			<i class="ri-puzzle-fill"></i> Exercices
 		</a>
 	{% else %}
-		<div class="link-placeholder"> Exercices</div>
+		<div class="link-placeholder"> <i class="ri-puzzle-fill"></i> Exercices</div>
 	{% endif %}
 	</div>
 	<div class="annexes">
