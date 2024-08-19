@@ -5,5 +5,4 @@
 layout: home
 ---
 
-Bienvenue sur la page de Robin Michaud, professeur de mathématiques en Hypokhâgne et Khâgne BL (filière lettre et sciences sociales) au lycée Sainte-Marie de Neuilly. Vous trouverez ici mes principaux documents de cours, fiches d'exercices et programmes de khôlles.
-
+Bienvenue sur la page de Robin Michaud, professeur de mathématiques en Hypokhâgne et Khâgne BL (filière lettre et sciences sociales) au lycée Sainte-Marie de Neuilly. Vous trouverez ici les principaux documents de cours, fiches d'exercices et programmes de khôlles.

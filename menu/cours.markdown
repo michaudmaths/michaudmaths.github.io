@@ -5,62 +5,46 @@ permalink: /cours/
 ---
 
 
-En construction...
-
-
 {% assign cours_folder = site.data.files.cours_folder %}
 {% assign exercices_folder = site.data.files.exercices_folder %}
 {% assign annexes_folder = site.data.files.annexes_folder %}
 
 
 {% assign chapitre_counter = 1 %}
-<div class="container">
-<table>
-	<thead>
-		<tr>
-			<th>Chapitre </th>
-			<th>Cours</th>
-			<th>Exercices (TD)</th>
-			<th>Annexes </th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for chapter in site.data.files.chapitres_hk %}
-			<tr>
-				<td class="chapter-title">{{chapitre_counter}} - {{chapter.title}}</td>
-				<td> 
-					{% if chapter.cours %}
-						<a href="{{cours_folder}}/{{chapter.cours}}.pdf"> 
-							Cours 
-						</a> 
-					{% endif%}
-				</td>
-				<td>
-					{% if chapter.exercices %}
-						<a href="{{exercices_folder}}/{{chapter.exercices}}.pdf">
-							Exercices
-						</a>
-					{% endif %}
-				</td>
-				<td>
-					{% if chapter.annexes %}
-						{% assign annexes_length = chapter.annexes | size %}
-						{% for annexe in chapter.annexes %}
-							<a href="{{annexes_folder}}/{{annexe.path}}.pdf">
-								{{annexe.name}} 
-							</a>
-							{% if annexes_length > 1  and forloop.index < annexes_length %}
-								<span> ,</span>
-							{% endif %}
-						{% endfor %}
-					{% endif %}
-				</td>
-			</tr>
-		{% assign chapitre_counter = chapitre_counter | plus:1 %}
+{% for chapter in site.data.files.chapitres_hk %}
+<div class="chapter">
+	<h1 class="chapter-title">{{chapitre_counter}} - {{chapter.title}}</h1> 
+	<div class="link-container">
+	<div class="cours-exo">
+	{% if chapter.cours %}
+		<a href="{{cours_folder}}/{{chapter.cours}}.pdf"> 
+			Cours 
+		</a> 
+	{% else %}
+		<div class="link-placeholder"> Cours </div>
+	{% endif%}
+	{% if chapter.exercices %}
+		<a href="{{exercices_folder}}/{{chapter.exercices}}.pdf">
+			Exercices
+		</a>
+	{% else %}
+		<div class="link-placeholder"> Exercices</div>
+	{% endif %}
+	</div>
+	<div class="annexes">
+	{% if chapter.annexes %}
+		{% assign annexes_length = chapter.annexes | size %}
+		{% for annexe in chapter.annexes %}
+			<a href="{{annexes_folder}}/{{annexe.path}}.pdf">
+				{{annexe.name}} 
+			</a>
 		{% endfor %}
-	</tbody>
-</table>
+	{% endif %}
+	</div>
+	</div>
 </div>
+{% assign chapitre_counter = chapitre_counter | plus:1 %}
+{% endfor %}
 
 
 <!-- {% assign cours_counter = 1 %}
