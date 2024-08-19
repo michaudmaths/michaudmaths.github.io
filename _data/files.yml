@@ -8,10 +8,6 @@ chapitres_hk:
     cours : '1.Trigonométrie'
     exercices :
     annexes :
-      - name : test
-        path : 'test.pdf'
-      - name : test 2
-        path : 'test2.pdf'
 
   - title : Logique
     cours : '2.Logique'
@@ -22,8 +18,6 @@ chapitres_hk:
     cours : '3.Ensembles et applications'
     exercices:
     annexes :
-      - name : test
-        path : 'test.pdf'
       
   - title : Entiers, sommes, récurrences
     cours : 
@@ -38,12 +32,16 @@ chapitres_hk:
   - title : Suites numériques
     cours : 
     exercices : 
-    annexes :
+    annexes : 
+      - name : Opérations sur les limites
+        path : ''
 
   - title : Analyse réelle
     cours : 
     exercices : 
     annexes :
+      - name : Limites
+        path : ''
 
   - title : Espaces probabilisés
     cours : 
@@ -75,10 +73,12 @@ chapitres_hk:
     exercices : 
     annexes :
 
-  - title : Représentation matricielle
+  - title : Représentations matricielles
     cours : 
     exercices : 
     annexes :
+      - name : Changements de base
+        path : ''
 
   - title : Familles de variables aléatoires
     cours : 
@@ -89,6 +89,8 @@ chapitres_hk:
     cours : 
     exercices : 
     annexes :
+      - name : Tableau de primitives
+        path : ''
 
   - title : Nombres complexes
     cours : 
