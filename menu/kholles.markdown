@@ -5,10 +5,14 @@ permalink: /kholles/
 ---
 
 
+<h1> Programmes de khôlles : </h1>
 
-# Programmes de khôlles
-
-- Programme 1 (du *** au ***)
-- Programme 2 (du *** au ***)
-- Programme 3 (du *** au ***)
-
+<body>
+<ul>
+{% for quinzaine in site.data.files.kholles_hk %}
+    <li> 
+        <a href="{{site.baseurl}}/programme de kholle {{quinzaine.num}}.pdf">Programme du {{quinzaine.date_debut}} au {{quinzaine.date_fin}} </a>
+    </li>
+{% endfor %}
+</ul>
+</body>

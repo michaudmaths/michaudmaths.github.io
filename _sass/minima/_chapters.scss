@@ -1,0 +1,55 @@
+.chapter {
+  width:100%;
+  display:block;
+  margin-bottom : 20px;
+}
+
+
+.link-container {
+  width:100%;
+  display:block;
+  overflow:hidden;
+}
+
+.chapter>h1 {
+  color : rgb(90, 90, 90);
+  width:100%;
+  margin-bottom:5px;
+  border-bottom: solid 2px ;
+  border-color : gray;
+  position:relative;
+  display:block;
+  font-weight : bold ;
+}
+
+.chapter a, .chapter .link-placeholder {
+  text-decoration:none;
+  position : relative;
+  display : inline-block;
+  text-align: center;
+  font-size: 17px;
+  margin:14px 16px;
+}
+
+.chapter a {
+  color:black;
+}
+
+.chapter a:hover{
+  color: $text-color;
+  text-decoration: underline;
+}
+
+.chapter .link-placeholder {
+  color: gray;
+}
+
+.chapter .cours-exo {
+  float : left;
+}
+
+
+.chapter .annexes {
+  float : right;
+}
+
