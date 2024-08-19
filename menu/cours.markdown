@@ -21,6 +21,9 @@ permalink: /cours/
 			<a href="">
 				<i class="ri-file-2-fill"></i> Fonctions de références
 			</a>
+			<a href="">
+				<i class="ri-file-2-fill"></i> Cahier de calcul
+			</a>
 		</div>
 	</div>
 </div>
