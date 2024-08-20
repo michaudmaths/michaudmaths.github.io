@@ -35,7 +35,7 @@
   color:black;
 }
 
-.chapter a:hover{
+.chapter a span:hover{
   color: $text-color;
   text-decoration: underline;
 }
@@ -48,8 +48,17 @@
   float : left;
 }
 
-
 .chapter .annexes {
   float : right;
 }
 
+@media screen and (max-width: 600px) {
+  .chapter>h1 {
+    font-size : 18px;
+  }
+
+  .chapter a, .chapter .link-placeholder {
+    font-size : 13px;
+    margin:2px 4px;
+  }
+}

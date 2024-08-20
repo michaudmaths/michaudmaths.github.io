@@ -345,6 +345,10 @@
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
     width:         calc(100% - (#{$spacing-unit} / 2));
   }
+
+  .footer-col-1 {
+    display:none;
+  }
 }
 
 
@@ -353,7 +357,7 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
+  padding: 15px 0;
   flex: 1;
 }
 
