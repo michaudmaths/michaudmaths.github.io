@@ -25,10 +25,6 @@ permalink: /cours/
 				<i class="ri-file-fill"></i> 
 				<span> Fonctions de références </span>
 			</a>
-			<a href="404">
-				<i class="ri-file-fill"></i> 
-				<span> Cahier de calcul </span>
-			</a>
 			<a href="{{site.baseurl}}/{{annexes_folder}}/exp_ln.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> Exponentielle et logarithme </span>
