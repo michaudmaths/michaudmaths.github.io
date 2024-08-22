@@ -74,15 +74,3 @@ permalink: /cours/
 </div>
 {% assign chapitre_counter = chapitre_counter | plus:1 %}
 {% endfor %}
-
-<!-- {% assign cours_counter = 1 %}
-{% for pdf in site.static_files %}
-    {% if pdf.path contains 'pdf/cours' %}
-    	{% assign string_to_delete = cours_counter | append: '.' %}
-        <li> 
-        <a href="{{ site.baseurl }}{{ pdf.path }}"> Chapitre {{cours_counter}} : {{pdf.basename | replace: string_to_delete , ''}} </a> 
-        </li>
-        {% assign cours_counter = cours_counter | plus:1 %}
-    {% endif %}
-{% endfor %} -->
-
