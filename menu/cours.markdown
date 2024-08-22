@@ -37,6 +37,7 @@ permalink: /cours/
 {% assign chapitre_counter = 1 %}
 {% for chapter in site.data.files.chapitres_hk %}
 {% assign subfolder = chapitre_counter| append: "-" | append: chapter.title %}
+
 <div class="chapter">
 	<h1 class="chapter-title">{{chapitre_counter}} - {{chapter.title}}</h1> 
 	<div class="link-container">
