@@ -13,7 +13,7 @@ permalink: /cours/
 	<h1 class="chapter-title">Quelques rappels</h1> 
 	<div class="link-container">
 		<div class="annexes">
-			<a href="{{site.baseurl}}/{{annexes_folder}}/lexique_mathematique.pdf">
+			<a href="{{site.baseurl}}/{{annexes_folder}}/lexique_mathematique_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> Lexique mathématique </span>
 			</a>
@@ -21,11 +21,11 @@ permalink: /cours/
 				<i class="ri-file-fill"></i> 
 				<span> Tableau de dérivées </span>
 			</a>
-			<a href="{{site.baseurl}}/{{annexes_folder}}/fonctions_reference.pdf">
+			<a href="{{site.baseurl}}/{{annexes_folder}}/fonctions_reference_merged_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> Fonctions de références </span>
 			</a>
-			<a href="{{site.baseurl}}/{{annexes_folder}}/exp_ln.pdf">
+			<a href="{{site.baseurl}}/{{annexes_folder}}/poster_exp_ln_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> Exponentielle et logarithme </span>
 			</a>
@@ -62,7 +62,7 @@ permalink: /cours/
 	{% if chapter.annexes %}
 		{% assign annexes_length = chapter.annexes | size %}
 		{% for annexe in chapter.annexes %}
-			<a href="{{site.baseurl}}/{{annexes_folder}}/{{subfolder}}/{{annexe.path}}_web.pdf">
+			<a href="{{site.baseurl}}/{{cours_folder}}/{{subfolder}}/cours/{{annexe.path}}_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> {{annexe.name}} </span>
 			</a>

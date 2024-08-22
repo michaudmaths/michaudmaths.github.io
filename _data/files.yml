@@ -40,7 +40,7 @@ chapitres_hk:
     exercices : 
     annexes : 
       - name : Opérations sur les limites
-        path : ''
+        path : 'poster_operations_limites'
 
   - title : Analyse réelle
     subfolder : "7-Analyse réelle"
@@ -48,7 +48,9 @@ chapitres_hk:
     exercices : 
     annexes :
       - name : Limites
-        path : ''
+        path : 'poster_limites'
+      - name : Exponentielle et logarithme
+        path : 'poster_exp_ln'
 
   - title : Espaces probabilisés
     subfolder : "8-Espaces probabilisés"
@@ -79,7 +81,7 @@ chapitres_hk:
     exercices : 
     annexes :
 
-  - title : Dérivatio
+  - title : Dérivation
     cours : 'cours_hk_13_derivation'
     exercices : 
     annexes :
