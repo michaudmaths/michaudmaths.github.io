@@ -5,95 +5,95 @@ kholles_folder : 'pdf/kholles hk'
 
 chapitres_hk:
   - title : Trigonométrie
-    cours : '1.Trigonométrie'
+    cours : 'cours_hk_1_trigonometrie'
     exercices :
     annexes :
 
   - title : Logique
-    cours : '2.Logique'
-    exercices : '2.exercices_logique.pdf'
+    cours : 'cours_hk_2_logique_mathematique'
+    exercices : 
     annexes :
 
   - title : Ensembles et applications
-    cours : '3.Ensembles et applications'
+    cours : 'cours_hk_3_ensembles_et_applications'
     exercices:
     annexes :
       
   - title : Entiers, sommes, récurrences
-    cours : 
+    cours : 'cours_hk_4_entiers_sommes_recurrences'
     exercices : 
     annexes :
 
   - title : Nombres réels
-    cours : 
+    cours : 'cours_hk_5_nombres_reels'
     exercices : 
     annexes :
 
   - title : Suites numériques
-    cours : 
+    cours : 'cours_hk_6_suites_numeriques'
     exercices : 
     annexes : 
       - name : Opérations sur les limites
         path : ''
 
   - title : Analyse réelle
-    cours : 
+    cours : 'cours_hk_7_analyse'
     exercices : 
     annexes :
       - name : Limites
         path : ''
 
   - title : Espaces probabilisés
-    cours : 
+    cours : 'cours_hk_8_espaces_probabilises'
     exercices : 
     annexes :
 
   - title : Matrices
-    cours : 
+    cours : 'cours_hk_9_matrices'
     exercices : 
     annexes :
 
   - title : Séries numériques
-    cours : 
+    cours : 'cours_hk_10_series_numeriques'
     exercices : 
     annexes :
 
   - title : Espaces vectoriels
-    cours : 
+    cours : 'cours_hk_11_espaces_vectoriels'
     exercices : 
     annexes :
 
   - title : Variables aléatoires discrètes
-    cours : 
+    cours : 'cours_hk_12_variables_aleatoires_discretes'
     exercices : 
     annexes :
 
   - title : Dérivation
-    cours : 
+    cours : 'cours_hk_13_derivation'
     exercices : 
     annexes :
 
   - title : Représentations matricielles
-    cours : 
+    cours : 'cours_hk_14_matrices'
     exercices : 
     annexes :
       - name : Changements de base
         path : ''
 
   - title : Familles de variables aléatoires
-    cours : 
+    cours : 'cours_hk_15_familles_de_variables_aleatoires'
     exercices : 
     annexes :
 
   - title : Intégration
-    cours : 
+    cours : 'cours_hk_16_integration'
     exercices : 
     annexes :
       - name : Tableau de primitives
         path : ''
 
   - title : Nombres complexes
-    cours : 
+    cours : 'cours_hk_17_nombres_complexes'
     exercices : 
     annexes :
 
@@ -101,7 +101,7 @@ kholles_hk :
   - num : 1
     date_debut : '16/09/24'
     date_fin : '29/09/24'
-    path : 'programme de kholle 1.pdf'
+    path : 'programme de kholle 1'
 
   - num : 2
     date_debut : '30/09/24'

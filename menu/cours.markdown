@@ -5,31 +5,33 @@ permalink: /cours/
 ---
 
 
+{% assign cours_folder = site.data.files.cours_folder %}
+{% assign exercices_folder = site.data.files.exercices_folder %}
+{% assign annexes_folder = site.data.files.annexes_folder %}
+
 <div class="chapter">
-	<h1 class="chapter-title">0 - Quelques rappels</h1> 
+	<h1 class="chapter-title">Quelques rappels</h1> 
 	<div class="link-container">
 		<div class="annexes">
-			<a href="">
-				<i class="ri-file-2-fill"></i> Lexique mathématique
+			<a href="{{site.baseurl}}/{{annexes_folder}}/lexique_mathematique.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> Lexique mathématique </span>
 			</a>
-			<a href="">
-				<i class="ri-file-2-fill"></i> Tableau de dérivées
+			<a href="{{site.baseurl}}/{{annexes_folder}}/tableau_derivees.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> Tableau de dérivées </span>
 			</a>
-			<a href="">
-				<i class="ri-file-2-fill"></i> Exponentielle et logarithme
+			<a href="{{site.baseurl}}/{{annexes_folder}}/fonctions_reference.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> Fonctions de références </span>
 			</a>
-			<a href="">
-				<i class="ri-file-2-fill"></i> Fonctions de références
-			</a>
-			<a href="">
-				<i class="ri-file-2-fill"></i> Cahier de calcul
+			<a href="{{site.baseurl}}/{{annexes_folder}}/exp_ln.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> Exponentielle et logarithme </span>
 			</a>
 		</div>
 	</div>
 </div>
-{% assign cours_folder = site.data.files.cours_folder %}
-{% assign exercices_folder = site.data.files.exercices_folder %}
-{% assign annexes_folder = site.data.files.annexes_folder %}
 
 
 {% assign chapitre_counter = 1 %}
@@ -40,15 +42,17 @@ permalink: /cours/
 	<div class="link-container">
 	<div class="cours-exo">
 	{% if chapter.cours %}
-		<a href="{{cours_folder}}/{{chapter.cours}}.pdf"> 
-			<i class="ri-book-2-fill"></i> Cours 
+		<a href="{{site.baseurl}}/{{cours_folder}}/{{chapter.cours}}.pdf"> 
+			<i class="ri-book-2-fill"></i> 
+			<span> Cours </span> 
 		</a> 
 	{% else %}
 		<div class="link-placeholder"> <i class="ri-book-2-fill"></i> Cours </div>
 	{% endif%}
 	{% if chapter.exercices %}
-		<a href="{{exercices_folder}}/{{chapter.exercices}}.pdf">
-			<i class="ri-puzzle-fill"></i> Exercices
+		<a href="{{site.baseurl}}/{{exercices_folder}}/{{chapter.exercices}}.pdf">
+			<i class="ri-puzzle-fill"></i> 
+			<span> Exercices </span>
 		</a>
 	{% else %}
 		<div class="link-placeholder"> <i class="ri-puzzle-fill"></i> Exercices</div>
@@ -58,8 +62,9 @@ permalink: /cours/
 	{% if chapter.annexes %}
 		{% assign annexes_length = chapter.annexes | size %}
 		{% for annexe in chapter.annexes %}
-			<a href="{{annexes_folder}}/{{annexe.path}}.pdf">
-				<i class="ri-file-2-fill"></i> {{annexe.name}} 
+			<a href="{{site.baseurl}}/{{annexes_folder}}/{{annexe.path}}.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> {{annexe.name}} </span>
 			</a>
 		{% endfor %}
 	{% endif %}
@@ -68,7 +73,6 @@ permalink: /cours/
 </div>
 {% assign chapitre_counter = chapitre_counter | plus:1 %}
 {% endfor %}
-
 
 <!-- {% assign cours_counter = 1 %}
 {% for pdf in site.static_files %}
