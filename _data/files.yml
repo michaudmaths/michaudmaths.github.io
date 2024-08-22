@@ -1,35 +1,41 @@
-cours_folder : 'pdf/cours'
-exercices_folder : 'pdf/exercices hk'
+cours_folder : 'pdf/cours hk/'
+exercices_folder : 'pdf/cours hk/'
 annexes_folder : 'pdf/annexes hk'
 kholles_folder : 'pdf/kholles hk'
 
 chapitres_hk:
   - title : Trigonométrie
+    subfolder : "1-Trigonométrie"
     cours : 'cours_hk_1_trigonometrie'
     exercices :
     annexes :
 
   - title : Logique
+    subfolder : "2-Logique"
     cours : 'cours_hk_2_logique_mathematique'
     exercices : 
     annexes :
 
   - title : Ensembles et applications
+    subfolder : "3-Vocabulaire ensembliste"
     cours : 'cours_hk_3_ensembles_et_applications'
     exercices:
     annexes :
       
   - title : Entiers, sommes, récurrences
+    subfolder : "4-Entiers sommes recurrences"
     cours : 'cours_hk_4_entiers_sommes_recurrences'
     exercices : 
     annexes :
 
   - title : Nombres réels
+    subfolder : "5-Nombres réels"
     cours : 'cours_hk_5_nombres_reels'
     exercices : 
     annexes :
 
   - title : Suites numériques
+    subfolder : "6-Suites numériques"
     cours : 'cours_hk_6_suites_numeriques'
     exercices : 
     annexes : 
@@ -37,6 +43,7 @@ chapitres_hk:
         path : ''
 
   - title : Analyse réelle
+    subfolder : "7-Analyse réelle"
     cours : 'cours_hk_7_analyse'
     exercices : 
     annexes :
@@ -44,21 +51,25 @@ chapitres_hk:
         path : ''
 
   - title : Espaces probabilisés
+    subfolder : "8-Espaces probabilisés"
     cours : 'cours_hk_8_espaces_probabilises'
     exercices : 
     annexes :
 
   - title : Matrices
+    subfolder : "9-Matrices"
     cours : 'cours_hk_9_matrices'
     exercices : 
     annexes :
 
   - title : Séries numériques
+    subfolder : "10-Séries numériques"
     cours : 'cours_hk_10_series_numeriques'
     exercices : 
     annexes :
 
   - title : Espaces vectoriels
+    subfolder : "11-Espaces vectoriels"
     cours : 'cours_hk_11_espaces_vectoriels'
     exercices : 
     annexes :
@@ -68,7 +79,7 @@ chapitres_hk:
     exercices : 
     annexes :
 
-  - title : Dérivation
+  - title : Dérivatio
     cours : 'cours_hk_13_derivation'
     exercices : 
     annexes :

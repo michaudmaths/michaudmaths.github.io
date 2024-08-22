@@ -36,13 +36,13 @@ permalink: /cours/
 
 {% assign chapitre_counter = 1 %}
 {% for chapter in site.data.files.chapitres_hk %}
-
+{% assign subfolder = chapitre_counter| append: "-" | append: chapter.title %}
 <div class="chapter">
 	<h1 class="chapter-title">{{chapitre_counter}} - {{chapter.title}}</h1> 
 	<div class="link-container">
 	<div class="cours-exo">
 	{% if chapter.cours %}
-		<a href="{{site.baseurl}}/{{cours_folder}}/{{chapter.cours}}.pdf"> 
+		<a href="{{site.baseurl}}/{{cours_folder}}/{{subfolder}}/cours/{{chapter.cours}}_web.pdf"> 
 			<i class="ri-book-2-fill"></i> 
 			<span> Cours </span> 
 		</a> 
@@ -50,7 +50,7 @@ permalink: /cours/
 		<div class="link-placeholder"> <i class="ri-book-2-fill"></i> Cours </div>
 	{% endif%}
 	{% if chapter.exercices %}
-		<a href="{{site.baseurl}}/{{exercices_folder}}/{{chapter.exercices}}.pdf">
+		<a href="{{site.baseurl}}/{{exercices_folder}}/{{subfolder}}/exercices/{{chapter.exercices}}_web.pdf">
 			<i class="ri-puzzle-fill"></i> 
 			<span> Exercices </span>
 		</a>
@@ -62,7 +62,7 @@ permalink: /cours/
 	{% if chapter.annexes %}
 		{% assign annexes_length = chapter.annexes | size %}
 		{% for annexe in chapter.annexes %}
-			<a href="{{site.baseurl}}/{{annexes_folder}}/{{annexe.path}}.pdf">
+			<a href="{{site.baseurl}}/{{annexes_folder}}/{{subfolder}}/{{annexe.path}}_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> {{annexe.name}} </span>
 			</a>
