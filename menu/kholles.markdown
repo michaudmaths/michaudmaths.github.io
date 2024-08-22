@@ -7,12 +7,20 @@ permalink: /kholles/
 
 <h1> Programmes de khôlles : </h1>
 
+
+{% assign kholles_folder = site.data.files.kholles_folder %}
+
 <body>
 <ul>
-{% for quinzaine in site.data.files.kholles_hk %}
-    <li> 
-        <a href="{{site.baseurl}}/programme de kholle {{quinzaine.num}}.pdf">Programme du {{quinzaine.date_debut}} au {{quinzaine.date_fin}} </a>
+{% assign quinzaine_compteur = 1 %}
+{% for item in site.static_files %}
+{% if item.path contains "Programme quinzaine" %}
+    <li>
+        <a href="{{item.path}}">Programme de khôlle {{quinzaine_compteur}}</a>
     </li>
+{% assign quinzaine_compteur = quinzaine_compteur | plus:1 %}
+{% endif %}
 {% endfor %}
 </ul>
+
 </body>
