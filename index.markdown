@@ -21,3 +21,10 @@ Ces documents ne sont pas exempts d'inexactitudes voire d'erreurs : n'hésitez p
 Les <a href="{{site.baseurl}}/cours/">cours</a> d'Hypokhâgne BL correspondent aux supports distribués en classe. Ces supports de cours sont une aide pour vous y retrouver plus facilement dans le cours magistral donné en classe et ne se substituent <strong>en aucun cas</strong> à une prise de note manuscrite. Les démonstrations, exemples et remarques faites en classe sont d'une importance capitale pour développer votre compréhension du cours ainsi que votre capacité à produrie des raisonnements clairs et rigoureux.
 
 
+## Les exercices
+
+Il y en a deux catégories. Les exercices de cours, à la fin de chaque chapitre, servent à illustrer le cours par des exemples. Ce sont en général des exercices d'application directe, ils servent à illustrer les principaux résultats du cours et à vérifier que vous avez compris comment les utiliser.
+
+Ensuite, les exercices de TD sont des exercices d'approfondissement. Les plus faciles sont de difficulté semblable aux exercices de cours, et les plus ardus vous donneront certainement du fil à retordre. Il faut les travailler d'abord sans correction, avec le cours sous les yeux pour y chercher des idées. Ce n'est qu'en pratiquant ces exercices que vous apprendrez à produire des raisonnements mathématiques qui vous serviront jusqu'aux concours.
+
+
