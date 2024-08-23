@@ -80,7 +80,7 @@ chapitres_hk:
     exercices : 
     annexes :
       - name : Changements de base
-        path : ''
+        path : 'changement_de_base'
 
   - title : Familles de variables aléatoires
     cours : 'cours_hk_15_familles_de_variables_aleatoires'
@@ -92,7 +92,7 @@ chapitres_hk:
     exercices : 
     annexes :
       - name : Tableau de primitives
-        path : ''
+        path : 'tableau_primitives'
 
   - title : Nombres complexes
     cours : 'cours_hk_17_nombres_complexes'
