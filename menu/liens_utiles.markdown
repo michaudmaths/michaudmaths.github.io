@@ -18,3 +18,4 @@ katex: True
     - Sur <a href="https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">l'analyse réelle</a> (série de 12 vidéos)
     - Sur la <a href="https://www.youtube.com/watch?v=8idr1WZ1A7Q">loi binomiale</a> 
     - Sur le <a href="https://www.youtube.com/watch?v=U_85TaXbeIo">théorème de bayes</a>
+
