@@ -12,13 +12,13 @@ permalink: /kholles/
 
 <body>
 <ul>
-{% assign quinzaine_compteur = 1 %}
+{% assign semaine_compteur = 1 %}
 {% for item in site.static_files %}
-{% if item.path contains "Programme quinzaine" %}
+{% if item.path contains "Programme semaine" %}
     <li>
-        <a href="{{item.path}}">Programme de khôlle {{quinzaine_compteur}}</a>
+        <a href="{{item.path}}">Programme de khôlle {{semaine_compteur}}</a>
     </li>
-{% assign quinzaine_compteur = quinzaine_compteur | plus:1 %}
+{% assign semaine_compteur = semaine_compteur | plus:1 %}
 {% endif %}
 {% endfor %}
 </ul>
