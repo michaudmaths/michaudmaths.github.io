@@ -6,7 +6,7 @@ katex: True
 ---
 
 ### Pour travailler 
-- Le <a href="https://colasbd.github.io/cdc/">cahier de calcul collaboratif pour la prépa</a>, sous la coordination de Colas Bardavid : des exercices pour travailler les automatismes de calcul. Le pdf est en accès libre sur le site de Colas Bardavid.   Dès la fin du lycée : <strong>sections 1 à 11 et section 21</strong>. Pendant l'hypokhâgne : <strong>sections 12,13,15,16,17,18,19,20,22,26,27,29</strong>
+- Le <a href="https://colasbd.github.io/cdc/">site web du projet</a> de cahier de calcul collaboratif pour la prépa, sous la coordination de Colas Bardavid : des exercices pour travailler les automatismes de calcul. Dès la fin du lycée : <strong>sections 1 à 11 et section 21</strong>. Pendant l'hypokhâgne : <strong>sections 12,13,15,16,17,18,19,20,22,26,27,29</strong>
 - Les <a href="https://apml-maths.com/mathematiques/annales/">annales de concours sur le site de l'APML</a>
 - Le livre <a href = "https://www.editions-ellipses.fr/accueil/13639-mathematiques-bl-1re-annee-nouveaux-programmes-9782340048638.html?srsltid=AfmBOopGSmqaUOwyeLrpo7YkcSVw4c1SpiH2S3nUtunXqBOoNJeTOuGl"> Mathématiques - BL 1re année - 2e édition </a> disponible sur internet et dans les librairies spécialisées 
 - Le <a href="https://www.editions-ellipses.fr/accueil/14038-25911-formulaire-mathematiques-bl-1re-et-2e-annees-2e-edition-2e-edition-9782340063600.html#/1-format_disponible-broche"> Formulaire Mathématiques - BL 1re et 2e années - 2e édition </a>
