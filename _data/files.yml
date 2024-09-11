@@ -100,90 +100,115 @@ chapitres_hk:
     annexes :
 
 kholles_hk :    
-  - semaine : 1
+  - numero : 1
     date_debut : '16/09/24'
-    date_fin : '29/09/24'
+    date_fin : '20/09/24'
 
-  - semaine : 2
+  - numero : 2
+    date_debut : '23/09/24'
+    date_fin : '27/09/24'
+
+  - numero : 3
     date_debut : '30/09/24'
-    date_fin : '13/10/24'
+    date_fin : '04/10/24'
+  
+  - numero : 4
+    date_debut : '07/10/24'
+    date_fin : '11/10/24'
+  
+  - numero : 5
+    date_debut : '14/10/24'
+    date_fin : '18/10/24'
+  
+  - numero : 6
+    date_debut : '04/11/24'
+    date_fin : '08/11/24'
+  
+  - numero : 7
+    date_debut : '11/11/24'
+    date_fin : '15/11/24'
+  
+  - numero : 8
+    date_debut : '18/11/24'
+    date_fin : '22/11/24'
+  
+  - numero : 9
+    date_debut : '25/11/24'
+    date_fin : '29/11/24'
+  
+  - numero : 10
+    date_debut : '02/11/24'
+    date_fin : '06/11/24'
+  
+  - numero : 11
+    date_debut : '09/12/24'
+    date_fin : '13/12/24'
+  
+  - numero : 12
+    date_debut : '06/01/24'
+    date_fin : '10/01/24'
+    
+  - numero : 13
+    date_debut : '13/01/24'
+    date_fin : '17/01/24'
+    
+  - numero : 14
+    date_debut : '20/01/24'
+    date_fin : '24/01/24'
+    
+  - numero : 15
+    date_debut : '27/01/24'
+    date_fin : '31/01/24'
+    
+  - numero : 16
+    date_debut : '03/02/24'
+    date_fin : '07/02/24'
+    
+  - numero : 17
+    date_debut : '10/02/24'
+    date_fin : '14/02/24'
+    
+  - numero : 18
+    date_debut : '10/03/24'
+    date_fin : '14/03/24'
+    
+  - numero : 19
+    date_debut : '17/03/24'
+    date_fin : '21/03/24'
 
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 4
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-  
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 20
+    date_debut : '24/03/24'
+    date_fin : '28/03/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 21
+    date_debut : '31/03/24'
+    date_fin : '04/04/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 22
+    date_debut : '07/04/24'
+    date_fin : '11/04/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 23
+    date_debut : '28/04/24'
+    date_fin : '02/05/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 24
+    date_debut : '05/05/24'
+    date_fin : '09/05/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 25
+    date_debut : '19/05/24'
+    date_fin : '23/05/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 26
+    date_debut : '26/05/24'
+    date_fin : '30/05/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
-
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 27
+    date_debut : '02/06/24'
+    date_fin : '06/06/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
+  - numero : 28
+    date_debut : '09/06/24'
+    date_fin : '13/06/24'
     
-  - semaine : 3
-    date_debut : '14/10/24'
-    date_fin : '10/11/24'
