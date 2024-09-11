@@ -100,15 +100,90 @@ chapitres_hk:
     annexes :
 
 kholles_hk :    
-  - num : 1
+  - semaine : 1
     date_debut : '16/09/24'
     date_fin : '29/09/24'
-    path : 'programme de kholle 1'
 
-  - num : 2
+  - semaine : 2
     date_debut : '30/09/24'
     date_fin : '13/10/24'
 
-  - num : 3
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 4
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+  
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
+    date_debut : '14/10/24'
+    date_fin : '10/11/24'
+    
+  - semaine : 3
     date_debut : '14/10/24'
     date_fin : '10/11/24'
