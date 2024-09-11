@@ -6,7 +6,7 @@ kholles_folder : 'pdf/kholles hk'
 chapitres_hk:
   - title : Trigonométrie
     cours : 'cours_hk_1_trigonometrie'
-    exercices :
+    exercices : 'exercices_approfondissement_hk_1_trigonometrie'
     annexes :
 
   - title : Logique

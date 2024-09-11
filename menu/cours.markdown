@@ -29,6 +29,10 @@ permalink: /cours/
 				<i class="ri-file-fill"></i> 
 				<span> Exponentielle et logarithme </span>
 			</a>
+			<a href="{{site.baseurl}}/{{annexes_folder}}/hk_td0_etude_fonctions_web.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> TD 0 : études de fonctions </span>
+			</a>
 		</div>
 	</div>
 </div>
@@ -53,10 +57,10 @@ permalink: /cours/
 	{% if chapter.exercices %}
 		<a href="{{site.baseurl}}/{{exercices_folder}}/{{subfolder}}/exercices/{{chapter.exercices}}_web.pdf">
 			<i class="ri-puzzle-fill"></i> 
-			<span> Exercices </span>
+			<span> TD {{chapitre_counter}} </span>
 		</a>
 	{% else %}
-		<div class="link-placeholder"> <i class="ri-puzzle-fill"></i> Exercices</div>
+		<div class="link-placeholder"> <i class="ri-puzzle-fill"></i> TD {{chapitre_counter}}</div>
 	{% endif %}
 	</div>
 	<div class="annexes">
