@@ -33,6 +33,10 @@ permalink: /cours/
 				<i class="ri-file-fill"></i> 
 				<span> TD 0 : études de fonctions </span>
 			</a>
+			(<a href="{{site.baseurl}}/{{annexes_folder}}/corr_hk_td0_etude_fonctions_web.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> avec correction </span>
+			</a>)
 		</div>
 	</div>
 </div>
