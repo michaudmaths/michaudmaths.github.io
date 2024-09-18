@@ -30,7 +30,7 @@ permalink: /cours/
 				<span> Exponentielle et logarithme </span>
 			</a>
 			<a href="{{site.baseurl}}/{{annexes_folder}}/hk_td0_etude_fonctions_web.pdf">
-				<i class="ri-file-fill"></i> 
+				<i class="ri-puzzle-fill"></i> 
 				<span> TD 0 : études de fonctions </span>
 			</a>
 			(<a href="{{site.baseurl}}/{{annexes_folder}}/corr_hk_td0_etude_fonctions_web.pdf">

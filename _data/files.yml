@@ -178,3 +178,8 @@ kholles_hk :
     date_debut : '09/06/24'
     date_fin : '13/06/24'
     
+
+td_khagne :
+  - title : Révisions d'algèbre linéaire
+  - title : Projecteurs
+  - title : Projecteurs et symétries
