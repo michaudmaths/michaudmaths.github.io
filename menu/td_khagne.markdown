@@ -20,6 +20,8 @@ permalink: /td_khagne/
         {% if item.path contains td_name %}
             {% if item.path contains corr_name%}
             {% else %}
+            {% if item.path contains ind_name %}
+            {% else %}
                 <a href="{{item.path}}"> 
 					<i class="ri-puzzle-fill"></i> 
                     <span>Enoncés</span>
@@ -53,6 +55,7 @@ permalink: /td_khagne/
                             <i class="ri-file-fill"></i> 
                             <span>Corrigés</span>
                         </div>
+                {% endif %}
                 {% endif %}
             {% endif %}
         {% endif %}
