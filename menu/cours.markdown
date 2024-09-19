@@ -75,7 +75,7 @@ permalink: /cours/
 		{% endfor %}
 		{% if exercices_existe == 0 %}
 				<div class="link-placeholder"> <i class="ri-puzzle-fill"></i> TD {{chapitre_counter}}</div>
-			{% endif %}
+		{% endif %}
 		{% for item in site.static_files %}
 			{% if item.path contains correction_exercice_prefixe %}
 				<a href="{{item.path}}" class ="correction">
