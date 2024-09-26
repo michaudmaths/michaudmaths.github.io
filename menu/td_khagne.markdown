@@ -13,7 +13,8 @@ permalink: /td_khagne/
 {% assign correction_existe = 0 %}
 {% assign indication_existe = 0 %}
 <div class="chapter">
-	<h1 class="chapter-title">TD {{td_counter}} - {{td.title}}</h1> 
+	<h1 class="chapter-title">TD {{td_counter}} - {{td.title}}
+    </h1> 
 	<div class="link-container">
 		<div class="cours-exo">
         {% for item in site.static_files %}
@@ -56,7 +57,11 @@ permalink: /td_khagne/
                             <span>Corrigés</span>
                         </div>
                 {% endif %}
+                {% if td.devoirs %}
+                    <span>À faire pour la semaine suivante : {{td.devoirs}}</span>
                 {% endif %}
+                {% endif %}
+                
             {% endif %}
         {% endif %}
         {% endfor %}
