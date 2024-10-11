@@ -86,6 +86,7 @@ permalink: /cours/
 		</div>
 		<div class="annexes">
 		{% if chapter.annexes %}
+			<div class="annexes-container">
 			{% assign annexes_length = chapter.annexes | size %}
 			{% for annexe in chapter.annexes %}
 				<a href="{{site.baseurl}}/{{cours_folder}}/{{subfolder}}/cours/{{annexe.path}}_web.pdf">
@@ -93,6 +94,7 @@ permalink: /cours/
 					<span> {{annexe.name}} </span>
 				</a>
 			{% endfor %}
+			</div>
 		{% endif %}
 	</div>
 	</div>

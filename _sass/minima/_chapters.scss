@@ -22,16 +22,12 @@
   font-weight : bold ;
 }
 
-.chapter a, .chapter .link-placeholder {
+.chapter a, .chapter .link-placeholder, .chapter .correction{
   text-decoration:none;
   position : relative;
-  display : inline-block;
   text-align: center;
   font-size: 17px;
   margin:14px 16px;
-}
-.chapter .correction {
-  margin : 14px -12px;
 }
 
 .chapter a {
@@ -45,23 +41,30 @@
 
 .chapter .link-placeholder {
   color: gray;
+  float:left;
 }
 
 .chapter .cours-exo {
   float : left;
 }
 
+.chapter .cours-exo a{
+  float : left;
+}
+
+
 .chapter .annexes {
-  float : right;
+  clear: both;
+  float : left;
 }
 
 @media screen and (max-width: 600px) {
-  .chapter>h1 {
-    font-size : 18px;
-  }
 
-  .chapter a, .chapter .link-placeholder {
-    font-size : 13px;
-    margin:2px 4px;
+  .chapter a, .chapter .link-placeholder, .chapter .correction{
+    text-decoration:none;
+    position : relative;
+    text-align: center;
+    font-size: 17px;
+    margin:14px 6px;
   }
 }
