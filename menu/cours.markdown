@@ -25,6 +25,8 @@ permalink: /cours/
 				<i class="ri-file-fill"></i> 
 				<span> Fonctions de références </span>
 			</a>
+		</div>
+		<div class="annexes">
 			<a href="{{site.baseurl}}/{{annexes_folder}}/poster_exp_ln_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> Exponentielle et logarithme </span>
