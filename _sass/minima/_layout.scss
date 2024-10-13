@@ -313,7 +313,7 @@
 .footer-col-1 {
   width: -webkit-calc(35% - (#{$spacing-unit} / 2));
   width:         calc(35% - (#{$spacing-unit} / 2));
-  padding-left:20px;
+  padding-left:5px;
 }
 
 .footer-col-2 {
@@ -323,7 +323,7 @@
 
 .footer-col-3 {
   float:right;
-  padding-right : 20px;
+  padding-right : 5px;
 }
 
 @include media-query($on-laptop) {
