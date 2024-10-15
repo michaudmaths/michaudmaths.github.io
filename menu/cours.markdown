@@ -69,7 +69,7 @@ permalink: /cours/
 			{% else %}
 				{% assign exercices_existe = 1 %}
 				<a href="{{item.path}}">
-					<i class="ri-puzzle-fill"></i> 
+					<i class="ri-puzzle-fill"></i>
 					<span> TD {{chapitre_counter}} </span>
 				</a>
 			{% endif %}
