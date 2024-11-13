@@ -58,7 +58,7 @@ permalink: /devoirs/
 {% assign correction_existe = 0 %}
 
 <div class="chapter">
-	<h1 class="chapter-title"> DST n°{{devoirs_counter}}  -  {{devoir.date}}</h1> 
+	<h1 class="chapter-title"> DM n°{{devoirs_counter}}  -  {{devoir.date}}</h1> 
 	<div class="link-container">
         <div class="cours-exo">
             {% for item in site.static_files %}
