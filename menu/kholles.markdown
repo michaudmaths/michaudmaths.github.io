@@ -12,23 +12,15 @@ permalink: /kholles/
 
 <body>
 <ul>
-{% assign semaine_compteur = 1 %}
+{% for semaine in site.data.files.kholles_hk %}
 {% for item in site.static_files %}
-{% assign folder_name = "Programme semaine " | append : semaine_compteur %}
-{% if item.path contains folder_name %}
-    {% assign date_debut = "" %}
-    {% assign date_fin = "" %}
-    {% for semaine in site.data.files.kholles_hk %}
-        {% if semaine.numero == semaine_compteur %}
-            {% assign date_debut = semaine.date_debut %}
-            {% assign date_fin = semaine.date_fin %}
-        {% endif %}
-    {% endfor %}
+{% assign file_name = "programme_semaine_" | append : semaine.numero | append : "_web" %}
+{% if item.path contains file_name %}
     <li>
-        <a href="{{item.path}}">Programme de khôlle {{semaine_compteur}}</a> (du {{date_debut}} au {{date_fin}})
+        <a href="{{item.path}}">Programme de khôlle {{semaine.numero}}</a> (du {{semaine.date_debut}} au {{semaine.date_fin}})
     </li>
-{% assign semaine_compteur = semaine_compteur | plus:1 %}
 {% endif %}
+{% endfor %}
 {% endfor %}
 </ul>
 
