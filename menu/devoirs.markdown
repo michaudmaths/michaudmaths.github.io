@@ -38,12 +38,13 @@ permalink: /devoirs/
 				</a>
 			{% endif %}
             {% endfor %}
-            {% if exercices_existe == 0 %}
+            {% if correction_existe == 0 %}
                     <div class="link-placeholder"> <i class="ri-puzzle-fill"></i> Corrigé </div>
             {% endif %}
         </div>
     </div>
 </div>
+{% assign devoirs_counter = devoirs_counter | plus 1 %}
 {% endfor %}
 
 
