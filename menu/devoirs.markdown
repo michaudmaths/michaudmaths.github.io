@@ -88,6 +88,7 @@ permalink: /devoirs/
         </div>
     </div>
 </div>
+{% assign devoirs_counter = devoirs_counter | plus:1 %}
 {% endfor %}
 
 
