@@ -17,7 +17,7 @@ permalink: /cours/
 				<i class="ri-file-fill"></i> 
 				<span> Lexique mathématique </span>
 			</a>
-			<a href="{{site.baseurl}}/{{annexes_folder}}/tableau_derivees_web.pdf">
+			<a href="{{site.baseurl}}/{{annexes_folder}}/tableau_derivee_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> Tableau de dérivées </span>
 			</a>
