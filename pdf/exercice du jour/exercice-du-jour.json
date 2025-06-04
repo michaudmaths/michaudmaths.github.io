@@ -1,0 +1,14 @@
+[
+    {
+        "date": "2025-02-14",
+        "title": "Exercice 1",
+        "description": "test",
+        "solution": "Solution de l'exercice 2."
+    },
+    {
+        "date": "2025-02-15",
+        "title": "Exercice 2",
+        "description": "Soit $f$ une fonction telle que \n$$\nf(x)=3x+2\n$$\nCombien de réels $a$ existe-t-il tel que $f(a)=3$?",
+        "solution": "Il en exise un seul :\n\n$$\nf(x)=3\\Leftrightarrow 3x+2=3\\Leftrightarrow 3x=1\\Leftrightarrow x=\\frac{1}{3}\n$$"
+    }
+]
