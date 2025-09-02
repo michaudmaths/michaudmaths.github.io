@@ -1,21 +1,29 @@
 ---
 layout: page
-title: Devoirs
-permalink: /devoirs/
+title: Anciens devoirs
+permalink: /anciens_devoirs/
 ---
 
 
+{% for archive in site.data.files.anciens_devoirs %}
+{% assign next_year = archive.year | plus : 1 %}
+{% assign next_year = 20 | append : next_year %}
+{% assign annee_formatee = 20 | append : archive.year | append : "-" | append : next_year %}
 
-{% assign compteur_dst = 1 %}
-{% assign compteur_dm = 1 %}
+<h1> Année {{annee_formatee}} </h1>
+{% assign year = archive.year %}
+{% assign nombre_dst = archive.nombre_dst %}
+{% assign nombre_dm = archive.nombre_dm %}
+
+
 
 <div class="chapter">
 	<h1 class="chapter-title"> DST </h1> 
 	<ul>
-	{% for dst in site.data.files.dst %}
-		<li> 
-		{% assign devoir_filename = "DST"  | append : compteur_dst | append : "_web.pdf" %}
-		{% assign correction_filename = "correction_DST" | append : compteur_dst | append : "_web.pdf" %}
+	{% for compteur_dst in (1..{{nombre_dst}}) %}
+	<li> 
+		{% assign devoir_filename = year | append : "_" | append : "DST"  | append : compteur_dst | append : "_web.pdf" %}
+		{% assign correction_filename = year | append : "_" | append : "correction_DST" | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
@@ -33,8 +41,7 @@ permalink: /devoirs/
 				</a>
 			{% endif %}
 		{% endfor %}
-		</li>
-	{% assign compteur_dst = compteur_dst | plus : 1 %}
+	</li>
 	{% endfor %}
 	</ul>
 </div>
@@ -42,10 +49,10 @@ permalink: /devoirs/
 <div class="chapter">
 	<h1 class="chapter-title"> DM </h1> 
 	<ul>
-	{% for dm in site.data.files.dm %}
-		<li> 
-		{% assign devoir_filename = "DM"  | append : compteur_dm | append : "_web.pdf" %}
-		{% assign correction_filename = "correction_DM" | append : compteur_dm | append : "_web.pdf" %}
+	{% for compteur_dm in (1..{{nombre_dm}}) %}
+	<li> 
+		{% assign devoir_filename = year | append : "_" | append : "DM"  | append : compteur_dm | append : "_web.pdf" %}
+		{% assign correction_filename = year | append : "_" | append : "correction_DM" | append : compteur_dm | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
@@ -63,8 +70,9 @@ permalink: /devoirs/
 				</a>
 			{% endif %}
 		{% endfor %}
-		</li>
-	{% assign compteur_dm = compteur_dm | plus : 1 %}
+	</li>
 	{% endfor %}
 	</ul>
 </div>
+
+{% endfor %}
