@@ -69,6 +69,9 @@ kholles_hk :
   - numero : 1
     date_debut : '15/09/25'
     date_fin : '19/09/25'
+  - numero : 2
+    date_debut : '22/09/25'
+    date_fin : '26/09/25'
 
 
 td_khagne :
