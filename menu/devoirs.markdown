@@ -8,13 +8,14 @@ permalink: /devoirs/
 
 {% assign compteur_dst = 1 %}
 {% assign compteur_dm = 1 %}
+{% assign annee = 25 %}
 
 <div class="chapter">
 	<h1 class="chapter-title"> DST </h1> 
 	<ul>
 	{% for dst in site.data.files.dst %}
 		<li> 
-		{% assign devoir_filename = "DST"  | append : compteur_dst | append : "_web.pdf" %}
+		{% assign devoir_filename = annee | append : "_DST"  | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_filename = "correction_DST" | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
@@ -44,7 +45,7 @@ permalink: /devoirs/
 	<ul>
 	{% for dm in site.data.files.dm %}
 		<li> 
-		{% assign devoir_filename = "DM"  | append : compteur_dm | append : "_web.pdf" %}
+		{% assign devoir_filename =  annee | append : "_DM"  | append : compteur_dm | append : "_web.pdf" %}
 		{% assign correction_filename = "correction_DM" | append : compteur_dm | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
