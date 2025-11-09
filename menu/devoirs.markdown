@@ -16,7 +16,7 @@ permalink: /devoirs/
 	{% for dst in site.data.files.dst %}
 		<li> 
 		{% assign devoir_filename = annee | append : "_DST"  | append : compteur_dst | append : "_web.pdf" %}
-		{% assign correction_filename = annee | append : "correction_DST" | append : compteur_dst | append : "_web.pdf" %}
+		{% assign correction_filename = annee | append : "_correction_DST" | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
@@ -46,7 +46,7 @@ permalink: /devoirs/
 	{% for dm in site.data.files.dm %}
 		<li> 
 		{% assign devoir_filename =  annee | append : "_DM"  | append : compteur_dm | append : "_web.pdf" %}
-		{% assign correction_filename = annee | append :"correction_DM" | append : compteur_dm | append : "_web.pdf" %}
+		{% assign correction_filename = annee | append :"_correction_DM" | append : compteur_dm | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
