@@ -1,0 +1,56 @@
+nodes:
+  - id: limite_definition
+    label: Définition de la limite
+    type: definition
+    prerequis: []
+    description: ""
+
+  - id: limite_calcul
+    label: Calcul de limites simples
+    type: competence
+    prerequis:
+      - limite_definition
+    description: ""
+
+  - id: continuite_definition
+    label: Définition de la continuité
+    type: definition
+    prerequis:
+      - limite_definition
+    description: ""
+
+  - id: tvi
+    label: Théorème des valeurs intermédiaires
+    type: theoreme
+    prerequis:
+      - continuite_definition
+    description: ""
+  
+  - id: nombre_dérivée
+    label: Nombre dérivée
+    type: definition
+    prerequis:
+      - limite_definition
+    description: ""
+  
+  - id: dérivabilité_continuite
+    label: Dérivabilité implique continuité
+    type: theoreme  
+    prerequis:
+      - nombre_dérivée
+      - continuite_definition
+    description: ""
+  
+  - id: fonction_dérivable
+    label: Fonction dérivable
+    type: definition
+    prerequis:
+      - nombre_dérivée
+    description: ""
+
+  - id: fonction_derivée
+    label: Fonction dérivée
+    type: definition
+    prerequis:
+      - fonction_dérivable
+    description: ""

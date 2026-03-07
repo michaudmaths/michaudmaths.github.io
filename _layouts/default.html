@@ -7,10 +7,14 @@
 
     {%- include header.html -%}
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+    <main class="page-content {{ page.page_class | default: '' }}" aria-label="Content">
+      {% if page.page_class == "arbre" %}
         {{ content }}
-      </div>
+      {% else %}
+        <div class="wrapper">
+          {{ content }}
+        </div>
+      {% endif %}
     </main>
 
     {%- include footer.html -%}
