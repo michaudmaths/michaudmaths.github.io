@@ -12,8 +12,9 @@ page_class: arbre
   console.log(treeData);
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+
 <script src="/assets/js/math-tree.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <div class="tree-container">
   <!-- Graph container -->

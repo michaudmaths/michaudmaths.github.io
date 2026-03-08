@@ -1,5 +1,6 @@
 const elements = [];
 
+
 treeData.nodes.forEach(node => {
 
   elements.push({
@@ -157,7 +158,6 @@ function loadNodeDetails(nodeId) {
   const filePath = `/nodes/${nodeId}.txt`; // Use relative path
   console.log(`Fetching Markdown file from: ${filePath}`); // Log the file path for debugging
 
-
   fetch(filePath)
     .then(response => {
       if (!response.ok) {
@@ -167,11 +167,12 @@ function loadNodeDetails(nodeId) {
     })
     .then(markdown => {
       const htmlContent = marked(markdown); // Convert Markdown to HTML
-      document.getElementById('details-tab').innerHTML = htmlContent; // Display in details tab
+      console.log(document.getElementById('detail-panel')); // Log the details panel element for debugging
+      document.getElementById('detail-panel').innerHTML = htmlContent; // Display in details tab
     })
     .catch(error => {
       console.error("Error loading Markdown file:", error);
-      document.getElementById('details-tab').innerHTML = `<p>Details for node "${nodeId}" are not available.</p>`;
+      document.getElementById('detail-panel').innerHTML = `<p>Details for node "${nodeId}" are not available.</p>`;
     });
 }
 
