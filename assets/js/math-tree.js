@@ -1,10 +1,9 @@
 const elements = [];
 
-
 treeData.nodes.forEach(node => {
 
   elements.push({
-    data: { id: node.id, label: node.label }
+    data: { id: node.id, label: node.label },
   });
 
   node.prerequis.forEach(p => {
@@ -35,14 +34,14 @@ const typeBorders = {
 
 const statusColors = {
   unexplored: "#888",
-  in_progress: "#3498db",
-  acquired: "#2ecc71"
+  in_progress: "#3ab218",
+  acquired: "#0e3dc0"
 };
 
 const statusBorders = {
   unexplored: { width: "2px", color: "#888" },
-  in_progress: { width: "4px", color: "#3498db" },
-  acquired: { width: "4px", color: "#2ecc71" }
+  in_progress: { width: "4px", color: "#3ab218" },
+  acquired: { width: "4px", color: "#0e3dc0" }
 };
 
 const cy = cytoscape({
@@ -92,13 +91,13 @@ const cy = cytoscape({
 });
 
 // Add style for the selected node
-cy.style()
-  .selector('node:selected')
-  .style({
-    'border-color': '#f1c40f', // Yellow halo
+cy.addStyle({
+  selector: 'node:selected',
+  style: {
+    'border-color': '#f1c40f',
     'border-width': '6px'
-  })
-  .update();
+  }
+});
 
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
@@ -169,6 +168,18 @@ function loadNodeDetails(nodeId) {
       const htmlContent = marked(markdown); // Convert Markdown to HTML
       console.log(document.getElementById('detail-panel')); // Log the details panel element for debugging
       document.getElementById('detail-panel').innerHTML = htmlContent; // Display in details tab
+      renderMathInElement(document.getElementById('detail-panel'), {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
     })
     .catch(error => {
       console.error("Error loading Markdown file:", error);
@@ -176,11 +187,6 @@ function loadNodeDetails(nodeId) {
     });
 }
 
-// Update details tab when a node is selected
-cy.on('select', 'node', function (event) {
-  const nodeId = event.target.id(); // Get selected node ID
-  loadNodeDetails(nodeId); // Load corresponding Markdown content
-});
 
 // Ensure nodes are selectable with a single click
 cy.on('tap', 'node', function (event) {
