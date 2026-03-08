@@ -1,22 +1,106 @@
 nodes:
-  - id: limite_definition
-    label: Définition de la limite
+#Suites numériques
+  - id: suite_definition
+    label: Définition d'une suite numérique
+    type: definition
+    prerequis: 
+      - application_definition
+    description: ""
+
+# Fonctions réelles
+  - id: fonction_definition
+    label: Définition d'une fonction réelle
+    type: definition
+    prerequis: 
+    - application_definition
+    description: ""
+
+# Logique et ensembles
+  - id: proposition_definition
+    label: Définition d'une proposition
     type: definition
     prerequis: []
     description: ""
+  - id: quantificateurs
+    label: Quantificateurs universel et existentiel
+    type: definition
+    prerequis: []
+    description: ""
+  - id: ensemble_definition
+    label: Définition d'un ensemble
+    type: definition
+    prerequis: []
+    description: ""
+  - id: appartenance_ensemble
+    label: Appartenance à un ensemble
+    type: competence
+    prerequis:
+      - ensemble_definition
+    description: ""
+  - id: inclusion_ensemble
+    label: Inclusion d'ensembles
+    type: competence
+    prerequis:
+      - ensemble_definition
+    description: ""
+  - id: operations_ensembles
+    label: Opérations sur les ensembles (union, intersection, complément)
+    type: competence
+    prerequis:
+      - ensemble_definition
+    description: ""
+  - id: application_definition
+    label: Définition d'une application
+    type: definition
+    prerequis:
+      - ensemble_definition
+      - quantificateurs
+    description: ""
+# Limites de suites
+  - id: limite_finie_suite_definition
+    label: Définition de la limite finie d'une suite
+    type: definition
+    prerequis: 
+      - suite_definition
+      - quantificateurs
+    description: ""
+  - id: limite_infinie_suite_definition
+    label: Définition de la limite infinie d'une suite
+    type: definition
+    prerequis: 
+      - suite_definition
+      - quantificateurs
+    description: ""
 
-  - id: limite_calcul
+  - id: limite_calcul_suites
     label: Calcul de limites simples
     type: competence
     prerequis:
-      - limite_definition
+      - limite_finie_suite_definition
+      - limite_infinie_suite_definition
     description: ""
 
+# Limites de fonctions
+  - id: limite_finie_fonction_definition
+    label: Définition de la limite finie d'une fonction
+    type: definition
+    prerequis:
+      - fonction_definition
+      - quantificateurs
+    description: ""
+  - id: limite_infinie_fonction_definition
+    label: Définition de la limite infinie d'une fonction
+    type: definition
+    prerequis: 
+      - fonction_definition
+      - quantificateurs
+
+# Continuité
   - id: continuite_definition
     label: Définition de la continuité
     type: definition
     prerequis:
-      - limite_definition
+      - limite_finie_fonction_definition
     description: ""
 
   - id: tvi
@@ -30,9 +114,10 @@ nodes:
     label: Nombre dérivée
     type: definition
     prerequis:
-      - limite_definition
+      - limite_finie_fonction_definition
     description: ""
   
+# Dérivabilité
   - id: dérivabilité_continuite
     label: Dérivabilité implique continuité
     type: theoreme  
