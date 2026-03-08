@@ -57,7 +57,12 @@ const cy = cytoscape({
         'background-color': '#fff',
         'border-width': '2px',
         'border-color': '#888',
-        'overlay-opacity': 0
+        'overlay-opacity': 0,
+        'label': 'data(label)', // Add label to display node title
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'color': '#000',
+        'font-size': '12px'
       }
     },
     {
@@ -85,42 +90,14 @@ const cy = cytoscape({
   }
 });
 
-// Register the cytoscape-html extension
-try {
-  if (typeof cytoscapeHtml === 'function') {
-    cytoscape.use(cytoscapeHtml);
-  } else {
-    console.error('cytoscape-html is not loaded or is incompatible with the current Cytoscape version.');
-  }
-} catch (error) {
-  console.error('Failed to register cytoscape-html:', error);
-}
-
-// Add HTML content to nodes using cytoscape-html
-if (typeof cytoscapeHtml === 'function') {
-  cy.nodes().forEach(node => {
-    const type = node.data('type') || 'default';
-    const label = node.data('label') || '';
-
-    const htmlContent = `
-      <div style="position: relative; width: 100%; height: 100%; text-align: center;">
-        <div class="node-banner ${type}"></div>
-        <div style="padding-top: 25px;">${label}</div>
-      </div>
-    `;
-
-    node.data('html', htmlContent);
-  });
-
-  // Initialize cytoscape-html extension
-  cytoscapeHtml(cy, {
-    template: function (node) {
-      return node.data('html');
-    }
-  });
-} else {
-  console.warn('cytoscape-html is not available. Nodes will not display HTML content.');
-}
+// Add style for the selected node
+cy.style()
+  .selector('node:selected')
+  .style({
+    'border-color': '#f1c40f', // Yellow halo
+    'border-width': '6px'
+  })
+  .update();
 
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
@@ -175,6 +152,40 @@ function loadProgress(event) {
 
   reader.readAsText(file);
 }
+
+function loadNodeDetails(nodeId) {
+  const filePath = `/nodes/${nodeId}.txt`; // Use relative path
+  console.log(`Fetching Markdown file from: ${filePath}`); // Log the file path for debugging
+
+
+  fetch(filePath)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Markdown file for node "${nodeId}" not found`);
+      }
+      return response.text();
+    })
+    .then(markdown => {
+      const htmlContent = marked(markdown); // Convert Markdown to HTML
+      document.getElementById('details-tab').innerHTML = htmlContent; // Display in details tab
+    })
+    .catch(error => {
+      console.error("Error loading Markdown file:", error);
+      document.getElementById('details-tab').innerHTML = `<p>Details for node "${nodeId}" are not available.</p>`;
+    });
+}
+
+// Update details tab when a node is selected
+cy.on('select', 'node', function (event) {
+  const nodeId = event.target.id(); // Get selected node ID
+  loadNodeDetails(nodeId); // Load corresponding Markdown content
+});
+
+// Ensure nodes are selectable with a single click
+cy.on('tap', 'node', function (event) {
+  const nodeId = event.target.id(); // Get selected node ID
+  loadNodeDetails(nodeId); // Load corresponding Markdown content
+});
 
 cy.ready(() => {
   updateColors();

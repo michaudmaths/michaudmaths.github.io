@@ -6,13 +6,14 @@ page_class: arbre
 ---
 
 <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
-<script src="https://unpkg.com/cytoscape-html@1.3.0/cytoscape-html.js"></script> <!-- Ensure this is loaded after Cytoscape -->
+
 <script>
   const treeData = {{ site.data.math-tree | jsonify }};
   console.log(treeData);
 </script>
 
 <script src="/assets/js/math-tree.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <div class="tree-container">
   <!-- Graph container -->
