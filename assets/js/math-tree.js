@@ -5,7 +5,6 @@ treeData.nodes.forEach(node => {
   elements.push({
     data: { id: node.id, label: node.label },
   });
-
   node.prerequis.forEach(p => {
     elements.push({
       data: {
@@ -18,31 +17,21 @@ treeData.nodes.forEach(node => {
 
 });
 
-const typeColors = {
-  definition: "#f1c40f",
-  theorem: "#9b59b6",
-  example: "#e67e22",
-  exercise: "#1abc9c"
-};
 
-const typeBorders = {
-  definition: { width: "4px", color: "#f1c40f" },
-  theorem: { width: "4px", color: "#9b59b6" },
-  example: { width: "4px", color: "#e67e22" },
-  exercise: { width: "4px", color: "#1abc9c" }
+// pour $être éventuellement modifié plus tar
+const typeShape = {
+  definition: { 'shape' : 'round-rectangle' },
+  theorem: { 'shape': 'round-rectangle'},
+  example: { 'shape': 'round-rectangle'},
+  exercise: { 'shape': 'round-rectangle'},
 };
 
 const statusColors = {
-  unexplored: "#888",
-  in_progress: "#3ab218",
-  acquired: "#0e3dc0"
+  'unavailable': "#888",
+  'in_progress': "#3ab218",
+  'acquired': "#0e3dc0"
 };
 
-const statusBorders = {
-  unexplored: { width: "2px", color: "#888" },
-  in_progress: { width: "4px", color: "#3ab218" },
-  acquired: { width: "4px", color: "#0e3dc0" }
-};
 
 const cy = cytoscape({
   container: document.getElementById('graph'),
@@ -52,7 +41,7 @@ const cy = cytoscape({
       selector: 'node',
       style: {
         'shape': 'round-rectangle',
-        'width': '200px',
+        'width': '250px',
         'height': 'auto',
         'background-color': '#fff',
         'border-width': '2px',
@@ -62,7 +51,7 @@ const cy = cytoscape({
         'text-valign': 'center',
         'text-halign': 'center',
         'color': '#000',
-        'font-size': '12px'
+        'font-size': '16px'
       }
     },
     {
@@ -91,13 +80,11 @@ const cy = cytoscape({
 });
 
 // Add style for the selected node
-cy.addStyle({
-  selector: 'node:selected',
-  style: {
-    'border-color': '#f1c40f',
-    'border-width': '6px'
-  }
-});
+
+cy.style().selector('node:selected').style({
+  'border-color': '#f1c40f',
+  'border-width' : '6px'});
+
 
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
@@ -109,6 +96,12 @@ function isAccessible(nodeId) {
 function updateColors() {
   treeData.nodes.forEach(n => {
     const node = cy.getElementById(n.id);
+    if (isAccessible(n.id)) {
+      node.removeClass('unavailable');
+    } else {
+      node.addClass('unavailable');
+      node.removeClass('acquired');
+    }
 
     if (progress[n.id]) {
       node.addClass('acquired');
@@ -116,10 +109,9 @@ function updateColors() {
       node.removeClass('acquired');
     }
 
-    // Set border style based on type
-    const typeBorder = typeBorders[n.type] || { width: "2px", color: "#888" };
-    node.style("border-width", typeBorder.width);
-    node.style("border-color", typeBorder.color);
+    // Set style based on progress
+    const statusColor = progress[n.id] ? statusColors.acquired : (isAccessible(n.id) ? statusColors.in_progress : statusColors.unavailable);
+    node.style("background-color", statusColor);
   });
 }
 
@@ -187,6 +179,35 @@ function loadNodeDetails(nodeId) {
     });
 }
 
+function setToAcquired() {
+  const selectedNodes = cy.nodes(':selected');
+
+  selectedNodes.forEach(node => {
+    if (isAccessible(node.id())) {
+    const nodeId = node.id();
+    progress[nodeId] = true; // Mark as acquired
+    localStorage.setItem("mathProgress", JSON.stringify(progress));
+    updateColors();
+    }
+});
+}
+
+function setToAccessible() {
+  const selectedNodes = cy.nodes(':selected');
+  selectedNodes.forEach(node => {
+      const nodeId = node.id();
+      delete progress[nodeId]; // Mark as accessible (not acquired)
+});
+    localStorage.setItem("mathProgress", JSON.stringify(progress));
+    updateColors();
+}
+
+
+function reset() {
+  progress = {};
+  localStorage.removeItem("mathProgress");
+  updateColors();
+}
 
 // Ensure nodes are selectable with a single click
 cy.on('tap', 'node', function (event) {
