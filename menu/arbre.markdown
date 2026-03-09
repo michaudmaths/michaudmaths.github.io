@@ -30,3 +30,6 @@ page_class: arbre
 <button onclick="downloadProgress()">Télécharger ma progression</button>
 <input type="file" onchange="loadProgress(event)">
 
+<button onclick="setToAcquired()">Acquis</button>
+<button onclick="setToAccessible()">A retravailler</button>
+<button onclick="reset()">Tout réinitialiser</button>

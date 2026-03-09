@@ -1,7 +1,7 @@
 nodes:
 #Suites numériques
   - id: suite_definition
-    label: Définition d'une suite numérique
+    label: Suite numérique
     type: definition
     prerequis: 
       - application_definition
@@ -9,7 +9,7 @@ nodes:
 
 # Fonctions réelles
   - id: fonction_definition
-    label: Définition d'une fonction réelle
+    label: Fonction réelle
     type: definition
     prerequis: 
     - application_definition
@@ -17,7 +17,7 @@ nodes:
 
 # Logique et ensembles
   - id: proposition_definition
-    label: Définition d'une proposition
+    label: Proposition
     type: definition
     prerequis: []
     description: ""
@@ -27,7 +27,7 @@ nodes:
     prerequis: []
     description: ""
   - id: ensemble_definition
-    label: Définition d'un ensemble
+    label: Ensemble
     type: definition
     prerequis: []
     description: ""
@@ -44,13 +44,13 @@ nodes:
       - ensemble_definition
     description: ""
   - id: operations_ensembles
-    label: Opérations sur les ensembles (union, intersection, complément)
+    label: Opérations sur les ensembles
     type: competence
     prerequis:
       - ensemble_definition
     description: ""
   - id: application_definition
-    label: Définition d'une application
+    label: Application
     type: definition
     prerequis:
       - ensemble_definition
@@ -58,14 +58,14 @@ nodes:
     description: ""
 # Limites de suites
   - id: limite_finie_suite_definition
-    label: Définition de la limite finie d'une suite
+    label: Limite finie d'une suite
     type: definition
     prerequis: 
       - suite_definition
       - quantificateurs
     description: ""
   - id: limite_infinie_suite_definition
-    label: Définition de la limite infinie d'une suite
+    label: Limite infinie d'une suite
     type: definition
     prerequis: 
       - suite_definition
@@ -82,14 +82,14 @@ nodes:
 
 # Limites de fonctions
   - id: limite_finie_fonction_definition
-    label: Définition de la limite finie d'une fonction
+    label: Limite finie d'une fonction
     type: definition
     prerequis:
       - fonction_definition
       - quantificateurs
     description: ""
   - id: limite_infinie_fonction_definition
-    label: Définition de la limite infinie d'une fonction
+    label: Limite infinie d'une fonction
     type: definition
     prerequis: 
       - fonction_definition
