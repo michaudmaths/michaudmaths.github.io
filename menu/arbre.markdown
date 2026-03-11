@@ -16,17 +16,18 @@ page_class: arbre
 
 <script src="/assets/js/math-tree.js" defer></script>
 
-<div class="tree-container">
   <!-- Graph container -->
-  <div id="graph"></div>
+<div id="graph"></div>
   
   <!-- Detail panel -->
-  <div id="detail-panel">
-    <h2>Détails</h2>
-    <p>Sélectionnez une compétence pour voir les détails ici.</p>
-    <button id="close-panel">✖</button>
-    <div id="node-info-content"></div>
+<div id="panel-overlay"></div>
+<div id="detail-panel">
+  <div id="drag-handle"></div>
+  <div id="panel-header">
+    <h1 id="panel-title">Détails</h1>
+    <button id="close-panel">X</button>
   </div>
+  <div id="panel-content">Sélectionnez une compétence pour voir les détails ici.</div>
 </div>
 
 <button onclick="downloadProgress()">Télécharger ma progression</button>

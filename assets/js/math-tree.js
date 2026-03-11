@@ -94,7 +94,7 @@ const cy = cytoscape({
     name: 'breadthfirst',
     directed: true,
     direction: 'rightward', // Remet l'arbre de gauche à droite
-    spacingFactor: 1.5
+    spacingFactor: 1
   }
 });
 
@@ -164,10 +164,16 @@ function loadProgress(event) {
   reader.readAsText(file);
 }
 
-function loadNodeDetails(nodeId) {
+function loadNodeDetails(nodeId,title) {
   const filePath = `/nodes/${nodeId}.txt`; // Use relative path
   console.log(`Fetching Markdown file from: ${filePath}`); // Log the file path for debugging
 
+  // Affichage
+  panel.classList.remove("full");
+  panel.classList.add("half");
+  overlay.classList.add("visible");
+
+  // Contenu
   fetch(filePath)
     .then(response => {
       if (!response.ok) {
@@ -177,8 +183,8 @@ function loadNodeDetails(nodeId) {
     })
     .then(markdown => {
       const htmlContent = marked(markdown); // Convert Markdown to HTML
-      console.log(document.getElementById('detail-panel')); // Log the details panel element for debugging
-      document.getElementById('detail-panel').innerHTML = htmlContent; // Display in details tab
+      detailPanelTitle.textContent = title; // Set the title of the details panel
+      detailPanelContent.innerHTML = htmlContent; // Display in details tab
       renderMathInElement(document.getElementById('detail-panel'), {
           // customised options
           // • auto-render specific keys, e.g.:
@@ -194,8 +200,15 @@ function loadNodeDetails(nodeId) {
     })
     .catch(error => {
       console.error("Error loading Markdown file:", error);
-      document.getElementById('detail-panel').innerHTML = `<p>Details for node "${nodeId}" are not available.</p>`;
+      detailPanelTitle.textContent = "Erreur";
+      detailPanelContent.innerHTML = `<p>Les détails pour "${nodeId}" ne sont pas encore disponibles, merci de patienter !.</p>`;
     });
+    
+}
+
+function closePanel() {
+  panel.classList.remove("half","full");
+  overlay.classList.remove("visible");
 }
 
 function setToAcquired() {
@@ -228,11 +241,6 @@ function reset() {
   updateColors();
 }
 
-// Ensure nodes are selectable with a single click
-cy.on('tap', 'node', function (event) {
-  const nodeId = event.target.id(); // Get selected node ID
-  loadNodeDetails(nodeId); // Load corresponding Markdown content
-});
 
 // Hover effect on node
 cy.on('mouseover', 'node', (e) =>{
@@ -246,4 +254,54 @@ cy.on('mouseout', 'node', (e) =>{
 
 cy.ready(() => {
   updateColors();
+});
+
+// Affichage du paneau de détail au clic sur un noeud
+
+const panel = document.getElementById("detail-panel");
+const overlay = document.getElementById("panel-overlay");
+const detailPanelTitle = document.getElementById("panel-title");
+const detailPanelContent = document.getElementById("panel-content");
+const closeBtn = document.getElementById("close-panel");
+const handle = document.getElementById("drag-handle");
+
+
+let startY = 0;
+let currentY = 0;
+let dragging = false;
+
+cy.on('tap', 'node', function (event) {
+  const nodeId = event.target.id(); // Get selected node ID
+  const title = event.target.data('label'); // Get selected node label
+  loadNodeDetails(nodeId, title); // Load corresponding Markdown content
+});
+
+
+closeBtn.onclick = closePanel;
+overlay.onclick = closePanel;
+
+handle.addEventListener("pointerdown", e=>{
+  dragging = true;
+  startY = e.clientY;
+});
+
+window.addEventListener("pointermove", e=>{
+
+  if(!dragging) return;
+
+  currentY = e.clientY;
+  const diff = currentY - startY;
+
+  if(diff < -150){
+    panel.classList.add("full");
+  }
+
+  if(diff > 150){
+    closePanel();
+  }
+
+});
+
+window.addEventListener("pointerup", ()=>{
+  dragging = false;
 });
