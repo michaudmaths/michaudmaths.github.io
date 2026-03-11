@@ -42,7 +42,7 @@ const cy = cytoscape({
       style: {
         'shape': 'round-rectangle',
         'width': '250px',
-        'height': 'auto',
+        'height': '50px',
         'background-color': '#fff',
         'border-width': '2px',
         'border-color': '#888',
@@ -51,7 +51,9 @@ const cy = cytoscape({
         'text-valign': 'center',
         'text-halign': 'center',
         'color': '#000',
-        'font-size': '16px'
+        'font-size': '16px',
+        'transition-property': 'width height font-size',
+        'transition-duration' : '150ms'
       }
     },
     {
@@ -59,6 +61,14 @@ const cy = cytoscape({
       style: {
         'border-color': '#2ecc71',
         'border-width': '4px'
+      }
+    },
+    {
+      selector: 'node.hover',
+      style: {
+        'width': '275px',
+        'height': '55px',
+        'font-size': '18px',
       }
     },
     {
@@ -214,6 +224,16 @@ cy.on('tap', 'node', function (event) {
   const nodeId = event.target.id(); // Get selected node ID
   loadNodeDetails(nodeId); // Load corresponding Markdown content
 });
+
+// Hover effect on node
+cy.on('mouseover', 'node', (e) =>{
+  e.target.addClass('hover');
+})
+
+cy.on('mouseout', 'node', (e) =>{
+  e.target.removeClass('hover');
+})
+
 
 cy.ready(() => {
   updateColors();
