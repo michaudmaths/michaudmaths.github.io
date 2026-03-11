@@ -24,6 +24,8 @@ page_class: arbre
   <div id="detail-panel">
     <h2>Détails</h2>
     <p>Sélectionnez une compétence pour voir les détails ici.</p>
+    <button id="close-panel">✖</button>
+    <div id="node-info-content"></div>
   </div>
 </div>
 

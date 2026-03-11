@@ -57,11 +57,11 @@ const cy = cytoscape({
       }
     },
     {
-      selector: 'node.acquired',
+      selector: 'node:selected',
       style: {
-        'border-color': '#2ecc71',
-        'border-width': '4px'
-      }
+        'border-color': '#f1c40f',
+        'border-width' : '6px'
+    }
     },
     {
       selector: 'node.hover',
@@ -79,6 +79,15 @@ const cy = cytoscape({
         'line-color': '#ccc',
         'target-arrow-color': '#ccc'
       }
+    },
+    {
+      selector: 'edge:selected',
+      style: {
+        'curve-style': 'bezier',
+        'target-arrow-shape': 'triangle',
+        'line-color': '#114ebe',
+        'target-arrow-color': '#114ebe'
+      }
     }
   ],
   layout: {
@@ -91,9 +100,9 @@ const cy = cytoscape({
 
 // Add style for the selected node
 
-cy.style().selector('node:selected').style({
-  'border-color': '#f1c40f',
-  'border-width' : '6px'});
+// cy.style().selector('node:selected').style({
+//   'border-color': '#f1c40f',
+//   'border-width' : '6px'});
 
 
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
