@@ -1,5 +1,3 @@
-# Limite finie d'une suite
-
 $(u_n)$ tend vers $\ell\in\mathbb{R}$ si l'intervalle $]\ell-\varepsilon,\ell+\varepsilon[$ contient tous les termes de la suite à partir d'un certain rang, c'est à dire si :
 
 $$
