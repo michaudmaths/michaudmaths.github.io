@@ -372,31 +372,6 @@
   position: relative; // Assure un positionnement correct
 }
 
-#graph {
-  width: 80%; // Explicitly set to 80% of the container width
-  height: 100%; // Full height of the container
-  margin: 0; // Remove any default margin
-  padding: 0; // Remove any default padding
-  position: absolute; // Ensure it occupies the entire page
-  top: 0;
-  left: 0;
-  background: #f0f0f0; // Ensure background color is applied
-  box-sizing: border-box; // Include padding and border in width calculation
-  background: #f0f0f0;
-}
-
-#detail-panel {
-  width: 20%; // Explicitly set to 20% of the container width
-  height: 100%; // Full height of the container
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding:15px;
-  border-left: 1px solid #ccc;
-  overflow-y: auto;
-  background: #ffffff; // Solid white background
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); // Add a shadow for better separation
-}
 
 
 .page-heading {
