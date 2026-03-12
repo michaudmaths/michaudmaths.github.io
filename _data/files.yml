@@ -120,6 +120,18 @@ kholles_hk :
   - numero : 18
     date_debut : '09/03/26'
     date_fin : '13/03/26'
+  - numero : 19
+    date_debut : '16/03/26'
+    date_fin : '20/03/26'
+  - numero : 20
+    date_debut : '23/03/26'
+    date_fin : '27/03/26'
+  - numero : 21
+    date_debut : '30/03/26'
+    date_fin : '03/04/26'
+  - numero : 22
+    date_debut : '06/04/26'
+    date_fin : '10/04/26'
 
 
 td_khagne :
