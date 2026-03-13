@@ -14,7 +14,33 @@
 }
 
 /* panneau */
+#status-button {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
 
+#button-acquis {
+  background-color: #0e3dc0;
+  color: white;
+  border: none;
+  width : 100px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display:flex;
+}
+
+#button-retravailler{
+  background-color: #3ab218;
+  color: white;
+  border: none;
+  width : 100px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display:flex;
+}
 #detail-panel {
   position: fixed;
   left: 0;

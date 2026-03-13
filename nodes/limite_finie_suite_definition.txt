@@ -1,5 +1,0 @@
-$(u_n)$ tend vers $\ell\in\mathbb{R}$ si l'intervalle $]\ell-\varepsilon,\ell+\varepsilon[$ contient tous les termes de la suite à partir d'un certain rang, c'est à dire si :
-
-$$
-\forall \varepsilon>0,\exists n_0\in\N,\forall n\in\N,\quad (n\geq n_0\Longrightarrow \vert u_n-\ell\vert<\varepsilon)
-$$
