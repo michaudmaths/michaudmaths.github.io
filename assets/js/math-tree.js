@@ -74,7 +74,7 @@ const cy = cytoscape({
     name: 'breadthfirst',
     directed: true,
     direction: 'rightward', // Remet l'arbre de gauche à droite
-    spacingFactor: 1.5
+    spacingFactor: 1
   }
 });
 
@@ -88,7 +88,6 @@ cy.style().selector('node:selected').style({
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
 function isAccessible(nodeId){
-  console.log(nodeId)
   const node = treeData.nodes.find(n => n.data.id === nodeId);
   return node.data.prerequis.every(p => progress[p]);
 }
@@ -182,19 +181,18 @@ function loadNodeDetails(nodeId,title) {
       detailPanelTitle.textContent = "Erreur";
       detailPanelContent.innerHTML = `<p>Les détails pour "${nodeId}" ne sont pas encore disponibles, merci de patienter !.</p>`;
     });
-    
 }
 
 function closePanel() {
   panel.classList.remove("half","full");
   overlay.classList.remove("visible");
+  currentNodeList = []
 }
 
 function setToAcquired() {
   const selectedNodes = cy.nodes(':selected');
 
   selectedNodes.forEach(node => {
-    console.log(node);
     const nodeId = node.id()
     if (isAccessible(nodeId)) {
     progress[nodeId] = true; // Mark as acquired
@@ -212,6 +210,25 @@ function setToAccessible() {
 });
     localStorage.setItem("mathProgress", JSON.stringify(progress));
     updateColors();
+}
+
+function showPrerequisite() {
+  const selectedNodes = cy.nodes(':selected');
+  if(selectedNodes.length === 0) return;
+
+  const nodeId = selectedNodes[0].id();
+  const node = treeData.nodes.find(n => n.data.id === nodeId);
+  const prereqs = node.data.prerequis;
+
+  if(prereqs.length === 0){
+    alert("Aucun prérequis pour ce noeud !");
+    return;
+  }
+
+  currentNodeList.push(...prereqs);
+  console.log(currentNodeList)
+  console.log(currentNodeList.map(id => cy.$id(id)))
+  animateToFit(currentNodeList);
 }
 
 
@@ -236,11 +253,14 @@ cy.ready(() => {
   updateColors();
 });
 
+let currentNodeList = []
+
 
 cy.on('tap', 'node', function (event) {
   const nodeId = event.target.id(); // Get selected node ID
   const title = event.target.data('label'); // Get selected node label
   loadNodeDetails(nodeId, title); // Load corresponding Markdown content
+  currentNodeList.push(nodeId)
 });
 
 
@@ -251,6 +271,7 @@ overlay.onclick = closePanel;
 let startY = 0;
 let currentY = 0;
 let dragging = false;
+
 
 handle.addEventListener("pointerdown", e=>{
   dragging = true;
@@ -271,9 +292,27 @@ window.addEventListener("pointermove", e=>{
   if(diff > 150){
     closePanel();
   }
-
 });
 
 window.addEventListener("pointerup", ()=>{
   dragging = false;
 });
+
+document.addEventListener("click", e => {
+  nodeId = e.target.getAttribute("data_node")
+  if (nodeId) {
+    currentNodeList.push(nodeId)
+    animateToFit(currentNodeList);
+  }
+})
+
+function animateToFit(nodeList) {
+  cy.animate({
+    fit: {
+      eles: cy.$(nodeList.map(id => `#${id}`).join(', ')),
+      padding: 50
+    }
+  }, {
+    duration: 500
+  });
+}

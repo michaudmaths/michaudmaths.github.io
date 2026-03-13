@@ -27,6 +27,7 @@ page_class: arbre
     <div id="status-buttons">
       <button id = "button-acquis" onclick="setToAcquired()">Acquis</button>
       <button id = "button-retravailler" onclick="setToAccessible()">A travailler</button>
+      <button id = "voir-prerequis" onclick="showPrerequisite()">Voir les prérequis</button>
     </div>
     <button id="close-panel">X</button>
   </div>

@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const { marked } = require("marked")
+const yaml = require("js-yaml");
+
 
 const NODES_DIR = "../nodes";
 const OUTPUT = "../_data/graph.json";
@@ -66,21 +68,39 @@ function parseFrontmatter(content) {
 
   const match = content.match(/^---([\s\S]*?)---/);
 
-  if (!match) return { meta: {}, body: content };
+  if (!match) {
+    return { meta: {}, body: content };
+  }
 
-  const meta = {};
-  const lines = match[1].trim().split("\n");
+  let meta = {};
 
-  lines.forEach(line => {
+  try {
+    meta = yaml.load(match[1]) || {};
+  } catch (e) {
+    console.error("Erreur YAML dans frontmatter:", e);
+  }
 
-    const [key, ...rest] = line.split(":");
-    const value = rest.join(":").trim();
+  /*
+  Normalisation de prerequis
+  */
 
-    meta[key.trim()] = value;
+  if (meta.prerequis) {
 
-  });
+    if (Array.isArray(meta.prerequis)) {
 
-  const body = content.replace(match[0], "").trim();
+      // liste YAML → string compatible extractLinks
+      meta.prerequis = meta.prerequis.join(" ");
+
+    } else {
+
+      // s'assurer que c'est une string
+      meta.prerequis = String(meta.prerequis);
+
+    }
+
+  }
+
+  const body = content.slice(match[0].length).trim();
 
   return { meta, body };
 
@@ -90,28 +110,11 @@ function parseFrontmatter(content) {
 Extraire [[links]]
 */
 function extractLinks(text) {
-  console.log(text)
   const matches = [...text.matchAll(/\[\[(.*?)\]\]/g)];
   return matches.map(m => m[1].trim());
 
 }
 
-/*
-Convertir liens dans le texte
-*/
-function convertLinks(text, filenameToId) {
-
-  return text.replace(/\[\[(.*?)\]\]/g, (_, name) => {
-
-    const id = filenameToId[name];
-
-    if (!id) return name;
-
-    return `<a href="#" data-node="${id}">${name}</a>`;
-
-  });
-
-}
 
 function build() {
 
@@ -168,7 +171,7 @@ function build() {
     */
   
     let prereqNames = [];
-  
+    console.log(meta.prerequis)
     if (meta.prerequis) {
       prereqNames = extractLinks(meta.prerequis);
     }
@@ -267,7 +270,7 @@ function convertWikiLinks(text, filenameToId){
   return label
   }
   
-  return `<a href="#" data-node="${id}">${label}</a>`
+  return `<a href="#" data_node="${id}">${label}</a>`
   
 })}
 

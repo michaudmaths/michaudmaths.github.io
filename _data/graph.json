@@ -40,10 +40,323 @@
     },
     {
       "data": {
+        "id": "condition_necessaire",
+        "label": "Condition nécessaire",
+        "category": "2 - Logique",
+        "prerequis": [
+          "implication_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "condition_suffisante",
+        "label": "Condition suffisante",
+        "category": "2 - Logique",
+        "prerequis": [
+          "implication_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "contraposee",
+        "label": "Contraposée",
+        "category": "2 - Logique",
+        "prerequis": [
+          "implication_logique",
+          "non_logique",
+          "equivalence_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "double_inclusion",
+        "label": "Double inclusion",
+        "category": "2 - Logique",
+        "prerequis": [
+          "inclusion",
+          "egalite_ensembles"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "et_logique",
+        "label": "ET (logique)",
+        "category": "2 - Logique",
+        "prerequis": [
+          "proposition"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "parties_ensemble",
+        "label": "Ensemble des parties d'un ensemble",
+        "category": "2 - Logique",
+        "prerequis": [
+          "inclusion"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_vide",
+        "label": "Ensemble vide",
+        "category": "2 - Logique",
+        "prerequis": [
+          "ensemble",
+          "appartenance",
+          "quantificateur_universel"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "autre_formulation_implication",
+        "label": "Implication (formulation équivalente)",
+        "category": "2 - Logique",
+        "prerequis": [
+          "implication_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique",
+        "label": "Implication (logique)",
+        "category": "2 - Logique",
+        "prerequis": [
+          "et_logique",
+          "non_logique",
+          "ou_logique",
+          "table_verite"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "lois_de_morgan_logique",
+        "label": "Lois de De Morgan (logique)",
+        "category": "2 - Logique",
+        "prerequis": [
+          "et_logique",
+          "non_logique",
+          "ou_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "non_logique",
+        "label": "NON (logique)",
+        "category": "2 - Logique",
+        "prerequis": [
+          "proposition"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "negation_implication",
+        "label": "Négation d'une implication",
+        "category": "2 - Logique",
+        "prerequis": [
+          "autre_formulation_implication"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "ou_logique",
+        "label": "OU (logique)",
+        "category": "2 - Logique",
+        "prerequis": [
+          "proposition"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "proposition",
+        "label": "Proposition",
+        "category": "2 - Logique",
+        "prerequis": []
+      }
+    },
+    {
+      "data": {
+        "id": "propriete_ensemble_vide",
+        "label": "Propriétés de l'ensemble vide",
+        "category": "2 - Logique",
+        "prerequis": [
+          "ensemble_vide",
+          "inclusion"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_existentiel",
+        "label": "Quantificateurs existentiel",
+        "category": "2 - Logique",
+        "prerequis": [
+          "proposition"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel",
+        "label": "Quantificateurs universel",
+        "category": "2 - Logique",
+        "prerequis": [
+          "proposition"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "raisonnement_contraposee",
+        "label": "Raisonnement par contraposée",
+        "category": "2 - Logique",
+        "prerequis": [
+          "contraposee"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "raisonnement_double_implication",
+        "label": "Raisonnement par double implication",
+        "category": "2 - Logique",
+        "prerequis": [
+          "implication_logique",
+          "equivalence_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "raisonnement_equivalence",
+        "label": "Raisonnement par équivalence",
+        "category": "2 - Logique",
+        "prerequis": [
+          "equivalence_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "raisonner_contraposee",
+        "label": "Raisonner par contraposée",
+        "category": "2 - Logique",
+        "prerequis": [
+          "raisonnement_contraposee"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "raisonner_double_implication",
+        "label": "Raisonner par double implication",
+        "category": "2 - Logique",
+        "prerequis": [
+          "raisonnement_double_implication"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "raisonner_equivalence",
+        "label": "Raisonner par équivalence",
+        "category": "2 - Logique",
+        "prerequis": [
+          "raisonnement_equivalence"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "table_verite",
+        "label": "Table de vérité",
+        "category": "2 - Logique",
+        "prerequis": [
+          "proposition",
+          "ou_logique",
+          "et_logique",
+          "non_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "equivalence_logique",
+        "label": "Équivalence (logique)",
+        "category": "2 - Logique",
+        "prerequis": [
+          "et_logique",
+          "ou_logique",
+          "non_logique",
+          "table_verite",
+          "implication_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "appartenance",
+        "label": "Appartenance",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble"
+        ]
+      }
+    },
+    {
+      "data": {
         "id": "applications",
         "label": "Applications",
         "category": "3 - Ensembles et applications",
-        "prerequis": []
+        "prerequis": [
+          "ensemble"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "difference_ensembles",
+        "label": "Différence d'ensembles",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble",
+          "appartenance",
+          "ensemble_comprehension"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_comprehension",
+        "label": "Ensemble défini en compréhension",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble",
+          "quantificateur_universel",
+          "quantificateur_existentiel"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_extension",
+        "label": "Ensemble défini en extension",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble"
+        ]
       }
     },
     {
@@ -52,6 +365,43 @@
         "label": "Ensemble",
         "category": "3 - Ensembles et applications",
         "prerequis": []
+      }
+    },
+    {
+      "data": {
+        "id": "famille",
+        "label": "Famille",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications",
+          "ensemble"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "inclusion",
+        "label": "Inclusion",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble",
+          "appartenance",
+          "quantificateur_universel",
+          "implication_logique"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "egalite_ensembles",
+        "label": "Égalité d'ensembles",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble",
+          "appartenance",
+          "quantificateur_universel",
+          "equivalence_logique"
+        ]
       }
     },
     {
@@ -67,7 +417,10 @@
         "id": "fonction_reelle_variable_reelle",
         "label": "Fonction réelle de la variable réelle",
         "category": "7 - Fonction réelle de la variable réelle",
-        "prerequis": []
+        "prerequis": [
+          "applications",
+          "ensemble_reels"
+        ]
       }
     }
   ],
@@ -91,6 +444,454 @@
         "id": "fonction_reelle_variable_reelle_periodicite",
         "source": "fonction_reelle_variable_reelle",
         "target": "periodicite"
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique_condition_necessaire",
+        "source": "implication_logique",
+        "target": "condition_necessaire"
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique_condition_suffisante",
+        "source": "implication_logique",
+        "target": "condition_suffisante"
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique_contraposee",
+        "source": "implication_logique",
+        "target": "contraposee"
+      }
+    },
+    {
+      "data": {
+        "id": "non_logique_contraposee",
+        "source": "non_logique",
+        "target": "contraposee"
+      }
+    },
+    {
+      "data": {
+        "id": "equivalence_logique_contraposee",
+        "source": "equivalence_logique",
+        "target": "contraposee"
+      }
+    },
+    {
+      "data": {
+        "id": "inclusion_double_inclusion",
+        "source": "inclusion",
+        "target": "double_inclusion"
+      }
+    },
+    {
+      "data": {
+        "id": "egalite_ensembles_double_inclusion",
+        "source": "egalite_ensembles",
+        "target": "double_inclusion"
+      }
+    },
+    {
+      "data": {
+        "id": "proposition_et_logique",
+        "source": "proposition",
+        "target": "et_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "inclusion_parties_ensemble",
+        "source": "inclusion",
+        "target": "parties_ensemble"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_ensemble_vide",
+        "source": "ensemble",
+        "target": "ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "appartenance_ensemble_vide",
+        "source": "appartenance",
+        "target": "ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel_ensemble_vide",
+        "source": "quantificateur_universel",
+        "target": "ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique_autre_formulation_implication",
+        "source": "implication_logique",
+        "target": "autre_formulation_implication"
+      }
+    },
+    {
+      "data": {
+        "id": "et_logique_implication_logique",
+        "source": "et_logique",
+        "target": "implication_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "non_logique_implication_logique",
+        "source": "non_logique",
+        "target": "implication_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "ou_logique_implication_logique",
+        "source": "ou_logique",
+        "target": "implication_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "table_verite_implication_logique",
+        "source": "table_verite",
+        "target": "implication_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "et_logique_lois_de_morgan_logique",
+        "source": "et_logique",
+        "target": "lois_de_morgan_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "non_logique_lois_de_morgan_logique",
+        "source": "non_logique",
+        "target": "lois_de_morgan_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "ou_logique_lois_de_morgan_logique",
+        "source": "ou_logique",
+        "target": "lois_de_morgan_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "proposition_non_logique",
+        "source": "proposition",
+        "target": "non_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "autre_formulation_implication_negation_implication",
+        "source": "autre_formulation_implication",
+        "target": "negation_implication"
+      }
+    },
+    {
+      "data": {
+        "id": "proposition_ou_logique",
+        "source": "proposition",
+        "target": "ou_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_vide_propriete_ensemble_vide",
+        "source": "ensemble_vide",
+        "target": "propriete_ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "inclusion_propriete_ensemble_vide",
+        "source": "inclusion",
+        "target": "propriete_ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "proposition_quantificateur_existentiel",
+        "source": "proposition",
+        "target": "quantificateur_existentiel"
+      }
+    },
+    {
+      "data": {
+        "id": "proposition_quantificateur_universel",
+        "source": "proposition",
+        "target": "quantificateur_universel"
+      }
+    },
+    {
+      "data": {
+        "id": "contraposee_raisonnement_contraposee",
+        "source": "contraposee",
+        "target": "raisonnement_contraposee"
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique_raisonnement_double_implication",
+        "source": "implication_logique",
+        "target": "raisonnement_double_implication"
+      }
+    },
+    {
+      "data": {
+        "id": "equivalence_logique_raisonnement_double_implication",
+        "source": "equivalence_logique",
+        "target": "raisonnement_double_implication"
+      }
+    },
+    {
+      "data": {
+        "id": "equivalence_logique_raisonnement_equivalence",
+        "source": "equivalence_logique",
+        "target": "raisonnement_equivalence"
+      }
+    },
+    {
+      "data": {
+        "id": "raisonnement_contraposee_raisonner_contraposee",
+        "source": "raisonnement_contraposee",
+        "target": "raisonner_contraposee"
+      }
+    },
+    {
+      "data": {
+        "id": "raisonnement_double_implication_raisonner_double_implication",
+        "source": "raisonnement_double_implication",
+        "target": "raisonner_double_implication"
+      }
+    },
+    {
+      "data": {
+        "id": "raisonnement_equivalence_raisonner_equivalence",
+        "source": "raisonnement_equivalence",
+        "target": "raisonner_equivalence"
+      }
+    },
+    {
+      "data": {
+        "id": "proposition_table_verite",
+        "source": "proposition",
+        "target": "table_verite"
+      }
+    },
+    {
+      "data": {
+        "id": "ou_logique_table_verite",
+        "source": "ou_logique",
+        "target": "table_verite"
+      }
+    },
+    {
+      "data": {
+        "id": "et_logique_table_verite",
+        "source": "et_logique",
+        "target": "table_verite"
+      }
+    },
+    {
+      "data": {
+        "id": "non_logique_table_verite",
+        "source": "non_logique",
+        "target": "table_verite"
+      }
+    },
+    {
+      "data": {
+        "id": "et_logique_equivalence_logique",
+        "source": "et_logique",
+        "target": "equivalence_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "ou_logique_equivalence_logique",
+        "source": "ou_logique",
+        "target": "equivalence_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "non_logique_equivalence_logique",
+        "source": "non_logique",
+        "target": "equivalence_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "table_verite_equivalence_logique",
+        "source": "table_verite",
+        "target": "equivalence_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique_equivalence_logique",
+        "source": "implication_logique",
+        "target": "equivalence_logique"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_appartenance",
+        "source": "ensemble",
+        "target": "appartenance"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_applications",
+        "source": "ensemble",
+        "target": "applications"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_difference_ensembles",
+        "source": "ensemble",
+        "target": "difference_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "appartenance_difference_ensembles",
+        "source": "appartenance",
+        "target": "difference_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_comprehension_difference_ensembles",
+        "source": "ensemble_comprehension",
+        "target": "difference_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_ensemble_comprehension",
+        "source": "ensemble",
+        "target": "ensemble_comprehension"
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel_ensemble_comprehension",
+        "source": "quantificateur_universel",
+        "target": "ensemble_comprehension"
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_existentiel_ensemble_comprehension",
+        "source": "quantificateur_existentiel",
+        "target": "ensemble_comprehension"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_ensemble_extension",
+        "source": "ensemble",
+        "target": "ensemble_extension"
+      }
+    },
+    {
+      "data": {
+        "id": "applications_famille",
+        "source": "applications",
+        "target": "famille"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_famille",
+        "source": "ensemble",
+        "target": "famille"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_inclusion",
+        "source": "ensemble",
+        "target": "inclusion"
+      }
+    },
+    {
+      "data": {
+        "id": "appartenance_inclusion",
+        "source": "appartenance",
+        "target": "inclusion"
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel_inclusion",
+        "source": "quantificateur_universel",
+        "target": "inclusion"
+      }
+    },
+    {
+      "data": {
+        "id": "implication_logique_inclusion",
+        "source": "implication_logique",
+        "target": "inclusion"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_egalite_ensembles",
+        "source": "ensemble",
+        "target": "egalite_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "appartenance_egalite_ensembles",
+        "source": "appartenance",
+        "target": "egalite_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel_egalite_ensembles",
+        "source": "quantificateur_universel",
+        "target": "egalite_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "equivalence_logique_egalite_ensembles",
+        "source": "equivalence_logique",
+        "target": "egalite_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "applications_fonction_reelle_variable_reelle",
+        "source": "applications",
+        "target": "fonction_reelle_variable_reelle"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_reels_fonction_reelle_variable_reelle",
+        "source": "ensemble_reels",
+        "target": "fonction_reelle_variable_reelle"
       }
     }
   ]
