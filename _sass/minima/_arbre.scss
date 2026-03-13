@@ -9,7 +9,7 @@
 }
 
 #panel-overlay.visible {
-  opacity: 1;
+  opacity: 0.5;
   pointer-events: all;
 }
 
@@ -24,7 +24,7 @@
   background-color: #0e3dc0;
   color: white;
   border: none;
-  width : 100px;
+  width : 150px;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -35,12 +35,23 @@
   background-color: #3ab218;
   color: white;
   border: none;
-  width : 100px;
+  width : 150px;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   display:flex;
 }
+#voir-prerequis{
+  background-color: #f0ad4e;
+  color: white;
+  border: none;
+  width : 150px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display:flex;
+}
+
 #detail-panel {
   position: fixed;
   left: 0;
