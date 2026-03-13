@@ -1,21 +1,10 @@
-const elements = [];
+const panel = document.getElementById("detail-panel");
+const overlay = document.getElementById("panel-overlay");
+const detailPanelTitle = document.getElementById("panel-title");
+const detailPanelContent = document.getElementById("panel-content");
+const closeBtn = document.getElementById("close-panel");
+const handle = document.getElementById("drag-handle");
 
-treeData.nodes.forEach(node => {
-
-  elements.push({
-    data: { id: node.id, label: node.label },
-  });
-  node.prerequis.forEach(p => {
-    elements.push({
-      data: {
-        id: p + "_" + node.id,
-        source: p,
-        target: node.id
-      }
-    });
-  });
-
-});
 
 
 // pour $être éventuellement modifié plus tar
@@ -35,7 +24,7 @@ const statusColors = {
 
 const cy = cytoscape({
   container: document.getElementById('graph'),
-  elements: elements,
+  elements: [...treeData.nodes, ...treeData.edges],
   style: [
     {
       selector: 'node',
@@ -57,11 +46,11 @@ const cy = cytoscape({
       }
     },
     {
-      selector: 'node:selected',
+      selector: 'node.acquired',
       style: {
-        'border-color': '#f1c40f',
-        'border-width' : '6px'
-    }
+        'border-color': '#2ecc71',
+        'border-width': '4px'
+      }
     },
     {
       selector: 'node.hover',
@@ -79,57 +68,49 @@ const cy = cytoscape({
         'line-color': '#ccc',
         'target-arrow-color': '#ccc'
       }
-    },
-    {
-      selector: 'edge:selected',
-      style: {
-        'curve-style': 'bezier',
-        'target-arrow-shape': 'triangle',
-        'line-color': '#114ebe',
-        'target-arrow-color': '#114ebe'
-      }
     }
   ],
   layout: {
     name: 'breadthfirst',
     directed: true,
     direction: 'rightward', // Remet l'arbre de gauche à droite
-    spacingFactor: 1
+    spacingFactor: 1.5
   }
 });
 
 // Add style for the selected node
 
-// cy.style().selector('node:selected').style({
-//   'border-color': '#f1c40f',
-//   'border-width' : '6px'});
+cy.style().selector('node:selected').style({
+  'border-color': '#f1c40f',
+  'border-width' : '6px'});
 
 
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
-function isAccessible(nodeId) {
-  const node = treeData.nodes.find(n => n.id === nodeId);
-  return node.prerequis.every(p => progress[p]);
+function isAccessible(nodeId){
+  console.log(nodeId)
+  const node = treeData.nodes.find(n => n.data.id === nodeId);
+  return node.data.prerequis.every(p => progress[p]);
 }
 
 function updateColors() {
   treeData.nodes.forEach(n => {
-    const node = cy.getElementById(n.id);
-    if (isAccessible(n.id)) {
+    const node = cy.getElementById(n.data.id);
+    if (isAccessible(n.data.id)) {
       node.removeClass('unavailable');
     } else {
       node.addClass('unavailable');
       node.removeClass('acquired');
     }
 
-    if (progress[n.id]) {
+    if (progress[n.data.id]) {
       node.addClass('acquired');
     } else {
       node.removeClass('acquired');
     }
 
     // Set style based on progress
-    const statusColor = progress[n.id] ? statusColors.acquired : (isAccessible(n.id) ? statusColors.in_progress : statusColors.unavailable);
+    const statusColor = progress[n.data.id] ? statusColors.acquired : (isAccessible(n.data.id) ? statusColors.in_progress : statusColors.unavailable);
     node.style("background-color", statusColor);
   });
 }
@@ -165,8 +146,7 @@ function loadProgress(event) {
 }
 
 function loadNodeDetails(nodeId,title) {
-  const filePath = `/nodes/${nodeId}.txt`; // Use relative path
-  console.log(`Fetching Markdown file from: ${filePath}`); // Log the file path for debugging
+  const filePath = `../content/nodes/${nodeId}.html`; // Use relative path
 
   // Affichage
   panel.classList.remove("full");
@@ -177,14 +157,13 @@ function loadNodeDetails(nodeId,title) {
   fetch(filePath)
     .then(response => {
       if (!response.ok) {
-        throw new Error(`Markdown file for node "${nodeId}" not found`);
+        throw new Error(`HTML file for node "${nodeId}" not found`);
       }
       return response.text();
     })
-    .then(markdown => {
-      const htmlContent = marked(markdown); // Convert Markdown to HTML
+    .then(content => {
       detailPanelTitle.textContent = title; // Set the title of the details panel
-      detailPanelContent.innerHTML = htmlContent; // Display in details tab
+      detailPanelContent.innerHTML = content; // Display in details tab
       renderMathInElement(document.getElementById('detail-panel'), {
           // customised options
           // • auto-render specific keys, e.g.:
@@ -215,8 +194,9 @@ function setToAcquired() {
   const selectedNodes = cy.nodes(':selected');
 
   selectedNodes.forEach(node => {
-    if (isAccessible(node.id())) {
-    const nodeId = node.id();
+    console.log(node);
+    const nodeId = node.id()
+    if (isAccessible(nodeId)) {
     progress[nodeId] = true; // Mark as acquired
     localStorage.setItem("mathProgress", JSON.stringify(progress));
     updateColors();
@@ -256,19 +236,6 @@ cy.ready(() => {
   updateColors();
 });
 
-// Affichage du paneau de détail au clic sur un noeud
-
-const panel = document.getElementById("detail-panel");
-const overlay = document.getElementById("panel-overlay");
-const detailPanelTitle = document.getElementById("panel-title");
-const detailPanelContent = document.getElementById("panel-content");
-const closeBtn = document.getElementById("close-panel");
-const handle = document.getElementById("drag-handle");
-
-
-let startY = 0;
-let currentY = 0;
-let dragging = false;
 
 cy.on('tap', 'node', function (event) {
   const nodeId = event.target.id(); // Get selected node ID
@@ -279,6 +246,11 @@ cy.on('tap', 'node', function (event) {
 
 closeBtn.onclick = closePanel;
 overlay.onclick = closePanel;
+
+
+let startY = 0;
+let currentY = 0;
+let dragging = false;
 
 handle.addEventListener("pointerdown", e=>{
   dragging = true;

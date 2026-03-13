@@ -1,0 +1,97 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "cercle_trigo",
+        "label": "Cercle trigonométrique",
+        "category": "1 - Trigonométrie",
+        "prerequis": []
+      }
+    },
+    {
+      "data": {
+        "id": "fonction_cosinus",
+        "label": "Fonction cosinus",
+        "category": "1 - Trigonométrie",
+        "prerequis": [
+          "cercle_trigo"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "fonction_sinus",
+        "label": "Fonction sinus",
+        "category": "1 - Trigonométrie",
+        "prerequis": [
+          "cercle_trigo"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "periodicite",
+        "label": "Périodicité",
+        "category": "1 - Trigonométrie",
+        "prerequis": [
+          "fonction_reelle_variable_reelle"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "applications",
+        "label": "Applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": []
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble",
+        "label": "Ensemble",
+        "category": "3 - Ensembles et applications",
+        "prerequis": []
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_reels",
+        "label": "Ensemble des nombres réels",
+        "category": "5 - Nombres réels",
+        "prerequis": []
+      }
+    },
+    {
+      "data": {
+        "id": "fonction_reelle_variable_reelle",
+        "label": "Fonction réelle de la variable réelle",
+        "category": "7 - Fonction réelle de la variable réelle",
+        "prerequis": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "cercle_trigo_fonction_cosinus",
+        "source": "cercle_trigo",
+        "target": "fonction_cosinus"
+      }
+    },
+    {
+      "data": {
+        "id": "cercle_trigo_fonction_sinus",
+        "source": "cercle_trigo",
+        "target": "fonction_sinus"
+      }
+    },
+    {
+      "data": {
+        "id": "fonction_reelle_variable_reelle_periodicite",
+        "source": "fonction_reelle_variable_reelle",
+        "target": "periodicite"
+      }
+    }
+  ]
+}
