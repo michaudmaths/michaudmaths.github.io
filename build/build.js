@@ -16,6 +16,25 @@ const ALLOWED_FOLDERS = [
   "3 - Ensembles et applications",
 ];
 
+
+// Fonction récursive pour nettoyer les relations de prérequis
+const memo = new Map();
+
+function getAllPrereqs(id, prereqsMap) {
+  if (memo.has(id)) return memo.get(id);
+
+  const result = new Set();
+
+  for (const p of prereqsMap[id] || []) {
+    result.add(p);
+    for (const t of getAllPrereqs(p, prereqsMap)) {
+      result.add(t);
+    }
+}
+memo.set(id, result);
+return result;
+}
+
 /*
 Lire tous les markdown récursivement
 */
@@ -134,7 +153,19 @@ function build() {
       },
       grabbable: false
     });
+    nodes.push({
+      data : {
+        id : id+"_label",
+        parent: id,
+        category: folder,
+        label: folder,
+        prerequis: [],
+      },
+      classes : ['chapter_label'],
+    })
   });
+
+
 
   /*
   PASS 1 : lire les id
@@ -197,9 +228,25 @@ function build() {
     /*
     4️⃣ création des edges
     */
-  
-    prereqIds.forEach(pr => {
-  
+    
+    prereqsList = prereqIds
+    // let prereqsMap = {}
+    // files.forEach(file =>{
+    //   const filename = path.basename(file, ".md");
+    //   id = filenameToId[filename]
+    //   const raw = fs.readFileSync(file, "utf8");
+    //   const { meta, body } = parseFrontmatter(raw);
+    //   prereqNames = extractLinks(meta.prerequis);
+    //   prereqsMap[id] = prereqNames
+    //   .map(name => filenameToId[name])
+    //   .filter(Boolean);
+    //   })
+
+    // let prereqsList = getAllPrereqs(meta.id, prereqsMap)
+    // console.log(prereqsList)
+
+    prereqsList.forEach(pr => {
+      if (!pr){return;}
       edges.push({
         data: {
           id: `${pr}->${meta.id}`,
@@ -209,7 +256,8 @@ function build() {
       });
   
     });
-  
+
+
     /*
     node
     */
@@ -221,7 +269,8 @@ function build() {
         parent : `folder_${folder.replace(/\s+/g, "_")}`,
         category: folder,
         prerequis: prereqIds || []
-      }
+      },
+      classes: ['item_cours']
     });
   
     /*

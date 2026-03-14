@@ -9,12 +9,14 @@ page_class: arbre
 
 <script>
   const treeData = {{ site.data.graph | jsonify }};
+  const nodePositions = {{ site.data.node_positions | jsonify }} 
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
 <script src="https://unpkg.com/layout-base/layout-base.js"></script>
 <script src="https://unpkg.com/cose-base/cose-base.js"></script>
-  <script src="https://unpkg.com/cytoscape-node-html-label/dist/cytoscape-node-html-label.js"></script>
+<script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+<script src="https://unpkg.com/cytoscape-node-html-label/dist/cytoscape-node-html-label.js"></script>
 <script src="/assets/js/cytoscape-cose-bilkent.js"></script>
 <script src="/assets/js/math-tree.js" defer></script>
 
@@ -39,5 +41,7 @@ page_class: arbre
 
 <button onclick="downloadProgress()">Télécharger ma progression</button>
 <input type="file" onchange="loadProgress(event)">
+<button onclick="downloadNodePositions()">Télécharger position des noeuds </button>
+<input type="file" onchange="loadNodePositions(event)">
 
 <button onclick="reset()">Tout réinitialiser</button>
