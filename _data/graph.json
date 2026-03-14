@@ -2,8 +2,36 @@
   "nodes": [
     {
       "data": {
+        "id": "folder_1_-_Trigonométrie",
+        "label": "1 - Trigonométrie",
+        "category": "1 - Trigonométrie",
+        "prerequis": []
+      },
+      "grabbable": false
+    },
+    {
+      "data": {
+        "id": "folder_2_-_Logique",
+        "label": "2 - Logique",
+        "category": "2 - Logique",
+        "prerequis": []
+      },
+      "grabbable": false
+    },
+    {
+      "data": {
+        "id": "folder_3_-_Ensembles_et_applications",
+        "label": "3 - Ensembles et applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": []
+      },
+      "grabbable": false
+    },
+    {
+      "data": {
         "id": "cercle_trigo",
         "label": "Cercle trigonométrique",
+        "parent": "folder_1_-_Trigonométrie",
         "category": "1 - Trigonométrie",
         "prerequis": []
       }
@@ -12,6 +40,7 @@
       "data": {
         "id": "fonction_cosinus",
         "label": "Fonction cosinus",
+        "parent": "folder_1_-_Trigonométrie",
         "category": "1 - Trigonométrie",
         "prerequis": [
           "cercle_trigo"
@@ -22,6 +51,7 @@
       "data": {
         "id": "fonction_sinus",
         "label": "Fonction sinus",
+        "parent": "folder_1_-_Trigonométrie",
         "category": "1 - Trigonométrie",
         "prerequis": [
           "cercle_trigo"
@@ -32,16 +62,16 @@
       "data": {
         "id": "periodicite",
         "label": "Périodicité",
+        "parent": "folder_1_-_Trigonométrie",
         "category": "1 - Trigonométrie",
-        "prerequis": [
-          "fonction_reelle_variable_reelle"
-        ]
+        "prerequis": []
       }
     },
     {
       "data": {
         "id": "condition_necessaire",
         "label": "Condition nécessaire",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "implication_logique"
@@ -52,6 +82,7 @@
       "data": {
         "id": "condition_suffisante",
         "label": "Condition suffisante",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "implication_logique"
@@ -62,6 +93,7 @@
       "data": {
         "id": "contraposee",
         "label": "Contraposée",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "implication_logique",
@@ -74,6 +106,7 @@
       "data": {
         "id": "double_inclusion",
         "label": "Double inclusion",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "inclusion",
@@ -85,6 +118,7 @@
       "data": {
         "id": "et_logique",
         "label": "ET (logique)",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "proposition"
@@ -95,6 +129,7 @@
       "data": {
         "id": "parties_ensemble",
         "label": "Ensemble des parties d'un ensemble",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "inclusion"
@@ -103,20 +138,9 @@
     },
     {
       "data": {
-        "id": "ensemble_vide",
-        "label": "Ensemble vide",
-        "category": "2 - Logique",
-        "prerequis": [
-          "ensemble",
-          "appartenance",
-          "quantificateur_universel"
-        ]
-      }
-    },
-    {
-      "data": {
         "id": "autre_formulation_implication",
         "label": "Implication (formulation équivalente)",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "implication_logique"
@@ -127,6 +151,7 @@
       "data": {
         "id": "implication_logique",
         "label": "Implication (logique)",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "et_logique",
@@ -140,6 +165,7 @@
       "data": {
         "id": "lois_de_morgan_logique",
         "label": "Lois de De Morgan (logique)",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "et_logique",
@@ -152,6 +178,7 @@
       "data": {
         "id": "non_logique",
         "label": "NON (logique)",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "proposition"
@@ -162,6 +189,7 @@
       "data": {
         "id": "negation_implication",
         "label": "Négation d'une implication",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "autre_formulation_implication"
@@ -172,6 +200,7 @@
       "data": {
         "id": "ou_logique",
         "label": "OU (logique)",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "proposition"
@@ -182,6 +211,7 @@
       "data": {
         "id": "proposition",
         "label": "Proposition",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": []
       }
@@ -190,6 +220,7 @@
       "data": {
         "id": "propriete_ensemble_vide",
         "label": "Propriétés de l'ensemble vide",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "ensemble_vide",
@@ -200,7 +231,8 @@
     {
       "data": {
         "id": "quantificateur_existentiel",
-        "label": "Quantificateurs existentiel",
+        "label": "Quantificateurs existentiel $\\exists$",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "proposition"
@@ -210,7 +242,8 @@
     {
       "data": {
         "id": "quantificateur_universel",
-        "label": "Quantificateurs universel",
+        "label": "Quantificateurs universel $\\forall$",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "proposition"
@@ -221,6 +254,7 @@
       "data": {
         "id": "raisonnement_contraposee",
         "label": "Raisonnement par contraposée",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "contraposee"
@@ -231,6 +265,7 @@
       "data": {
         "id": "raisonnement_double_implication",
         "label": "Raisonnement par double implication",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "implication_logique",
@@ -242,6 +277,7 @@
       "data": {
         "id": "raisonnement_equivalence",
         "label": "Raisonnement par équivalence",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "equivalence_logique"
@@ -252,6 +288,7 @@
       "data": {
         "id": "raisonner_contraposee",
         "label": "Raisonner par contraposée",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "raisonnement_contraposee"
@@ -262,6 +299,7 @@
       "data": {
         "id": "raisonner_double_implication",
         "label": "Raisonner par double implication",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "raisonnement_double_implication"
@@ -272,6 +310,7 @@
       "data": {
         "id": "raisonner_equivalence",
         "label": "Raisonner par équivalence",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "raisonnement_equivalence"
@@ -282,6 +321,7 @@
       "data": {
         "id": "table_verite",
         "label": "Table de vérité",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "proposition",
@@ -295,6 +335,7 @@
       "data": {
         "id": "equivalence_logique",
         "label": "Équivalence (logique)",
+        "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
           "et_logique",
@@ -308,7 +349,8 @@
     {
       "data": {
         "id": "appartenance",
-        "label": "Appartenance",
+        "label": "Appartenance $\\in$",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble"
@@ -319,6 +361,7 @@
       "data": {
         "id": "applications",
         "label": "Applications",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble"
@@ -329,11 +372,13 @@
       "data": {
         "id": "difference_ensembles",
         "label": "Différence d'ensembles",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble",
           "appartenance",
-          "ensemble_comprehension"
+          "ensemble_comprehension",
+          "non_logique"
         ]
       }
     },
@@ -341,6 +386,7 @@
       "data": {
         "id": "ensemble_comprehension",
         "label": "Ensemble défini en compréhension",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble",
@@ -353,6 +399,7 @@
       "data": {
         "id": "ensemble_extension",
         "label": "Ensemble défini en extension",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble"
@@ -361,8 +408,22 @@
     },
     {
       "data": {
+        "id": "ensemble_vide",
+        "label": "Ensemble vide",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble",
+          "appartenance",
+          "quantificateur_universel"
+        ]
+      }
+    },
+    {
+      "data": {
         "id": "ensemble",
         "label": "Ensemble",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": []
       }
@@ -371,6 +432,7 @@
       "data": {
         "id": "famille",
         "label": "Famille",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "applications",
@@ -381,7 +443,8 @@
     {
       "data": {
         "id": "inclusion",
-        "label": "Inclusion",
+        "label": "Inclusion $\\subset$",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble",
@@ -395,6 +458,7 @@
       "data": {
         "id": "egalite_ensembles",
         "label": "Égalité d'ensembles",
+        "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble",
@@ -403,495 +467,462 @@
           "equivalence_logique"
         ]
       }
-    },
-    {
-      "data": {
-        "id": "ensemble_reels",
-        "label": "Ensemble des nombres réels",
-        "category": "5 - Nombres réels",
-        "prerequis": []
-      }
-    },
-    {
-      "data": {
-        "id": "fonction_reelle_variable_reelle",
-        "label": "Fonction réelle de la variable réelle",
-        "category": "7 - Fonction réelle de la variable réelle",
-        "prerequis": [
-          "applications",
-          "ensemble_reels"
-        ]
-      }
     }
   ],
   "edges": [
     {
       "data": {
-        "id": "cercle_trigo_fonction_cosinus",
+        "id": "cercle_trigo->fonction_cosinus",
         "source": "cercle_trigo",
         "target": "fonction_cosinus"
       }
     },
     {
       "data": {
-        "id": "cercle_trigo_fonction_sinus",
+        "id": "cercle_trigo->fonction_sinus",
         "source": "cercle_trigo",
         "target": "fonction_sinus"
       }
     },
     {
       "data": {
-        "id": "fonction_reelle_variable_reelle_periodicite",
-        "source": "fonction_reelle_variable_reelle",
-        "target": "periodicite"
-      }
-    },
-    {
-      "data": {
-        "id": "implication_logique_condition_necessaire",
+        "id": "implication_logique->condition_necessaire",
         "source": "implication_logique",
         "target": "condition_necessaire"
       }
     },
     {
       "data": {
-        "id": "implication_logique_condition_suffisante",
+        "id": "implication_logique->condition_suffisante",
         "source": "implication_logique",
         "target": "condition_suffisante"
       }
     },
     {
       "data": {
-        "id": "implication_logique_contraposee",
+        "id": "implication_logique->contraposee",
         "source": "implication_logique",
         "target": "contraposee"
       }
     },
     {
       "data": {
-        "id": "non_logique_contraposee",
+        "id": "non_logique->contraposee",
         "source": "non_logique",
         "target": "contraposee"
       }
     },
     {
       "data": {
-        "id": "equivalence_logique_contraposee",
+        "id": "equivalence_logique->contraposee",
         "source": "equivalence_logique",
         "target": "contraposee"
       }
     },
     {
       "data": {
-        "id": "inclusion_double_inclusion",
+        "id": "inclusion->double_inclusion",
         "source": "inclusion",
         "target": "double_inclusion"
       }
     },
     {
       "data": {
-        "id": "egalite_ensembles_double_inclusion",
+        "id": "egalite_ensembles->double_inclusion",
         "source": "egalite_ensembles",
         "target": "double_inclusion"
       }
     },
     {
       "data": {
-        "id": "proposition_et_logique",
+        "id": "proposition->et_logique",
         "source": "proposition",
         "target": "et_logique"
       }
     },
     {
       "data": {
-        "id": "inclusion_parties_ensemble",
+        "id": "inclusion->parties_ensemble",
         "source": "inclusion",
         "target": "parties_ensemble"
       }
     },
     {
       "data": {
-        "id": "ensemble_ensemble_vide",
-        "source": "ensemble",
-        "target": "ensemble_vide"
-      }
-    },
-    {
-      "data": {
-        "id": "appartenance_ensemble_vide",
-        "source": "appartenance",
-        "target": "ensemble_vide"
-      }
-    },
-    {
-      "data": {
-        "id": "quantificateur_universel_ensemble_vide",
-        "source": "quantificateur_universel",
-        "target": "ensemble_vide"
-      }
-    },
-    {
-      "data": {
-        "id": "implication_logique_autre_formulation_implication",
+        "id": "implication_logique->autre_formulation_implication",
         "source": "implication_logique",
         "target": "autre_formulation_implication"
       }
     },
     {
       "data": {
-        "id": "et_logique_implication_logique",
+        "id": "et_logique->implication_logique",
         "source": "et_logique",
         "target": "implication_logique"
       }
     },
     {
       "data": {
-        "id": "non_logique_implication_logique",
+        "id": "non_logique->implication_logique",
         "source": "non_logique",
         "target": "implication_logique"
       }
     },
     {
       "data": {
-        "id": "ou_logique_implication_logique",
+        "id": "ou_logique->implication_logique",
         "source": "ou_logique",
         "target": "implication_logique"
       }
     },
     {
       "data": {
-        "id": "table_verite_implication_logique",
+        "id": "table_verite->implication_logique",
         "source": "table_verite",
         "target": "implication_logique"
       }
     },
     {
       "data": {
-        "id": "et_logique_lois_de_morgan_logique",
+        "id": "et_logique->lois_de_morgan_logique",
         "source": "et_logique",
         "target": "lois_de_morgan_logique"
       }
     },
     {
       "data": {
-        "id": "non_logique_lois_de_morgan_logique",
+        "id": "non_logique->lois_de_morgan_logique",
         "source": "non_logique",
         "target": "lois_de_morgan_logique"
       }
     },
     {
       "data": {
-        "id": "ou_logique_lois_de_morgan_logique",
+        "id": "ou_logique->lois_de_morgan_logique",
         "source": "ou_logique",
         "target": "lois_de_morgan_logique"
       }
     },
     {
       "data": {
-        "id": "proposition_non_logique",
+        "id": "proposition->non_logique",
         "source": "proposition",
         "target": "non_logique"
       }
     },
     {
       "data": {
-        "id": "autre_formulation_implication_negation_implication",
+        "id": "autre_formulation_implication->negation_implication",
         "source": "autre_formulation_implication",
         "target": "negation_implication"
       }
     },
     {
       "data": {
-        "id": "proposition_ou_logique",
+        "id": "proposition->ou_logique",
         "source": "proposition",
         "target": "ou_logique"
       }
     },
     {
       "data": {
-        "id": "ensemble_vide_propriete_ensemble_vide",
+        "id": "ensemble_vide->propriete_ensemble_vide",
         "source": "ensemble_vide",
         "target": "propriete_ensemble_vide"
       }
     },
     {
       "data": {
-        "id": "inclusion_propriete_ensemble_vide",
+        "id": "inclusion->propriete_ensemble_vide",
         "source": "inclusion",
         "target": "propriete_ensemble_vide"
       }
     },
     {
       "data": {
-        "id": "proposition_quantificateur_existentiel",
+        "id": "proposition->quantificateur_existentiel",
         "source": "proposition",
         "target": "quantificateur_existentiel"
       }
     },
     {
       "data": {
-        "id": "proposition_quantificateur_universel",
+        "id": "proposition->quantificateur_universel",
         "source": "proposition",
         "target": "quantificateur_universel"
       }
     },
     {
       "data": {
-        "id": "contraposee_raisonnement_contraposee",
+        "id": "contraposee->raisonnement_contraposee",
         "source": "contraposee",
         "target": "raisonnement_contraposee"
       }
     },
     {
       "data": {
-        "id": "implication_logique_raisonnement_double_implication",
+        "id": "implication_logique->raisonnement_double_implication",
         "source": "implication_logique",
         "target": "raisonnement_double_implication"
       }
     },
     {
       "data": {
-        "id": "equivalence_logique_raisonnement_double_implication",
+        "id": "equivalence_logique->raisonnement_double_implication",
         "source": "equivalence_logique",
         "target": "raisonnement_double_implication"
       }
     },
     {
       "data": {
-        "id": "equivalence_logique_raisonnement_equivalence",
+        "id": "equivalence_logique->raisonnement_equivalence",
         "source": "equivalence_logique",
         "target": "raisonnement_equivalence"
       }
     },
     {
       "data": {
-        "id": "raisonnement_contraposee_raisonner_contraposee",
+        "id": "raisonnement_contraposee->raisonner_contraposee",
         "source": "raisonnement_contraposee",
         "target": "raisonner_contraposee"
       }
     },
     {
       "data": {
-        "id": "raisonnement_double_implication_raisonner_double_implication",
+        "id": "raisonnement_double_implication->raisonner_double_implication",
         "source": "raisonnement_double_implication",
         "target": "raisonner_double_implication"
       }
     },
     {
       "data": {
-        "id": "raisonnement_equivalence_raisonner_equivalence",
+        "id": "raisonnement_equivalence->raisonner_equivalence",
         "source": "raisonnement_equivalence",
         "target": "raisonner_equivalence"
       }
     },
     {
       "data": {
-        "id": "proposition_table_verite",
+        "id": "proposition->table_verite",
         "source": "proposition",
         "target": "table_verite"
       }
     },
     {
       "data": {
-        "id": "ou_logique_table_verite",
+        "id": "ou_logique->table_verite",
         "source": "ou_logique",
         "target": "table_verite"
       }
     },
     {
       "data": {
-        "id": "et_logique_table_verite",
+        "id": "et_logique->table_verite",
         "source": "et_logique",
         "target": "table_verite"
       }
     },
     {
       "data": {
-        "id": "non_logique_table_verite",
+        "id": "non_logique->table_verite",
         "source": "non_logique",
         "target": "table_verite"
       }
     },
     {
       "data": {
-        "id": "et_logique_equivalence_logique",
+        "id": "et_logique->equivalence_logique",
         "source": "et_logique",
         "target": "equivalence_logique"
       }
     },
     {
       "data": {
-        "id": "ou_logique_equivalence_logique",
+        "id": "ou_logique->equivalence_logique",
         "source": "ou_logique",
         "target": "equivalence_logique"
       }
     },
     {
       "data": {
-        "id": "non_logique_equivalence_logique",
+        "id": "non_logique->equivalence_logique",
         "source": "non_logique",
         "target": "equivalence_logique"
       }
     },
     {
       "data": {
-        "id": "table_verite_equivalence_logique",
+        "id": "table_verite->equivalence_logique",
         "source": "table_verite",
         "target": "equivalence_logique"
       }
     },
     {
       "data": {
-        "id": "implication_logique_equivalence_logique",
+        "id": "implication_logique->equivalence_logique",
         "source": "implication_logique",
         "target": "equivalence_logique"
       }
     },
     {
       "data": {
-        "id": "ensemble_appartenance",
+        "id": "ensemble->appartenance",
         "source": "ensemble",
         "target": "appartenance"
       }
     },
     {
       "data": {
-        "id": "ensemble_applications",
+        "id": "ensemble->applications",
         "source": "ensemble",
         "target": "applications"
       }
     },
     {
       "data": {
-        "id": "ensemble_difference_ensembles",
+        "id": "ensemble->difference_ensembles",
         "source": "ensemble",
         "target": "difference_ensembles"
       }
     },
     {
       "data": {
-        "id": "appartenance_difference_ensembles",
+        "id": "appartenance->difference_ensembles",
         "source": "appartenance",
         "target": "difference_ensembles"
       }
     },
     {
       "data": {
-        "id": "ensemble_comprehension_difference_ensembles",
+        "id": "ensemble_comprehension->difference_ensembles",
         "source": "ensemble_comprehension",
         "target": "difference_ensembles"
       }
     },
     {
       "data": {
-        "id": "ensemble_ensemble_comprehension",
+        "id": "non_logique->difference_ensembles",
+        "source": "non_logique",
+        "target": "difference_ensembles"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble->ensemble_comprehension",
         "source": "ensemble",
         "target": "ensemble_comprehension"
       }
     },
     {
       "data": {
-        "id": "quantificateur_universel_ensemble_comprehension",
+        "id": "quantificateur_universel->ensemble_comprehension",
         "source": "quantificateur_universel",
         "target": "ensemble_comprehension"
       }
     },
     {
       "data": {
-        "id": "quantificateur_existentiel_ensemble_comprehension",
+        "id": "quantificateur_existentiel->ensemble_comprehension",
         "source": "quantificateur_existentiel",
         "target": "ensemble_comprehension"
       }
     },
     {
       "data": {
-        "id": "ensemble_ensemble_extension",
+        "id": "ensemble->ensemble_extension",
         "source": "ensemble",
         "target": "ensemble_extension"
       }
     },
     {
       "data": {
-        "id": "applications_famille",
+        "id": "ensemble->ensemble_vide",
+        "source": "ensemble",
+        "target": "ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "appartenance->ensemble_vide",
+        "source": "appartenance",
+        "target": "ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel->ensemble_vide",
+        "source": "quantificateur_universel",
+        "target": "ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "applications->famille",
         "source": "applications",
         "target": "famille"
       }
     },
     {
       "data": {
-        "id": "ensemble_famille",
+        "id": "ensemble->famille",
         "source": "ensemble",
         "target": "famille"
       }
     },
     {
       "data": {
-        "id": "ensemble_inclusion",
+        "id": "ensemble->inclusion",
         "source": "ensemble",
         "target": "inclusion"
       }
     },
     {
       "data": {
-        "id": "appartenance_inclusion",
+        "id": "appartenance->inclusion",
         "source": "appartenance",
         "target": "inclusion"
       }
     },
     {
       "data": {
-        "id": "quantificateur_universel_inclusion",
+        "id": "quantificateur_universel->inclusion",
         "source": "quantificateur_universel",
         "target": "inclusion"
       }
     },
     {
       "data": {
-        "id": "implication_logique_inclusion",
+        "id": "implication_logique->inclusion",
         "source": "implication_logique",
         "target": "inclusion"
       }
     },
     {
       "data": {
-        "id": "ensemble_egalite_ensembles",
+        "id": "ensemble->egalite_ensembles",
         "source": "ensemble",
         "target": "egalite_ensembles"
       }
     },
     {
       "data": {
-        "id": "appartenance_egalite_ensembles",
+        "id": "appartenance->egalite_ensembles",
         "source": "appartenance",
         "target": "egalite_ensembles"
       }
     },
     {
       "data": {
-        "id": "quantificateur_universel_egalite_ensembles",
+        "id": "quantificateur_universel->egalite_ensembles",
         "source": "quantificateur_universel",
         "target": "egalite_ensembles"
       }
     },
     {
       "data": {
-        "id": "equivalence_logique_egalite_ensembles",
+        "id": "equivalence_logique->egalite_ensembles",
         "source": "equivalence_logique",
         "target": "egalite_ensembles"
-      }
-    },
-    {
-      "data": {
-        "id": "applications_fonction_reelle_variable_reelle",
-        "source": "applications",
-        "target": "fonction_reelle_variable_reelle"
-      }
-    },
-    {
-      "data": {
-        "id": "ensemble_reels_fonction_reelle_variable_reelle",
-        "source": "ensemble_reels",
-        "target": "fonction_reelle_variable_reelle"
       }
     }
   ]

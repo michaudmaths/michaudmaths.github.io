@@ -60,5 +60,6 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+
 kramdown:
   math_engine: katex

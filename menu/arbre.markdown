@@ -12,7 +12,10 @@ page_class: arbre
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
-
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/cose-base/cose-base.js"></script>
+  <script src="https://unpkg.com/cytoscape-node-html-label/dist/cytoscape-node-html-label.js"></script>
+<script src="/assets/js/cytoscape-cose-bilkent.js"></script>
 <script src="/assets/js/math-tree.js" defer></script>
 
   <!-- Graph container -->
