@@ -14,11 +14,6 @@ const ALLOWED_FOLDERS = [
   "1 - Trigonométrie",
   "2 - Logique",
   "3 - Ensembles et applications",
-  "4 - Entiers, sommes, récurrences",
-  "5 - Nombres réels",
-  "6 - Suites numériques",
-  "7 - Fonction réelle de la variable réelle",
-  "8 - Espaces probabilisés"
 ];
 
 /*
@@ -125,10 +120,25 @@ function build() {
   const edges = [];
   const rawPrereqs = {};
 
+
+  // Noeuds parents pour chaque folder
+  ALLOWED_FOLDERS.forEach(folder => {
+    const id = `folder_${folder.replace(/\s+/g, "_")}`;
+    filenameToId[folder] = id;
+    nodes.push({
+      data: {
+        id: id,
+        label: folder,
+        category: folder,
+        prerequis: [],
+      },
+      grabbable: false
+    });
+  });
+
   /*
   PASS 1 : lire les id
   */
-
   files.forEach(file => {
 
     const folder = getTopFolder(file);
@@ -192,7 +202,7 @@ function build() {
   
       edges.push({
         data: {
-          id: `${pr}_${meta.id}`,
+          id: `${pr}->${meta.id}`,
           source: pr,
           target: meta.id
         }
@@ -207,7 +217,8 @@ function build() {
     nodes.push({
       data: {
         id: meta.id,
-        label: filename || meta.id,
+        label: meta.title || filename || meta.id,
+        parent : `folder_${folder.replace(/\s+/g, "_")}`,
         category: folder,
         prerequis: prereqIds || []
       }

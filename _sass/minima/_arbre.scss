@@ -123,3 +123,13 @@
   box-sizing: border-box; 
   background: #f0f0f0;
 }
+
+.node-html-label {
+  font-weight: bold;
+  text-wrap: wrap;
+  width: 230px;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  pointer-events: none;
+}

@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 - Trigonométrie/Fonction sinus.md",
+                "file": "3 - Ensembles et applications/Ensemble vide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fonction sinus"
+              "title": "Ensemble vide"
             }
           }
         ],
@@ -246,15 +246,21 @@
       "bases:Créer une nouvelle base": false
     }
   },
-  "active": "17a92ae946e36dfd",
+  "active": "c41a08f5a3105b0a",
   "lastOpenFiles": [
+    "2 - Logique/Implication (formulation équivalente).md",
+    "2 - Logique/ET (logique).md",
+    "2 - Logique/Implication (logique).md",
+    "3 - Ensembles et applications/Ensemble défini en extension.md",
+    "3 - Ensembles et applications/Ensemble.md",
     "3 - Ensembles et applications/Applications.md",
+    "3 - Ensembles et applications/Appartenance.md",
+    "3 - Ensembles et applications/Différence d'ensembles.md",
     "1 - Trigonométrie/Fonction sinus.md",
     "1 - Trigonométrie/Périodicité.md",
     "1 - Trigonométrie/Fonction cosinus.md",
     "1 - Trigonométrie/Cercle trigonométrique.md",
     "5 - Nombres réels/Ensemble des nombres réels.md",
-    "3 - Ensembles et applications/Ensemble.md",
     "Fonction sinus.md",
     "7 - Fonction réelle de la variable réelle/Fonction réelle de la variable réelle.md",
     "Sans titre 2.md",
