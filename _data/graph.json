@@ -11,12 +11,36 @@
     },
     {
       "data": {
+        "id": "folder_1_-_Trigonométrie_label",
+        "parent": "folder_1_-_Trigonométrie",
+        "category": "1 - Trigonométrie",
+        "label": "1 - Trigonométrie",
+        "prerequis": []
+      },
+      "classes": [
+        "chapter_label"
+      ]
+    },
+    {
+      "data": {
         "id": "folder_2_-_Logique",
         "label": "2 - Logique",
         "category": "2 - Logique",
         "prerequis": []
       },
       "grabbable": false
+    },
+    {
+      "data": {
+        "id": "folder_2_-_Logique_label",
+        "parent": "folder_2_-_Logique",
+        "category": "2 - Logique",
+        "label": "2 - Logique",
+        "prerequis": []
+      },
+      "classes": [
+        "chapter_label"
+      ]
     },
     {
       "data": {
@@ -29,12 +53,27 @@
     },
     {
       "data": {
+        "id": "folder_3_-_Ensembles_et_applications_label",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "label": "3 - Ensembles et applications",
+        "prerequis": []
+      },
+      "classes": [
+        "chapter_label"
+      ]
+    },
+    {
+      "data": {
         "id": "cercle_trigo",
         "label": "Cercle trigonométrique",
         "parent": "folder_1_-_Trigonométrie",
         "category": "1 - Trigonométrie",
         "prerequis": []
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -45,7 +84,10 @@
         "prerequis": [
           "cercle_trigo"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -56,7 +98,10 @@
         "prerequis": [
           "cercle_trigo"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -65,7 +110,10 @@
         "parent": "folder_1_-_Trigonométrie",
         "category": "1 - Trigonométrie",
         "prerequis": []
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -76,7 +124,10 @@
         "prerequis": [
           "implication_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -87,7 +138,10 @@
         "prerequis": [
           "implication_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -100,7 +154,10 @@
           "non_logique",
           "equivalence_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -112,7 +169,10 @@
           "inclusion",
           "egalite_ensembles"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -123,7 +183,10 @@
         "prerequis": [
           "proposition"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -134,7 +197,10 @@
         "prerequis": [
           "inclusion"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -145,7 +211,10 @@
         "prerequis": [
           "implication_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -159,7 +228,10 @@
           "ou_logique",
           "table_verite"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -172,7 +244,10 @@
           "non_logique",
           "ou_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -183,7 +258,10 @@
         "prerequis": [
           "proposition"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -194,7 +272,10 @@
         "prerequis": [
           "autre_formulation_implication"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -205,7 +286,10 @@
         "prerequis": [
           "proposition"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -214,19 +298,10 @@
         "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": []
-      }
-    },
-    {
-      "data": {
-        "id": "propriete_ensemble_vide",
-        "label": "Propriétés de l'ensemble vide",
-        "parent": "folder_2_-_Logique",
-        "category": "2 - Logique",
-        "prerequis": [
-          "ensemble_vide",
-          "inclusion"
-        ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -237,7 +312,10 @@
         "prerequis": [
           "proposition"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -248,7 +326,10 @@
         "prerequis": [
           "proposition"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -259,7 +340,10 @@
         "prerequis": [
           "contraposee"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -271,7 +355,10 @@
           "implication_logique",
           "equivalence_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -282,7 +369,10 @@
         "prerequis": [
           "equivalence_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -293,7 +383,10 @@
         "prerequis": [
           "raisonnement_contraposee"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -304,7 +397,10 @@
         "prerequis": [
           "raisonnement_double_implication"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -315,7 +411,10 @@
         "prerequis": [
           "raisonnement_equivalence"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -329,7 +428,10 @@
           "et_logique",
           "non_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -344,7 +446,10 @@
           "table_verite",
           "implication_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -355,7 +460,10 @@
         "prerequis": [
           "ensemble"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -366,7 +474,10 @@
         "prerequis": [
           "ensemble"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -380,7 +491,10 @@
           "ensemble_comprehension",
           "non_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -393,7 +507,10 @@
           "quantificateur_universel",
           "quantificateur_existentiel"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -404,7 +521,10 @@
         "prerequis": [
           "ensemble"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -417,7 +537,10 @@
           "appartenance",
           "quantificateur_universel"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -426,7 +549,10 @@
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": []
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -438,7 +564,10 @@
           "applications",
           "ensemble"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -452,7 +581,40 @@
           "quantificateur_universel",
           "implication_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "propriete_ensemble_vide",
+        "label": "Propriétés de l'ensemble vide",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble_vide",
+          "inclusion"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "union",
+        "label": "Union",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble",
+          "ou_logique"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
     },
     {
       "data": {
@@ -466,7 +628,10 @@
           "quantificateur_universel",
           "equivalence_logique"
         ]
-      }
+      },
+      "classes": [
+        "item_cours"
+      ]
     }
   ],
   "edges": [
@@ -622,20 +787,6 @@
         "id": "proposition->ou_logique",
         "source": "proposition",
         "target": "ou_logique"
-      }
-    },
-    {
-      "data": {
-        "id": "ensemble_vide->propriete_ensemble_vide",
-        "source": "ensemble_vide",
-        "target": "propriete_ensemble_vide"
-      }
-    },
-    {
-      "data": {
-        "id": "inclusion->propriete_ensemble_vide",
-        "source": "inclusion",
-        "target": "propriete_ensemble_vide"
       }
     },
     {
@@ -895,6 +1046,34 @@
         "id": "implication_logique->inclusion",
         "source": "implication_logique",
         "target": "inclusion"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble_vide->propriete_ensemble_vide",
+        "source": "ensemble_vide",
+        "target": "propriete_ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "inclusion->propriete_ensemble_vide",
+        "source": "inclusion",
+        "target": "propriete_ensemble_vide"
+      }
+    },
+    {
+      "data": {
+        "id": "ensemble->union",
+        "source": "ensemble",
+        "target": "union"
+      }
+    },
+    {
+      "data": {
+        "id": "ou_logique->union",
+        "source": "ou_logique",
+        "target": "union"
       }
     },
     {

@@ -6,8 +6,14 @@ const closeBtn = document.getElementById("close-panel");
 const handle = document.getElementById("drag-handle");
 
 
+// Charger progrès depuis le storage local
+let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
-// pour $être éventuellement modifié plus tar
+// Charger la position des noeuds depuis le storage local
+let storedNodePositions = JSON.parse(localStorage.getItem("storedNodePositions")) || nodePositions;
+
+
+// pas encore implémenté : pour modifier la forme des noeuds en fonction du type
 const typeShape = {
   definition: { 'shape' : 'round-rectangle' },
   theorem: { 'shape': 'round-rectangle'},
@@ -15,6 +21,7 @@ const typeShape = {
   exercise: { 'shape': 'round-rectangle'},
 };
 
+// Couleurs
 const statusColors = {
   'unavailable': "#888",
   'current': "#3ab218",
@@ -41,10 +48,10 @@ const statusVarColors = {
 
 const styleListForChapterColor = chapterToColor.flatMap(chapter => [
   {
-    selector: `node[category = "${chapter.title}"]:parent`,
+    selector: `node[category = "${chapter.title}"].chapter_label`,
     style: {
       'color' : chapter.color,
-      'text-background-color' : chapter.color,
+      'text-background-color' : changeColor(chapter.color,0.9),
     }
   },
   {
@@ -70,6 +77,7 @@ const styleListForChapterColor = chapterToColor.flatMap(chapter => [
   }
 ]);
 
+// fonction pour shifter une couleur vers + foncé ou + clair (selon que factor>0.5 ou <0.5)
 function changeColor(color, factor) { // factor ∈ [0,1]
   const clamp = (val) => Math.min(Math.max(val, 0), 255)
   const fill = (str) => ('00' + str).slice(-2)
@@ -99,11 +107,14 @@ function changeColor(color, factor) { // factor ∈ [0,1]
   return '#' + fill(newR.toString(16)) + fill(newG.toString(16)) + fill(newB.toString(16))
 }
 
-
-
+// Instantiation du graphe
 const cy = cytoscape({
   container: document.getElementById('graph'),
   elements: [...treeData.nodes, ...treeData.edges],
+  layout : {
+    name: 'preset',
+    positions: storedNodePositions
+  },
   style: [
     {
       selector: 'node',
@@ -113,7 +124,7 @@ const cy = cytoscape({
         'height': '50px',
         'border-width': '2px',
         'overlay-opacity': 0,
-        'label': '', // Add label to display node title
+        //'label': '', // Add label to display node title
         'text-valign': 'center',
         'text-halign': 'center',
         'font-weight': 'bold',
@@ -128,22 +139,30 @@ const cy = cytoscape({
     {
       selector: ':parent',
       style: {
-        'padding': '60px',
-        'text-wrap': 'none',
-        'background-opacity': 0.1,
-        'text-background-opacity' : 0.1,
-        'label': 'data(label)',
-        'font-size': '30px',
-        'text-margin-y': function (node) { return -node.height()/2-25; },
+        'padding': '20px',
+        'background-opacity': 0.05,
         'events' : 'no',
       }
+    },
+    {
+      selector: 'node.chapter_label',
+      style:{
+        'width':'150px',
+        'height':'20px',
+        'border-width': '0px',
+        'label':'data(label)',
+        'text-wrap': 'none',
+        'background-opacity': 0.05,
+        'text-background-opacity' : 1,
+        'font-size': '30px',
+        // 'events' : 'no',// A remettre ensuite
+      },
     },
     {
       selector: 'node.hover',
       style: {
         'width': '275px',
         'height': '55px',
-        'font-size': '18px',
       }
     },
     {
@@ -189,7 +208,117 @@ const cy = cytoscape({
   ],
 });
 
-var layoutOptions = {
+
+// Trois options de layout, en choisir une des trois à parser dans la commande suivante 
+var presetLayoutoptions = {
+  zoom: undefined, // the zoom level to set (prob want fit = false if set)
+  pan: undefined, // the pan level to set (prob want fit = false if set)
+  fit: true, // whether to fit to viewport
+  padding: 30, // padding on fit
+  spacingFactor: undefined, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
+  animate: false, // whether to transition the node positions
+  animationDuration: 500, // duration of animation in ms if enabled
+  animationEasing: undefined, // easing of animation if enabled
+  animateFilter: function ( node, i ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
+  ready: undefined, // callback on layoutready
+  stop: undefined, // callback on layoutstop
+  transform: function (node, position ){ return position; } // transform a given node position. Useful for changing flow direction in discrete layouts
+};
+
+var fcoseLayoutOptions = {
+  name: "fcose",
+  // 'draft', 'default' or 'proof' 
+  // - "draft" only applies spectral layout 
+  // - "default" improves the quality with incremental layout (fast cooling rate)
+  // - "proof" improves the quality with incremental layout (slow cooling rate) 
+  quality: "default",
+  // Use random node positions at beginning of layout
+  // if this is set to false, then quality option must be "proof"
+  randomize: false, 
+  // Whether or not to animate the layout
+  animate: true, 
+  // Duration of animation in ms, if enabled
+  animationDuration: 1000, 
+  // Easing of animation, if enabled
+  animationEasing: undefined, 
+  // Fit the viewport to the repositioned nodes
+  fit: true, 
+  // Padding around layout
+  padding: 30,
+  // Whether to include labels in node dimensions. Valid in "proof" quality
+  nodeDimensionsIncludeLabels: false,
+  // Whether or not simple nodes (non-compound nodes) are of uniform dimensions
+  uniformNodeDimensions: false,
+  // Whether to pack disconnected components - cytoscape-layout-utilities extension should be registered and initialized
+  packComponents: true,
+  // Layout step - all, transformed, enforced, cose - for debug purpose only
+  step: "all",
+  
+  /* spectral layout options */
+  
+  // False for random, true for greedy sampling
+  samplingType: true,
+  // Sample size to construct distance matrix
+  sampleSize: 25,
+  // Separation amount between nodes
+  nodeSeparation: 200,
+  // Power iteration tolerance
+  piTol: 0.0000001,
+  
+  /* incremental layout options */
+  
+  // Node repulsion (non overlapping) multiplier
+  nodeRepulsion: node => 4500,
+  // Ideal edge (non nested) length
+  idealEdgeLength: edge => 200,
+  // Divisor to compute edge forces
+  edgeElasticity: edge => 0.45,
+  // Nesting factor (multiplier) to compute ideal edge length for nested edges
+  nestingFactor: 0.1,
+  // Maximum number of iterations to perform - this is a suggested value and might be adjusted by the algorithm as required
+  numIter: 2500,
+  // For enabling tiling
+  tile: true,
+  // The comparison function to be used while sorting nodes during tiling operation.
+  // Takes the ids of 2 nodes that will be compared as a parameter and the default tiling operation is performed when this option is not set.
+  // It works similar to ``compareFunction`` parameter of ``Array.prototype.sort()``
+  // If node1 is less then node2 by some ordering criterion ``tilingCompareBy(nodeId1, nodeId2)`` must return a negative value
+  // If node1 is greater then node2 by some ordering criterion ``tilingCompareBy(nodeId1, nodeId2)`` must return a positive value
+  // If node1 is equal to node2 by some ordering criterion ``tilingCompareBy(nodeId1, nodeId2)`` must return 0
+  tilingCompareBy: undefined, 
+  // Represents the amount of the vertical space to put between the zero degree members during the tiling operation(can also be a function)
+  tilingPaddingVertical: 10,
+  // Represents the amount of the horizontal space to put between the zero degree members during the tiling operation(can also be a function)
+  tilingPaddingHorizontal: 10,
+  // Gravity force (constant)
+  gravity: 0.25,
+  // Gravity range (constant) for compounds
+  gravityRangeCompound: 1.5,
+  // Gravity force (constant) for compounds
+  gravityCompound: 1.0,
+  // Gravity range (constant)
+  gravityRange: 3.8, 
+  // Initial cooling factor for incremental layout  
+  initialEnergyOnIncremental: 0.3,
+
+  /* constraint options */
+
+  // Fix desired nodes to predefined positions
+  // [{nodeId: 'n1', position: {x: 100, y: 200}}, {...}]
+  fixedNodeConstraint: undefined,
+  // Align desired nodes in vertical/horizontal direction
+  // {vertical: [['n1', 'n2'], [...]], horizontal: [['n2', 'n4'], [...]]}
+  alignmentConstraint: undefined,
+  // Place two nodes relatively in vertical/horizontal direction
+  // [{top: 'n1', bottom: 'n2', gap: 100}, {left: 'n3', right: 'n4', gap: 75}, {...}]
+  relativePlacementConstraint: undefined,
+
+  /* layout event callbacks */
+  ready: () => {}, // on layoutready
+  stop: () => {} // on layoutstop
+};
+
+var coseBilkentLayoutOptions = {
   name : 'cose-bilkent',
   // Called on `layoutready`
   ready: function () {
@@ -244,11 +373,14 @@ var layoutOptions = {
   initialEnergyOnIncremental: 0.5
 };
 
-cy.layout(layoutOptions).run();
-// Add style for the selected node
+// CHoisir une des variables précédentes
+// cy.layout(fcoseLayoutOptions).run();
+
+
+// Crée des labels en HTML pour gérer les maths et la mise en forme
 
 cy.nodeHtmlLabel([{
-  query: 'node',
+  query: '.item_cours',
   valign: "center",
   halign: "center",
   valignBox: "center",
@@ -277,14 +409,14 @@ cy.nodeHtmlLabel([{
 }
 ]);
 
-
-let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
+// Fonction pour tester si tous les prérequis d'un noeud sont acquis
 
 function isAccessible(nodeId){
   const node = treeData.nodes.find(n => n.data.id === nodeId);
   return node.data.prerequis.every(p => progress[p]);
 }
 
+// Fonction qui met à jour les classes de tous les noeuds et arêtes, appelée à chaque fois qu'un status est modifié
 function updateColors() {
   treeData.nodes.forEach(n => {
     const node = cy.getElementById(n.data.id);
@@ -318,6 +450,13 @@ function updateColors() {
   })
 }
 
+
+//Fonction qui met à jour la position des noeuds en animant
+function updatePosition(){
+  cy.layout({name: 'preset', positions: storedNodePositions, ...presetLayoutoptions}).run()
+}
+
+// Highlight tous les edge venant d'une liste de noeuds (prérequis) allant vers un noeud donné (prend en paramètre une liste de id et un id)
 function highlightEdges(sourceIds, targetId){
   cy.edges().removeClass('highlighted');
   sourceIds.forEach(sourceId => {
@@ -325,13 +464,41 @@ function highlightEdges(sourceIds, targetId){
     edge.addClass('highlighted');
   });
 }
-function highlightPrerequisites(prereqs){
-  prereqs.forEach(pr => {
+//  Highlight une liste de noeud (prend en paramètre les id)
+function highlightNodes(nodeList){
+  nodeList.forEach(pr => {
     const node = cy.getElementById(pr);
     node.addClass('highlighted');
   });
 }
 
+// Get all nodes positions
+
+function getAllPositions(){
+  const positions = {};
+  treeData.nodes.forEach(n => {
+    const node = cy.getElementById(n.data.id);
+    positions[n.data.id] = node.position();
+  });
+  return positions
+}
+
+//download node position
+function downloadNodePositions(){
+  positions = getAllPositions()  
+  const blob = new Blob(
+    [JSON.stringify(positions, null, 2)],
+    { type: "application/json" }
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "node_positions.json";
+  a.click();
+}
+// download progress
 function downloadProgress() {
   const blob = new Blob(
     [JSON.stringify(progress, null, 2)],
@@ -345,7 +512,7 @@ function downloadProgress() {
   a.download = "progression.json";
   a.click();
 }
-
+// Load progress
 function loadProgress(event) {
   const file = event.target.files[0];
 
@@ -361,7 +528,23 @@ function loadProgress(event) {
 
   reader.readAsText(file);
 }
+// Load node position
+function loadNodePositions(event){
+  const file = event.target.files[0];
 
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    storedNodePositions = JSON.parse(e.target.result);
+    
+    localStorage.setItem("storedNodePositions", JSON.stringify(nodePositions));
+    updatePosition()
+  };
+
+  reader.readAsText(file);
+
+}
+// Charge le contenu de l'onglet contenant les détails sur un noeud donné
 function loadNodeDetails(nodeId,title) {
 
   const filePath = `../content/nodes/${nodeId}.html`; // Use relative path
@@ -401,12 +584,12 @@ function loadNodeDetails(nodeId,title) {
       detailPanelContent.innerHTML = `<p>Les détails pour "${nodeId}" ne sont pas encore disponibles, merci de patienter !.</p>`;
     });
 }
-
+// Ferme le paneau de contenu
 function closePanel() {
   panel.classList.remove("half","full");
   overlay.classList.remove("visible");
 }
-
+// Change le status du noeud sélectionné en "acquis"
 function setToAcquired() {
   const selectedNodes = cy.nodes(':selected');
   selectedNodes.forEach(node => {
@@ -419,7 +602,7 @@ function setToAcquired() {
   closePanel()
 });
 }
-
+// Enlève le status "acquis" du noeud sélectionné
 function setToAccessible() {
   const selectedNodes = cy.nodes(':selected');
   selectedNodes.forEach(node => {
@@ -430,7 +613,7 @@ function setToAccessible() {
     updateColors();
     closePanel();
 }
-
+// Highlight les prérequis du noeud sélectionné
 function showPrerequisite() {
   const selectedNodes = cy.nodes(':selected');
   if(selectedNodes.length === 0) return;
@@ -446,12 +629,12 @@ function showPrerequisite() {
 
   currentNodeList.push(...prereqs);
   highlightEdges(prereqs, nodeId)
-  highlightPrerequisites(prereqs);
+  highlightNodes(prereqs);
   animateToFit(currentNodeList);
   closePanel();
 }
 
-
+// reset progress
 function reset() {
   progress = {};
   localStorage.removeItem("mathProgress");
@@ -460,16 +643,15 @@ function reset() {
 
 
 // Hover effect on node
-cy.on('mouseover', 'node', (e) =>{
+cy.on('mouseover', 'node.item_cours', (e) =>{
   e.target.addClass('hover');
 })
-
-cy.on('mouseout', 'node', (e) =>{
+cy.on('mouseout', 'node.item_cours', (e) =>{
   e.target.removeClass('hover');
 })
 
 
-// Clic sur le fond ou sur les noeuds chapitres
+// Clic sur le fond ou sur les noeuds chapitres ferme le paneau d'information
 cy.on('tap', function (event) {
   if ((event.target === cy) || event.target.isParent()) {
     cy.nodes().unselect();
@@ -480,14 +662,29 @@ cy.on('tap', function (event) {
   }
 });
 
-
+// Met à jour les couleurs dès le début
 cy.ready(() => {
   updateColors();
 });
 
+// Met une liste de noeud en mémoire pour changer éventuellement le focus
 let currentNodeList = []
 
 
+// Focus sur une liste de noeud avec animation
+function animateToFit(nodeList) {
+  cy.animate({
+    fit: {
+      eles: cy.$(nodeList.map(id => `#${id}`).join(', ')),
+      padding: 50
+    }
+  }, {
+    duration: 500
+  });
+}
+
+
+// Gère ce qui se passe quand on clique sur un noeud
 cy.on('tap', 'node', function (event) {
   const nodeId = event.target.id(); // Get selected node ID
   // Ne rien faire si c'est un noeud parent
@@ -501,10 +698,9 @@ cy.on('tap', 'node', function (event) {
   currentNodeList.push(nodeId)
 });
 
-
+// Evenements qui ferment le paneau d'information
 closeBtn.onclick = closePanel;
 overlay.onclick = closePanel;
-
 
 let startY = 0;
 let currentY = 0;
@@ -544,13 +740,8 @@ document.addEventListener("click", e => {
   }
 })
 
-function animateToFit(nodeList) {
-  cy.animate({
-    fit: {
-      eles: cy.$(nodeList.map(id => `#${id}`).join(', ')),
-      padding: 50
-    }
-  }, {
-    duration: 500
-  });
-}
+// Enregistrer la positions des noeuds lorsqu'on ferme la fenetre
+window.addEventListener("beforeunload", function(e){
+  let nodePositions = getAllPositions(); 
+  localStorage.setItem("storedNodePositions", JSON.stringify(nodePositions));
+});
