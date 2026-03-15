@@ -2,7 +2,7 @@
 id: ensemble_comprehension
 prerequis:
   - "[[Ensemble]]"
-  - "[[Proposition]]"
+  - "[[Proposition (Logique)]]"
 type: definition
 title:
 ---

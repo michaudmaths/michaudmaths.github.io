@@ -1,6 +1,6 @@
 ---
 id: non_logique
 prerequis:
-  - "[[Proposition]]"
+  - "[[Proposition (Logique)]]"
 type: definition
 ---

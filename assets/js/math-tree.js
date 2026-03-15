@@ -6,6 +6,7 @@ const closeBtn = document.getElementById("close-panel");
 const handle = document.getElementById("drag-handle");
 
 
+
 // Charger progrès depuis le storage local
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
@@ -48,7 +49,7 @@ const statusVarColors = {
 
 const styleListForChapterColor = chapterToColor.flatMap(chapter => [
   {
-    selector: `node[category = "${chapter.title}"].chapter_label`,
+    selector: `node[category = "${chapter.title}"].chapter-label`,
     style: {
       'color' : chapter.color,
       'text-background-color' : changeColor(chapter.color,0.9),
@@ -121,7 +122,7 @@ function setColors() {
   treeData.edges.forEach(e => {
     const sourceAcquired = progress[e.data.source];
     if (sourceAcquired) {
-      e.classes.push('parent_acquired');
+      e.classes.push('parent-acquired');
     } 
   })
 }
@@ -136,7 +137,7 @@ var presetLayoutoptions = {
   fit: true, // whether to fit to viewport
   padding: 30, // padding on fit
   spacingFactor: undefined, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
-  animate: false, // whether to transition the node positions
+  animate: true, // whether to transition the node positions
   animationDuration: 500, // duration of animation in ms if enabled
   animationEasing: undefined, // easing of animation if enabled
   animateFilter: function ( node, i ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
@@ -273,7 +274,7 @@ var coseBilkentLayoutOptions = {
   // Whether to tile disconnected nodes
   tile: true,
   // Type of layout animation. The option set is {'during', 'end', false}
-  animate: 'false',
+  animate: 'true',
   // Duration for animate:end
   animationDuration: 500,
   // Amount of vertical space to put between degree zero nodes during tiling (can also be a function)
@@ -323,7 +324,7 @@ const cy = cytoscape({
         'color': '#000',
         'font-size': '18px',
         'transition-property': 'width height font-size background-color border-color color',
-        'transition-duration' : '300ms',
+        'transition-duration' : '500ms',
       }
     },
     {
@@ -335,7 +336,34 @@ const cy = cytoscape({
       }
     },
     {
-      selector: 'node.chapter_label',
+      selector : 'node.unavailable.hidden',
+      style: {
+        'text-opacity': 0,
+        'background-opacity': 0,
+        'border-opacity': 0,
+        'events' : 'no'
+      }
+    },
+    {
+      selector : 'node.chapter-node.hidden',
+      style: {
+        'text-opacity': 0,
+        'background-opacity': 0,
+        'border-opacity': 0,
+        'events' : 'no'
+      }
+    },
+    {
+      selector : 'node.chapter-label.hidden',
+      style: {
+        'text-opacity': 0,
+        'background-opacity': 0,
+        'border-opacity': 0,
+        'events' : 'no'
+      }
+    },
+    {
+      selector: 'node.chapter-label',
       style:{
         'width':'150px',
         'height':'20px',
@@ -370,14 +398,21 @@ const cy = cytoscape({
         'line-color': '#d1d1d1',
         'target-arrow-color': '#d1d1d1',
         'transition-property': 'line-color target-arrow-color',
-        'transition-duration' : '300ms',
+        'transition-duration' : '500ms',
       }
     },
     {
-      selector: 'edge.parent_acquired',
+      selector: 'edge.parent-acquired',
       style: {
         'line-color': '#000000',
         'target-arrow-color': '#000000',
+      }
+    },
+    {
+      selector : 'edge.target-unavailable.hidden',
+      style: {
+        'display' : 'none',
+        'events' : 'no'
       }
     },
     // Important de garder ces deux styles à la fin pour qu'ils soient prioritaires
@@ -399,10 +434,13 @@ const cy = cytoscape({
 });
 
 
+// Place les titres de chapitre correctement
+updateTitlePositions()
+
 // Crée des labels en HTML pour gérer les maths et la mise en forme
 
 cy.nodeHtmlLabel([{
-  query: '.item_cours',
+  query: '.item-cours',
   valign: "center",
   halign: "center",
   valignBox: "center",
@@ -428,6 +466,10 @@ cy.nodeHtmlLabel([{
 
     return div.outerHTML;
   }
+},
+{
+  query: '.item-cours.unavailable.hidden',
+  tpl: () => ''
 }
 ]);
 
@@ -451,6 +493,7 @@ function updateColors() {
       node.removeClass('unavailable');
     } else if (isAccessible(n.data.id)) {
       node.removeClass('unavailable');
+      node.removeClass('acquired')
       node.addClass('current')
     } else {
       node.removeClass('acquired');
@@ -460,16 +503,23 @@ function updateColors() {
   });
   treeData.edges.forEach(e => {
     const sourceAcquired = progress[e.data.source];
+    const targetAccessible = isAccessible(e.data.target);
     const edge = cy.getElementById(e.data.id);
     if (edge.hasClass('highlighted')){
       return;
     }
     if (sourceAcquired) {
-      edge.addClass('parent_acquired');
+      edge.addClass('parent-acquired');
     } else {
-      edge.removeClass('parent_acquired'); 
+      edge.removeClass('parent-acquired');
     }
-  })
+    if (targetAccessible){
+      edge.removeClass('target-unavailable')
+    }else{
+      edge.addClass('target-unavailable')
+    }
+    }
+  )
 }
 
 
@@ -478,24 +528,22 @@ function updateAllPositions(){
   layout = cy.layout({
     name: 'preset',
     positions: storedNodePositions,
-    fit: false
+    fit: false,
+    animate: true,
+    animationDuration: 1000
   });
   layout.run();
 }
 
 //Fonction qui met à jour la position des titres 
 function updateTitlePositions(){
-  cy.$('node.chapter_label').positions(
+  cy.$('node.chapter-label').positions(
     function (node,i){
-      let nodes_chapter = cy.$(`node[category = "${node.data('category')}"]`);
-      let nodes_parents = cy.$('node:parent');
-      let nodes_chapter_label = cy.$('node.chapter_label');
-      let nodes = nodes_chapter.difference(nodes_parents).difference(nodes_chapter_label);
+      let nodesInChapter = cy.$(`node[category = "${node.data('category')}"]`);
+      let nodesChapters = cy.$('node.chapter-node');
+      let nodesChapterLabel = cy.$('node.chapter-label');
+      let nodes = nodesInChapter.difference(nodesChapters).difference(nodesChapterLabel);
       let box = nodes.boundingBox()
-      console.log(nodes_chapter.size())
-      console.log(nodes_parents.size())
-      console.log(nodes_chapter_label.size());
-      console.log(nodes.size());
       return {
         x: box.x1 + box.w/2,
         y: box.y1 - 25
@@ -691,10 +739,10 @@ function reset() {
 
 
 // Hover effect on node
-cy.on('mouseover', 'node.item_cours', (e) =>{
+cy.on('mouseover', 'node.item-cours', (e) =>{
   e.target.addClass('hover');
 })
-cy.on('mouseout', 'node.item_cours', (e) =>{
+cy.on('mouseout', 'node.item-cours', (e) =>{
   e.target.removeClass('hover');
 })
 
@@ -707,6 +755,7 @@ cy.on('tap', function (event) {
     cy.nodes().removeClass('highlighted');
     closePanel();
     currentNodeList = [];
+    closeMenu();
   }
 });
 
@@ -796,4 +845,147 @@ document.addEventListener("click", e => {
 window.addEventListener("beforeunload", function(e){
   let nodePositions = getAllPositions(); 
   localStorage.setItem("storedNodePositions", JSON.stringify(nodePositions));
+});
+
+// ***************************************************
+// TOOLTIP
+// ***************************************************
+
+// fonction qui détecte s'il y a des maths
+function containsMath(text){
+  return /\\\(|\\\[|\$/.test(text);
+}
+
+
+const mathTooltip = document.getElementById("math-tooltip");
+
+let useMathTooltip = false;
+
+const tooltip = document.getElementById("tooltip");
+
+let hoveredNode = null;
+
+cy.on("mouseover","node",evt=>{
+  if(!tooltipsActivated) return;
+  hoveredNode = evt.target;
+  if(!hoveredNode.hasClass('item-cours')) return;
+
+  const text =
+    hoveredNode.data("tooltip") ||
+    hoveredNode.data("label");
+
+  useMathTooltip = containsMath(text);
+
+  if(useMathTooltip){
+
+    mathTooltip.innerHTML = text;
+    mathTooltip.classList.add("visible");
+
+    if(window.MathJax){
+      MathJax.typesetPromise([mathTooltip]);
+    }
+
+  } else{
+    tooltip.innerHTML = text;
+    tooltip.classList.add("visible");
+  }
+
+});
+
+cy.on("mouseout","node",()=>{
+  if(!tooltipsActivated) return;
+  hoveredNode = null;
+  mathTooltip.classList.remove("visible");
+  tooltip.classList.remove("visible")
+
+});
+
+
+cy.on("render",()=>{
+  if(!tooltipsActivated) return;
+  if(!hoveredNode) return;
+
+  const pos = hoveredNode.renderedPosition();
+
+  const text =
+    hoveredNode.data("tooltip") ||
+    hoveredNode.data('label')
+
+  /* si tooltip math → HTML */
+  
+  if(useMathTooltip){
+
+    mathTooltip.style.left = (pos.x+15)+"px";
+    mathTooltip.style.top = (pos.y-10)+"px";
+
+    return;
+  } else {
+
+    tooltip.style.left = (pos.x+15)+"px";
+    tooltip.style.top = (pos.y-10)+"px";
+  }
+});
+
+// ***************************************************
+// MENU
+// ***************************************************
+
+
+const graphGearBtn = document.getElementById("gear-btn");
+const graphDropdown = document.getElementById("menu-graph-dropdown");
+
+
+function closeMenu(){
+  graphDropdown.classList.toggle("hidden");
+}
+graphGearBtn.addEventListener("click", () => {
+  closeMenu()
+});
+
+
+const checkboxChapters = document.getElementById("toggle-chapter-nodes");
+
+checkboxChapters.addEventListener("change", () => {
+
+  if (checkboxChapters.checked) {
+    cy.nodes(".chapter-node").removeClass("hidden");
+    cy.nodes(".chapter-label").removeClass("hidden");
+  } 
+  else {
+    cy.nodes(".chapter-node").addClass("hidden");
+    cy.nodes(".chapter-label").addClass("hidden");
+    console.log(cy.$('#ensemble_image_reciproque').style())
+  }
+
+});
+
+const checkboxAccessibles = document.getElementById("toggle-accessibles-nodes");
+
+checkboxAccessibles.addEventListener("change", () => {
+
+  if (checkboxAccessibles.checked) {
+    cy.nodes('.item-cours').removeClass("hidden");
+    cy.nodes('.item-cours').removeClass("hidden");
+    cy.edges().removeClass("hidden");
+  } 
+  else {
+    cy.nodes('.item-cours').addClass("hidden");
+    cy.nodes('.item-cours').addClass("hidden");
+    cy.edges().addClass('hidden');
+  }
+});
+
+
+let tooltipsActivated = true
+
+const checkboxTooltips = document.getElementById("toggle-tooltips");
+
+checkboxTooltips.addEventListener("change", () => {
+
+  if (checkboxTooltips.checked) {
+    tooltipsActivated = true
+  } 
+  else {
+    tooltipsActivated = false
+  }
 });

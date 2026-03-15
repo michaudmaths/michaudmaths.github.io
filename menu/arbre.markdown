@@ -11,7 +11,8 @@ page_class: arbre
   const treeData = {{ site.data.graph | jsonify }};
   const nodePositions = {{ site.data.node_positions | jsonify }} 
 </script>
-
+<script defer src="/assets/js/mathjax-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
 <script src="https://unpkg.com/layout-base/layout-base.js"></script>
 <script src="https://unpkg.com/cose-base/cose-base.js"></script>
@@ -20,11 +21,11 @@ page_class: arbre
 <script src="/assets/js/cytoscape-cose-bilkent.js"></script>
 <script src="/assets/js/math-tree.js" defer></script>
 
-  <!-- Graph container -->
-<div id="graph"></div>
-  
-  <!-- Detail panel -->
+<div id="graph-container">
+<div id="graph"></div>  
 <div id="panel-overlay"></div>
+<div id="tooltip"></div>
+<div id="math-tooltip"></div>
 <div id="detail-panel">
   <div id="drag-handle"></div>
   <div id="panel-header">
@@ -39,9 +40,33 @@ page_class: arbre
   <div id="panel-content">Sélectionnez un noeud pour voir les détails ici.</div>
 </div>
 
-<button onclick="downloadProgress()">Télécharger ma progression</button>
-<input type="file" onchange="loadProgress(event)">
-<button onclick="downloadNodePositions()">Télécharger position des noeuds </button>
-<input type="file" onchange="loadNodePositions(event)">
-
-<button onclick="reset()">Tout réinitialiser</button>
+<div id="settings-menu">
+    <label id="gear-btn">
+    <img
+      src="/assets/svg/gear.svg"
+      height="35"
+      width="35"/>
+    </label>
+    <div id="menu-graph-dropdown" class="hidden">
+      <button onclick="downloadProgress()" class="graph-menu-item">Télécharger ma progression</button>
+      <label for="input_progress" class="graph-menu-item">Charger la progression</label>
+      <input type="file" id = "input_progress" onchange="loadProgress(event)" class="hidden">
+      <button onclick="downloadNodePositions()" class="graph-menu-item">Télécharger position des noeuds </button>
+      <label for="input_positions" class="graph-menu-item"> Charger la position des noeuds</label>
+      <input type="file" id = "input_positions" onchange="loadNodePositions(event)" class="hidden" >
+      <button onclick="reset()" class="graph-menu-item">Réinitialiser la progression</button>
+      <label class="menu-checkbox graph-menu-item" >
+        <input type="checkbox" id="toggle-chapter-nodes" checked>
+        Afficher les chapitres
+      </label>
+      <label class="menu-checkbox graph-menu-item" >
+        <input type="checkbox" id="toggle-accessibles-nodes" checked>
+        Afficher les noeuds inaccessibles
+      </label>
+      <label class="menu-checkbox graph-menu-item" >
+        <input type="checkbox" id="toggle-tooltips" checked>
+        Activer les tooltips
+      </label>
+    </div>
+</div>
+</div>

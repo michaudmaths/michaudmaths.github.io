@@ -7,7 +7,9 @@
         "category": "1 - Trigonométrie",
         "prerequis": []
       },
-      "classes": [],
+      "classes": [
+        "chapter-node"
+      ],
       "grabbable": true
     },
     {
@@ -19,7 +21,7 @@
         "prerequis": []
       },
       "classes": [
-        "chapter_label"
+        "chapter-label"
       ]
     },
     {
@@ -29,7 +31,9 @@
         "category": "2 - Logique",
         "prerequis": []
       },
-      "classes": [],
+      "classes": [
+        "chapter-node"
+      ],
       "grabbable": true
     },
     {
@@ -41,7 +45,7 @@
         "prerequis": []
       },
       "classes": [
-        "chapter_label"
+        "chapter-label"
       ]
     },
     {
@@ -51,7 +55,9 @@
         "category": "3 - Ensembles et applications",
         "prerequis": []
       },
-      "classes": [],
+      "classes": [
+        "chapter-node"
+      ],
       "grabbable": true
     },
     {
@@ -63,7 +69,7 @@
         "prerequis": []
       },
       "classes": [
-        "chapter_label"
+        "chapter-label"
       ]
     },
     {
@@ -73,7 +79,9 @@
         "category": "4 - Entiers, sommes, récurrence",
         "prerequis": []
       },
-      "classes": [],
+      "classes": [
+        "chapter-node"
+      ],
       "grabbable": true
     },
     {
@@ -85,7 +93,7 @@
         "prerequis": []
       },
       "classes": [
-        "chapter_label"
+        "chapter-label"
       ]
     },
     {
@@ -97,7 +105,7 @@
         "prerequis": []
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -111,7 +119,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -125,7 +133,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -137,7 +145,7 @@
         "prerequis": []
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -151,7 +159,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -165,7 +173,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -179,7 +187,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -194,7 +202,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -208,7 +216,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -222,7 +230,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -236,7 +244,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -252,7 +260,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -266,7 +274,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -280,7 +288,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -294,19 +302,19 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
       "data": {
         "id": "proposition",
-        "label": "Proposition",
+        "label": "Proposition (Logique)",
         "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": []
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -320,7 +328,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -334,7 +342,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -348,7 +356,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -362,7 +370,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -376,7 +384,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -390,7 +398,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -404,7 +412,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -418,7 +426,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -434,7 +442,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -448,7 +456,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -462,7 +470,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -476,7 +484,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -492,7 +500,21 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "arrangement",
+        "label": "Arrangement",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "n_uplet"
+        ]
+      },
+      "classes": [
+        "item-cours"
       ]
     },
     {
@@ -507,7 +529,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -522,7 +544,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -537,7 +559,22 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "cardinal_produit_cartesien",
+        "label": "Cardinal d'un produit cartésien",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "cardinal",
+          "produit_cartesien"
+        ]
+      },
+      "classes": [
+        "item-cours"
       ]
     },
     {
@@ -553,7 +590,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -568,7 +605,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -583,7 +620,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -598,7 +635,21 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "combinaison",
+        "label": "Combinaison",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "sous_ensemble"
+        ]
+      },
+      "classes": [
+        "item-cours"
       ]
     },
     {
@@ -612,7 +663,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -626,7 +677,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -641,7 +692,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -655,7 +706,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -671,7 +722,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -686,7 +737,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -700,7 +751,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -714,7 +765,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -729,7 +780,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -743,7 +794,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -758,7 +809,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -769,11 +820,12 @@
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble_comprehension",
-          "quantificateur_universel"
-        ]
+          "applications"
+        ],
+        "tooltip": "Si $f:E\\rightarrow F$ et $B\\subset F$, $f^{-1}(B):=\\{x\\in E\\ ,\\ f(x)\\in B\\}$"
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -788,7 +840,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -800,7 +852,7 @@
         "prerequis": []
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -815,7 +867,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -829,7 +881,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -845,7 +897,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -861,7 +913,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -877,7 +929,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -892,7 +944,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -907,7 +959,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -922,7 +974,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -937,7 +989,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -954,7 +1006,38 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "nombre_arrangements",
+        "label": "Nombre d'arrangements",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "arrangement",
+          "cardinal"
+        ]
+      },
+      "classes": [
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "nombre_combinaisons",
+        "label": "Nombre de combinaisons",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "combinaison",
+          "cardinal",
+          "coefficients_binomiaux"
+        ]
+      },
+      "classes": [
+        "item-cours"
       ]
     },
     {
@@ -969,7 +1052,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -985,7 +1068,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -999,7 +1082,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1014,7 +1097,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1029,7 +1112,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1046,7 +1129,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1061,7 +1144,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1076,7 +1159,21 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "sous_ensemble",
+        "label": "Sous-ensemble",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "inclusion"
+        ]
+      },
+      "classes": [
+        "item-cours"
       ]
     },
     {
@@ -1091,7 +1188,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1105,7 +1202,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1120,7 +1217,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1135,7 +1232,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1149,7 +1246,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1165,7 +1262,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1180,7 +1277,7 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
       ]
     },
     {
@@ -1195,7 +1292,21 @@
         ]
       },
       "classes": [
-        "item_cours"
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "coefficients_binomiaux",
+        "label": "Coefficients binomiaux",
+        "parent": "folder_4_-_Entiers,_sommes,_récurrence",
+        "category": "4 - Entiers, sommes, récurrence",
+        "prerequis": [
+          "factorielle"
+        ]
+      },
+      "classes": [
+        "item-cours"
       ]
     },
     {
@@ -1207,7 +1318,36 @@
         "prerequis": []
       },
       "classes": [
-        "item_cours"
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "factorielle",
+        "label": "Factorielle",
+        "parent": "folder_4_-_Entiers,_sommes,_récurrence",
+        "category": "4 - Entiers, sommes, récurrence",
+        "prerequis": [
+          "principe_recurrence"
+        ]
+      },
+      "classes": [
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "principe_recurrence",
+        "label": "Principe de récurrence",
+        "parent": "folder_4_-_Entiers,_sommes,_récurrence",
+        "category": "4 - Entiers, sommes, récurrence",
+        "prerequis": [
+          "entiers_naturels",
+          "proposition"
+        ]
+      },
+      "classes": [
+        "item-cours"
       ]
     }
   ],
@@ -1478,6 +1618,14 @@
     },
     {
       "data": {
+        "id": "n_uplet->arrangement",
+        "source": "n_uplet",
+        "target": "arrangement"
+      },
+      "classes": []
+    },
+    {
+      "data": {
         "id": "bijectivite->bijection_et_identite",
         "source": "bijectivite",
         "target": "bijection_et_identite"
@@ -1521,6 +1669,22 @@
         "id": "cardinal_union_disjointe->cardinal_ensemble_partitionne",
         "source": "cardinal_union_disjointe",
         "target": "cardinal_ensemble_partitionne"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->cardinal_produit_cartesien",
+        "source": "cardinal",
+        "target": "cardinal_produit_cartesien"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "produit_cartesien->cardinal_produit_cartesien",
+        "source": "produit_cartesien",
+        "target": "cardinal_produit_cartesien"
       },
       "classes": []
     },
@@ -1593,6 +1757,14 @@
         "id": "bijectivite->cardinal",
         "source": "bijectivite",
         "target": "cardinal"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "sous_ensemble->combinaison",
+        "source": "sous_ensemble",
+        "target": "combinaison"
       },
       "classes": []
     },
@@ -1742,8 +1914,8 @@
     },
     {
       "data": {
-        "id": "quantificateur_universel->ensemble_image_reciproque",
-        "source": "quantificateur_universel",
+        "id": "applications->ensemble_image_reciproque",
+        "source": "applications",
         "target": "ensemble_image_reciproque"
       },
       "classes": []
@@ -1958,6 +2130,46 @@
     },
     {
       "data": {
+        "id": "arrangement->nombre_arrangements",
+        "source": "arrangement",
+        "target": "nombre_arrangements"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->nombre_arrangements",
+        "source": "cardinal",
+        "target": "nombre_arrangements"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "combinaison->nombre_combinaisons",
+        "source": "combinaison",
+        "target": "nombre_combinaisons"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->nombre_combinaisons",
+        "source": "cardinal",
+        "target": "nombre_combinaisons"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "coefficients_binomiaux->nombre_combinaisons",
+        "source": "coefficients_binomiaux",
+        "target": "nombre_combinaisons"
+      },
+      "classes": []
+    },
+    {
+      "data": {
         "id": "ensembles_disjoints->partition_ensemble",
         "source": "ensembles_disjoints",
         "target": "partition_ensemble"
@@ -2102,6 +2314,14 @@
     },
     {
       "data": {
+        "id": "inclusion->sous_ensemble",
+        "source": "inclusion",
+        "target": "sous_ensemble"
+      },
+      "classes": []
+    },
+    {
+      "data": {
         "id": "composition_applications->composition_surjectivite",
         "source": "composition_applications",
         "target": "composition_surjectivite"
@@ -2217,6 +2437,38 @@
         "id": "egalite_ensembles->egalite_double_inclusion",
         "source": "egalite_ensembles",
         "target": "egalite_double_inclusion"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "factorielle->coefficients_binomiaux",
+        "source": "factorielle",
+        "target": "coefficients_binomiaux"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "principe_recurrence->factorielle",
+        "source": "principe_recurrence",
+        "target": "factorielle"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "entiers_naturels->principe_recurrence",
+        "source": "entiers_naturels",
+        "target": "principe_recurrence"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "proposition->principe_recurrence",
+        "source": "proposition",
+        "target": "principe_recurrence"
       },
       "classes": []
     }

@@ -1,6 +1,6 @@
 ---
 id: ou_logique
 prerequis:
-  - "[[Proposition]]"
+  - "[[Proposition (Logique)]]"
 type: definition
 ---

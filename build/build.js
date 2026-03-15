@@ -159,7 +159,7 @@ function build() {
         category: folder,
         prerequis: [],
       },
-      classes: [],
+      classes: ['chapter-node'],
       grabbable: true // A enlever 
     });
     nodes.push({
@@ -170,7 +170,7 @@ function build() {
         label: folder,
         prerequis: [],
       },
-      classes : ['chapter_label'],
+      classes : ['chapter-label'],
     })
   });
 
@@ -281,9 +281,10 @@ function build() {
         label: meta.title || filename || meta.id,
         parent : `folder_${folder.replace(/\s+/g, "_")}`,
         category: folder,
-        prerequis: prereqsList || []
+        prerequis: prereqsList || [],
+        tooltip : meta.tooltip
       },
-      classes: ['item_cours']
+      classes: ['item-cours']
     });
   
     /*
