@@ -1,7 +1,8 @@
 ---
-id: union
+id: intersection
 prerequis:
-  - "[[OU (logique)]]"
+  - "[[ET (logique)]]"
   - "[[Ensemble défini en compréhension]]"
 type: definition
+title:
 ---

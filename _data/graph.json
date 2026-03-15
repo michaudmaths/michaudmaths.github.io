@@ -7,7 +7,8 @@
         "category": "1 - Trigonométrie",
         "prerequis": []
       },
-      "grabbable": false
+      "classes": [],
+      "grabbable": true
     },
     {
       "data": {
@@ -28,7 +29,8 @@
         "category": "2 - Logique",
         "prerequis": []
       },
-      "grabbable": false
+      "classes": [],
+      "grabbable": true
     },
     {
       "data": {
@@ -49,7 +51,8 @@
         "category": "3 - Ensembles et applications",
         "prerequis": []
       },
-      "grabbable": false
+      "classes": [],
+      "grabbable": true
     },
     {
       "data": {
@@ -57,6 +60,28 @@
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "label": "3 - Ensembles et applications",
+        "prerequis": []
+      },
+      "classes": [
+        "chapter_label"
+      ]
+    },
+    {
+      "data": {
+        "id": "folder_4_-_Entiers,_sommes,_récurrence",
+        "label": "4 - Entiers, sommes, récurrence",
+        "category": "4 - Entiers, sommes, récurrence",
+        "prerequis": []
+      },
+      "classes": [],
+      "grabbable": true
+    },
+    {
+      "data": {
+        "id": "folder_4_-_Entiers,_sommes,_récurrence_label",
+        "parent": "folder_4_-_Entiers,_sommes,_récurrence",
+        "category": "4 - Entiers, sommes, récurrence",
+        "label": "4 - Entiers, sommes, récurrence",
         "prerequis": []
       },
       "classes": [
@@ -150,8 +175,6 @@
         "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
-          "implication_logique",
-          "non_logique",
           "equivalence_logique"
         ]
       },
@@ -190,20 +213,6 @@
     },
     {
       "data": {
-        "id": "parties_ensemble",
-        "label": "Ensemble des parties d'un ensemble",
-        "parent": "folder_2_-_Logique",
-        "category": "2 - Logique",
-        "prerequis": [
-          "inclusion"
-        ]
-      },
-      "classes": [
-        "item_cours"
-      ]
-    },
-    {
-      "data": {
         "id": "autre_formulation_implication",
         "label": "Implication (formulation équivalente)",
         "parent": "folder_2_-_Logique",
@@ -223,9 +232,6 @@
         "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
-          "et_logique",
-          "non_logique",
-          "ou_logique",
           "table_verite"
         ]
       },
@@ -352,7 +358,6 @@
         "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
-          "implication_logique",
           "equivalence_logique"
         ]
       },
@@ -423,7 +428,6 @@
         "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
-          "proposition",
           "ou_logique",
           "et_logique",
           "non_logique"
@@ -440,10 +444,6 @@
         "parent": "folder_2_-_Logique",
         "category": "2 - Logique",
         "prerequis": [
-          "et_logique",
-          "ou_logique",
-          "non_logique",
-          "table_verite",
           "implication_logique"
         ]
       },
@@ -467,12 +467,191 @@
     },
     {
       "data": {
+        "id": "application_identite",
+        "label": "Application identité",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
         "id": "applications",
         "label": "Applications",
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
-          "ensemble"
+          "ensemble",
+          "quantificateur_existentiel",
+          "quantificateur_universel"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "bijection_et_identite",
+        "label": "Bijection et application identité",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "bijectivite",
+          "application_identite"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "bijectivite",
+        "label": "Bijectivité",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "injectivite",
+          "surjectivite"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "cardinal_ensemble_partitionne",
+        "label": "Cardinal d'un ensemble partitionné",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "partition_ensemble",
+          "cardinal_union_disjointe"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "cardinal_union_disjointe",
+        "label": "Cardinal d'une union disjointe",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensembles_disjoints",
+          "cardinal",
+          "union"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "cardinal_ensemble_parties",
+        "label": "Cardinal de l'ensemble des parties d'en ensemble",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "parties_ensemble",
+          "cardinal_ensemble_partitionne"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "cardinal_inclusion",
+        "label": "Cardinal et inclusion",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "cardinal",
+          "inclusion"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "cardinal",
+        "label": "Cardinal",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "entiers_naturels",
+          "bijectivite"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "complementaire",
+        "label": "Complémentaire",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "difference_ensembles"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "composition_applications",
+        "label": "Composition d'applications",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "composee_bijections",
+        "label": "Composée de bijections",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "composition_applications",
+          "bijectivite"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "couple",
+        "label": "Couple",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "n_uplet"
         ]
       },
       "classes": [
@@ -486,10 +665,52 @@
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
-          "ensemble",
           "appartenance",
           "ensemble_comprehension",
           "non_logique"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "distributivité_ensembles",
+        "label": "Distributivité (Ensembles)",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "union",
+          "intersection"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "denombrement_inj_surj_bij",
+        "label": "Dénombrement et injection, surjection, bijection",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "cardinal"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "parties_ensemble",
+        "label": "Ensemble des parties d'un ensemble",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "inclusion"
         ]
       },
       "classes": [
@@ -504,8 +725,7 @@
         "category": "3 - Ensembles et applications",
         "prerequis": [
           "ensemble",
-          "quantificateur_universel",
-          "quantificateur_existentiel"
+          "proposition"
         ]
       },
       "classes": [
@@ -528,12 +748,41 @@
     },
     {
       "data": {
+        "id": "image_directe",
+        "label": "Ensemble image directe $f(A)$",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications",
+          "ensemble_comprehension"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "ensemble_image_reciproque",
+        "label": "Ensemble image réciproque $f^{-1}(B)$",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble_comprehension",
+          "quantificateur_universel"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
         "id": "ensemble_vide",
         "label": "Ensemble vide",
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
-          "ensemble",
           "appartenance",
           "quantificateur_universel"
         ]
@@ -556,13 +805,59 @@
     },
     {
       "data": {
+        "id": "ensembles_disjoints",
+        "label": "Ensembles disjoints",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "intersection",
+          "ensemble_vide"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
         "id": "famille",
         "label": "Famille",
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
-          "applications",
-          "ensemble"
+          "applications"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "formule_crible",
+        "label": "Formule du crible",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "union",
+          "intersection",
+          "cardinal"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "inclusion_egalite_cardinal",
+        "label": "Inclusion et égalité des cardinaux",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "inclusion",
+          "cardinal",
+          "egalite_ensembles"
         ]
       },
       "classes": [
@@ -576,10 +871,178 @@
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
-          "ensemble",
           "appartenance",
           "quantificateur_universel",
           "implication_logique"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "composition_injectivite",
+        "label": "Injectivité et composition",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "composition_applications",
+          "injectivite"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "injectivite",
+        "label": "Injectivité",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications",
+          "implication_logique"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "intersection_quelconque",
+        "label": "Intersection quelconque",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "quantificateur_existentiel",
+          "intersection"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "intersection",
+        "label": "Intersection",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "et_logique",
+          "ensemble_comprehension"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "lois_de_morgan_ensembles",
+        "label": "Lois de De Morgan (Ensembles)",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "lois_de_morgan_logique",
+          "union",
+          "intersection",
+          "complementaire"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "partition_ensemble",
+        "label": "Partition d'un ensemble",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensembles_disjoints",
+          "union_quelconque"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "complementaire_inclusion",
+        "label": "Passage au complémentaire dans une inclusion",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "complementaire",
+          "contraposee",
+          "inclusion"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "principe_tiroirs",
+        "label": "Principe des tiroirs",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "cardinal"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "produit_cartesien",
+        "label": "Produit cartésien",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "ensemble_comprehension",
+          "n_uplet"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "prolongement_application",
+        "label": "Prolongement d'une application",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications",
+          "inclusion"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "proprietes_image_directe",
+        "label": "Propriétés de l'ensemble image directe",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "image_directe",
+          "union",
+          "intersection",
+          "inclusion"
         ]
       },
       "classes": [
@@ -603,13 +1066,86 @@
     },
     {
       "data": {
+        "id": "restriction_application",
+        "label": "Restriction d'une application",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications",
+          "inclusion"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "composition_surjectivite",
+        "label": "Surjectivité et composition",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "composition_applications",
+          "surjectivite"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "surjectivite",
+        "label": "Surjectivité",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "union_quelconque",
+        "label": "Union quelconque",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "union",
+          "quantificateur_existentiel"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
         "id": "union",
         "label": "Union",
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
-          "ensemble",
-          "ou_logique"
+          "ou_logique",
+          "ensemble_comprehension"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "n_uplet",
+        "label": "$n$-uplet",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "famille"
         ]
       },
       "classes": [
@@ -623,11 +1159,52 @@
         "parent": "folder_3_-_Ensembles_et_applications",
         "category": "3 - Ensembles et applications",
         "prerequis": [
-          "ensemble",
           "appartenance",
           "quantificateur_universel",
           "equivalence_logique"
         ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "egalite_applications",
+        "label": "Égalité de deux applications",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "applications",
+          "egalite_ensembles"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "egalite_double_inclusion",
+        "label": "Égalité par double inclusion",
+        "parent": "folder_3_-_Ensembles_et_applications",
+        "category": "3 - Ensembles et applications",
+        "prerequis": [
+          "inclusion",
+          "egalite_ensembles"
+        ]
+      },
+      "classes": [
+        "item_cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "entiers_naturels",
+        "label": "Entiers naturels",
+        "parent": "folder_4_-_Entiers,_sommes,_récurrence",
+        "category": "4 - Entiers, sommes, récurrence",
+        "prerequis": []
       },
       "classes": [
         "item_cours"
@@ -640,469 +1217,1008 @@
         "id": "cercle_trigo->fonction_cosinus",
         "source": "cercle_trigo",
         "target": "fonction_cosinus"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "cercle_trigo->fonction_sinus",
         "source": "cercle_trigo",
         "target": "fonction_sinus"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "implication_logique->condition_necessaire",
         "source": "implication_logique",
         "target": "condition_necessaire"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "implication_logique->condition_suffisante",
         "source": "implication_logique",
         "target": "condition_suffisante"
-      }
-    },
-    {
-      "data": {
-        "id": "implication_logique->contraposee",
-        "source": "implication_logique",
-        "target": "contraposee"
-      }
-    },
-    {
-      "data": {
-        "id": "non_logique->contraposee",
-        "source": "non_logique",
-        "target": "contraposee"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "equivalence_logique->contraposee",
         "source": "equivalence_logique",
         "target": "contraposee"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "inclusion->double_inclusion",
         "source": "inclusion",
         "target": "double_inclusion"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "egalite_ensembles->double_inclusion",
         "source": "egalite_ensembles",
         "target": "double_inclusion"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "proposition->et_logique",
         "source": "proposition",
         "target": "et_logique"
-      }
-    },
-    {
-      "data": {
-        "id": "inclusion->parties_ensemble",
-        "source": "inclusion",
-        "target": "parties_ensemble"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "implication_logique->autre_formulation_implication",
         "source": "implication_logique",
         "target": "autre_formulation_implication"
-      }
-    },
-    {
-      "data": {
-        "id": "et_logique->implication_logique",
-        "source": "et_logique",
-        "target": "implication_logique"
-      }
-    },
-    {
-      "data": {
-        "id": "non_logique->implication_logique",
-        "source": "non_logique",
-        "target": "implication_logique"
-      }
-    },
-    {
-      "data": {
-        "id": "ou_logique->implication_logique",
-        "source": "ou_logique",
-        "target": "implication_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "table_verite->implication_logique",
         "source": "table_verite",
         "target": "implication_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "et_logique->lois_de_morgan_logique",
         "source": "et_logique",
         "target": "lois_de_morgan_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "non_logique->lois_de_morgan_logique",
         "source": "non_logique",
         "target": "lois_de_morgan_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ou_logique->lois_de_morgan_logique",
         "source": "ou_logique",
         "target": "lois_de_morgan_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "proposition->non_logique",
         "source": "proposition",
         "target": "non_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "autre_formulation_implication->negation_implication",
         "source": "autre_formulation_implication",
         "target": "negation_implication"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "proposition->ou_logique",
         "source": "proposition",
         "target": "ou_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "proposition->quantificateur_existentiel",
         "source": "proposition",
         "target": "quantificateur_existentiel"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "proposition->quantificateur_universel",
         "source": "proposition",
         "target": "quantificateur_universel"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "contraposee->raisonnement_contraposee",
         "source": "contraposee",
         "target": "raisonnement_contraposee"
-      }
-    },
-    {
-      "data": {
-        "id": "implication_logique->raisonnement_double_implication",
-        "source": "implication_logique",
-        "target": "raisonnement_double_implication"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "equivalence_logique->raisonnement_double_implication",
         "source": "equivalence_logique",
         "target": "raisonnement_double_implication"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "equivalence_logique->raisonnement_equivalence",
         "source": "equivalence_logique",
         "target": "raisonnement_equivalence"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "raisonnement_contraposee->raisonner_contraposee",
         "source": "raisonnement_contraposee",
         "target": "raisonner_contraposee"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "raisonnement_double_implication->raisonner_double_implication",
         "source": "raisonnement_double_implication",
         "target": "raisonner_double_implication"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "raisonnement_equivalence->raisonner_equivalence",
         "source": "raisonnement_equivalence",
         "target": "raisonner_equivalence"
-      }
-    },
-    {
-      "data": {
-        "id": "proposition->table_verite",
-        "source": "proposition",
-        "target": "table_verite"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ou_logique->table_verite",
         "source": "ou_logique",
         "target": "table_verite"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "et_logique->table_verite",
         "source": "et_logique",
         "target": "table_verite"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "non_logique->table_verite",
         "source": "non_logique",
         "target": "table_verite"
-      }
-    },
-    {
-      "data": {
-        "id": "et_logique->equivalence_logique",
-        "source": "et_logique",
-        "target": "equivalence_logique"
-      }
-    },
-    {
-      "data": {
-        "id": "ou_logique->equivalence_logique",
-        "source": "ou_logique",
-        "target": "equivalence_logique"
-      }
-    },
-    {
-      "data": {
-        "id": "non_logique->equivalence_logique",
-        "source": "non_logique",
-        "target": "equivalence_logique"
-      }
-    },
-    {
-      "data": {
-        "id": "table_verite->equivalence_logique",
-        "source": "table_verite",
-        "target": "equivalence_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "implication_logique->equivalence_logique",
         "source": "implication_logique",
         "target": "equivalence_logique"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ensemble->appartenance",
         "source": "ensemble",
         "target": "appartenance"
-      }
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "applications->application_identite",
+        "source": "applications",
+        "target": "application_identite"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ensemble->applications",
         "source": "ensemble",
         "target": "applications"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
-        "id": "ensemble->difference_ensembles",
-        "source": "ensemble",
-        "target": "difference_ensembles"
-      }
+        "id": "quantificateur_existentiel->applications",
+        "source": "quantificateur_existentiel",
+        "target": "applications"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel->applications",
+        "source": "quantificateur_universel",
+        "target": "applications"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "bijectivite->bijection_et_identite",
+        "source": "bijectivite",
+        "target": "bijection_et_identite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "application_identite->bijection_et_identite",
+        "source": "application_identite",
+        "target": "bijection_et_identite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "injectivite->bijectivite",
+        "source": "injectivite",
+        "target": "bijectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "surjectivite->bijectivite",
+        "source": "surjectivite",
+        "target": "bijectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "partition_ensemble->cardinal_ensemble_partitionne",
+        "source": "partition_ensemble",
+        "target": "cardinal_ensemble_partitionne"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal_union_disjointe->cardinal_ensemble_partitionne",
+        "source": "cardinal_union_disjointe",
+        "target": "cardinal_ensemble_partitionne"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "ensembles_disjoints->cardinal_union_disjointe",
+        "source": "ensembles_disjoints",
+        "target": "cardinal_union_disjointe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->cardinal_union_disjointe",
+        "source": "cardinal",
+        "target": "cardinal_union_disjointe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "union->cardinal_union_disjointe",
+        "source": "union",
+        "target": "cardinal_union_disjointe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "parties_ensemble->cardinal_ensemble_parties",
+        "source": "parties_ensemble",
+        "target": "cardinal_ensemble_parties"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal_ensemble_partitionne->cardinal_ensemble_parties",
+        "source": "cardinal_ensemble_partitionne",
+        "target": "cardinal_ensemble_parties"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->cardinal_inclusion",
+        "source": "cardinal",
+        "target": "cardinal_inclusion"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->cardinal_inclusion",
+        "source": "inclusion",
+        "target": "cardinal_inclusion"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "entiers_naturels->cardinal",
+        "source": "entiers_naturels",
+        "target": "cardinal"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "bijectivite->cardinal",
+        "source": "bijectivite",
+        "target": "cardinal"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "difference_ensembles->complementaire",
+        "source": "difference_ensembles",
+        "target": "complementaire"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "applications->composition_applications",
+        "source": "applications",
+        "target": "composition_applications"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "composition_applications->composee_bijections",
+        "source": "composition_applications",
+        "target": "composee_bijections"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "bijectivite->composee_bijections",
+        "source": "bijectivite",
+        "target": "composee_bijections"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "n_uplet->couple",
+        "source": "n_uplet",
+        "target": "couple"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "appartenance->difference_ensembles",
         "source": "appartenance",
         "target": "difference_ensembles"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ensemble_comprehension->difference_ensembles",
         "source": "ensemble_comprehension",
         "target": "difference_ensembles"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "non_logique->difference_ensembles",
         "source": "non_logique",
         "target": "difference_ensembles"
-      }
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "union->distributivité_ensembles",
+        "source": "union",
+        "target": "distributivité_ensembles"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "intersection->distributivité_ensembles",
+        "source": "intersection",
+        "target": "distributivité_ensembles"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->denombrement_inj_surj_bij",
+        "source": "cardinal",
+        "target": "denombrement_inj_surj_bij"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->parties_ensemble",
+        "source": "inclusion",
+        "target": "parties_ensemble"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ensemble->ensemble_comprehension",
         "source": "ensemble",
         "target": "ensemble_comprehension"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
-        "id": "quantificateur_universel->ensemble_comprehension",
-        "source": "quantificateur_universel",
+        "id": "proposition->ensemble_comprehension",
+        "source": "proposition",
         "target": "ensemble_comprehension"
-      }
-    },
-    {
-      "data": {
-        "id": "quantificateur_existentiel->ensemble_comprehension",
-        "source": "quantificateur_existentiel",
-        "target": "ensemble_comprehension"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ensemble->ensemble_extension",
         "source": "ensemble",
         "target": "ensemble_extension"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
-        "id": "ensemble->ensemble_vide",
-        "source": "ensemble",
-        "target": "ensemble_vide"
-      }
+        "id": "applications->image_directe",
+        "source": "applications",
+        "target": "image_directe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "ensemble_comprehension->image_directe",
+        "source": "ensemble_comprehension",
+        "target": "image_directe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "ensemble_comprehension->ensemble_image_reciproque",
+        "source": "ensemble_comprehension",
+        "target": "ensemble_image_reciproque"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "quantificateur_universel->ensemble_image_reciproque",
+        "source": "quantificateur_universel",
+        "target": "ensemble_image_reciproque"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "appartenance->ensemble_vide",
         "source": "appartenance",
         "target": "ensemble_vide"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "quantificateur_universel->ensemble_vide",
         "source": "quantificateur_universel",
         "target": "ensemble_vide"
-      }
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "intersection->ensembles_disjoints",
+        "source": "intersection",
+        "target": "ensembles_disjoints"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "ensemble_vide->ensembles_disjoints",
+        "source": "ensemble_vide",
+        "target": "ensembles_disjoints"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "applications->famille",
         "source": "applications",
         "target": "famille"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
-        "id": "ensemble->famille",
-        "source": "ensemble",
-        "target": "famille"
-      }
+        "id": "union->formule_crible",
+        "source": "union",
+        "target": "formule_crible"
+      },
+      "classes": []
     },
     {
       "data": {
-        "id": "ensemble->inclusion",
-        "source": "ensemble",
-        "target": "inclusion"
-      }
+        "id": "intersection->formule_crible",
+        "source": "intersection",
+        "target": "formule_crible"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->formule_crible",
+        "source": "cardinal",
+        "target": "formule_crible"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->inclusion_egalite_cardinal",
+        "source": "inclusion",
+        "target": "inclusion_egalite_cardinal"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->inclusion_egalite_cardinal",
+        "source": "cardinal",
+        "target": "inclusion_egalite_cardinal"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "egalite_ensembles->inclusion_egalite_cardinal",
+        "source": "egalite_ensembles",
+        "target": "inclusion_egalite_cardinal"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "appartenance->inclusion",
         "source": "appartenance",
         "target": "inclusion"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "quantificateur_universel->inclusion",
         "source": "quantificateur_universel",
         "target": "inclusion"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "implication_logique->inclusion",
         "source": "implication_logique",
         "target": "inclusion"
-      }
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "composition_applications->composition_injectivite",
+        "source": "composition_applications",
+        "target": "composition_injectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "injectivite->composition_injectivite",
+        "source": "injectivite",
+        "target": "composition_injectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "applications->injectivite",
+        "source": "applications",
+        "target": "injectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "implication_logique->injectivite",
+        "source": "implication_logique",
+        "target": "injectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "quantificateur_existentiel->intersection_quelconque",
+        "source": "quantificateur_existentiel",
+        "target": "intersection_quelconque"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "intersection->intersection_quelconque",
+        "source": "intersection",
+        "target": "intersection_quelconque"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "et_logique->intersection",
+        "source": "et_logique",
+        "target": "intersection"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "ensemble_comprehension->intersection",
+        "source": "ensemble_comprehension",
+        "target": "intersection"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "lois_de_morgan_logique->lois_de_morgan_ensembles",
+        "source": "lois_de_morgan_logique",
+        "target": "lois_de_morgan_ensembles"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "union->lois_de_morgan_ensembles",
+        "source": "union",
+        "target": "lois_de_morgan_ensembles"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "intersection->lois_de_morgan_ensembles",
+        "source": "intersection",
+        "target": "lois_de_morgan_ensembles"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "complementaire->lois_de_morgan_ensembles",
+        "source": "complementaire",
+        "target": "lois_de_morgan_ensembles"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "ensembles_disjoints->partition_ensemble",
+        "source": "ensembles_disjoints",
+        "target": "partition_ensemble"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "union_quelconque->partition_ensemble",
+        "source": "union_quelconque",
+        "target": "partition_ensemble"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "complementaire->complementaire_inclusion",
+        "source": "complementaire",
+        "target": "complementaire_inclusion"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "contraposee->complementaire_inclusion",
+        "source": "contraposee",
+        "target": "complementaire_inclusion"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->complementaire_inclusion",
+        "source": "inclusion",
+        "target": "complementaire_inclusion"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "cardinal->principe_tiroirs",
+        "source": "cardinal",
+        "target": "principe_tiroirs"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "ensemble_comprehension->produit_cartesien",
+        "source": "ensemble_comprehension",
+        "target": "produit_cartesien"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "n_uplet->produit_cartesien",
+        "source": "n_uplet",
+        "target": "produit_cartesien"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "applications->prolongement_application",
+        "source": "applications",
+        "target": "prolongement_application"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->prolongement_application",
+        "source": "inclusion",
+        "target": "prolongement_application"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "image_directe->proprietes_image_directe",
+        "source": "image_directe",
+        "target": "proprietes_image_directe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "union->proprietes_image_directe",
+        "source": "union",
+        "target": "proprietes_image_directe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "intersection->proprietes_image_directe",
+        "source": "intersection",
+        "target": "proprietes_image_directe"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->proprietes_image_directe",
+        "source": "inclusion",
+        "target": "proprietes_image_directe"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ensemble_vide->propriete_ensemble_vide",
         "source": "ensemble_vide",
         "target": "propriete_ensemble_vide"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "inclusion->propriete_ensemble_vide",
         "source": "inclusion",
         "target": "propriete_ensemble_vide"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
-        "id": "ensemble->union",
-        "source": "ensemble",
-        "target": "union"
-      }
+        "id": "applications->restriction_application",
+        "source": "applications",
+        "target": "restriction_application"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->restriction_application",
+        "source": "inclusion",
+        "target": "restriction_application"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "composition_applications->composition_surjectivite",
+        "source": "composition_applications",
+        "target": "composition_surjectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "surjectivite->composition_surjectivite",
+        "source": "surjectivite",
+        "target": "composition_surjectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "applications->surjectivite",
+        "source": "applications",
+        "target": "surjectivite"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "union->union_quelconque",
+        "source": "union",
+        "target": "union_quelconque"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "quantificateur_existentiel->union_quelconque",
+        "source": "quantificateur_existentiel",
+        "target": "union_quelconque"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "ou_logique->union",
         "source": "ou_logique",
         "target": "union"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
-        "id": "ensemble->egalite_ensembles",
-        "source": "ensemble",
-        "target": "egalite_ensembles"
-      }
+        "id": "ensemble_comprehension->union",
+        "source": "ensemble_comprehension",
+        "target": "union"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "famille->n_uplet",
+        "source": "famille",
+        "target": "n_uplet"
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "appartenance->egalite_ensembles",
         "source": "appartenance",
         "target": "egalite_ensembles"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "quantificateur_universel->egalite_ensembles",
         "source": "quantificateur_universel",
         "target": "egalite_ensembles"
-      }
+      },
+      "classes": []
     },
     {
       "data": {
         "id": "equivalence_logique->egalite_ensembles",
         "source": "equivalence_logique",
         "target": "egalite_ensembles"
-      }
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "applications->egalite_applications",
+        "source": "applications",
+        "target": "egalite_applications"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "egalite_ensembles->egalite_applications",
+        "source": "egalite_ensembles",
+        "target": "egalite_applications"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "inclusion->egalite_double_inclusion",
+        "source": "inclusion",
+        "target": "egalite_double_inclusion"
+      },
+      "classes": []
+    },
+    {
+      "data": {
+        "id": "egalite_ensembles->egalite_double_inclusion",
+        "source": "egalite_ensembles",
+        "target": "egalite_double_inclusion"
+      },
+      "classes": []
     }
   ]
 }
