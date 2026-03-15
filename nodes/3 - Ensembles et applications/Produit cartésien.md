@@ -1,7 +1,8 @@
 ---
-id: union
+id: produit_cartesien
 prerequis:
-  - "[[OU (logique)]]"
   - "[[Ensemble défini en compréhension]]"
+  - "[[n-uplet]]"
 type: definition
+title:
 ---

@@ -14,27 +14,35 @@ const ALLOWED_FOLDERS = [
   "1 - Trigonométrie",
   "2 - Logique",
   "3 - Ensembles et applications",
+  "4 - Entiers, sommes, récurrence"
 ];
 
 
 // Fonction récursive pour nettoyer les relations de prérequis
-const memo = new Map();
+function getMinimumPrereqs(id, prereqsMap) {
+  const prereqs = prereqsMap[id] || [];
 
-function getAllPrereqs(id, prereqsMap) {
-  if (memo.has(id)) return memo.get(id);
+  function reachable(from, target) {
+    const stack = [...(prereqsMap[from] || [])];
+    const visited = new Set();
 
-  const result = new Set();
+    while (stack.length) {
+      const n = stack.pop();
+      if (n === target) return true;
 
-  for (const p of prereqsMap[id] || []) {
-    result.add(p);
-    for (const t of getAllPrereqs(p, prereqsMap)) {
-      result.add(t);
+      if (!visited.has(n)) {
+        visited.add(n);
+        stack.push(...(prereqsMap[n] || []));
+      }
     }
-}
-memo.set(id, result);
-return result;
-}
 
+    return false;
+  }
+
+  return prereqs.filter(p =>
+    !prereqs.some(q => q !== p && reachable(q, p))
+  );
+}
 /*
 Lire tous les markdown récursivement
 */
@@ -151,7 +159,8 @@ function build() {
         category: folder,
         prerequis: [],
       },
-      grabbable: false
+      classes: [],
+      grabbable: true // A enlever 
     });
     nodes.push({
       data : {
@@ -224,27 +233,30 @@ function build() {
     const prereqIds = prereqNames
       .map(name => filenameToId[name])
       .filter(Boolean);
+    
+    
   
     /*
     4️⃣ création des edges
     */
     
-    prereqsList = prereqIds
-    // let prereqsMap = {}
-    // files.forEach(file =>{
-    //   const filename = path.basename(file, ".md");
-    //   id = filenameToId[filename]
-    //   const raw = fs.readFileSync(file, "utf8");
-    //   const { meta, body } = parseFrontmatter(raw);
-    //   prereqNames = extractLinks(meta.prerequis);
-    //   prereqsMap[id] = prereqNames
-    //   .map(name => filenameToId[name])
-    //   .filter(Boolean);
-    //   })
+    // prereqsList = prereqIds
+    let prereqsMap = {}
+    files.forEach(file =>{
+      const filename = path.basename(file, ".md");
+      id = filenameToId[filename]
+      const raw = fs.readFileSync(file, "utf8");
+      const { meta, body } = parseFrontmatter(raw);
+      if (!meta.prerequis){return;}
+      prereqNames = extractLinks(meta.prerequis);
+      prereqsMap[id] = prereqNames
+      .map(name => filenameToId[name])
+      .filter(Boolean);
+      })
 
-    // let prereqsList = getAllPrereqs(meta.id, prereqsMap)
-    // console.log(prereqsList)
-
+    let prereqsList = getMinimumPrereqs(meta.id, prereqsMap)
+    console.log(prereqsList)
+    meta.prerequis = prereqsList
     prereqsList.forEach(pr => {
       if (!pr){return;}
       edges.push({
@@ -252,7 +264,8 @@ function build() {
           id: `${pr}->${meta.id}`,
           source: pr,
           target: meta.id
-        }
+        },
+        classes: []
       });
   
     });
@@ -268,7 +281,7 @@ function build() {
         label: meta.title || filename || meta.id,
         parent : `folder_${folder.replace(/\s+/g, "_")}`,
         category: folder,
-        prerequis: prereqIds || []
+        prerequis: prereqsList || []
       },
       classes: ['item_cours']
     });

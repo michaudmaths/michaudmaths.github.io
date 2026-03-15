@@ -32,7 +32,7 @@ const chapterToColor = [
   {title: "1 - Trigonométrie", color : "#8e44ad"},
   {title: "2 - Logique" , color : "#3ab218"},
   {title: "3 - Ensembles et applications" , color: "#0e3dc0"},
-  {title: "4 - Entiers, sommes, récurrences", color: "#d35400"},
+  {title: "4 - Entiers, sommes, récurrence", color: "#d35400"},
   {title: "5 - Nombres réels" , color : "#27ae60"},
   {title : "6 - Suites numériques" , color : "#2980b9"},
   {title: "7 - Fonction réelle de la variable réelle" , color : "#c0392b"},
@@ -107,110 +107,30 @@ function changeColor(color, factor) { // factor ∈ [0,1]
   return '#' + fill(newR.toString(16)) + fill(newG.toString(16)) + fill(newB.toString(16))
 }
 
-// Instantiation du graphe
-const cy = cytoscape({
-  container: document.getElementById('graph'),
-  elements: [...treeData.nodes, ...treeData.edges],
-  layout : {
-    name: 'preset',
-    positions: storedNodePositions
-  },
-  style: [
-    {
-      selector: 'node',
-      style: {
-        'shape': 'round-rectangle',
-        'width': '250px',
-        'height': '50px',
-        'border-width': '2px',
-        'overlay-opacity': 0,
-        //'label': '', // Add label to display node title
-        'text-valign': 'center',
-        'text-halign': 'center',
-        'font-weight': 'bold',
-        'text-wrap': 'wrap',
-        'text-max-width': '230px',
-        'color': '#000',
-        'font-size': '18px',
-        'transition-property': 'width height font-size background-color border-color color',
-        'transition-duration' : '300ms',
-      }
-    },
-    {
-      selector: ':parent',
-      style: {
-        'padding': '20px',
-        'background-opacity': 0.05,
-        'events' : 'no',
-      }
-    },
-    {
-      selector: 'node.chapter_label',
-      style:{
-        'width':'150px',
-        'height':'20px',
-        'border-width': '0px',
-        'label':'data(label)',
-        'text-wrap': 'none',
-        'background-opacity': 0.05,
-        'text-background-opacity' : 1,
-        'font-size': '30px',
-        // 'events' : 'no',// A remettre ensuite
-      },
-    },
-    {
-      selector: 'node.hover',
-      style: {
-        'width': '275px',
-        'height': '55px',
-      }
-    },
-    {
-      selector: 'node:selected',
-      style :{  
-        'border-width' : '6px'
-      }
-    },
-    ...styleListForChapterColor,
-    {
-      selector: 'edge',
-      style: {
-        'curve-style': 'bezier',
-        'target-arrow-shape': 'triangle',
-        'line-color': '#d1d1d1',
-        'target-arrow-color': '#d1d1d1',
-        'transition-property': 'line-color target-arrow-color',
-        'transition-duration' : '300ms',
-      }
-    },
-    {
-      selector: 'edge.parent_acquired',
-      style: {
-        'line-color': '#000000',
-        'target-arrow-color': '#000000',
-      }
-    },
-    // Important de garder ces deux styles à la fin pour qu'ils soient prioritaires
-    {
-      selector: 'edge.highlighted',
-      style: {
-        'line-color': '#f1c40f',
-        'target-arrow-color': '#f1c40f',
-      }
-    },
-    {
-      selector: 'node.highlighted',
-      style :{
-        'border-color': '#f1c40f',
-        'border-width' : '6px'
-      }
+// Focntion qui sera appelée une fois avant l'instantiation.
+function setColors() {
+  treeData.nodes.forEach(n => {
+    if (progress[n.data.id]) {
+      n.classes.push('acquired');
+    } else if (isAccessible(n.data.id)) {
+      n.classes.push('current')
+    } else {
+      n.classes.push('unavailable');
     }
-  ],
-});
+  });
+  treeData.edges.forEach(e => {
+    const sourceAcquired = progress[e.data.source];
+    if (sourceAcquired) {
+      e.classes.push('parent_acquired');
+    } 
+  })
+}
 
+setColors()
 
 // Trois options de layout, en choisir une des trois à parser dans la commande suivante 
 var presetLayoutoptions = {
+  positions: storedNodePositions,
   zoom: undefined, // the zoom level to set (prob want fit = false if set)
   pan: undefined, // the pan level to set (prob want fit = false if set)
   fit: true, // whether to fit to viewport
@@ -226,7 +146,6 @@ var presetLayoutoptions = {
 };
 
 var fcoseLayoutOptions = {
-  name: "fcose",
   // 'draft', 'default' or 'proof' 
   // - "draft" only applies spectral layout 
   // - "default" improves the quality with incremental layout (fast cooling rate)
@@ -305,7 +224,7 @@ var fcoseLayoutOptions = {
 
   // Fix desired nodes to predefined positions
   // [{nodeId: 'n1', position: {x: 100, y: 200}}, {...}]
-  fixedNodeConstraint: undefined,
+  fixedNodeConstraint: storedNodePositions    ,
   // Align desired nodes in vertical/horizontal direction
   // {vertical: [['n1', 'n2'], [...]], horizontal: [['n2', 'n4'], [...]]}
   alignmentConstraint: undefined,
@@ -319,8 +238,6 @@ var fcoseLayoutOptions = {
 };
 
 var coseBilkentLayoutOptions = {
-  name : 'cose-bilkent',
-  // Called on `layoutready`
   ready: function () {
   },
   // Called on `layoutstop`
@@ -373,8 +290,113 @@ var coseBilkentLayoutOptions = {
   initialEnergyOnIncremental: 0.5
 };
 
-// CHoisir une des variables précédentes
-// cy.layout(fcoseLayoutOptions).run();
+var layouNametToOptions = {
+  'preset': presetLayoutoptions,
+  'fcose': fcoseLayoutOptions,
+  'cose-bilkent': coseBilkentLayoutOptions
+}
+  
+var layoutName = 'preset'
+// Instantiation du graphe
+const cy = cytoscape({
+  container: document.getElementById('graph'),
+  elements: [...treeData.nodes, ...treeData.edges],
+  layout : {
+    name: layoutName,
+    ...layouNametToOptions[layoutName]
+  },
+  style: [
+    {
+      selector: 'node',
+      style: {
+        'shape': 'round-rectangle',
+        'width': '250px',
+        'height': '50px',
+        'border-width': '2px',
+        'overlay-opacity': 0,
+        //'label': '', // Add label to display node title
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'font-weight': 'bold',
+        'text-wrap': 'wrap',
+        'text-max-width': '230px',
+        'color': '#000',
+        'font-size': '18px',
+        'transition-property': 'width height font-size background-color border-color color',
+        'transition-duration' : '300ms',
+      }
+    },
+    {
+      selector: ':parent',
+      style: {
+        'padding': '20px',
+        'background-opacity': 0.05,
+        // 'events' : 'no', // A remettre ensuite, plus facile pour manipuler
+      }
+    },
+    {
+      selector: 'node.chapter_label',
+      style:{
+        'width':'150px',
+        'height':'20px',
+        'border-width': '0px',
+        'label':'data(label)',
+        'text-wrap': 'none',
+        'background-opacity': 0.05,
+        'text-background-opacity' : 1,
+        'font-size': '30px',
+        // 'events' : 'no',// A remettre ensuite, plus facile pour manipuler
+      },
+    },
+    {
+      selector: 'node.hover',
+      style: {
+        'width': '275px',
+        'height': '55px',
+      }
+    },
+    {
+      selector: 'node:selected',
+      style :{  
+        'border-width' : '6px'
+      }
+    },
+    ...styleListForChapterColor,
+    {
+      selector: 'edge',
+      style: {
+        'curve-style': 'bezier',
+        'target-arrow-shape': 'triangle',
+        'line-color': '#d1d1d1',
+        'target-arrow-color': '#d1d1d1',
+        'transition-property': 'line-color target-arrow-color',
+        'transition-duration' : '300ms',
+      }
+    },
+    {
+      selector: 'edge.parent_acquired',
+      style: {
+        'line-color': '#000000',
+        'target-arrow-color': '#000000',
+      }
+    },
+    // Important de garder ces deux styles à la fin pour qu'ils soient prioritaires
+    {
+      selector: 'edge.highlighted',
+      style: {
+        'line-color': '#f1c40f',
+        'target-arrow-color': '#f1c40f',
+      }
+    },
+    {
+      selector: 'node.highlighted',
+      style :{
+        'border-color': '#f1c40f',
+        'border-width' : '6px'
+      }
+    }
+  ],
+});
 
 
 // Crée des labels en HTML pour gérer les maths et la mise en forme
@@ -451,9 +473,35 @@ function updateColors() {
 }
 
 
-//Fonction qui met à jour la position des noeuds en animant
-function updatePosition(){
-  cy.layout({name: 'preset', positions: storedNodePositions, ...presetLayoutoptions}).run()
+//Fonction qui met à jour la position de tous les noeuds, appelée au chargement et à chaque fois qu'on importe une position
+function updateAllPositions(){
+  layout = cy.layout({
+    name: 'preset',
+    positions: storedNodePositions,
+    fit: false
+  });
+  layout.run();
+}
+
+//Fonction qui met à jour la position des titres 
+function updateTitlePositions(){
+  cy.$('node.chapter_label').positions(
+    function (node,i){
+      let nodes_chapter = cy.$(`node[category = "${node.data('category')}"]`);
+      let nodes_parents = cy.$('node:parent');
+      let nodes_chapter_label = cy.$('node.chapter_label');
+      let nodes = nodes_chapter.difference(nodes_parents).difference(nodes_chapter_label);
+      let box = nodes.boundingBox()
+      console.log(nodes_chapter.size())
+      console.log(nodes_parents.size())
+      console.log(nodes_chapter_label.size());
+      console.log(nodes.size());
+      return {
+        x: box.x1 + box.w/2,
+        y: box.y1 - 25
+      }
+    }
+  )
 }
 
 // Highlight tous les edge venant d'une liste de noeuds (prérequis) allant vers un noeud donné (prend en paramètre une liste de id et un id)
@@ -538,7 +586,7 @@ function loadNodePositions(event){
     storedNodePositions = JSON.parse(e.target.result);
     
     localStorage.setItem("storedNodePositions", JSON.stringify(nodePositions));
-    updatePosition()
+    updateAllPositions()
   };
 
   reader.readAsText(file);
@@ -696,6 +744,10 @@ cy.on('tap', 'node', function (event) {
   const title = event.target.data('label'); // Get selected node label
   loadNodeDetails(nodeId, title); // Load corresponding Markdown content
   currentNodeList.push(nodeId)
+});
+
+cy.on('tapdrag', function (){
+  updateTitlePositions();
 });
 
 // Evenements qui ferment le paneau d'information
