@@ -116,12 +116,71 @@
   flex: 1;
 }
 
-#graph {
+#graph-container {
+  position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - #{$spacing-unit * 1.865}); // Hauteur de la fenêtre moins la hauteur du bandeau
+}
+
+
+#graph {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background: #f0f0f0;
   box-sizing: border-box; 
   background: #f0f0f0;
+}
+
+
+#settings-menu {
+  position: absolute ;
+  padding:15px;
+  z-index: 10;
+}
+
+#gear-btn {
+  font-size: 22px;
+  // background: white;
+  // border: none;
+  // border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size:30px;
+  // box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* menu */
+#menu-graph-dropdown {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+
+/* boutons du menu */
+#menu-graph-dropdown .graph-menu-item {
+  padding: 10px 16px;
+  border: none;
+  background: white;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#menu-graph-dropdown .graph-menu-item:hover {
+  background: #f0f0f0;
+}
+
+#menu-graph-dropdown.hidden {
+  display: none;
+}
+.hidden{
+  display:none;
 }
 
 .node-html-label {
@@ -132,4 +191,51 @@
   font-size: 18px;
   text-align: center;
   pointer-events: none;
+}
+
+// TOOLTIP
+
+
+#tooltip{
+
+  position:absolute;
+
+  background: rgba(20,20,20,0.95);
+  color:white;
+
+  padding:6px 10px;
+  border-radius:6px;
+
+  font-size:14px;
+  white-space:nowrap;
+
+  pointer-events:none;
+
+  opacity:0;
+}
+
+#tooltip.visible{
+  opacity:1;
+}
+
+#math-tooltip{
+
+  position:absolute;
+
+  background: rgba(20,20,20,0.95);
+  color:white;
+
+  padding:6px 10px;
+  border-radius:6px;
+
+  font-size:14px;
+  white-space:nowrap;
+
+  pointer-events:none;
+
+  opacity:0;
+}
+
+#math-tooltip.visible{
+  opacity:1;
 }

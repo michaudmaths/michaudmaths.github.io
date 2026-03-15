@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3 - Ensembles et applications/Cardinal de l'ensemble des parties d'en ensemble.md",
+                "file": "4 - Entiers, sommes, récurrence/Coefficients binomiaux.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Cardinal de l'ensemble des parties d'en ensemble"
+              "title": "Coefficients binomiaux"
             }
           }
         ]
@@ -170,8 +170,21 @@
   },
   "active": "0232c4809ace6f3a",
   "lastOpenFiles": [
-    "3 - Ensembles et applications/Partition d'un ensemble.md",
+    "4 - Entiers, sommes, récurrence/Factorielle.md",
+    "4 - Entiers, sommes, récurrence/Principe de récurrence.md",
+    "2 - Logique/Proposition (Logique).md",
+    "2 - Logique/ET (logique).md",
+    "2 - Logique/Équivalence (logique).md",
+    "Proposition.md",
+    "4 - Entiers, sommes, récurrence/Coefficients binomiaux.md",
+    "3 - Ensembles et applications/Nombre de combinaisons.md",
+    "3 - Ensembles et applications/Nombre d'arrangements.md",
+    "3 - Ensembles et applications/Cardinal d'un produit cartésien.md",
+    "3 - Ensembles et applications/Combinaison.md",
+    "3 - Ensembles et applications/Sous-ensemble.md",
+    "3 - Ensembles et applications/Arrangement.md",
     "3 - Ensembles et applications/Cardinal de l'ensemble des parties d'en ensemble.md",
+    "3 - Ensembles et applications/Partition d'un ensemble.md",
     "3 - Ensembles et applications/Cardinal d'un ensemble partitionné.md",
     "3 - Ensembles et applications/Formule du crible.md",
     "3 - Ensembles et applications/Ensembles disjoints.md",
@@ -183,19 +196,6 @@
     "3 - Ensembles et applications/Dénombrement et injection, surjection, bijection.md",
     "3 - Ensembles et applications/Cardinal.md",
     "4 - Entiers, sommes, récurrence/Entiers naturels.md",
-    "3 - Ensembles et applications/Composée de bijections.md",
-    "3 - Ensembles et applications/Bijection et application identité.md",
-    "3 - Ensembles et applications/Surjectivité et composition.md",
-    "3 - Ensembles et applications/Injectivité et composition.md",
-    "3 - Ensembles et applications/Application identité.md",
-    "3 - Ensembles et applications/Surjectivité.md",
-    "3 - Ensembles et applications/Bijectivité.md",
-    "3 - Ensembles et applications/Injectivité.md",
-    "3 - Ensembles et applications/Restriction d'une application.md",
-    "3 - Ensembles et applications/Prolongement d'une application.md",
-    "3 - Ensembles et applications/Composition d'applications.md",
-    "3 - Ensembles et applications/Applications.md",
-    "3 - Ensembles et applications/Propriétés de l'ensemble image directe.md",
     "2 - Logique/Untitled"
   ]
 }
