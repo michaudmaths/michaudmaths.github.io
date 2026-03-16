@@ -481,7 +481,7 @@ function isAccessible(nodeId){
 }
 
 // Fonction qui met à jour les classes de tous les noeuds et arêtes, appelée à chaque fois qu'un status est modifié
-function updateColors() {
+function updateAllColors() {
   treeData.nodes.forEach(n => {
     const node = cy.getElementById(n.data.id);
     if (node.hasClass('highlighted')){
@@ -619,7 +619,7 @@ function loadProgress(event) {
 
     localStorage.setItem("mathProgress", JSON.stringify(progress));
 
-    updateColors();
+    updateAllColors();
   };
 
   reader.readAsText(file);
@@ -693,7 +693,7 @@ function setToAcquired() {
     if (isAccessible(nodeId)) {
     progress[nodeId] = true; // Mark as acquired
     localStorage.setItem("mathProgress", JSON.stringify(progress));
-    updateColors();
+    updateAllColors();
     }
   closePanel()
 });
@@ -706,7 +706,7 @@ function setToAccessible() {
       delete progress[nodeId]; // Mark as accessible (not acquired)
 });
     localStorage.setItem("mathProgress", JSON.stringify(progress));
-    updateColors();
+    updateAllColors();
     closePanel();
 }
 // Highlight les prérequis du noeud sélectionné
@@ -734,7 +734,7 @@ function showPrerequisite() {
 function reset() {
   progress = {};
   localStorage.removeItem("mathProgress");
-  updateColors();
+  updateAllColors();
 }
 
 
@@ -761,7 +761,7 @@ cy.on('tap', function (event) {
 
 // Met à jour les couleurs dès le début
 cy.ready(() => {
-  updateColors();
+  updateAllColors();
 });
 
 // Met une liste de noeud en mémoire pour changer éventuellement le focus
