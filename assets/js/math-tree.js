@@ -480,35 +480,28 @@ function isAccessible(nodeId){
   return node.data.prerequis.every(p => progress[p]);
 }
 
-// Fonction qui met à jour les classes de tous les noeuds et arêtes, appelée à chaque fois qu'un status est modifié
-function updateAllColors() {
-  treeData.nodes.forEach(n => {
-    const node = cy.getElementById(n.data.id);
-    if (node.hasClass('highlighted')){
-      return;
-    }
-    if (progress[n.data.id]) {
-      node.addClass('acquired');
-      node.removeClass('current');
-      node.removeClass('unavailable');
-    } else if (isAccessible(n.data.id)) {
-      node.removeClass('unavailable');
-      node.removeClass('acquired')
-      node.addClass('current')
-    } else {
-      node.removeClass('acquired');
-      node.removeClass('current');
-      node.addClass('unavailable');
-    }
-  });
-  treeData.edges.forEach(e => {
-    const sourceAcquired = progress[e.data.source];
-    const targetAccessible = isAccessible(e.data.target);
-    const edge = cy.getElementById(e.data.id);
-    if (edge.hasClass('highlighted')){
-      return;
-    }
-    if (sourceAcquired) {
+// Fonction qui met à jour les couleurs d'UN noeud
+function updateNodeClasses(n){
+  node = cy.$(n.data.id)
+  if (progress[n.data.id]) {
+        node.addClass('acquired');
+        node.removeClass('current');
+        node.removeClass('unavailable');
+      } else if (isAccessible(n.data.id)) {
+        node.removeClass('unavailable');
+        node.removeClass('acquired')
+        node.addClass('current')
+      } else {
+        node.removeClass('acquired');
+        node.removeClass('current');
+        node.addClass('unavailable');
+      }
+}
+function updateEdgeClasses(e){
+  const sourceAcquired = progress[e.data.source];
+  const targetAccessible = isAccessible(e.data.target);
+  const edge = cy.$(e.data.id);
+  if (sourceAcquired) {
       edge.addClass('parent-acquired');
     } else {
       edge.removeClass('parent-acquired');
@@ -518,8 +511,38 @@ function updateAllColors() {
     }else{
       edge.addClass('target-unavailable')
     }
+}
+
+// Fonction qui met à jour seulement le noeud sélectionné, les arrêtes partant de ce noeud, et les noeuds qui en découlent.
+
+function updateColors(id){
+  treeData.nodes.forEach(n => {
+    if (!n.data.id === id){return;}
+    else {
+      updateNodeClasses(n)
+      n.data.unlocked.foreach(n2 => 
+        updateNodeColor(n2)
+        updateEdgeColor(n1+'->'+n2)
+      )
+      n.data.prereqs.foreach(n2 => 
+        updateNodeColor(n2)
+        updateEdgeColor(n2+'->'+n1)
+      )
     }
-  )
+    
+  })
+}
+
+
+
+// Fonction qui met à jour les classes de tous les noeuds et arêtes, appelée à chaque fois qu'un status est modifié
+function updateAllColors() {
+  treeData.nodes.forEach(n => {
+    updateNodeClasses(n)
+  });
+  treeData.edges.forEach(e => {
+    updateEdgeClasses(e)}
+  );
 }
 
 
@@ -693,7 +716,7 @@ function setToAcquired() {
     if (isAccessible(nodeId)) {
     progress[nodeId] = true; // Mark as acquired
     localStorage.setItem("mathProgress", JSON.stringify(progress));
-    updateAllColors();
+    updateColors(nodeId);
     }
   closePanel()
 });
@@ -706,7 +729,7 @@ function setToAccessible() {
       delete progress[nodeId]; // Mark as accessible (not acquired)
 });
     localStorage.setItem("mathProgress", JSON.stringify(progress));
-    updateAllColors();
+    updateColors(nodeId);
     closePanel();
 }
 // Highlight les prérequis du noeud sélectionné
