@@ -49,28 +49,28 @@ const statusVarColors = {
 
 const styleListForChapterColor = chapterToColor.flatMap(chapter => [
   {
-    selector: `node[category = "${chapter.title}"].chapter-label`,
+    selector: `node[chapter = "${chapter.title}"].chapter-label`,
     style: {
       'color' : chapter.color,
       'text-background-color' : changeColor(chapter.color,0.9),
     }
   },
   {
-    selector: `node[category = "${chapter.title}"].unavailable`,
+    selector: `node[chapter = "${chapter.title}"].unavailable`,
     style: {
       'background-color': changeColor(chapter.color, statusVarColors.unavailable),
       'border-color': changeColor(chapter.color, statusVarColors.unavailable*0.9),
     }
   },
   {
-    selector: `node[category = "${chapter.title}"].current`,
+    selector: `node[chapter = "${chapter.title}"].current`,
     style: {
       'background-color': changeColor(chapter.color, statusVarColors.current),
       'border-color': changeColor(chapter.color, statusVarColors.current*0.7),
     }
   },
   {
-    selector: `node[category = "${chapter.title}"].acquired`,
+    selector: `node[chapter = "${chapter.title}"].acquired`,
     style: {
       'background-color': changeColor(chapter.color, statusVarColors.acquired),
       'border-color': changeColor(chapter.color, statusVarColors.acquired*0.6),
@@ -539,7 +539,7 @@ function updateAllPositions(){
 function updateTitlePositions(){
   cy.$('node.chapter-label').positions(
     function (node,i){
-      let nodesInChapter = cy.$(`node[category = "${node.data('category')}"]`);
+      let nodesInChapter = cy.$(`node[chapter = "${node.data('chapter')}"]`);
       let nodesChapters = cy.$('node.chapter-node');
       let nodesChapterLabel = cy.$('node.chapter-label');
       let nodes = nodesInChapter.difference(nodesChapters).difference(nodesChapterLabel);
