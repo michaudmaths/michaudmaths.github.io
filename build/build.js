@@ -18,20 +18,19 @@ const ALLOWED_FOLDERS = [
 ];
 
 const files = getMarkdownFiles(NODES_DIR);
-
+const filenameToId = createFilenameToIdMap()
+const prereqsMap = createPrereqsMap()
+const minimumPrereqsMap = createMinimumPrereqsMap() 
+const unlockedMap = createUnlockedMap() 
 const nodes = [];
 const edges = [];
 
 /*
 PASS 1 : lire les id
 */
-const filenameToId = createFilenameToIdMap()
 
-const prereqsMap = createPrereqsMap()
 
-const minimumPrereqsMap = createMinimumPrereqsMap()  
 
-const unlockedMap = createUnlockedMap()
 
 //  prereqsMap[id] = list of id
 function createPrereqsMap(){
@@ -52,8 +51,9 @@ function createPrereqsMap(){
 
 function createMinimumPrereqsMap(){
   var minimumPrereqsMap = {}
-  filenameToId.forEach(filename=>{
-    id = filenameToId[filename]
+  files.forEach(file=>{
+    const filename = path.basename(file, ".md");
+    const id = filenameToId[filename]
     minimumPrereqsMap[id] = getMinimumPrereqs(id, prereqsMap)
   })
   return minimumPrereqsMap;
@@ -61,7 +61,8 @@ function createMinimumPrereqsMap(){
 
 function createUnlockedMap(){
   var unlockedMap = {}
-  filenameToId.forEach(filename => {
+  files.forEach(file => {
+    const filename = path.basename(file, ".md");
     id_source = filenameToId[filename]
     unlockedMap[id_source] = []
     filenameToId.forEach(filename =>{
@@ -114,6 +115,8 @@ function getMinimumPrereqs(id, prereqsMap) {
     !prereqs.some(q => q !== p && reachable(q, p))
   );
 }
+
+
 /*
 Lire tous les markdown récursivement
 */
@@ -213,6 +216,8 @@ function build() {
   ALLOWED_FOLDERS.forEach(folder => {
     const id = `folder_${folder.replace(/\s+/g, "_")}`;
     filenameToId[folder] = id;
+
+    // Création des noeuds parents par chapitre et des noeuds labels de chapitre
     nodes.push({
       data: {
         id: id,
@@ -241,52 +246,47 @@ function build() {
   */
 
   files.forEach(file => {
-
     const folder = getTopFolder(file);
-  
     if (ALLOWED_FOLDERS.length && !ALLOWED_FOLDERS.includes(folder))
       return;
-  
+    
     const raw = fs.readFileSync(file, "utf8");
-  
     const { meta, body } = parseFrontmatter(raw);
   
     if (!meta.id) return;
-  
+    const id = meta.id
+    const parentId = `folder_${folder.replace(/\s+/g, "_")}`;
     const filename = path.basename(file, ".md");
-  
+    const prereqs = minimumPrereqsMap[id] || []
+    const unlocked = unlockedMap[id] || []
+    const label = meta.title || filename
+    const tooltip = meta.tooltip || ""
+
+    nodes.push({data : {
+      id: id,
+      parent:  parentId,
+      prereqs: prereqs,
+      chapter: folder, // Nom à changer
+      label: label,
+      unlockd: unlocked,
+      tooltip: tooltip
+          },
+      classes: ['item-cours']
+      }
+               
     /*
     4️⃣ création des edges
     */
     
-    minimumPrereqsMap[meta.id].forEach(pr => {
+    prereqs.forEach(pr => {
       if (!pr){return;}
       edges.push({
         data: {
-          id: `${pr}->${meta.id}`,
+          id: `${pr}->${id}`,
           source: pr,
-          target: meta.id
+          target: id
         },
-        classes: []
       });
-    });
-
-
-    /*
-    node
-    */
-
-    nodes.push({
-      data: {
-        id: meta.id,
-        label: meta.title || filename || meta.id,
-        parent : `folder_${folder.replace(/\s+/g, "_")}`,
-        category: folder,
-        prerequis: prereqsList || [],
-        unlocked: unlockedMap[meta.id] || [],
-        tooltip : meta.tooltip
-      },
-      classes: ['item-cours']
     });
   
     /*
