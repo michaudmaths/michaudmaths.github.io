@@ -1,7 +1,7 @@
 ---
 id: principe_recurrence
 prerequis:
-  - "[[Entiers naturels]]"
+  - "[[Ensemble des entiers naturels]]"
   - "[[Proposition (Logique)]]"
 type: proposition
 title:

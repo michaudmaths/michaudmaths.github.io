@@ -477,12 +477,12 @@ cy.nodeHtmlLabel([{
 
 function isAccessible(nodeId){
   const node = treeData.nodes.find(n => n.data.id === nodeId);
-  return node.data.prerequis.every(p => progress[p]);
+  return node.data.prereqs.every(p => progress[p]);
 }
 
 // Fonction qui met à jour les couleurs d'UN noeud
-function updateNodeClasses(n){
-  node = cy.$(n.data.id)
+function updateNodeColor(n){
+  node = cy.$(`#${n.data.id}`)
   if (progress[n.data.id]) {
         node.addClass('acquired');
         node.removeClass('current');
@@ -497,10 +497,10 @@ function updateNodeClasses(n){
         node.addClass('unavailable');
       }
 }
-function updateEdgeClasses(e){
+function updateEdgeColor(e){
   const sourceAcquired = progress[e.data.source];
   const targetAccessible = isAccessible(e.data.target);
-  const edge = cy.$(e.data.id);
+  const edge = cy.$(`#${e.data.id}`);
   if (sourceAcquired) {
       edge.addClass('parent-acquired');
     } else {
@@ -519,15 +519,15 @@ function updateColors(id){
   treeData.nodes.forEach(n => {
     if (!n.data.id === id){return;}
     else {
-      updateNodeClasses(n)
-      n.data.unlocked.foreach(n2 => 
-        updateNodeColor(n2)
-        updateEdgeColor(n1+'->'+n2)
-      )
-      n.data.prereqs.foreach(n2 => 
-        updateNodeColor(n2)
-        updateEdgeColor(n2+'->'+n1)
-      )
+      updateNodeColor(n)
+      n.data.unlocked.foreach(n2 =>{ 
+        updateNodeColor(n2);
+        updateEdgeColor(n1+'->'+n2);
+      })
+      n.data.prereqs.foreach(n2 => {
+        updateNodeColor(n2);
+        updateEdgeColor(n2+'->'+n1);
+      })
     }
     
   })
@@ -538,10 +538,10 @@ function updateColors(id){
 // Fonction qui met à jour les classes de tous les noeuds et arêtes, appelée à chaque fois qu'un status est modifié
 function updateAllColors() {
   treeData.nodes.forEach(n => {
-    updateNodeClasses(n)
+    updateNodeColor(n)
   });
   treeData.edges.forEach(e => {
-    updateEdgeClasses(e)}
+    updateEdgeColor(e)}
   );
 }
 
@@ -739,7 +739,7 @@ function showPrerequisite() {
 
   const nodeId = selectedNodes[0].id();
   const node = treeData.nodes.find(n => n.data.id === nodeId);
-  const prereqs = node.data.prerequis;
+  const prereqs = node.data.prereqs;
 
   if(prereqs.length === 0){
     alert("Aucun prérequis pour ce noeud !");
@@ -959,10 +959,10 @@ const graphDropdown = document.getElementById("menu-graph-dropdown");
 
 
 function closeMenu(){
-  graphDropdown.classList.toggle("hidden");
+  graphDropdown.classList.add("hidden");
 }
 graphGearBtn.addEventListener("click", () => {
-  closeMenu()
+  graphDropdown.classList.toggle("hidden");
 });
 
 
@@ -977,7 +977,6 @@ checkboxChapters.addEventListener("change", () => {
   else {
     cy.nodes(".chapter-node").addClass("hidden");
     cy.nodes(".chapter-label").addClass("hidden");
-    console.log(cy.$('#ensemble_image_reciproque').style())
   }
 
 });
