@@ -65,13 +65,15 @@ function createUnlockedMap(){
     const filename = path.basename(file, ".md");
     id_source = filenameToId[filename]
     unlockedMap[id_source] = []
-    filenameToId.forEach(filename =>{
+    files.forEach(file =>{
+      const filename = path.basename(file, ".md");
       id_target = filenameToId[filename]
-      if (id_target in prereqsMap) {
+      if (minimumPrereqsMap[id_target].includes(id_source)) {
         unlockedMap[id_source].push(id_target)
       }
     })
   })
+  return unlockedMap;
 }
   
 // filenamToId[id] = id
@@ -214,7 +216,7 @@ function extractLinks(text) {
 function build() {
   // Noeuds parents pour chaque folder
   ALLOWED_FOLDERS.forEach(folder => {
-    const id = `folder_${folder.replace(/\s+/g, "_")}`;
+    const id = `folder_${folder.replace(/\s+-\S+/g, "_")}`;
     filenameToId[folder] = id;
 
     // Création des noeuds parents par chapitre et des noeuds labels de chapitre
@@ -223,7 +225,7 @@ function build() {
         id: id,
         label: folder,
         category: folder,
-        prerequis: [],
+        prereqs: [],
       },
       classes: ['chapter-node'],
       grabbable: true // A enlever 
@@ -234,7 +236,7 @@ function build() {
         parent: id,
         category: folder,
         label: folder,
-        prerequis: [],
+        prereqs: [],
       },
       classes : ['chapter-label'],
     })
@@ -268,11 +270,11 @@ function build() {
       prereqs: prereqs,
       chapter: folder, // Nom à changer
       label: label,
-      unlockd: unlocked,
+      unlocked: unlocked,
       tooltip: tooltip
           },
       classes: ['item-cours']
-      }
+      })
                
     /*
     4️⃣ création des edges
@@ -282,10 +284,11 @@ function build() {
       if (!pr){return;}
       edges.push({
         data: {
-          id: `${pr}->${id}`,
+          id: `${pr}__${id}`,
           source: pr,
           target: id
         },
+        classes: []
       });
     });
   

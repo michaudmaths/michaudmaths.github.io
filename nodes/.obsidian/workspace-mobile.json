@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "4 - Entiers, sommes, récurrence/Coefficients binomiaux.md",
+                "file": "4 - Entiers, sommes, récurrence/Somme des puissances consécutives d'un réel.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Coefficients binomiaux"
+              "title": "Somme des puissances consécutives d'un réel"
             }
           }
         ]
@@ -170,13 +170,21 @@
   },
   "active": "0232c4809ace6f3a",
   "lastOpenFiles": [
+    "4 - Entiers, sommes, récurrence/Somme des n premiers entiers.md",
+    "4 - Entiers, sommes, récurrence/Somme des puissances consécutives d'un réel.md",
+    "4 - Entiers, sommes, récurrence/Symboles somme et produit.md",
+    "4 - Entiers, sommes, récurrence/Vocabulaire sur les entiers.md",
+    "4 - Entiers, sommes, récurrence/Ensemble dénombrable.md",
+    "4 - Entiers, sommes, récurrence/Ensemble des entiers relatifs.md",
+    "4 - Entiers, sommes, récurrence/Opérations dans N et Z.md",
+    "4 - Entiers, sommes, récurrence/Ensemble des entiers naturels.md",
+    "4 - Entiers, sommes, récurrence/Coefficients binomiaux.md",
     "4 - Entiers, sommes, récurrence/Factorielle.md",
     "4 - Entiers, sommes, récurrence/Principe de récurrence.md",
     "2 - Logique/Proposition (Logique).md",
     "2 - Logique/ET (logique).md",
     "2 - Logique/Équivalence (logique).md",
     "Proposition.md",
-    "4 - Entiers, sommes, récurrence/Coefficients binomiaux.md",
     "3 - Ensembles et applications/Nombre de combinaisons.md",
     "3 - Ensembles et applications/Nombre d'arrangements.md",
     "3 - Ensembles et applications/Cardinal d'un produit cartésien.md",
@@ -188,14 +196,6 @@
     "3 - Ensembles et applications/Cardinal d'un ensemble partitionné.md",
     "3 - Ensembles et applications/Formule du crible.md",
     "3 - Ensembles et applications/Ensembles disjoints.md",
-    "3 - Ensembles et applications/Cardinal d'une union disjointe.md",
-    "3 - Ensembles et applications/Inclusion et égalité des cardinaux.md",
-    "3 - Ensembles et applications/Cardinal et inclusion.md",
-    "2026-03-15.md",
-    "3 - Ensembles et applications/Principe des tiroirs.md",
-    "3 - Ensembles et applications/Dénombrement et injection, surjection, bijection.md",
-    "3 - Ensembles et applications/Cardinal.md",
-    "4 - Entiers, sommes, récurrence/Entiers naturels.md",
     "2 - Logique/Untitled"
   ]
 }
