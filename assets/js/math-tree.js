@@ -11,6 +11,9 @@ let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 // Charger la position des noeuds depuis le storage local
 let storedNodePositions = JSON.parse(localStorage.getItem("storedNodePositions")) || nodePositions;
 
+let navigation = false
+let lastSelected = {}
+let defaultLayout = 'klay'
 
 // pas encore implémenté : pour modifier la forme des noeuds en fonction du type
 const typeShape = {
@@ -127,17 +130,6 @@ function setColors() {
 
 setColors()
 
-var colaOptions = {
-    animate: true,      // Très utile avec Cola pour voir les noeuds se placer
-    refresh: 1,         // Vitesse de rafraîchissement
-    maxSimulationTime: 4000, 
-    nodeSpacing: 40,    // Espace entre les bulles de cours
-    edgeLength: 100,    // Longueur souhaitée des liens entre chapitres
-    flow: { axis: 'y', minSeparation: 50 }, // Force le flux vertical (arbre)
-    avoidOverlaps: true, 
-    handleDisconnected: true // Garde les chapitres isolés ensemble
-}
-
 var klayOptions = {
   nodeDimensionsIncludeLabels: false, // Boolean which changes whether label dimensions are included when calculating node dimensions
   fit: true, // Whether to fit
@@ -196,8 +188,6 @@ var klayOptions = {
   priority: function( edge ){ return null; }, // Edges with a non-nil value are skipped when greedy edge cycle breaking is enabled
 };
 
-
-// Trois options de layout, en choisir une des trois à parser dans la commande suivante 
 var presetLayoutoptions = {
   positions: storedNodePositions,
   zoom: undefined, // the zoom level to set (prob want fit = false if set)
@@ -214,181 +204,9 @@ var presetLayoutoptions = {
   transform: function (node, position ){ return position; } // transform a given node position. Useful for changing flow direction in discrete layouts
 };
 
-var fcoseLayoutOptions = {
-  // 'draft', 'default' or 'proof' 
-  // - "draft" only applies spectral layout 
-  // - "default" improves the quality with incremental layout (fast cooling rate)
-  // - "proof" improves the quality with incremental layout (slow cooling rate) 
-  quality: "default",
-  // Use random node positions at beginning of layout
-  // if this is set to false, then quality option must be "proof"
-  randomize: false, 
-  // Whether or not to animate the layout
-  animate: false, 
-  // Duration of animation in ms, if enabled
-  animationDuration: 1000, 
-  // Easing of animation, if enabled
-  animationEasing: undefined, 
-  // Fit the viewport to the repositioned nodes
-  fit: true, 
-  // Padding around layout
-  padding: 30,
-  // Whether to include labels in node dimensions. Valid in "proof" quality
-  nodeDimensionsIncludeLabels: false,
-  // Whether or not simple nodes (non-compound nodes) are of uniform dimensions
-  uniformNodeDimensions: false,
-  // Whether to pack disconnected components - cytoscape-layout-utilities extension should be registered and initialized
-  packComponents: true,
-  // Layout step - all, transformed, enforced, cose - for debug purpose only
-  step: "all",
-  
-  /* spectral layout options */
-  
-  // False for random, true for greedy sampling
-  samplingType: true,
-  // Sample size to construct distance matrix
-  sampleSize: 25,
-  // Separation amount between nodes
-  nodeSeparation: 200,
-  // Power iteration tolerance
-  piTol: 0.0000001,
-  
-  /* incremental layout options */
-  
-  // Node repulsion (non overlapping) multiplier
-  nodeRepulsion: node => 4500,
-  // Ideal edge (non nested) length
-  idealEdgeLength: edge => 200,
-  // Divisor to compute edge forces
-  edgeElasticity: edge => 0.45,
-  // Nesting factor (multiplier) to compute ideal edge length for nested edges
-  nestingFactor: 0.1,
-  // Maximum number of iterations to perform - this is a suggested value and might be adjusted by the algorithm as required
-  numIter: 2500,
-  // For enabling tiling
-  tile: true,
-  // The comparison function to be used while sorting nodes during tiling operation.
-  // Takes the ids of 2 nodes that will be compared as a parameter and the default tiling operation is performed when this option is not set.
-  // It works similar to ``compareFunction`` parameter of ``Array.prototype.sort()``
-  // If node1 is less then node2 by some ordering criterion ``tilingCompareBy(nodeId1, nodeId2)`` must return a negative value
-  // If node1 is greater then node2 by some ordering criterion ``tilingCompareBy(nodeId1, nodeId2)`` must return a positive value
-  // If node1 is equal to node2 by some ordering criterion ``tilingCompareBy(nodeId1, nodeId2)`` must return 0
-  tilingCompareBy: undefined, 
-  // Represents the amount of the vertical space to put between the zero degree members during the tiling operation(can also be a function)
-  tilingPaddingVertical: 10,
-  // Represents the amount of the horizontal space to put between the zero degree members during the tiling operation(can also be a function)
-  tilingPaddingHorizontal: 10,
-  // Gravity force (constant)
-  gravity: 0.25,
-  // Gravity range (constant) for compounds
-  gravityRangeCompound: 1.5,
-  // Gravity force (constant) for compounds
-  gravityCompound: 1.0,
-  // Gravity range (constant)
-  gravityRange: 3.8, 
-  // Initial cooling factor for incremental layout  
-  initialEnergyOnIncremental: 0.3,
-
-  /* constraint options */
-
-  // Fix desired nodes to predefined positions
-  // [{nodeId: 'n1', position: {x: 100, y: 200}}, {...}]
-  fixedNodeConstraint: storedNodePositions    ,
-  // Align desired nodes in vertical/horizontal direction
-  // {vertical: [['n1', 'n2'], [...]], horizontal: [['n2', 'n4'], [...]]}
-  alignmentConstraint: undefined,
-  // Place two nodes relatively in vertical/horizontal direction
-  // [{top: 'n1', bottom: 'n2', gap: 100}, {left: 'n3', right: 'n4', gap: 75}, {...}]
-  relativePlacementConstraint: undefined,
-
-  /* layout event callbacks */
-  ready: () => {}, // on layoutready
-  stop: () => {} // on layoutstop
-};
-
-var coseBilkentLayoutOptions = {
-  ready: function () {
-  },
-  // Called on `layoutstop`
-  stop: function () {
-  },
-  // 'draft', 'default' or 'proof" 
-  // - 'draft' fast cooling rate 
-  // - 'default' moderate cooling rate 
-  // - "proof" slow cooling rate
-  quality: 'default',
-  // Whether to include labels in node dimensions. Useful for avoiding label overlap
-  nodeDimensionsIncludeLabels: true,
-  // number of ticks per frame; higher is faster but more jerky
-  refresh: 30,
-  // Whether to fit the network view after when done
-  fit: true,
-  // Padding on fit
-  padding: 30,
-  // Whether to enable incremental mode
-  randomize: true,
-  // Node repulsion (non overlapping) multiplier
-  nodeRepulsion: 4500,
-  // Ideal (intra-graph) edge length
-  idealEdgeLength: 200,
-  // Divisor to compute edge forces
-  edgeElasticity: 0.2,
-  // Nesting factor (multiplier) to compute ideal edge length for inter-graph edges
-  nestingFactor: .01,
-  // Gravity force (constant)
-  gravity: 0.25,
-  // Maximum number of iterations to perform
-  numIter: 2500,
-  // Whether to tile disconnected nodes
-  tile: true,
-  // Type of layout animation. The option set is {'during', 'end', false}
-  animate: false,
-  // Duration for animate:end
-  animationDuration: 500,
-  // Amount of vertical space to put between degree zero nodes during tiling (can also be a function)
-  tilingPaddingVertical: 10,
-  // Amount of horizontal space to put between degree zero nodes during tiling (can also be a function)
-  tilingPaddingHorizontal: 10,
-  // Gravity range (constant) for compounds
-  gravityRangeCompound: 1.5,
-  // Gravity force (constant) for compounds
-  gravityCompound: 1.0,
-  // Gravity range (constant)
-  gravityRange: 3.8,
-  // Initial cooling factor for incremental layout
-  initialEnergyOnIncremental: 0.5
-};
-
-var breadthfirstOptions = {
-
-  fit: true, // whether to fit the viewport to the graph
-  directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
-  direction: 'downward', // determines the direction in which the tree structure is drawn.  The possible values are 'downward', 'upward', 'rightward', or 'leftward'.
-  padding: 30, // padding on fit
-  circle: false, // put depths in concentric circles if true, put depths top down if false
-  grid: false, // whether to create an even grid into which the DAG is placed (circle:false only)
-  spacingFactor: 1.2, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
-  boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-  avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-  nodeDimensionsIncludeLabels: false, // Excludes the label when calculating node bounding boxes for the layout algorithm
-  roots: undefined, // the roots of the trees
-  depthSort: undefined, // a sorting function to order nodes at equal depth. e.g. function(a, b){ return a.data('weight') - b.data('weight') }
-  animate: false, // whether to transition the node positions
-  animationDuration: 500, // duration of animation in ms if enabled
-  animationEasing: undefined, // easing of animation if enabled,
-  animateFilter: function ( node, i ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
-  ready: undefined, // callback on layoutready
-  stop: undefined, // callback on layoutstop
-  transform: function (node, position ){ return position; } // transform a given node position. Useful for changing flow direction in discrete layouts
-};
-
-var layouNametToOptions = {
+var layoutNameToOptions = {
   'preset': presetLayoutoptions,
-  'fcose': fcoseLayoutOptions,
-  'cose-bilkent': coseBilkentLayoutOptions,
-  'breadthfirst': breadthfirstOptions,
   'klay' : klayOptions,
-  'cola' : colaOptions
 }
 
 var layoutName = 'klay'
@@ -397,7 +215,7 @@ const cy = cytoscape({
   container: document.getElementById('graph'),
   layout : {
     name : layoutName,
-    ...layouNametToOptions[layoutName]
+    ...layoutNameToOptions[layoutName]
   },
   elements: [...treeData.nodes, ...treeData.edges],
   style: [
@@ -439,7 +257,7 @@ const cy = cytoscape({
       }
     },
     {
-      selector : 'node.chapter-node.hidden',
+      selector : 'node.chapter-node.hidden, node.subchapter-node.hidden, node.chapter-node.undisplayed, node.subchapter-node.undisplayed',
       style: {
         'text-opacity': 0,
         'background-opacity': 0,
@@ -448,7 +266,7 @@ const cy = cytoscape({
       }
     },
     {
-      selector : 'node.chapter-label.hidden, node.subchapter-label.hidden',
+      selector : 'node.chapter-label.hidden, node.subchapter-label.hidden, node.chapter-label.undisplayed, node.subchapter-label.undisplayed',
       style: {
         'text-opacity': 0,
         'background-opacity': 0,
@@ -496,7 +314,6 @@ const cy = cytoscape({
         'taxi-direction': 'vertical',
         'target-arrow-shape': 'triangle',
         'arrow-scale' : 2,
-        'mid-target-arrow-shape': 'triangle',
         'width' : 2,
         'line-color': '#d1d1d1',
         'target-arrow-color': '#d1d1d1',
@@ -512,7 +329,7 @@ const cy = cytoscape({
       }
     },
     {
-      selector : 'edge.target-unavailable.hidden',
+      selector : 'edge.target-unavailable.hidden, node.item-cours.undisplayed',
       style: {
         'display' : 'none',
         'events' : 'no'
@@ -631,6 +448,27 @@ function updateAllPositions(){
   layout.run();
 }
 
+function resetToDefaultLayout(){
+  cy.elements().forEach(ele => {
+      ele.removeClass('undisplayed');
+    });
+  layout = cy.layout({
+    name: defaultLayout,
+    ...layoutNameToOptions[defaultLayout],
+    fit:false,
+    animate:true,
+    animationDuration : 500,
+  })
+  const lastSelectedId = lastSelected.id()
+  console.log(lastSelectedId)
+  layout.on('layoutstop', () => {
+    cy.zoom(cy.zoom()*0.5)
+    cy.center(lastSelected)
+  updateTitlePositions()
+  })
+  layout.run()
+}
+
 //Fonction qui met à jour la position des titres 
 function updateTitlePositions(){
   cy.$('node.chapter-label, node.subchapter-label').positions(
@@ -735,6 +573,7 @@ function loadNodePositions(event){
   };
 
   reader.readAsText(file);
+  defaultLayout = 'preset'
 
 }
 // Charge le contenu de l'onglet contenant les détails sur un noeud donné
@@ -808,26 +647,8 @@ function setToAccessible() {
     
     closePanel();
 }
-// Highlight les prérequis du noeud sélectionné
-function showPrerequisite() {
-  const selectedNodes = cy.nodes(':selected');
-  if(selectedNodes.length === 0) return;
 
-  const nodeId = selectedNodes[0].id();
-  const node = treeData.nodes.find(n => n.data.id === nodeId);
-  const prereqs = node.data.prereqs;
 
-  if(prereqs.length === 0){
-    alert("Aucun prérequis pour ce noeud !");
-    return;
-  }
-
-  currentNodeList.push(...prereqs);
-  highlightEdges(prereqs, nodeId)
-  highlightNodes(prereqs);
-  animateToFit(currentNodeList);
-  closePanel();
-}
 
 // reset progress
 function reset() {
@@ -855,6 +676,10 @@ cy.on('tap', function (event) {
     closePanel();
     currentNodeList = [];
     closeMenu();
+    if (navigation) {
+      navigation = false
+      resetToDefaultLayout();
+    }
   }
 });
 
@@ -922,36 +747,120 @@ cy.ready(() => {
 //   layout.run();
 // });
 
-// Met une liste de noeud en mémoire pour changer éventuellement le focus
-let currentNodeList = []
-
-
-// Focus sur une liste de noeud avec animation
-function animateToFit(nodeList) {
-  cy.animate({
-    fit: {
-      eles: cy.$(nodeList.map(id => `#${id}`).join(', ')),
-      padding: 50
-    }
-  }, {
-    duration: 500
-  });
-}
-
 
 // Gère ce qui se passe quand on clique sur un noeud
+// cy.on('tap', 'node', function (event) {
+//   node = event.target 
+//   const nodeId = node.id(); // Get selected node ID
+//   // Ne rien faire si c'est un noeud parent
+//   if(node.isParent()) return;
+//   // Nettoyer les selections et les surlignages
+//   cy.nodes().unselect();
+//   cy.edges().removeClass('highlighted');
+//   cy.nodes().removeClass('highlighted');
+//   // const title = event.target.data('label'); // Get selected node label
+//   // loadNodeDetails(nodeId, title); // Load corresponding Markdown content
+//   // currentNodeList.push(nodeId)
+// });
+
+
+// FONCTION PROPSOEE PAR CHATGPT 
 cy.on('tap', 'node', function (event) {
-  const nodeId = event.target.id(); // Get selected node ID
-  // Ne rien faire si c'est un noeud parent
-  if(cy.getElementById(nodeId).isParent()) return;
-  // Nettoyer les selections et les surlignages
+  const node = event.target;
+  if (node.isParent()) return;
+
+  // Reset visuel
+  cy.nodes().removeClass('undisplayed');
+  cy.edges().removeClass('undisplayed');
+
   cy.nodes().unselect();
   cy.edges().removeClass('highlighted');
   cy.nodes().removeClass('highlighted');
-  const title = event.target.data('label'); // Get selected node label
-  loadNodeDetails(nodeId, title); // Load corresponding Markdown content
-  currentNodeList.push(nodeId)
+  navigation = true
+  lastSelected = node
+  focusDirectNeighbors(node)
 });
+
+  function focusDirectNeighbors(node) {
+
+    // =========================
+    // 1. Récupérer voisins directs
+    // =========================
+  
+    const predecessors = node.incomers('node');
+    const successors   = node.outgoers('node');
+  
+    const subgraph = node
+      .union(predecessors)
+      .union(successors)
+      .union(node.connectedEdges());
+  
+    const ids = new Set(subgraph.map(e => e.id()));
+  
+    // =========================
+    // 2. Masquer le reste
+    // =========================
+  
+    cy.elements().forEach(ele => {
+      if (!ids.has(ele.id())) {
+        ele.addClass('undisplayed');
+      } else {
+        ele.removeClass('undisplayed');
+      }
+    });
+  
+    // =========================
+    // 3. Calcul positions
+    // =========================
+  
+    const positions = {};
+  
+    const centerX = 0;
+    const centerY = 0;
+  
+    const spacingX = 440;
+    const spacingY = 300;
+  
+    // --- centre ---
+    positions[node.id()] = { x: centerX, y: centerY };
+  
+    // --- prédécesseurs (au-dessus) ---
+    const totalWidthPred = (predecessors.length - 1) * spacingX;
+  
+    predecessors.forEach((n, i) => {
+      positions[n.id()] = {
+        x: i * spacingX - totalWidthPred / 2,
+        y: centerY - spacingY
+      };
+    });
+  
+    // --- successeurs (en dessous) ---
+    const totalWidthSucc = (successors.length - 1) * spacingX;
+  
+    successors.forEach((n, i) => {
+      positions[n.id()] = {
+        x: i * spacingX - totalWidthSucc / 2,
+        y: centerY + spacingY
+      };
+    });
+  
+    // =========================
+    // 4. Appliquer layout
+    // =========================
+  
+    const layout = subgraph.layout({
+      name: 'preset',
+      positions: positions,
+      fit: true,
+      padding: 80,
+      animate: true,
+      animationDuration: 400
+    });
+  
+    layout.run();
+  }
+
+/// FIN TEST CHATGPT
 
 cy.on('tapdrag', function (){
   updateTitlePositions();
@@ -1150,3 +1059,4 @@ checkboxTooltips.addEventListener("change", () => {
     tooltipsActivated = false
   }
 });
+
