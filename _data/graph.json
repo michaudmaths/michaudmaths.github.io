@@ -1275,9 +1275,9 @@
           "denombrement_inj_surj_bij",
           "formule_crible",
           "inclusion_egalite_cardinal",
+          "principe_tiroirs",
           "nombre_arrangements",
-          "nombre_combinaisons",
-          "principe_tiroirs"
+          "nombre_combinaisons"
         ],
         "tooltip": ""
       },
@@ -1348,41 +1348,6 @@
         ],
         "chapter": "3 - Ensembles et applications",
         "label": "Inclusion et égalité des cardinaux",
-        "unlocked": [],
-        "tooltip": ""
-      },
-      "classes": [
-        "item-cours"
-      ]
-    },
-    {
-      "data": {
-        "id": "nombre_arrangements",
-        "parent": "subchapter_D_nombrement",
-        "prereqs": [
-          "arrangement",
-          "cardinal"
-        ],
-        "chapter": "3 - Ensembles et applications",
-        "label": "Nombre d'arrangements",
-        "unlocked": [],
-        "tooltip": ""
-      },
-      "classes": [
-        "item-cours"
-      ]
-    },
-    {
-      "data": {
-        "id": "nombre_combinaisons",
-        "parent": "subchapter_D_nombrement",
-        "prereqs": [
-          "combinaison",
-          "cardinal",
-          "coefficients_binomiaux"
-        ],
-        "chapter": "3 - Ensembles et applications",
-        "label": "Nombre de combinaisons",
         "unlocked": [],
         "tooltip": ""
       },
@@ -1828,6 +1793,41 @@
         ],
         "chapter": "3 - Ensembles et applications",
         "label": "Lois de De Morgan (Ensembles)",
+        "unlocked": [],
+        "tooltip": ""
+      },
+      "classes": [
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "nombre_arrangements",
+        "parent": "subchapter_Op_rations_sur_les_ensembles",
+        "prereqs": [
+          "arrangement",
+          "cardinal"
+        ],
+        "chapter": "3 - Ensembles et applications",
+        "label": "Nombre d'arrangements",
+        "unlocked": [],
+        "tooltip": ""
+      },
+      "classes": [
+        "item-cours"
+      ]
+    },
+    {
+      "data": {
+        "id": "nombre_combinaisons",
+        "parent": "subchapter_Op_rations_sur_les_ensembles",
+        "prereqs": [
+          "combinaison",
+          "cardinal",
+          "coefficients_binomiaux"
+        ],
+        "chapter": "3 - Ensembles et applications",
+        "label": "Nombre de combinaisons",
         "unlocked": [],
         "tooltip": ""
       },
@@ -3297,61 +3297,6 @@
     },
     {
       "data": {
-        "id": "arrangement_to_nombre_arrangements",
-        "source": "arrangement",
-        "target": "nombre_arrangements"
-      },
-      "classes": [],
-      "grabbable": false,
-      "selectable": false,
-      "pannable": true
-    },
-    {
-      "data": {
-        "id": "cardinal_to_nombre_arrangements",
-        "source": "cardinal",
-        "target": "nombre_arrangements"
-      },
-      "classes": [],
-      "grabbable": false,
-      "selectable": false,
-      "pannable": true
-    },
-    {
-      "data": {
-        "id": "combinaison_to_nombre_combinaisons",
-        "source": "combinaison",
-        "target": "nombre_combinaisons"
-      },
-      "classes": [],
-      "grabbable": false,
-      "selectable": false,
-      "pannable": true
-    },
-    {
-      "data": {
-        "id": "cardinal_to_nombre_combinaisons",
-        "source": "cardinal",
-        "target": "nombre_combinaisons"
-      },
-      "classes": [],
-      "grabbable": false,
-      "selectable": false,
-      "pannable": true
-    },
-    {
-      "data": {
-        "id": "coefficients_binomiaux_to_nombre_combinaisons",
-        "source": "coefficients_binomiaux",
-        "target": "nombre_combinaisons"
-      },
-      "classes": [],
-      "grabbable": false,
-      "selectable": false,
-      "pannable": true
-    },
-    {
-      "data": {
         "id": "ensembles_disjoints_to_partition_ensemble",
         "source": "ensembles_disjoints",
         "target": "partition_ensemble"
@@ -3817,6 +3762,61 @@
         "id": "complementaire_to_lois_de_morgan_ensembles",
         "source": "complementaire",
         "target": "lois_de_morgan_ensembles"
+      },
+      "classes": [],
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
+    },
+    {
+      "data": {
+        "id": "arrangement_to_nombre_arrangements",
+        "source": "arrangement",
+        "target": "nombre_arrangements"
+      },
+      "classes": [],
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
+    },
+    {
+      "data": {
+        "id": "cardinal_to_nombre_arrangements",
+        "source": "cardinal",
+        "target": "nombre_arrangements"
+      },
+      "classes": [],
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
+    },
+    {
+      "data": {
+        "id": "combinaison_to_nombre_combinaisons",
+        "source": "combinaison",
+        "target": "nombre_combinaisons"
+      },
+      "classes": [],
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
+    },
+    {
+      "data": {
+        "id": "cardinal_to_nombre_combinaisons",
+        "source": "cardinal",
+        "target": "nombre_combinaisons"
+      },
+      "classes": [],
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
+    },
+    {
+      "data": {
+        "id": "coefficients_binomiaux_to_nombre_combinaisons",
+        "source": "coefficients_binomiaux",
+        "target": "nombre_combinaisons"
       },
       "classes": [],
       "grabbable": false,
