@@ -7,18 +7,22 @@ page_class: arbre
 
 <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
 
+
 <script>
   const treeData = {{ site.data.graph | jsonify }};
   const nodePositions = {{ site.data.node_positions | jsonify }} 
 </script>
-<script defer src="/assets/js/mathjax-config.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
-<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<!-- <script src="https://unpkg.com/layout-base/layout-base.js"></script>
 <script src="https://unpkg.com/cose-base/cose-base.js"></script>
 <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
 <script src="https://unpkg.com/cytoscape-node-html-label/dist/cytoscape-node-html-label.js"></script>
 <script src="/assets/js/cytoscape-cose-bilkent.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/webcola@3.4.0/WebCola/cola.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.5.1/cytoscape-cola.min.js"></script> -->
+<script src="https://unpkg.com/klayjs@0.4.1/klay.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape-klay@3.1.4/cytoscape-klay.min.js"></script>
 <script src="/assets/js/math-tree.js" defer></script>
 
 <div id="graph-container">

@@ -5,8 +5,6 @@ const detailPanelContent = document.getElementById("panel-content");
 const closeBtn = document.getElementById("close-panel");
 const handle = document.getElementById("drag-handle");
 
-
-
 // Charger progrès depuis le storage local
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
 
@@ -49,7 +47,7 @@ const statusVarColors = {
 
 const styleListForChapterColor = chapterToColor.flatMap(chapter => [
   {
-    selector: `node[chapter = "${chapter.title}"].chapter-label`,
+    selector: `node[chapter = "${chapter.title}"].chapter-label, node[chapter = "${chapter.title}"].subchapter-label`,
     style: {
       'color' : chapter.color,
       'text-background-color' : changeColor(chapter.color,0.9),
@@ -129,6 +127,76 @@ function setColors() {
 
 setColors()
 
+var colaOptions = {
+    animate: true,      // Très utile avec Cola pour voir les noeuds se placer
+    refresh: 1,         // Vitesse de rafraîchissement
+    maxSimulationTime: 4000, 
+    nodeSpacing: 40,    // Espace entre les bulles de cours
+    edgeLength: 100,    // Longueur souhaitée des liens entre chapitres
+    flow: { axis: 'y', minSeparation: 50 }, // Force le flux vertical (arbre)
+    avoidOverlaps: true, 
+    handleDisconnected: true // Garde les chapitres isolés ensemble
+}
+
+var klayOptions = {
+  nodeDimensionsIncludeLabels: false, // Boolean which changes whether label dimensions are included when calculating node dimensions
+  fit: true, // Whether to fit
+  padding: 20, // Padding on fit
+  animate: false, // Whether to transition the node positions
+  animateFilter: function( node, i ){ return true; }, // Whether to animate specific nodes when animation is on; non-animated nodes immediately go to their final positions
+  animationDuration: 500, // Duration of animation in ms if enabled
+  animationEasing: undefined, // Easing of animation if enabled
+  transform: function( node, pos ){ return pos; }, // A function that applies a transform to the final node position
+  ready: undefined, // Callback on layoutready
+  stop: undefined, // Callback on layoutstop
+  klay: {
+    // Following descriptions taken from http://layout.rtsys.informatik.uni-kiel.de:9444/Providedlayout.html?algorithm=de.cau.cs.kieler.klay.layered
+    addUnnecessaryBendpoints: false, // Adds bend points even if an edge does not change direction.
+    aspectRatio: 1.5, // The aimed aspect ratio of the drawing, that is the quotient of width by height
+    borderSpacing: 20, // Minimal amount of space to be left to the border
+    compactComponents: true, // Tries to further compact components (disconnected sub-graphs).
+    crossingMinimization: 'LAYER_SWEEP', // Strategy for crossing minimization.
+    /* LAYER_SWEEP The layer sweep algorithm iterates multiple times over the layers, trying to find node orderings that minimize the number of crossings. The algorithm uses randomization to increase the odds of finding a good result. To improve its results, consider increasing the Thoroughness option, which influences the number of iterations done. The Randomization seed also influences results.
+    INTERACTIVE Orders the nodes of each layer by comparing their positions before the layout algorithm was started. The idea is that the relative order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive layer sweep algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
+    cycleBreaking: 'GREEDY', // Strategy for cycle breaking. Cycle breaking looks for cycles in the graph and determines which edges to reverse to break the cycles. Reversed edges will end up pointing to the opposite direction of regular edges (that is, reversed edges will point left if edges usually point right).
+    /* GREEDY This algorithm reverses edges greedily. The algorithm tries to avoid edges that have the Priority property set.
+    INTERACTIVE The interactive algorithm tries to reverse edges that already pointed leftwards in the input graph. This requires node and port coordinates to have been set to sensible values.*/
+    direction: 'DOWN', // Overall direction of edges: horizontal (right / left) or vertical (down / up)
+    /* UNDEFINED, RIGHT, LEFT, DOWN, UP */
+    edgeRouting: 'ORTHOGONAL', // Defines how edges are routed (POLYLINE, ORTHOGONAL, SPLINES)
+    edgeSpacingFactor: .5, // Factor by which the object spacing is multiplied to arrive at the minimal spacing between edges.
+    feedbackEdges: false, // Whether feedback edges should be highlighted by routing around the nodes.
+    fixedAlignment: 'NONE', // Tells the BK node placer to use a certain alignment instead of taking the optimal result.  This option should usually be left alone.
+    /* NONE Chooses the smallest layout from the four possible candidates.
+    LEFTUP Chooses the left-up candidate from the four possible candidates.
+    RIGHTUP Chooses the right-up candidate from the four possible candidates.
+    LEFTDOWN Chooses the left-down candidate from the four possible candidates.
+    RIGHTDOWN Chooses the right-down candidate from the four possible candidates.
+    BALANCED Creates a balanced layout from the four possible candidates. */
+    inLayerSpacingFactor: 1.0, // Factor by which the usual spacing is multiplied to determine the in-layer spacing between objects.
+    layoutHierarchy: true, // Whether the selected layouter should consider the full hierarchy
+    linearSegmentsDeflectionDampening: 0.3, // Dampens the movement of nodes to keep the diagram from getting too large.
+    mergeEdges: false, // Edges that have no ports are merged so they touch the connected nodes at the same points.
+    mergeHierarchyCrossingEdges: true, // If hierarchical layout is active, hierarchy-crossing edges use as few hierarchical ports as possible.
+    nodeLayering:'NETWORK_SIMPLEX', // Strategy for node layering.
+    /* NETWORK_SIMPLEX This algorithm tries to minimize the length of edges. This is the most computationally intensive algorithm. The number of iterations after which it aborts if it hasn't found a result yet can be set with the Maximal Iterations option.
+    LONGEST_PATH A very simple algorithm that distributes nodes along their longest path to a sink node.
+    INTERACTIVE Distributes the nodes into layers by comparing their positions before the layout algorithm was started. The idea is that the relative horizontal order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive node layering algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
+    nodePlacement:'BRANDES_KOEPF', // Strategy for Node Placement
+    /* BRANDES_KOEPF Minimizes the number of edge bends at the expense of diagram size: diagrams drawn with this algorithm are usually higher than diagrams drawn with other algorithms.
+    LINEAR_SEGMENTS Computes a balanced placement.
+    INTERACTIVE Tries to keep the preset y coordinates of nodes from the original layout. For dummy nodes, a guess is made to infer their coordinates. Requires the other interactive phase implementations to have run as well.
+    SIMPLE Minimizes the area at the expense of... well, pretty much everything else. */
+    randomizationSeed: 1, // Seed used for pseudo-random number generators to control the layout algorithm; 0 means a new seed is generated
+    routeSelfLoopInside: false, // Whether a self-loop is routed around or inside its node.
+    separateConnectedComponents: true, // Whether each connected component should be processed separately
+    spacing: 40, // Overall setting for the minimal amount of space to be left between objects
+    thoroughness: 7 // How much effort should be spent to produce a nice layout..
+  },
+  priority: function( edge ){ return null; }, // Edges with a non-nil value are skipped when greedy edge cycle breaking is enabled
+};
+
+
 // Trois options de layout, en choisir une des trois à parser dans la commande suivante 
 var presetLayoutoptions = {
   positions: storedNodePositions,
@@ -137,7 +205,7 @@ var presetLayoutoptions = {
   fit: true, // whether to fit to viewport
   padding: 30, // padding on fit
   spacingFactor: undefined, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
-  animate: true, // whether to transition the node positions
+  animate: false, // whether to transition the node positions
   animationDuration: 500, // duration of animation in ms if enabled
   animationEasing: undefined, // easing of animation if enabled
   animateFilter: function ( node, i ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
@@ -156,7 +224,7 @@ var fcoseLayoutOptions = {
   // if this is set to false, then quality option must be "proof"
   randomize: false, 
   // Whether or not to animate the layout
-  animate: true, 
+  animate: false, 
   // Duration of animation in ms, if enabled
   animationDuration: 1000, 
   // Easing of animation, if enabled
@@ -274,7 +342,7 @@ var coseBilkentLayoutOptions = {
   // Whether to tile disconnected nodes
   tile: true,
   // Type of layout animation. The option set is {'during', 'end', false}
-  animate: 'true',
+  animate: false,
   // Duration for animate:end
   animationDuration: 500,
   // Amount of vertical space to put between degree zero nodes during tiling (can also be a function)
@@ -291,39 +359,65 @@ var coseBilkentLayoutOptions = {
   initialEnergyOnIncremental: 0.5
 };
 
+var breadthfirstOptions = {
+
+  fit: true, // whether to fit the viewport to the graph
+  directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
+  direction: 'downward', // determines the direction in which the tree structure is drawn.  The possible values are 'downward', 'upward', 'rightward', or 'leftward'.
+  padding: 30, // padding on fit
+  circle: false, // put depths in concentric circles if true, put depths top down if false
+  grid: false, // whether to create an even grid into which the DAG is placed (circle:false only)
+  spacingFactor: 1.2, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
+  boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+  avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+  nodeDimensionsIncludeLabels: false, // Excludes the label when calculating node bounding boxes for the layout algorithm
+  roots: undefined, // the roots of the trees
+  depthSort: undefined, // a sorting function to order nodes at equal depth. e.g. function(a, b){ return a.data('weight') - b.data('weight') }
+  animate: false, // whether to transition the node positions
+  animationDuration: 500, // duration of animation in ms if enabled
+  animationEasing: undefined, // easing of animation if enabled,
+  animateFilter: function ( node, i ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
+  ready: undefined, // callback on layoutready
+  stop: undefined, // callback on layoutstop
+  transform: function (node, position ){ return position; } // transform a given node position. Useful for changing flow direction in discrete layouts
+};
+
 var layouNametToOptions = {
   'preset': presetLayoutoptions,
   'fcose': fcoseLayoutOptions,
-  'cose-bilkent': coseBilkentLayoutOptions
+  'cose-bilkent': coseBilkentLayoutOptions,
+  'breadthfirst': breadthfirstOptions,
+  'klay' : klayOptions,
+  'cola' : colaOptions
 }
-  
-var layoutName = 'preset'
+
+var layoutName = 'klay'
 // Instantiation du graphe
 const cy = cytoscape({
   container: document.getElementById('graph'),
-  elements: [...treeData.nodes, ...treeData.edges],
   layout : {
-    name: layoutName,
+    name : layoutName,
     ...layouNametToOptions[layoutName]
   },
+  elements: [...treeData.nodes, ...treeData.edges],
   style: [
     {
-      selector: 'node',
+      selector: 'node.item-cours',
       style: {
         'shape': 'round-rectangle',
-        'width': '250px',
-        'height': '50px',
+        'width': '200px',
+        'height': '160px',
         'border-width': '2px',
         'overlay-opacity': 0,
-        //'label': '', // Add label to display node title
+        'label': 'data(label)', // Add label to display node title
         'text-valign': 'center',
         'text-halign': 'center',
         'font-weight': 'bold',
         'text-wrap': 'wrap',
-        'text-max-width': '230px',
+        'text-max-width': '180px',
         'color': '#000',
-        'font-size': '18px',
-        'transition-property': 'width height font-size background-color border-color color',
+        'font-size': '30px',
+        'transition-property': 'border-width background-color border-color',
         'transition-duration' : '500ms',
       }
     },
@@ -354,7 +448,7 @@ const cy = cytoscape({
       }
     },
     {
-      selector : 'node.chapter-label.hidden',
+      selector : 'node.chapter-label.hidden, node.subchapter-label.hidden',
       style: {
         'text-opacity': 0,
         'background-opacity': 0,
@@ -363,7 +457,7 @@ const cy = cytoscape({
       }
     },
     {
-      selector: 'node.chapter-label',
+      selector: 'node.chapter-label, node.subchapter-label',
       style:{
         'width':'150px',
         'height':'20px',
@@ -372,15 +466,20 @@ const cy = cytoscape({
         'text-wrap': 'none',
         'background-opacity': 0.05,
         'text-background-opacity' : 1,
-        'font-size': '30px',
+        'font-size': '50px',
         // 'events' : 'no',// A remettre ensuite, plus facile pour manipuler
       },
     },
     {
+      selector: 'node.subchapter-label',
+      style:{
+        'font-size': '40px',
+      }
+    },
+    {
       selector: 'node.hover',
       style: {
-        'width': '275px',
-        'height': '55px',
+        'border-width': '6px',
       }
     },
     {
@@ -393,8 +492,12 @@ const cy = cytoscape({
     {
       selector: 'edge',
       style: {
-        'curve-style': 'bezier',
+        'curve-style': 'round-taxi', // Des angles droits plus propres pour les arbres
+        'taxi-direction': 'vertical',
         'target-arrow-shape': 'triangle',
+        'arrow-scale' : 2,
+        'mid-target-arrow-shape': 'triangle',
+        'width' : 2,
         'line-color': '#d1d1d1',
         'target-arrow-color': '#d1d1d1',
         'transition-property': 'line-color target-arrow-color',
@@ -437,41 +540,8 @@ const cy = cytoscape({
 // Place les titres de chapitre correctement
 updateTitlePositions()
 
-// Crée des labels en HTML pour gérer les maths et la mise en forme
+// Convertit les maths en image SVG
 
-cy.nodeHtmlLabel([{
-  query: '.item-cours',
-  valign: "center",
-  halign: "center",
-  valignBox: "center",
-  halignBox: "center",
-  tpl: function(data) {
-    if (!data.parent){return;}
-    const div = document.createElement("div");
-    div.className = "node-html-label";
-    div.innerHTML = data.label;
-
-    renderMathInElement(div, {
-      // customised options
-      // • auto-render specific keys, e.g.:
-      delimiters: [
-          {left: '$$', right: '$$', display: true},
-          {left: '$', right: '$', display: false},
-          {left: '\\(', right: '\\)', display: false},
-          {left: '\\[', right: '\\]', display: true}
-      ],
-      // • rendering keys, e.g.:
-      throwOnError : false
-    });
-
-    return div.outerHTML;
-  }
-},
-{
-  query: '.item-cours.unavailable.hidden',
-  tpl: () => ''
-}
-]);
 
 // Fonction pour tester si tous les prérequis d'un noeud sont acquis
 
@@ -480,14 +550,23 @@ function isAccessible(nodeId){
   return node.data.prereqs.every(p => progress[p]);
 }
 
+function progressDown(nodeId){
+  const node = treeData.nodes.find(n => n.data.id === nodeId);
+  node.data.unlocked.forEach(u =>{
+    if (progress[u]){
+      delete progress[u]
+      progressDown(u)
+    }
+  })
+}
+
 // Fonction qui met à jour les couleurs d'UN noeud
-function updateNodeColor(n){
-  node = cy.$(`#${n.data.id}`)
-  if (progress[n.data.id]) {
+function updateNodeColor(node){
+  if (progress[node.id()]) {
         node.addClass('acquired');
         node.removeClass('current');
         node.removeClass('unavailable');
-      } else if (isAccessible(n.data.id)) {
+      } else if (isAccessible(node.id())) {
         node.removeClass('unavailable');
         node.removeClass('acquired')
         node.addClass('current')
@@ -497,10 +576,9 @@ function updateNodeColor(n){
         node.addClass('unavailable');
       }
 }
-function updateEdgeColor(e){
-  const sourceAcquired = progress[e.data.source];
-  const targetAccessible = isAccessible(e.data.target);
-  const edge = cy.$(`#${e.data.id}`);
+function updateEdgeColor(edge){
+  const sourceAcquired = progress[edge.source().id()];
+  const targetAccessible = isAccessible(edge.target().id());
   if (sourceAcquired) {
       edge.addClass('parent-acquired');
     } else {
@@ -516,33 +594,28 @@ function updateEdgeColor(e){
 // Fonction qui met à jour seulement le noeud sélectionné, les arrêtes partant de ce noeud, et les noeuds qui en découlent.
 
 function updateColors(id){
-  treeData.nodes.forEach(n => {
-    if (!n.data.id === id){return;}
-    else {
-      updateNodeColor(n)
-      n.data.unlocked.foreach(n2 =>{ 
-        updateNodeColor(n2);
-        updateEdgeColor(n1+'->'+n2);
-      })
-      n.data.prereqs.foreach(n2 => {
-        updateNodeColor(n2);
-        updateEdgeColor(n2+'->'+n1);
-      })
-    }
-    
-  })
+    n = cy.getElementById(id)
+    updateNodeColor(n)
+    n.successors().forEach(e =>{
+      if (e.isNode()){updateNodeColor(e)} else {updateEdgeColor(e)}
+    })
+    n.incomers('edge').forEach(edge => {
+      updateEdgeColor(edge);
+    })
 }
 
 
 
-// Fonction qui met à jour les classes de tous les noeuds et arêtes, appelée à chaque fois qu'un status est modifié
+// Fonction qui met à jour les classes de tous les noeuds et arêtes, appelée normalement une seule fois
 function updateAllColors() {
-  treeData.nodes.forEach(n => {
-    updateNodeColor(n)
+  treeData.nodes.forEach(e => {
+    node = cy.getElementById(e.data.id)
+    updateNodeColor(node)
   });
   treeData.edges.forEach(e => {
-    updateEdgeColor(e)}
-  );
+    edge = cy.getElementById(e.data.id)
+    updateEdgeColor(edge)
+  });
 }
 
 
@@ -560,12 +633,13 @@ function updateAllPositions(){
 
 //Fonction qui met à jour la position des titres 
 function updateTitlePositions(){
-  cy.$('node.chapter-label').positions(
+  cy.$('node.chapter-label, node.subchapter-label').positions(
     function (node,i){
-      let nodesInChapter = cy.$(`node[chapter = "${node.data('chapter')}"]`);
-      let nodesChapters = cy.$('node.chapter-node');
-      let nodesChapterLabel = cy.$('node.chapter-label');
-      let nodes = nodesInChapter.difference(nodesChapters).difference(nodesChapterLabel);
+      if (node.hasClass('chapter-label')){
+        var nodes = node.parent().descendants().intersection(cy.$('.item-cours , .subchapter-node'));
+      } else {
+        var nodes = node.parent().descendants().intersection(cy.$('.item-cours'));
+      }
       let box = nodes.boundingBox()
       return {
         x: box.x1 + box.w/2,
@@ -579,7 +653,7 @@ function updateTitlePositions(){
 function highlightEdges(sourceIds, targetId){
   cy.edges().removeClass('highlighted');
   sourceIds.forEach(sourceId => {
-    const edge = cy.getElementById(`${sourceId}->${targetId}`);;
+    const edge = cy.getElementById(`${sourceId}_to_${targetId}`);;
     edge.addClass('highlighted');
   });
 }
@@ -727,9 +801,11 @@ function setToAccessible() {
   selectedNodes.forEach(node => {
       const nodeId = node.id();
       delete progress[nodeId]; // Mark as accessible (not acquired)
+      localStorage.setItem("mathProgress", JSON.stringify(progress));
+      progressDown(nodeId)
+      updateColors(nodeId);
 });
-    localStorage.setItem("mathProgress", JSON.stringify(progress));
-    updateColors(nodeId);
+    
     closePanel();
 }
 // Highlight les prérequis du noeud sélectionné
@@ -785,7 +861,66 @@ cy.on('tap', function (event) {
 // Met à jour les couleurs dès le début
 cy.ready(() => {
   updateAllColors();
+  // updateAllPositions();
+  updateTitlePositions();
+  cy.fit()
 });
+
+
+// cy.nodes('node.chapter-node').forEach((chapterNode, index) => {
+//   // 2. On récupère les enfants et on applique le layout
+//   const children = chapterNode.children('.item-cours')
+//   const roots = children.filter(n => n.indegree() === 0); 
+//   const layout = children.union(children.connectedEdges()).layout({
+//     name : 'klay',
+//     klay: {
+//       // Following descriptions taken from http://layout.rtsys.informatik.uni-kiel.de:9444/Providedlayout.html?algorithm=de.cau.cs.kieler.klay.layered
+//       addUnnecessaryBendpoints: false, // Adds bend points even if an edge does not change direction.
+//       aspectRatio: 1.5, // The aimed aspect ratio of the drawing, that is the quotient of width by height
+//       borderSpacing: 20, // Minimal amount of space to be left to the border
+//       compactComponents: false, // Tries to further compact components (disconnected sub-graphs).
+//       crossingMinimization: 'LAYER_SWEEP', // Strategy for crossing minimization.
+//       /* LAYER_SWEEP The layer sweep algorithm iterates multiple times over the layers, trying to find node orderings that minimize the number of crossings. The algorithm uses randomization to increase the odds of finding a good result. To improve its results, consider increasing the Thoroughness option, which influences the number of iterations done. The Randomization seed also influences results.
+//       INTERACTIVE Orders the nodes of each layer by comparing their positions before the layout algorithm was started. The idea is that the relative order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive layer sweep algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
+//       cycleBreaking: 'GREEDY', // Strategy for cycle breaking. Cycle breaking looks for cycles in the graph and determines which edges to reverse to break the cycles. Reversed edges will end up pointing to the opposite direction of regular edges (that is, reversed edges will point left if edges usually point right).
+//       /* GREEDY This algorithm reverses edges greedily. The algorithm tries to avoid edges that have the Priority property set.
+//       INTERACTIVE The interactive algorithm tries to reverse edges that already pointed leftwards in the input graph. This requires node and port coordinates to have been set to sensible values.*/
+//       direction: 'DOWN', // Overall direction of edges: horizontal (right / left) or vertical (down / up)
+//       /* UNDEFINED, RIGHT, LEFT, DOWN, UP */
+//       edgeRouting: 'ORTHOGONAL', // Defines how edges are routed (POLYLINE, ORTHOGONAL, SPLINES)
+//       edgeSpacingFactor: .5, // Factor by which the object spacing is multiplied to arrive at the minimal spacing between edges.
+//       feedbackEdges: false, // Whether feedback edges should be highlighted by routing around the nodes.
+//       fixedAlignment: 'NONE', // Tells the BK node placer to use a certain alignment instead of taking the optimal result.  This option should usually be left alone.
+//       /* NONE Chooses the smallest layout from the four possible candidates.
+//       LEFTUP Chooses the left-up candidate from the four possible candidates.
+//       RIGHTUP Chooses the right-up candidate from the four possible candidates.
+//       LEFTDOWN Chooses the left-down candidate from the four possible candidates.
+//       RIGHTDOWN Chooses the right-down candidate from the four possible candidates.
+//       BALANCED Creates a balanced layout from the four possible candidates. */
+//       inLayerSpacingFactor: 1.0, // Factor by which the usual spacing is multiplied to determine the in-layer spacing between objects.
+//       layoutHierarchy: false, // Whether the selected layouter should consider the full hierarchy
+//       linearSegmentsDeflectionDampening: 0.3, // Dampens the movement of nodes to keep the diagram from getting too large.
+//       mergeEdges: false, // Edges that have no ports are merged so they touch the connected nodes at the same points.
+//       mergeHierarchyCrossingEdges: true, // If hierarchical layout is active, hierarchy-crossing edges use as few hierarchical ports as possible.
+//       nodeLayering:'NETWORK_SIMPLEX', // Strategy for node layering.
+//       /* NETWORK_SIMPLEX This algorithm tries to minimize the length of edges. This is the most computationally intensive algorithm. The number of iterations after which it aborts if it hasn't found a result yet can be set with the Maximal Iterations option.
+//       LONGEST_PATH A very simple algorithm that distributes nodes along their longest path to a sink node.
+//       INTERACTIVE Distributes the nodes into layers by comparing their positions before the layout algorithm was started. The idea is that the relative horizontal order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive node layering algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
+//       nodePlacement:'BRANDES_KOEPF', // Strategy for Node Placement
+//       /* BRANDES_KOEPF Minimizes the number of edge bends at the expense of diagram size: diagrams drawn with this algorithm are usually higher than diagrams drawn with other algorithms.
+//       LINEAR_SEGMENTS Computes a balanced placement.
+//       INTERACTIVE Tries to keep the preset y coordinates of nodes from the original layout. For dummy nodes, a guess is made to infer their coordinates. Requires the other interactive phase implementations to have run as well.
+//       SIMPLE Minimizes the area at the expense of... well, pretty much everything else. */
+//       randomizationSeed: 1, // Seed used for pseudo-random number generators to control the layout algorithm; 0 means a new seed is generated
+//       routeSelfLoopInside: false, // Whether a self-loop is routed around or inside its node.
+//       separateConnectedComponents: true, // Whether each connected component should be processed separately
+//       spacing: 40, // Overall setting for the minimal amount of space to be left between objects
+//       thoroughness: 7 // How much effort should be spent to produce a nice layout..
+//     },
+//   });
+
+//   layout.run();
+// });
 
 // Met une liste de noeud en mémoire pour changer éventuellement le focus
 let currentNodeList = []
@@ -973,10 +1108,14 @@ checkboxChapters.addEventListener("change", () => {
   if (checkboxChapters.checked) {
     cy.nodes(".chapter-node").removeClass("hidden");
     cy.nodes(".chapter-label").removeClass("hidden");
+    cy.nodes(".subchapter-node").removeClass("hidden");
+    cy.nodes(".subchapter-label").removeClass("hidden");
   } 
   else {
     cy.nodes(".chapter-node").addClass("hidden");
     cy.nodes(".chapter-label").addClass("hidden");
+    cy.nodes(".subchapter-node").addClass("hidden");
+    cy.nodes(".subchapter-label").addClass("hidden");
   }
 
 });
