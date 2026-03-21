@@ -17,6 +17,13 @@ const ALLOWED_FOLDERS = [
   "4 - Entiers, sommes, récurrence"
 ];
 
+
+const getDirectories = source =>
+  fs.readdirSync(source, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name)
+
+
 const files = getMarkdownFiles(NODES_DIR);
 const filenameToId = createFilenameToIdMap()
 const prereqsMap = createPrereqsMap()
@@ -53,7 +60,7 @@ function createMinimumPrereqsMap(){
   var minimumPrereqsMap = {}
   files.forEach(file=>{
     const filename = path.basename(file, ".md");
-    const id = filenameToId[filename]
+    const id = filenameToId[filename];
     minimumPrereqsMap[id] = getMinimumPrereqs(id, prereqsMap)
   })
   return minimumPrereqsMap;
@@ -87,7 +94,7 @@ function createFilenameToIdMap(){
     const { meta } = parseFrontmatter(raw);
     if (!meta.id) return;
     const filename = path.basename(file, ".md");
-    filenameToId[filename] = meta.id;
+    filenameToId[filename] = meta.id.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   });
   return filenameToId;
 }
@@ -159,6 +166,13 @@ function getTopFolder(filepath) {
   return "root";
 }
 
+function getSubFolder(filepath) {
+  const relative = path.relative(NODES_DIR, filepath);
+  const parts = relative.split(path.sep);
+  if (parts.length >2) {return parts[1]}
+  else {return false}
+}
+
 /*
 Frontmatter simple
 */
@@ -214,33 +228,69 @@ function extractLinks(text) {
 }
 
 function build() {
-  // Noeuds parents pour chaque folder
+  // Noeuds et sous noeud parents pour chaque folder
   ALLOWED_FOLDERS.forEach(folder => {
-    const id = `folder_${folder.replace(/\s+-\S+/g, "_")}`;
+    const id = `chapter_${folder.replace(/[^a-zA-Z0-9]/g,'_').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')}`;
     filenameToId[folder] = id;
 
-    // Création des noeuds parents par chapitre et des noeuds labels de chapitre
+
+    // Création des noeuds parents par chapitre et sous-parties et des noeuds labels de chapitre
     nodes.push({
       data: {
         id: id,
         label: folder,
-        category: folder,
+        chapter: folder,
         prereqs: [],
       },
       classes: ['chapter-node'],
-      grabbable: true // A enlever 
+      grabbable: true, // A enlever 
+      selectable: false
     });
     nodes.push({
       data : {
         id : id+"_label",
         parent: id,
-        category: folder,
+        chapter: folder,
         label: folder,
         prereqs: [],
       },
       classes : ['chapter-label'],
+      grabbable: true,
+      selectable: false
     })
+  const subfolders = getDirectories(path.join(NODES_DIR, folder))
+  subfolders.forEach(subfolder=>{
+      const subId = `subchapter_${subfolder.replace(/[^a-zA-Z0-9]/g,'_')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')}`;
+        nodes.push({
+          data: {
+            id: subId,
+            label: subfolder,
+            chapter: folder,
+            parent: id,
+            prereqs: [],
+          },
+          classes: ['subchapter-node'],
+          grabbable: true, // A enlever 
+          selectable: false
+        });
+        nodes.push({
+          data : {
+            id : subId+"_label",
+            parent: subId,
+            chapter: folder,
+            label: subfolder,
+            prereqs: [],
+          },
+          classes : ['subchapter-label'],
+          grabbable: true,
+          selectable: false
+        })
   });
+
+  })
 
 
   /*
@@ -249,6 +299,7 @@ function build() {
 
   files.forEach(file => {
     const folder = getTopFolder(file);
+    const subfolder = getSubFolder(file);
     if (ALLOWED_FOLDERS.length && !ALLOWED_FOLDERS.includes(folder))
       return;
     
@@ -256,19 +307,26 @@ function build() {
     const { meta, body } = parseFrontmatter(raw);
   
     if (!meta.id) return;
-    const id = meta.id
-    const parentId = `folder_${folder.replace(/\s+/g, "_")}`;
+    const id = meta.id.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    if (!subfolder){
+      var parentId = `chapter_${folder.replace(/[^a-zA-Z0-9]/g,'_').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')}`;
+    } else{
+      var parentId = `subchapter_${subfolder.replace(/[^a-zA-Z0-9]/g,'_').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')}`;
+    }
     const filename = path.basename(file, ".md");
     const prereqs = minimumPrereqsMap[id] || []
     const unlocked = unlockedMap[id] || []
     const label = meta.title || filename
     const tooltip = meta.tooltip || ""
+    console.log(parentId)
 
     nodes.push({data : {
       id: id,
       parent:  parentId,
       prereqs: prereqs,
-      chapter: folder, // Nom à changer
+      chapter: folder, 
       label: label,
       unlocked: unlocked,
       tooltip: tooltip
@@ -284,11 +342,14 @@ function build() {
       if (!pr){return;}
       edges.push({
         data: {
-          id: `${pr}__${id}`,
+          id: `${pr}_to_${id}`,
           source: pr,
           target: id
         },
-        classes: []
+        classes: [],
+        grabbable: false,
+        selectable: false,
+        pannable: true,
       });
     });
   
@@ -297,7 +358,7 @@ function build() {
     */
   
     const html = renderMarkdown(body, filenameToId);
-    writeContentFile(meta.id, html);
+    writeContentFile(id, html);
   });
    
   // Ecriture et enregistrement du graphe au format json 

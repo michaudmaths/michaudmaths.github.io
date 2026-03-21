@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "cytoscape-cose-bilkent": "^4.1.0",
+    "cytoscape-dagre": "^2.5.0",
     "cytoscape-node-html-label": "^1.2.2",
     "js-yaml": "^4.1.1",
     "marked": "^4.3.0"
