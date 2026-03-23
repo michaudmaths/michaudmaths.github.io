@@ -30,15 +30,15 @@ page_class: arbre
 <div id="panel-overlay"></div>
 <div id="tooltip"></div>
 <div id="math-tooltip"></div>
+
+<div id="progress-toggle" class="show-progress-up">
+  <img src="/assets/svg/check.svg" class="progress-up" id="progress-up-button">
+  <img src="/assets/svg/cross.svg" class="progress-down " id="progress-down-button">
+</div>
 <div id="detail-panel">
   <div id="drag-handle"></div>
   <div id="panel-header">
     <h1 id="panel-title">Détails</h1>
-    <div id="status-buttons">
-      <button id = "button-acquis" onclick="setToAcquired()">Acquis</button>
-      <button id = "button-retravailler" onclick="setToAccessible()">A travailler</button>
-      <button id = "voir-prerequis" onclick="showPrerequisite()">Voir les prérequis</button>
-    </div>
     <button id="close-panel">X</button>
   </div>
   <div id="panel-content">Sélectionnez un noeud pour voir les détails ici.</div>
