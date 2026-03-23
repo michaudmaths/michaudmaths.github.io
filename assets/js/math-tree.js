@@ -4,6 +4,8 @@ const detailPanelTitle = document.getElementById("panel-title");
 const detailPanelContent = document.getElementById("panel-content");
 const closeBtn = document.getElementById("close-panel");
 const handle = document.getElementById("drag-handle");
+const mathTooltip = document.getElementById("math-tooltip");
+const buttonToggleProgress = document.getElementById("progress-toggle")
 
 // Charger progrès depuis le storage local
 let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
@@ -235,7 +237,7 @@ const cy = cytoscape({
         'text-max-width': '180px',
         'color': '#000',
         'font-size': '30px',
-        'transition-property': 'border-width background-color border-color',
+        'transition-property': 'background-color border-color',
         'transition-duration' : '500ms',
       }
     },
@@ -303,7 +305,9 @@ const cy = cytoscape({
     {
       selector: 'node:selected',
       style :{  
-        'border-width' : '6px'
+        'width': '300px',
+        'height': '240px',
+        'shape': 'rectangle',
       }
     },
     ...styleListForChapterColor,
@@ -317,8 +321,6 @@ const cy = cytoscape({
         'width' : 2,
         'line-color': '#d1d1d1',
         'target-arrow-color': '#d1d1d1',
-        'transition-property': 'line-color target-arrow-color',
-        'transition-duration' : '500ms',
       }
     },
     {
@@ -460,10 +462,9 @@ function resetToDefaultLayout(){
     animationDuration : 500,
   })
   const lastSelectedId = lastSelected.id()
-  console.log(lastSelectedId)
   layout.on('layoutstop', () => {
-    cy.zoom(cy.zoom()*0.5)
-    cy.center(lastSelected)
+    cy.zoom(cy.zoom()*0.25,  {easing:'ease-in-out'})
+    cy.center(lastSelected,  {easing:'ease-in-out'})
   updateTitlePositions()
   })
   layout.run()
@@ -621,32 +622,7 @@ function closePanel() {
   panel.classList.remove("half","full");
   overlay.classList.remove("visible");
 }
-// Change le status du noeud sélectionné en "acquis"
-function setToAcquired() {
-  const selectedNodes = cy.nodes(':selected');
-  selectedNodes.forEach(node => {
-    const nodeId = node.id()
-    if (isAccessible(nodeId)) {
-    progress[nodeId] = true; // Mark as acquired
-    localStorage.setItem("mathProgress", JSON.stringify(progress));
-    updateColors(nodeId);
-    }
-  closePanel()
-});
-}
-// Enlève le status "acquis" du noeud sélectionné
-function setToAccessible() {
-  const selectedNodes = cy.nodes(':selected');
-  selectedNodes.forEach(node => {
-      const nodeId = node.id();
-      delete progress[nodeId]; // Mark as accessible (not acquired)
-      localStorage.setItem("mathProgress", JSON.stringify(progress));
-      progressDown(nodeId)
-      updateColors(nodeId);
-});
-    
-    closePanel();
-}
+
 
 
 
@@ -781,84 +757,84 @@ cy.on('tap', 'node', function (event) {
   focusDirectNeighbors(node)
 });
 
-  function focusDirectNeighbors(node) {
+function focusDirectNeighbors(node) {
 
-    // =========================
-    // 1. Récupérer voisins directs
-    // =========================
-  
-    const predecessors = node.incomers('node');
-    const successors   = node.outgoers('node');
-  
-    const subgraph = node
-      .union(predecessors)
-      .union(successors)
-      .union(node.connectedEdges());
-  
-    const ids = new Set(subgraph.map(e => e.id()));
-  
-    // =========================
-    // 2. Masquer le reste
-    // =========================
-  
-    cy.elements().forEach(ele => {
-      if (!ids.has(ele.id())) {
-        ele.addClass('undisplayed');
-      } else {
-        ele.removeClass('undisplayed');
-      }
-    });
-  
-    // =========================
-    // 3. Calcul positions
-    // =========================
-  
-    const positions = {};
-  
-    const centerX = 0;
-    const centerY = 0;
-  
-    const spacingX = 440;
-    const spacingY = 300;
-  
-    // --- centre ---
-    positions[node.id()] = { x: centerX, y: centerY };
-  
-    // --- prédécesseurs (au-dessus) ---
-    const totalWidthPred = (predecessors.length - 1) * spacingX;
-  
-    predecessors.forEach((n, i) => {
-      positions[n.id()] = {
-        x: i * spacingX - totalWidthPred / 2,
-        y: centerY - spacingY
-      };
-    });
-  
-    // --- successeurs (en dessous) ---
-    const totalWidthSucc = (successors.length - 1) * spacingX;
-  
-    successors.forEach((n, i) => {
-      positions[n.id()] = {
-        x: i * spacingX - totalWidthSucc / 2,
-        y: centerY + spacingY
-      };
-    });
-  
-    // =========================
-    // 4. Appliquer layout
-    // =========================
-  
-    const layout = subgraph.layout({
-      name: 'preset',
-      positions: positions,
-      fit: true,
-      padding: 80,
-      animate: true,
-      animationDuration: 400
-    });
-  
-    layout.run();
-  }
+  // =========================
+  // 1. Récupérer voisins directs
+  // =========================
+
+  const predecessors = node.incomers('node');
+  const successors   = node.outgoers('node');
+
+  const subgraph = node
+    .union(predecessors)
+    .union(successors)
+    .union(node.connectedEdges());
+
+  const ids = new Set(subgraph.map(e => e.id()));
+
+  // =========================
+  // 2. Masquer le reste
+  // =========================
+
+  cy.elements().forEach(ele => {
+    if (!ids.has(ele.id())) {
+      ele.addClass('undisplayed');
+    } else {
+      ele.removeClass('undisplayed');
+    }
+  });
+
+  // =========================
+  // 3. Calcul positions
+  // =========================
+
+  const positions = {};
+
+  const centerX = 0;
+  const centerY = 0;
+
+  const spacingX = 440;
+  const spacingY = 440;
+
+  // --- centre ---
+  positions[node.id()] = { x: centerX, y: centerY };
+
+  // --- prédécesseurs (au-dessus) ---
+  const totalWidthPred = (predecessors.length - 1) * spacingX;
+
+  predecessors.forEach((n, i) => {
+    positions[n.id()] = {
+      x: i * spacingX - totalWidthPred / 2,
+      y: centerY - spacingY
+    };
+  });
+
+  // --- successeurs (en dessous) ---
+  const totalWidthSucc = (successors.length - 1) * spacingX;
+
+  successors.forEach((n, i) => {
+    positions[n.id()] = {
+      x: i * spacingX - totalWidthSucc / 2,
+      y: centerY + spacingY
+    };
+  });
+
+  // =========================
+  // 4. Appliquer layout
+  // =========================
+
+  const layout = subgraph.layout({
+    name: 'preset',
+    positions: positions,
+    fit: true,
+    padding: 80,
+    animate: true,
+    animationDuration: 400
+  });
+
+  layout.run();
+}
 
 /// FIN TEST CHATGPT
 
@@ -914,6 +890,51 @@ window.addEventListener("beforeunload", function(e){
   localStorage.setItem("storedNodePositions", JSON.stringify(nodePositions));
 });
 
+
+// NODE BUTTONS
+
+function displayNodeButtons(node){
+  buttonToggleProgress.classList.add("visible")
+  if (progress[node.id()]){
+    buttonToggleProgress.classList.remove('show-progress-up')
+  } else {
+    buttonToggleProgress.classList.add('show-progress-up')
+  }
+  const pos = node.renderedPosition();
+  const w = node.renderedWidth()
+  const h = node.renderedHeight()
+  const x = pos.x - w/2
+  const y = pos.y + h/2
+  buttonToggleProgress.style.width = (w-8)+"px"
+  buttonToggleProgress.style.height = (h/6)+"px"
+  buttonToggleProgress.style.left = (x)+"px";
+  buttonToggleProgress.style.top = (y)+"px";
+}
+
+
+// Change le status du noeud sélectionné 
+function toggleProgress() {
+  console.log('click')
+  const selectedNodes = cy.nodes(':selected');
+  selectedNodes.forEach(node => {
+    const nodeId = node.id()
+    if (isAccessible(nodeId) && !progress[nodeId]) {
+      progress[nodeId] = true; // Mark as acquired
+      buttonToggleProgress.classList.toggle('show-progress-up')
+    } else if (isAccessible(nodeId) && progress[nodeId]){
+      delete progress[nodeId]
+      progressDown(nodeId)
+      buttonToggleProgress.classList.toggle('show-progress-up')
+    } else {return;}
+  localStorage.setItem("mathProgress", JSON.stringify(progress));
+  updateColors(nodeId);
+});
+}
+
+
+buttonToggleProgress.addEventListener('click', toggleProgress)
+
+
 // ***************************************************
 // TOOLTIP
 // ***************************************************
@@ -924,7 +945,6 @@ function containsMath(text){
 }
 
 
-const mathTooltip = document.getElementById("math-tooltip");
 
 let useMathTooltip = false;
 
@@ -969,10 +989,15 @@ cy.on("mouseout","node",()=>{
 
 
 cy.on("render",()=>{
+  if (navigation){
+    displayNodeButtons(cy.$(':selected')[0])
+  }
   if(!tooltipsActivated) return;
   if(!hoveredNode) return;
 
   const pos = hoveredNode.renderedPosition();
+  const x = pos.x + hoveredNode.renderedWidth()/2
+  const y = pos.y 
 
   const text =
     hoveredNode.data("tooltip") ||
@@ -982,14 +1007,14 @@ cy.on("render",()=>{
   
   if(useMathTooltip){
 
-    mathTooltip.style.left = (pos.x+15)+"px";
-    mathTooltip.style.top = (pos.y-10)+"px";
+    mathTooltip.style.left = (x)+"px";
+    mathTooltip.style.top = (y)+"px";
 
     return;
   } else {
 
-    tooltip.style.left = (pos.x+15)+"px";
-    tooltip.style.top = (pos.y-10)+"px";
+    tooltip.style.left = (x)+"px";
+    tooltip.style.top = (y)+"px";
   }
 });
 

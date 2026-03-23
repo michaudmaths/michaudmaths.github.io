@@ -20,37 +20,6 @@
   flex-direction: column;
 }
 
-#button-acquis {
-  background-color: #0e3dc0;
-  color: white;
-  border: none;
-  width : 150px;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  display:flex;
-}
-
-#button-retravailler{
-  background-color: #3ab218;
-  color: white;
-  border: none;
-  width : 150px;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  display:flex;
-}
-#voir-prerequis{
-  background-color: #f0ad4e;
-  color: white;
-  border: none;
-  width : 150px;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  display:flex;
-}
 
 #detail-panel {
   position: fixed;
@@ -203,7 +172,7 @@
   background: rgba(20,20,20,0.95);
   color:white;
 
-  padding:6px 10px;
+  padding:5px 0px;
   border-radius:6px;
 
   font-size:14px;
@@ -213,6 +182,42 @@
 
   opacity:0;
 }
+
+#progress-toggle.visible{
+  opacity:1;
+  border-width: 2px;
+}
+
+#progress-toggle{
+  position:absolute;
+  opacity:0;
+  display:flex;
+  justify-content: center;
+  background-color:#ccc;
+  border:solid;
+  border-color: gray;
+  padding:2px;
+  z-index:10;
+}
+
+.progress-up, .progress-down {
+  position:absolute;
+  height:100%;
+}
+
+.progress-up{
+  opacity:0;
+}
+
+.show-progress-up .progress-up {
+  opacity:1;
+}
+
+.show-progress-up .progress-down {
+  opacity:0;
+  transform:rotate(90deg);
+}
+
 
 #tooltip.visible{
   opacity:1;
