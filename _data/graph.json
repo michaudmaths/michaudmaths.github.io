@@ -654,7 +654,7 @@
           "proposition"
         ],
         "chapter": "2 - Logique",
-        "label": "Quantificateurs existentiel $\\exists$",
+        "label": "Quantificateurs existentiel",
         "unlocked": [
           "negation_proposition_quantifiee",
           "applications",
@@ -675,7 +675,7 @@
           "proposition"
         ],
         "chapter": "2 - Logique",
-        "label": "Quantificateurs universel $\\forall$",
+        "label": "Quantificateurs universel",
         "unlocked": [
           "negation_proposition_quantifiee",
           "applications",
@@ -867,7 +867,6 @@
           null,
           null,
           null,
-          null,
           null
         ],
         "tooltip": ""
@@ -961,7 +960,7 @@
           "ensemble_comprehension"
         ],
         "chapter": "3 - Ensembles et applications",
-        "label": "Ensemble image directe $f(A)$",
+        "label": "Ensemble image directe",
         "unlocked": [
           "proprietes_image_directe"
         ],
@@ -980,7 +979,7 @@
           "applications"
         ],
         "chapter": "3 - Ensembles et applications",
-        "label": "Ensemble image réciproque $f^{-1}(B)$",
+        "label": "Ensemble image réciproque",
         "unlocked": [],
         "tooltip": "Si $f:E\\rightarrow F$ et $B\\subset F$, $f^{-1}(B):=\\{x\\in E\\ ,\\ f(x)\\in B\\}$"
       },
@@ -1398,7 +1397,7 @@
           "ensemble"
         ],
         "chapter": "3 - Ensembles et applications",
-        "label": "Appartenance $\\in$",
+        "label": "Appartenance",
         "unlocked": [
           "ensemble_vide",
           "inclusion",
@@ -1535,7 +1534,7 @@
           "implication_logique"
         ],
         "chapter": "3 - Ensembles et applications",
-        "label": "Inclusion $\\subset$",
+        "label": "Inclusion",
         "unlocked": [
           "prolongement_application",
           "proprietes_image_directe",
@@ -1905,7 +1904,7 @@
           "famille"
         ],
         "chapter": "3 - Ensembles et applications",
-        "label": "$n$-uplet",
+        "label": "n-uplet",
         "unlocked": [
           "arrangement",
           "couple",
@@ -2088,7 +2087,7 @@
           "ensemble_relatifs"
         ],
         "chapter": "4 - Entiers, sommes, récurrence",
-        "label": "Opérations dans $\\mathbb{N}$ et dans $\\mathbb{Z}$",
+        "label": "Opérations dans N et Z",
         "unlocked": [
           "voc_entiers"
         ],
@@ -2237,7 +2236,7 @@
           "principe_recurrence"
         ],
         "chapter": "4 - Entiers, sommes, récurrence",
-        "label": "$\\sum_{k=1}^nk^2$ et $\\sum_{k=1}^nk^3$",
+        "label": "Somme des carrés et cubes des n premiers entiers",
         "unlocked": [],
         "tooltip": ""
       },
@@ -2254,7 +2253,7 @@
           "principe_recurrence"
         ],
         "chapter": "4 - Entiers, sommes, récurrence",
-        "label": "Somme des $n$ premiers entiers",
+        "label": "Somme des n premiers entiers",
         "unlocked": [],
         "tooltip": ""
       },
@@ -2335,7 +2334,7 @@
           "famille"
         ],
         "chapter": "4 - Entiers, sommes, récurrence",
-        "label": "Symboles $\\sum$ et $\\prod$",
+        "label": "Symboles somme et produit",
         "unlocked": [
           "changement_indice_somme_produit",
           "linearite_somme",

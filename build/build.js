@@ -318,7 +318,7 @@ function build() {
     const filename = path.basename(file, ".md");
     const prereqs = minimumPrereqsMap[id] || []
     const unlocked = unlockedMap[id] || []
-    const label = meta.title || filename
+    const label = filename || ""
     const tooltip = meta.tooltip || ""
     console.log(parentId)
 
