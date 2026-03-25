@@ -55,14 +55,15 @@ const styleListForChapterColor = chapterToColor.flatMap(chapter => [
     selector: `node[chapter = "${chapter.title}"].chapter-label, node[chapter = "${chapter.title}"].subchapter-label`,
     style: {
       'color' : chapter.color,
-      'text-background-color' : changeColor(chapter.color,0.9),
+      'text-background-opacity' : '0',
     }
   },
   {
     selector: `node[chapter = "${chapter.title}"].unavailable`,
     style: {
-      'background-color': changeColor(chapter.color, statusVarColors.unavailable),
-      'border-color': changeColor(chapter.color, statusVarColors.unavailable*0.9),
+      'color' : changeColor(chapter.color, statusVarColors.unavailable*0.9),
+      'background-color': '#333',
+      'border-color': changeColor(chapter.color, statusVarColors.current*0.7),
     }
   },
   {
@@ -155,7 +156,7 @@ var klayOptions = {
     cycleBreaking: 'GREEDY', // Strategy for cycle breaking. Cycle breaking looks for cycles in the graph and determines which edges to reverse to break the cycles. Reversed edges will end up pointing to the opposite direction of regular edges (that is, reversed edges will point left if edges usually point right).
     /* GREEDY This algorithm reverses edges greedily. The algorithm tries to avoid edges that have the Priority property set.
     INTERACTIVE The interactive algorithm tries to reverse edges that already pointed leftwards in the input graph. This requires node and port coordinates to have been set to sensible values.*/
-    direction: 'DOWN', // Overall direction of edges: horizontal (right / left) or vertical (down / up)
+    direction: 'RIGHT', // Overall direction of edges: horizontal (right / left) or vertical (down / up)
     /* UNDEFINED, RIGHT, LEFT, DOWN, UP */
     edgeRouting: 'ORTHOGONAL', // Defines how edges are routed (POLYLINE, ORTHOGONAL, SPLINES)
     edgeSpacingFactor: .5, // Factor by which the object spacing is multiplied to arrive at the minimal spacing between edges.
@@ -225,7 +226,7 @@ const cy = cytoscape({
       selector: 'node.item-cours',
       style: {
         'shape': 'round-rectangle',
-        'width': '200px',
+        'width': '240px',
         'height': '160px',
         'border-width': '2px',
         'overlay-opacity': 0,
@@ -235,7 +236,7 @@ const cy = cytoscape({
         'font-weight': 'bold',
         'text-wrap': 'wrap',
         'text-max-width': '180px',
-        'color': '#000',
+        'color': '#333',
         'font-size': '30px',
         'transition-property': 'background-color border-color',
         'transition-duration' : '500ms',
@@ -308,6 +309,7 @@ const cy = cytoscape({
         'width': '300px',
         'height': '240px',
         'shape': 'rectangle',
+        'border-width' : '4px',
       }
     },
     ...styleListForChapterColor,
@@ -315,19 +317,21 @@ const cy = cytoscape({
       selector: 'edge',
       style: {
         'curve-style': 'round-taxi', // Des angles droits plus propres pour les arbres
-        'taxi-direction': 'vertical',
+        'taxi-direction': 'horizontal',
         'target-arrow-shape': 'triangle',
         'arrow-scale' : 2,
         'width' : 2,
-        'line-color': '#d1d1d1',
-        'target-arrow-color': '#d1d1d1',
+        'line-color': '#444',
+        'target-arrow-color': '#444',
+        'transition-property': 'line-color target-arrow-color',
+        'transition-duration' : '500ms',
       }
     },
     {
       selector: 'edge.parent-acquired',
       style: {
-        'line-color': '#000000',
-        'target-arrow-color': '#000000',
+        'line-color': '#ccc',
+        'target-arrow-color': '#ccc',
       }
     },
     {
@@ -358,8 +362,7 @@ const cy = cytoscape({
 
 // Place les titres de chapitre correctement
 updateTitlePositions()
-
-// Convertit les maths en image SVG
+updateTitlePositions()
 
 
 // Fonction pour tester si tous les prérequis d'un noeud sont acquis
@@ -443,10 +446,14 @@ function updateAllPositions(){
   layout = cy.layout({
     name: 'preset',
     positions: storedNodePositions,
-    fit: false,
+    fit: true,
     animate: true,
     animationDuration: 1000
   });
+  layout.on('layoutstop', ()=>{
+    updateTitlePositions()
+    updateTitlePositions()
+  })
   layout.run();
 }
 
@@ -461,7 +468,6 @@ function resetToDefaultLayout(){
     animate:true,
     animationDuration : 500,
   })
-  const lastSelectedId = lastSelected.id()
   layout.on('layoutstop', () => {
     cy.zoom(cy.zoom()*0.25,  {easing:'ease-in-out'})
     cy.center(lastSelected,  {easing:'ease-in-out'})
@@ -654,7 +660,9 @@ cy.on('tap', function (event) {
     closeMenu();
     if (navigation) {
       navigation = false
-      resetToDefaultLayout();
+      cy.elements().removeClass('undisplayed')
+      updateAllPositions();
+      buttonToggleProgress.classList.remove("visible")
     }
   }
 });
@@ -788,35 +796,45 @@ function focusDirectNeighbors(node) {
   // =========================
   // 3. Calcul positions
   // =========================
+ 
+ // Viewport size
+  let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
   const positions = {};
 
-  const centerX = 0;
-  const centerY = 0;
-
-  const spacingX = 440;
-  const spacingY = 440;
+  const centerX = storedNodePositions[node.id()].x;
+  const centerY = storedNodePositions[node.id()].y;
+  
+  const maxItemNumber = 6
+  const maxLength = Math.max(predecessors.length, successors.length)
+  const spacingX = vw/2.5;
+  const spacingY = Math.max(vh/maxLength, 200);
 
   // --- centre ---
   positions[node.id()] = { x: centerX, y: centerY };
 
-  // --- prédécesseurs (au-dessus) ---
-  const totalWidthPred = (predecessors.length - 1) * spacingX;
+  // --- prédécesseurs (a gauche) ---
+  const totalHeightPred = (predecessors.length - 1) * spacingY;
+  // --- successeurs (a droite) ---
+  const totalHeightSucc = (successors.length - 1) * spacingY;
 
+
+
+  var nbCol = Math.floor((predecessors.length-1)/maxItemNumber)+1
+  var itemPerCol = Math.floor((predecessors.length-1)/nbCol)+1
   predecessors.forEach((n, i) => {
     positions[n.id()] = {
-      x: i * spacingX - totalWidthPred / 2,
-      y: centerY - spacingY
+      x: centerX - spacingX - spacingX/2*(i % nbCol),
+      y: centerY + spacingY*(i % itemPerCol) + spacingY/2*(i % nbCol) - totalHeightSucc / (2*nbCol)
     };
   });
-
-  // --- successeurs (en dessous) ---
-  const totalWidthSucc = (successors.length - 1) * spacingX;
-
+  var nbCol = Math.floor((successors.length-1)/maxItemNumber)+1
+  var itemPerCol = Math.floor((successors.length-1)/nbCol)+1
   successors.forEach((n, i) => {
     positions[n.id()] = {
-      x: i * spacingX - totalWidthSucc / 2,
-      y: centerY + spacingY
+      x: centerX + spacingX + spacingX/2*(i % nbCol),
+      y: centerY + spacingY*(i % itemPerCol) + spacingY/2*(i % nbCol) - totalHeightSucc / (2*nbCol)
     };
   });
 
@@ -886,6 +904,7 @@ document.addEventListener("click", e => {
 
 // Enregistrer la positions des noeuds lorsqu'on ferme la fenetre
 window.addEventListener("beforeunload", function(e){
+  if (navigation) {return;}
   let nodePositions = getAllPositions(); 
   localStorage.setItem("storedNodePositions", JSON.stringify(nodePositions));
 });

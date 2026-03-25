@@ -1,8 +1,7 @@
 ---
-layout: default
+layout: app
 title: Arbre des connaissances
 permalink: /arbre/
-page_class: arbre
 ---
 
 <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
@@ -45,12 +44,12 @@ page_class: arbre
 </div>
 
 <div id="settings-menu">
-    <label id="gear-btn">
+    <span id="gear-btn">
     <img
       src="/assets/svg/gear.svg"
       height="35"
       width="35"/>
-    </label>
+    </span>
     <div id="menu-graph-dropdown" class="hidden">
       <button onclick="downloadProgress()" class="graph-menu-item">Télécharger ma progression</button>
       <label for="input_progress" class="graph-menu-item">Charger la progression</label>
