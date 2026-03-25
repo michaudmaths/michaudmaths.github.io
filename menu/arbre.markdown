@@ -44,12 +44,12 @@ permalink: /arbre/
 </div>
 
 <div id="settings-menu">
-    <span id="gear-btn">
+    <div id="gear-btn">
     <img
       src="/assets/svg/gear.svg"
       height="35"
       width="35"/>
-    </span>
+    </div>
     <div id="menu-graph-dropdown" class="hidden">
       <button onclick="downloadProgress()" class="graph-menu-item">Télécharger ma progression</button>
       <label for="input_progress" class="graph-menu-item">Charger la progression</label>
