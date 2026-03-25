@@ -20,21 +20,21 @@ permalink: /anciens_devoirs/
 <div class="chapter">
 	<h1 class="chapter-title"> DST </h1> 
 	<ul>
-	{% for compteur_dst in (1..{{nombre_dst}}) %}
+	{% for compteur_dst in (1..nombre_dst) %}
 	<li> 
 		{% assign devoir_filename = year | append : "_" | append : "DST"  | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_filename = year | append : "_" | append : "correction_DST" | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
-			{% if item.name == {{devoir_filename}} %}
+			{% if item.name == devoir_filename %}
 				<a href="{{item.path}}"> 
 					<span> DST {{compteur_dst}} </span> 
 				</a> 
 			{% endif %}
 		{% endfor %}
 		{% for item in site.static_files %}
-			{% if item.name == {{correction_filename}} %}
+			{% if item.name == correction_filename %}
 				{% assign correction_existe = 1 %}
 				<a href="{{item.path}}">
 					<span> Corrigé </span>
@@ -49,21 +49,21 @@ permalink: /anciens_devoirs/
 <div class="chapter">
 	<h1 class="chapter-title"> DM </h1> 
 	<ul>
-	{% for compteur_dm in (1..{{nombre_dm}}) %}
+	{% for compteur_dm in (1..nombre_dm) %}
 	<li> 
 		{% assign devoir_filename = year | append : "_" | append : "DM"  | append : compteur_dm | append : "_web.pdf" %}
 		{% assign correction_filename = year | append : "_" | append : "correction_DM" | append : compteur_dm | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
-			{% if item.name == {{devoir_filename}} %}
+			{% if item.name == devoir_filename %}
 				<a href="{{item.path}}"> 
 					<span> DM {{compteur_dm}} </span> 
 				</a> 
 			{% endif %}
 		{% endfor %}
 		{% for item in site.static_files %}
-			{% if item.name == {{correction_filename}} %}
+			{% if item.name == correction_filename %}
 				{% assign correction_existe = 1 %}
 				<a href="{{item.path}}">
 					<span> Corrigé </span>

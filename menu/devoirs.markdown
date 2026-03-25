@@ -21,14 +21,14 @@ permalink: /devoirs/
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
-			{% if item.name == {{devoir_filename}} %}
+			{% if item.name == devoir_filename %}
 				<a href="{{item.path}}"> 
 					<span> DST {{compteur_dst}} </span> 
 				</a> 
 			{% endif %}
 		{% endfor %}
 		{% for item in site.static_files %}
-			{% if item.name == {{correction_filename}} %}
+			{% if item.name == correction_filename %}
 				{% assign correction_existe = 1 %}
 				<a href="{{item.path}}">
 					<span> Corrigé </span>
@@ -51,14 +51,14 @@ permalink: /devoirs/
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
-			{% if item.name == {{devoir_filename}} %}
+			{% if item.name == devoir_filename %}
 				<a href="{{item.path}}"> 
 					<span> DM {{compteur_dm}} </span> 
 				</a> 
 			{% endif %}
 		{% endfor %}
 		{% for item in site.static_files %}
-			{% if item.name == {{correction_filename}} %}
+			{% if item.name == correction_filename %}
 				{% assign correction_existe = 1 %}
 				<a href="{{item.path}}">
 					<span> Corrigé </span>
@@ -82,14 +82,14 @@ permalink: /devoirs/
 		{% assign correction_existe = 0 %}
 
 		{% for item in site.static_files %}
-			{% if item.name == {{devoir_filename}} %}
+			{% if item.name == devoir_filename %}
 				<a href="{{item.path}}"> 
 					<span> Interrogation {{compteur_interro}} </span> 
 				</a> 
 			{% endif %}
 		{% endfor %}
 		{% for item in site.static_files %}
-			{% if item.name == {{correction_filename}} %}
+			{% if item.name == correction_filename %}
 				{% assign correction_existe = 1 %}
 				<a href="{{item.path}}">
 					<span> Corrigé </span>
