@@ -22,6 +22,7 @@ permalink: /arbre/
 <script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.5.1/cytoscape-cola.min.js"></script> -->
 <script src="https://unpkg.com/klayjs@0.4.1/klay.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape-klay@3.1.4/cytoscape-klay.min.js"></script>
+
 <script src="/assets/js/qcms.js"  defer></script>
 <script src="/assets/js/math-tree.js" defer></script>
 
@@ -35,6 +36,7 @@ permalink: /arbre/
   <img src="/assets/svg/check.svg" class="progress-up" id="progress-up-button">
   <img src="/assets/svg/cross.svg" class="progress-down " id="progress-down-button">
 </div>
+
 
 <div id="settings-menu">
     <div id="gear-btn">

@@ -51,6 +51,71 @@
   cursor: pointer;
 }
 
+
+#detail-panel {
+  position: fixed;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 80vh;
+
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.25);
+
+  transition: bottom 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* états */
+
+#detail-panel.half {
+  bottom: -30%;
+}
+
+#detail-panel.full {
+  bottom: 0
+}
+
+/* poignée */
+
+#drag-handle {
+  width: 40px;
+  height: 5px;
+  background: #ccc;
+  border-radius: 10px;
+  margin: 10px auto;
+  cursor: grab;
+}
+
+/* header */
+
+#panel-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+#close-panel {
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* contenu */
+
+#panel-content {
+  overflow-y: auto;
+  padding: 20px;
+  flex: 1;
+}
+
 #graph-container {
   position: relative;
   width: 100%;
@@ -79,6 +144,13 @@
   width:35px;
   height:35px;
   cursor: pointer;
+  font-size: 22px;
+  // background: white;
+  // border: none;
+  // border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size:30px;
   filter: invert(100%);
   // box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }

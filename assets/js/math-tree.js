@@ -7,6 +7,7 @@ const mathTooltip = document.getElementById("math-tooltip");
 const buttonToggleProgress = document.getElementById("progress-toggle")
 
 // Charger progrès depuis le storage local
+
 let progress = JSON.parse(localStorage.getItem("mathProgress")) || "{}";
 let questionProgress = JSON.parse(localStorage.getItem("questionProgress")) || "{}";
 
@@ -14,6 +15,7 @@ let questionProgress = JSON.parse(localStorage.getItem("questionProgress")) || "
 let storedNodePositions = JSON.parse(localStorage.getItem("storedNodePositions")) || nodePositions;
 
 let navigation = false
+
 let focusedOn = {}
 let defaultLayout = 'klay'
 
@@ -656,6 +658,7 @@ cy.on('tap', function (event) {
     cy.nodes().unselect();
     cy.edges().removeClass('highlighted');
     cy.nodes().removeClass('highlighted');
+    
     currentNodeList = [];
     closeMenu();
     if (navigation) {
@@ -774,7 +777,7 @@ cy.on('tap', 'node', function (event) {
 
 function focusDirectNeighbors(node) {
 
-  // =========================
+  // =================
   // 1. Récupérer voisins directs
   // =========================
 
@@ -836,7 +839,6 @@ function focusDirectNeighbors(node) {
       y: centerY + spacingY*(i % itemPerCol) + spacingY/2*(Math.floor(i/itemPerCol)) - totalHeightPred / (2*nbCol)
     };
   });
-
   var nbCol = Math.floor((successors.length-1)/maxItemNumber)+1
   var itemPerCol = Math.floor((successors.length-1)/nbCol)+1
   successors.forEach((n, i) => {
@@ -863,15 +865,6 @@ function focusDirectNeighbors(node) {
 }
 
 /// FIN TEST CHATGPT
-
-cy.on('tapdrag', function (){
-  updateTitlePositions();
-});
-
-let startY = 0;
-let currentY = 0;
-let dragging = false;
-
 
 
 document.addEventListener("click", e => {
