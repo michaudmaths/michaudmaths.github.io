@@ -4,12 +4,22 @@ const detailPanelTitle = document.getElementById("panel-title");
 const detailPanelContent = document.getElementById("panel-content");
 const handle = document.getElementById("drag-handle");
 const mathTooltip = document.getElementById("math-tooltip");
-const buttonToggleProgress = document.getElementById("progress-toggle")
 
 // Charger progrès depuis le storage local
 
-let progress = JSON.parse(localStorage.getItem("mathProgress")) || "{}";
-let questionProgress = JSON.parse(localStorage.getItem("questionProgress")) || "{}";
+let progress = JSON.parse(localStorage.getItem("mathProgress")) || {} ;
+let questionProgress = JSON.parse(localStorage.getItem("questionProgress")) || treeData.nodes.reduce(function(obj,n){
+  if (n.data.quizz){
+  obj[n.data.id] = {
+    bestScore : 0,
+    qcmlength : n.data.quizz.length
+  }}
+  return obj;
+},{})
+  
+
+console.log(questionProgress)
+
 
 // Charger la position des noeuds depuis le storage local
 let storedNodePositions = JSON.parse(localStorage.getItem("storedNodePositions")) || nodePositions;
@@ -639,6 +649,11 @@ function closePanel() {
 function reset() {
   progress = {};
   localStorage.removeItem("mathProgress");
+  treeData.nodes.forEach(n=>{
+    if (n.data.quizz){
+      questionProgress[n.data.id].bestScore = 0
+    }
+  })
   updateAllColors();
 }
 
@@ -666,7 +681,6 @@ cy.on('tap', function (event) {
       focusedOn = {}
       cy.elements().removeClass('undisplayed')
       updateAllPositions();
-      buttonToggleProgress.classList.remove("visible")
     }
   }
 });
@@ -816,10 +830,10 @@ function focusDirectNeighbors(node) {
   const centerX = storedNodePositions[node.id()].x;
   const centerY = storedNodePositions[node.id()].y;
   
-  const maxItemNumber = 11
+  const maxItemNumber = 6
   const maxLength = Math.max(predecessors.length, successors.length)
-  const spacingX = vw/2.5;
-  const spacingY = Math.max(vh/maxLength, 200);
+  const spacingX = Math.max(vw/2.5,500);
+  const spacingY = Math.max(vh/maxLength, 500);
 
   // --- centre ---
   positions[node.id()] = { x: centerX, y: centerY };
@@ -877,6 +891,7 @@ document.addEventListener("click", e => {
 
 // Enregistrer la positions des noeuds lorsqu'on ferme la fenetre
 window.addEventListener("beforeunload", function(e){
+  saveProgress();
   if (navigation) {return;}
   let nodePositions = getAllPositions(); 
   localStorage.setItem("storedNodePositions", JSON.stringify(nodePositions));
@@ -885,49 +900,11 @@ window.addEventListener("beforeunload", function(e){
 
 // NODE BUTTONS
 
-function displayNodeButtons(node){
-  buttonToggleProgress.classList.add("visible")
-  if (progress[node.id()]){
-    buttonToggleProgress.classList.remove('show-progress-up')
-  } else {
-    buttonToggleProgress.classList.add('show-progress-up')
-  }
-  const pos = node.renderedPosition();
-  const w = node.renderedWidth()
-  const h = node.renderedHeight()
-  const x = pos.x - w/2
-  const y = pos.y + h/2
-  buttonToggleProgress.style.width = (w-8)+"px"
-  buttonToggleProgress.style.height = (h/6)+"px"
-  buttonToggleProgress.style.left = (x)+"px";
-  buttonToggleProgress.style.top = (y)+"px";
-}
-
 function saveProgress() {
   localStorage.setItem("questionProgress", JSON.stringify(questionProgress));
 }
 
-// Change le status du noeud sélectionné 
-function toggleProgress() {
-  console.log('click')
-  const selectedNodes = cy.nodes(':selected');
-  selectedNodes.forEach(node => {
-    const nodeId = node.id()
-    if (isAccessible(nodeId) && !progress[nodeId]) {
-      progress[nodeId] = true; // Mark as acquired
-      buttonToggleProgress.classList.toggle('show-progress-up')
-    } else if (isAccessible(nodeId) && progress[nodeId]){
-      delete progress[nodeId]
-      progressDown(nodeId)
-      buttonToggleProgress.classList.toggle('show-progress-up')
-    } else {return;}
-  localStorage.setItem("mathProgress", JSON.stringify(progress));
-  updateColors(nodeId);
-});
-}
 
-
-buttonToggleProgress.addEventListener('click', toggleProgress)
 
 
 // ***************************************************
@@ -984,9 +961,6 @@ cy.on("mouseout","node",()=>{
 
 
 cy.on("render",()=>{
-  if (navigation){
-    displayNodeButtons(cy.$(':selected')[0])
-  }
   if(!tooltipsActivated) return;
   if(!hoveredNode) return;
 

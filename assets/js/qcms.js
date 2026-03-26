@@ -16,79 +16,152 @@ function openQCM(nodeData) {
   const nodeId = nodeData.id;
   const qcms = nodeData.quizz;
 
-  if (!qcms || qcms.length === 0) return;
+  if (!qcms || qcms.length === 0) {updateProgress(nodeId); return;};
 
   createQCMModal();
 
   const modal = document.getElementById("qcm-modal");
   const container = document.getElementById("qcm-container");
 
-  let currentIndex = questionProgress[nodeId] || 0;
+  // ====== RECORD ======
 
+  let bestScore = questionProgress[nodeId].bestScore || 0;
+
+  // ====== CONFIRMATION ======
+  container.innerHTML = `
+    <h2>🎯 Record actuel : ${bestScore}/${qcms.length}</h2>
+    <button id="start-btn">Recommencer une série</button>
+  `;
+
+  document.getElementById("start-btn").onclick = startSession;
+
+  // ====== SESSION ======
+  let currentIndex = 0;
+  let sessionScore = 0;
+  let selectedAnswers = new Set();
+
+  function startSession() {
+    currentIndex = 0;
+    sessionScore = 0;
+    renderQuestion();
+  }
 
   function renderQuestion() {
-    if (currentIndex >= qcms.length) return ;
+    selectedAnswers.clear();
+
     const q = qcms[currentIndex];
-    console.log(currentIndex)
-    console.log(qcms[0])
+
     container.innerHTML = `
       <h2>${q.question}</h2>
 
-      ${q.choices.map((c, i) => `
-        <label>
-          <input type="checkbox" data-index="${i}">
-          ${c.text}
-        </label><br>
-      `).join("")}
+      <div class="choices">
+        ${q.choices.map((c, i) => `
+          <div class="choice" data-index="${i}">
+          <div class="choice-question">
+          <strong>
+            ${c.text}
+          </strong>
+          </div>
+          <div class="choice-feedback">
+          ${c.feedback}
+          </div>
+          </div>
+        `).join("")}
+      </div>
 
       <button id="validate-btn">Valider</button>
-
       <div id="feedback"></div>
     `;
 
-    document.getElementById("validate-btn").onclick = () => {
+    // ====== SELECTION ======
+    const choiceElements = container.querySelectorAll(".choice");
+
+    choiceElements.forEach(el => {
+      el.onclick = () => {
+        const index = parseInt(el.dataset.index);
+
+        if (selectedAnswers.has(index)) {
+          selectedAnswers.delete(index);
+          el.classList.remove("selected");
+        } else {
+          selectedAnswers.add(index);
+          el.classList.add("selected");
+        }
+      };
+    });
+
+    document.getElementById("validate-btn").onclick = (e) => {
       handleValidation(q);
+      e.target.remove();
     };
   }
 
   function handleValidation(q) {
-    const inputs = container.querySelectorAll("input");
+    const feedbackDiv = document.getElementById("feedback");
+    const choiceElements = container.querySelectorAll(".choice");
+    const choiceFeedbacks = container.querySelectorAll(".choice-feedback");
+
     let correct = true;
 
-    inputs.forEach((input, i) => {
-      const isChecked = input.checked;
+    choiceElements.forEach((el, i) => {
+      const isSelected = selectedAnswers.has(i);
       const isCorrect = q.choices[i].correct;
 
-      if (isChecked !== isCorrect) {
+      // Couleurs
+      if (isCorrect) {
+        el.classList.add("correct");
+      } else if (!isCorrect) {
+        el.classList.add("wrong");
+      }
+
+      // Vérification
+      if (isSelected !== isCorrect) {
         correct = false;
       }
     });
 
-    const feedbackDiv = document.getElementById("feedback");
+    if (correct) sessionScore++;
+
+    // ====== FEEDBACK DETAILLE ======
+    choiceFeedbacks.forEach(e=>{e.classList.toggle("visible")})
 
     feedbackDiv.innerHTML = `
       <p>${correct ? "✅ Bonne réponse" : "❌ Mauvaise réponse"}</p>
-      <p>${q.explication || ""}</p>
+  
+
+      <p><strong>${q.explication || ""}</strong></p>
+
       <button id="next-btn">Suivant</button>
     `;
+    
 
     document.getElementById("next-btn").onclick = () => {
       currentIndex++;
-      questionProgress[nodeId] = currentIndex
-      saveProgress();
 
       if (currentIndex >= qcms.length) {
-        container.innerHTML = `<h2>🎉 Terminé !</h2>`;
+        endSession();
       } else {
         renderQuestion();
       }
     };
   }
-  // bouton fermeture
+
+  function endSession() {
+    // Mise à jour record
+    if (sessionScore > bestScore) {
+      bestScore = sessionScore;
+      questionProgress[nodeId].bestScore =  sessionScore
+      updateProgress(nodeId)
+      };
+    modal.remove()
+  }
+
   modal.querySelector(".qcm-close").onclick = () => {
-    saveProgress();
     modal.remove();
   };
+}
 
-  renderQuestion();
+function updateProgress(n){
+  progress[n] = questionProgress[n].bestScore === questionProgress[n].qcmlength
+  updateColors(n)
 }

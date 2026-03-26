@@ -659,12 +659,12 @@
                 "feedback": "C'est bien une proposition, et elle est fausse."
               },
               {
-                "text": "la recette originale de la carbonara ne contient pas de crème fraîche.",
+                "text": "La recette originale de la carbonara ne contient pas de crème fraîche.",
                 "correct": false,
                 "feedback": "Définition ambigüe : qu'est ce que LA recette originale ?"
               },
               {
-                "text": "aujourd'hui nous sommes lundi",
+                "text": "Aujourd'hui nous sommes lundi",
                 "correct": false,
                 "feedback": "Cette proposition change de statut de vérité selon le jour où on la prononce, ce n'est pas une proposition."
               },
@@ -675,6 +675,33 @@
               }
             ],
             "explanation": "Une proposition doit être soit vraie, soit fausse, et ne contenir aucune ambiguÏté. Son statut de vérité doit dépendre uniquement de la proposition elle même et pas de paramètres extérieurs."
+          },
+          {
+            "type": "qcm",
+            "question": "Comment s'appelle le principe selon lequel une proposition est ou bien vraie, ou bien fausse ?",
+            "choices": [
+              {
+                "text": "Le principe du tiers exclu",
+                "correct": true,
+                "feedback": "C'est la bonne réponse"
+              },
+              {
+                "text": "Le principe de non contradiction",
+                "correct": false,
+                "feedback": "Le principe de non contradiction dit qu'une proposition et son contraire ne peuvent pas être vraie simultanément."
+              },
+              {
+                "text": "Le modus ponens",
+                "correct": false,
+                "feedback": "C'est le principe de base de tout raisonnement : si A est vrai et si A implique B alors B est vrai."
+              },
+              {
+                "text": "Le raisonnement par l'absurde",
+                "correct": false,
+                "feedback": "C'est un type de raisonnement qui repose sur le principe de non contradiction et le principe du tiers exclu."
+              }
+            ],
+            "explanation": ""
           }
         ]
       },
