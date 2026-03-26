@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3 - Ensembles et applications/Dénombrement/Nombre d'arrangements.md",
+                "file": "2 - Logique/Proposition (Logique).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Nombre d'arrangements"
+              "title": "Proposition (Logique)"
             }
           }
         ],
@@ -226,7 +226,7 @@
       "bases:Créer une nouvelle base": false
     }
   },
-  "active": "c41a08f5a3105b0a",
+  "active": "17a92ae946e36dfd",
   "lastOpenFiles": [
     "3 - Ensembles et applications/Dénombrement/Nombre d'arrangements.md",
     "3 - Ensembles et applications/Dénombrement/Nombre d'arrangements.md",

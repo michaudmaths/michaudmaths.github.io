@@ -343,7 +343,8 @@
           "fonction_cosinus",
           "fonction_sinus"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -359,7 +360,8 @@
         "chapter": "1 - Trigonométrie",
         "label": "Fonction cosinus",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -375,7 +377,8 @@
         "chapter": "1 - Trigonométrie",
         "label": "Fonction sinus",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -389,7 +392,8 @@
         "chapter": "1 - Trigonométrie",
         "label": "Périodicité",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -409,7 +413,8 @@
           "table_verite",
           "intersection"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -429,7 +434,8 @@
         "unlocked": [
           "lois_de_morgan_ensembles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -450,7 +456,8 @@
           "table_verite",
           "difference_ensembles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -470,7 +477,8 @@
           "table_verite",
           "union"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -486,7 +494,8 @@
         "chapter": "2 - Logique",
         "label": "Condition nécessaire",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -502,7 +511,8 @@
         "chapter": "2 - Logique",
         "label": "Condition suffisante",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -521,7 +531,8 @@
           "raisonnement_contraposee",
           "complementaire_inclusion"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -539,7 +550,8 @@
         "unlocked": [
           "negation_implication"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -562,7 +574,8 @@
           "injectivite",
           "inclusion"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -578,7 +591,8 @@
         "chapter": "2 - Logique",
         "label": "Négation d'une implication",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -599,7 +613,8 @@
           "raisonnement_equivalence",
           "egalite_ensembles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -622,7 +637,46 @@
           "principe_recurrence",
           "principe_recurrence"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": [
+          {
+            "type": "qcm",
+            "question": "Quelles phrases ci-dessous peuvent être considérées comme des propositions mathématiques ?",
+            "choices": [
+              {
+                "text": "1000 est un grand nombre.",
+                "correct": false,
+                "feedback": "Les termes sont mal définis, il faudrait s'accorder sur une définition de ce qu'est un \"grand\" nombre."
+              },
+              {
+                "text": "5 est strictement plus grand que 2",
+                "correct": true,
+                "feedback": "C'est bien une proposition, et elle est vraie."
+              },
+              {
+                "text": "Tout entier naturel élevé au carré donne un nombre strictement négatif.",
+                "correct": true,
+                "feedback": "C'est bien une proposition, et elle est fausse."
+              },
+              {
+                "text": "la recette originale de la carbonara ne contient pas de crème fraîche.",
+                "correct": false,
+                "feedback": "Définition ambigüe : qu'est ce que LA recette originale ?"
+              },
+              {
+                "text": "aujourd'hui nous sommes lundi",
+                "correct": false,
+                "feedback": "Cette proposition change de statut de vérité selon le jour où on la prononce, ce n'est pas une proposition."
+              },
+              {
+                "text": "Le nombre de jours dans une semaine de sept jours est pair.",
+                "correct": true,
+                "feedback": ""
+              }
+            ],
+            "explanation": "Une proposition doit être soit vraie, soit fausse, et ne contenir aucune ambiguÏté. Son statut de vérité doit dépendre uniquement de la proposition elle même et pas de paramètres extérieurs."
+          }
+        ]
       },
       "classes": [
         "item-cours"
@@ -640,7 +694,8 @@
         "chapter": "2 - Logique",
         "label": "Négation d'une proposition quantifiée",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -661,7 +716,8 @@
           "intersection_quelconque",
           "union_quelconque"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -683,7 +739,8 @@
           "inclusion",
           "egalite_ensembles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -701,7 +758,8 @@
         "unlocked": [
           "raisonner_contraposee"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -719,7 +777,8 @@
         "unlocked": [
           "raisonner_double_implication"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -737,7 +796,8 @@
         "unlocked": [
           "raisonner_equivalence"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -753,7 +813,8 @@
         "chapter": "2 - Logique",
         "label": "Raisonner par contraposée",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -769,7 +830,8 @@
         "chapter": "2 - Logique",
         "label": "Raisonner par double implication",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -785,7 +847,8 @@
         "chapter": "2 - Logique",
         "label": "Raisonner par équivalence",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -805,7 +868,8 @@
         "unlocked": [
           "implication_logique"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -823,7 +887,8 @@
         "unlocked": [
           "bijection_et_identite"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -869,7 +934,8 @@
           null,
           null
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -886,7 +952,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Bijection et application identité",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -908,7 +975,8 @@
           "cardinal",
           "ensemble_denombrable"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -928,7 +996,8 @@
           "composition_injectivite",
           "composition_surjectivite"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -945,7 +1014,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Composée de bijections",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -964,7 +1034,8 @@
         "unlocked": [
           "proprietes_image_directe"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -981,7 +1052,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Ensemble image réciproque",
         "unlocked": [],
-        "tooltip": "Si $f:E\\rightarrow F$ et $B\\subset F$, $f^{-1}(B):=\\{x\\in E\\ ,\\ f(x)\\in B\\}$"
+        "tooltip": "Si $f:E\\rightarrow F$ et $B\\subset F$, $f^{-1}(B):=\\{x\\in E\\ ,\\ f(x)\\in B\\}$",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1000,7 +1072,8 @@
           "n_uplet",
           "somme_produit_symboles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1017,7 +1090,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Injectivité et composition",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1037,7 +1111,8 @@
           "bijectivite",
           "composition_injectivite"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1054,7 +1129,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Prolongement d'une application",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1073,7 +1149,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Propriétés de l'ensemble image directe",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1090,7 +1167,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Restriction d'une application",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1107,7 +1185,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Surjectivité et composition",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1126,7 +1205,8 @@
           "bijectivite",
           "composition_surjectivite"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1143,7 +1223,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Égalité de deux applications",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1161,7 +1242,8 @@
         "unlocked": [
           "nombre_arrangements"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1180,7 +1262,8 @@
         "unlocked": [
           "cardinal_ensemble_parties"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1197,7 +1280,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Cardinal d'un produit cartésien",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1217,7 +1301,8 @@
         "unlocked": [
           "cardinal_ensemble_partitionne"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1234,7 +1319,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Cardinal de l'ensemble des parties d'en ensemble",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1251,7 +1337,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Cardinal et inclusion",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1278,7 +1365,8 @@
           "nombre_arrangements",
           "nombre_combinaisons"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1296,7 +1384,8 @@
         "unlocked": [
           "nombre_combinaisons"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1312,7 +1401,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Dénombrement et injection, surjection, bijection",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1330,7 +1420,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Formule du crible",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1348,7 +1439,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Inclusion et égalité des cardinaux",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1367,7 +1459,8 @@
         "unlocked": [
           "cardinal_ensemble_partitionne"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1383,7 +1476,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Principe des tiroirs",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1404,7 +1498,8 @@
           "egalite_ensembles",
           "difference_ensembles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1421,7 +1516,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Double inclusion",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1439,7 +1535,8 @@
         "unlocked": [
           "cardinal_ensemble_parties"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1463,7 +1560,8 @@
           "produit_cartesien",
           "union"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1479,7 +1577,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Ensemble défini en extension",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1499,7 +1598,8 @@
           "propriete_ensemble_vide",
           "ensembles_disjoints"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1518,7 +1618,8 @@
           "ensemble_comprehension",
           "ensemble_extension"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1548,7 +1649,8 @@
           "sous_ensemble",
           "egalite_double_inclusion"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1566,7 +1668,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Passage au complémentaire dans une inclusion",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1583,7 +1686,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Propriétés de l'ensemble vide",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1601,7 +1705,8 @@
         "unlocked": [
           "combinaison"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1624,7 +1729,8 @@
           "double_inclusion",
           "egalite_double_inclusion"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1641,7 +1747,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Égalité par double inclusion",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1660,7 +1767,8 @@
           "complementaire_inclusion",
           "lois_de_morgan_ensembles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1676,7 +1784,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Couple",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1696,7 +1805,8 @@
         "unlocked": [
           "complementaire"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1713,7 +1823,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Distributivité (Ensembles)",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1733,7 +1844,8 @@
           "cardinal_union_disjointe",
           "partition_ensemble"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1750,7 +1862,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Intersection quelconque",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1774,7 +1887,8 @@
           "intersection_quelconque",
           "lois_de_morgan_ensembles"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1793,7 +1907,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Lois de De Morgan (Ensembles)",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1810,7 +1925,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Nombre d'arrangements",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1828,7 +1944,8 @@
         "chapter": "3 - Ensembles et applications",
         "label": "Nombre de combinaisons",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1847,7 +1964,8 @@
         "unlocked": [
           "cardinal_produit_cartesien"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1866,7 +1984,8 @@
         "unlocked": [
           "partition_ensemble"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1890,7 +2009,8 @@
           "lois_de_morgan_ensembles",
           "union_quelconque"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1910,7 +2030,8 @@
           "couple",
           "produit_cartesien"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1929,7 +2050,8 @@
           "formule_factorisation",
           "formule_binome_reels"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1948,7 +2070,8 @@
           "nombre_combinaisons",
           "relation_pascal"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1968,7 +2091,8 @@
           "principe_recurrence",
           "principe_recurrence"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -1985,7 +2109,8 @@
           "ensemble_denombrable",
           "operations_N_Z"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2003,7 +2128,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Ensemble dénombrable",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2021,7 +2147,8 @@
         "unlocked": [
           "coefficients_binomiaux"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2037,7 +2164,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Formule de factorisation",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2054,7 +2182,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Formule du binôme de Newton",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2072,7 +2201,8 @@
         "unlocked": [
           "produit_de_sommes"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2091,7 +2221,8 @@
         "unlocked": [
           "voc_entiers"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2107,7 +2238,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Principe de récurrence double",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2123,7 +2255,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Principe de récurrence forte",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2147,7 +2280,8 @@
           "somme_n_premiers_entiers",
           "somme_puissances_reel"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2171,7 +2305,8 @@
           "somme_n_premiers_entiers",
           "somme_puissances_reel"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2187,7 +2322,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Produit de deux sommes",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2203,7 +2339,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Relation de Chasles dans une somme et un produit",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2221,7 +2358,8 @@
         "unlocked": [
           "formule_binome_reels"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2238,7 +2376,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Somme des carrés et cubes des n premiers entiers",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2255,7 +2394,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Somme des n premiers entiers",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2272,7 +2412,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Somme des puissances consécutives d'un réel",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2288,7 +2429,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Somme double sur un triangle",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2304,7 +2446,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Somme double à bornes fixes",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2320,7 +2463,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Sommes télescopiques",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2346,7 +2490,8 @@
           "somme_double_bornes_fixes",
           "sommes_telescopiques"
         ],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"
@@ -2362,7 +2507,8 @@
         "chapter": "4 - Entiers, sommes, récurrence",
         "label": "Vocabulaire sur les entiers",
         "unlocked": [],
-        "tooltip": ""
+        "tooltip": "",
+        "quizz": []
       },
       "classes": [
         "item-cours"

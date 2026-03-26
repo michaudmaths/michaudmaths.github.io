@@ -320,8 +320,9 @@ function build() {
     const unlocked = unlockedMap[id] || []
     const label = filename || ""
     const tooltip = meta.tooltip || ""
-    console.log(parentId)
-
+    const qcms = extractQCMs(body)
+    const cleanBody = removeQCMBlocks(body)
+    
     nodes.push({data : {
       id: id,
       parent:  parentId,
@@ -329,7 +330,8 @@ function build() {
       chapter: folder, 
       label: label,
       unlocked: unlocked,
-      tooltip: tooltip
+      tooltip: tooltip,
+      quizz : qcms
           },
       classes: ['item-cours']
       })
@@ -419,3 +421,63 @@ function renderMarkdown(md, filenameToId){
   return marked.parse(withWikiLinks)
   
   }
+
+  // QCM PARSER
+  function extractQCMs(md) {
+    const regex = /:::qcm([\s\S]*?):::/g;
+    const matches = [...md.matchAll(regex)];
+  
+    return matches.map(match => {
+      const block = match[1].trim();
+      const lines = block.split("\n");
+  
+      let question = "";
+      let explanation = "";
+      const choices = [];
+  
+      lines.forEach(rawLine => {
+        const line = rawLine.trim();
+  
+        if (!line) return;
+  
+        // question (tolérant)
+        if (line.toLowerCase().startsWith("question")) {
+          question = line.split(":").slice(1).join(":").trim();
+          return;
+        }
+  
+        // explanation (tolérant)
+        if (line.toLowerCase().startsWith("explication")) {
+          explanation = line.split(":").slice(1).join(":").trim();
+          return;
+        }
+  
+        // choix
+        const choiceMatch = line.match(/- \[(x| )\] (.*)/i);
+        if (choiceMatch) {
+          const fullText = choiceMatch[2].trim();
+  
+          const parts = fullText.split("|");
+          const text = parts[0]?.trim() || "";
+          const feedback = parts[1]?.trim() || "";
+  
+          choices.push({
+            text,
+            correct: choiceMatch[1].toLowerCase() === "x",
+            feedback
+          });
+        }
+      });
+  
+      return {
+        type: "qcm",
+        question,
+        choices,
+        explanation
+      };
+    });
+  }
+
+function removeQCMBlocks(md) {
+  return md.replace(/:::qcm[\s\S]*?:::/g, "");
+}

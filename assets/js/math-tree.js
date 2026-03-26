@@ -1,20 +1,20 @@
-const panel = document.getElementById("detail-panel");
+const qcmPanel = document.getElementById("qcm-panel");
 const overlay = document.getElementById("panel-overlay");
 const detailPanelTitle = document.getElementById("panel-title");
 const detailPanelContent = document.getElementById("panel-content");
-const closeBtn = document.getElementById("close-panel");
 const handle = document.getElementById("drag-handle");
 const mathTooltip = document.getElementById("math-tooltip");
 const buttonToggleProgress = document.getElementById("progress-toggle")
 
 // Charger progrès depuis le storage local
-let progress = JSON.parse(localStorage.getItem("mathProgress") || "{}");
+let progress = JSON.parse(localStorage.getItem("mathProgress")) || "{}";
+let questionProgress = JSON.parse(localStorage.getItem("questionProgress")) || "{}";
 
 // Charger la position des noeuds depuis le storage local
 let storedNodePositions = JSON.parse(localStorage.getItem("storedNodePositions")) || nodePositions;
 
 let navigation = false
-let lastSelected = {}
+let focusedOn = {}
 let defaultLayout = 'klay'
 
 // pas encore implémenté : pour modifier la forme des noeuds en fonction du type
@@ -470,7 +470,7 @@ function resetToDefaultLayout(){
   })
   layout.on('layoutstop', () => {
     cy.zoom(cy.zoom()*0.25,  {easing:'ease-in-out'})
-    cy.center(lastSelected,  {easing:'ease-in-out'})
+    cy.center(focusedOn,  {easing:'ease-in-out'})
   updateTitlePositions()
   })
   layout.run()
@@ -583,6 +583,7 @@ function loadNodePositions(event){
   defaultLayout = 'preset'
 
 }
+
 // Charge le contenu de l'onglet contenant les détails sur un noeud donné
 function loadNodeDetails(nodeId,title) {
 
@@ -655,11 +656,11 @@ cy.on('tap', function (event) {
     cy.nodes().unselect();
     cy.edges().removeClass('highlighted');
     cy.nodes().removeClass('highlighted');
-    closePanel();
     currentNodeList = [];
     closeMenu();
     if (navigation) {
       navigation = false
+      focusedOn = {}
       cy.elements().removeClass('undisplayed')
       updateAllPositions();
       buttonToggleProgress.classList.remove("visible")
@@ -750,19 +751,25 @@ cy.ready(() => {
 
 // FONCTION PROPSOEE PAR CHATGPT 
 cy.on('tap', 'node', function (event) {
-  const node = event.target;
-  if (node.isParent()) return;
+  if (focusedOn === event.target){
+    const node = event.target;
+    const data = node.data()
+    openQCM(data);
+  } else {
+    const node = event.target;
+    if (node.isParent()) return;
 
-  // Reset visuel
-  cy.nodes().removeClass('undisplayed');
-  cy.edges().removeClass('undisplayed');
+    // Reset visuel
+    cy.nodes().removeClass('undisplayed');
+    cy.edges().removeClass('undisplayed');
 
-  cy.nodes().unselect();
-  cy.edges().removeClass('highlighted');
-  cy.nodes().removeClass('highlighted');
-  navigation = true
-  lastSelected = node
-  focusDirectNeighbors(node)
+    cy.nodes().unselect();
+    cy.edges().removeClass('highlighted');
+    cy.nodes().removeClass('highlighted');
+    navigation = true
+    focusedOn = node
+    focusDirectNeighbors(node)
+  }
 });
 
 function focusDirectNeighbors(node) {
@@ -806,7 +813,7 @@ function focusDirectNeighbors(node) {
   const centerX = storedNodePositions[node.id()].x;
   const centerY = storedNodePositions[node.id()].y;
   
-  const maxItemNumber = 6
+  const maxItemNumber = 11
   const maxLength = Math.max(predecessors.length, successors.length)
   const spacingX = vw/2.5;
   const spacingY = Math.max(vh/maxLength, 200);
@@ -825,16 +832,17 @@ function focusDirectNeighbors(node) {
   var itemPerCol = Math.floor((predecessors.length-1)/nbCol)+1
   predecessors.forEach((n, i) => {
     positions[n.id()] = {
-      x: centerX - spacingX - spacingX/2*(i % nbCol),
-      y: centerY + spacingY*(i % itemPerCol) + spacingY/2*(i % nbCol) - totalHeightSucc / (2*nbCol)
+      x: centerX - spacingX - spacingX/2*(Math.floor(i/itemPerCol)),
+      y: centerY + spacingY*(i % itemPerCol) + spacingY/2*(Math.floor(i/itemPerCol)) - totalHeightPred / (2*nbCol)
     };
   });
+
   var nbCol = Math.floor((successors.length-1)/maxItemNumber)+1
   var itemPerCol = Math.floor((successors.length-1)/nbCol)+1
   successors.forEach((n, i) => {
     positions[n.id()] = {
-      x: centerX + spacingX + spacingX/2*(i % nbCol),
-      y: centerY + spacingY*(i % itemPerCol) + spacingY/2*(i % nbCol) - totalHeightSucc / (2*nbCol)
+      x: centerX + spacingX + spacingX/2*(Math.floor(i/itemPerCol)),
+      y: centerY + spacingY*(i % itemPerCol) + spacingY/2*(Math.floor(i/itemPerCol)) - totalHeightSucc / (2*nbCol)
     };
   });
 
@@ -860,39 +868,11 @@ cy.on('tapdrag', function (){
   updateTitlePositions();
 });
 
-// Evenements qui ferment le paneau d'information
-closeBtn.onclick = closePanel;
-overlay.onclick = closePanel;
-
 let startY = 0;
 let currentY = 0;
 let dragging = false;
 
 
-handle.addEventListener("pointerdown", e=>{
-  dragging = true;
-  startY = e.clientY;
-});
-
-window.addEventListener("pointermove", e=>{
-
-  if(!dragging) return;
-
-  currentY = e.clientY;
-  const diff = currentY - startY;
-
-  if(diff < -150){
-    panel.classList.add("full");
-  }
-
-  if(diff > 150){
-    closePanel();
-  }
-});
-
-window.addEventListener("pointerup", ()=>{
-  dragging = false;
-});
 
 document.addEventListener("click", e => {
   nodeId = e.target.getAttribute("data_node")
@@ -930,6 +910,9 @@ function displayNodeButtons(node){
   buttonToggleProgress.style.top = (y)+"px";
 }
 
+function saveProgress() {
+  localStorage.setItem("questionProgress", JSON.stringify(questionProgress));
+}
 
 // Change le status du noeud sélectionné 
 function toggleProgress() {

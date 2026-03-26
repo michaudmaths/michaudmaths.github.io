@@ -22,6 +22,7 @@ permalink: /arbre/
 <script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.5.1/cytoscape-cola.min.js"></script> -->
 <script src="https://unpkg.com/klayjs@0.4.1/klay.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape-klay@3.1.4/cytoscape-klay.min.js"></script>
+<script src="/assets/js/qcms.js"  defer></script>
 <script src="/assets/js/math-tree.js" defer></script>
 
 <div id="graph-container">
@@ -33,14 +34,6 @@ permalink: /arbre/
 <div id="progress-toggle" class="show-progress-up">
   <img src="/assets/svg/check.svg" class="progress-up" id="progress-up-button">
   <img src="/assets/svg/cross.svg" class="progress-down " id="progress-down-button">
-</div>
-<div id="detail-panel">
-  <div id="drag-handle"></div>
-  <div id="panel-header">
-    <h1 id="panel-title">Détails</h1>
-    <button id="close-panel">X</button>
-  </div>
-  <div id="panel-content">Sélectionnez un noeud pour voir les détails ici.</div>
 </div>
 
 <div id="settings-menu">

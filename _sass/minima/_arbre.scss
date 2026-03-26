@@ -20,69 +20,35 @@
   flex-direction: column;
 }
 
-
-#detail-panel {
+#qcm-modal {
   position: fixed;
+  top: 0;
   left: 0;
-  bottom: -100%;
   width: 100%;
-  height: 80vh;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
 
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -10px 40px rgba(0,0,0,0.25);
-
-  transition: bottom 0.35s ease;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
 
-/* états */
-
-#detail-panel.half {
-  bottom: -30%;
-}
-
-#detail-panel.full {
-  bottom: 0
-}
-
-/* poignée */
-
-#drag-handle {
-  width: 40px;
-  height: 5px;
-  background: #ccc;
-  border-radius: 10px;
-  margin: 10px auto;
-  cursor: grab;
-}
-
-/* header */
-
-#panel-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 20px;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-}
-
-#close-panel {
-  border: none;
-  background: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* contenu */
-
-#panel-content {
-  overflow-y: auto;
+.qcm-content {
+  width: 60%;
+  height: 60%;
+  background: white;
   padding: 20px;
-  flex: 1;
+  position: relative;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+.qcm-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
 #graph-container {
