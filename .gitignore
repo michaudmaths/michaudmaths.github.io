@@ -4,3 +4,6 @@ _site
 .jekyll-metadata
 vendor
 Gemfile.lock
+nodes/
+content/
+node_modules/
