@@ -29,9 +29,11 @@ function openQCM(nodeData) {
 
   // ====== CONFIRMATION ======
   container.innerHTML = `
+  <div class="qcm-start-screen">
     <h2>🎯 Record actuel : ${bestScore}/${qcms.length}</h2>
-    <button id="start-btn">Recommencer une série</button>
-  `;
+    <button id="start-btn">Rejouer</button>
+  </div>
+`;
 
   document.getElementById("start-btn").onclick = startSession;
 
@@ -48,11 +50,15 @@ function openQCM(nodeData) {
 
   function renderQuestion() {
     selectedAnswers.clear();
-
+    const progressPercent = Math.round((currentIndex / qcms.length) * 100);
     const q = qcms[currentIndex];
 
     container.innerHTML = `
-      <h2>${q.question}</h2>
+  <div class="progress-bar">
+    <div class="progress-fill" style="width: ${progressPercent}%"></div>
+  </div>
+
+  <h2>${q.question}</h2>
 
       <div class="choices">
         ${q.choices.map((c, i) => `
@@ -155,10 +161,32 @@ function openQCM(nodeData) {
       };
     modal.remove()
   }
+  modal.addEventListener("click", (e) => {
+  if (e.target.id === "qcm-modal") {
+    attemptClose();
+  }
+});
 
   modal.querySelector(".qcm-close").onclick = () => {
-    modal.remove();
+    attemptClose();
   };
+
+  let sessionStarted = false;
+
+function startSession() {
+  sessionStarted = true;
+  currentIndex = 0;
+  sessionScore = 0;
+  renderQuestion();
+}
+
+function attemptClose() {
+  if (sessionStarted && currentIndex < qcms.length) {
+    const confirmLeave = confirm("⚠️ Quitter le QCM en cours ?");
+    if (!confirmLeave) return;
+  }
+  modal.remove();
+}
 }
 
 function updateProgress(n){

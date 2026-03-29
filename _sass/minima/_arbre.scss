@@ -20,100 +20,116 @@
   flex-direction: column;
 }
 
+/* Overlay global */
 #qcm-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
-
+  background: rgba(10, 10, 15, 0.85); /* légèrement plus sombre que Cytoscape */
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
-}
-
-.qcm-content {
-  width: 60%;
-  height: 60%;
-  background: white;
-  padding: 20px;
-  position: relative;
+  z-index: 9999;
   overflow-y: auto;
-  border-radius: 10px;
+  padding: 20px;
 }
 
+/* Boîte QCM */
+.qcm-content {
+  background: #1a1d24;
+  color: #f1f1f1;
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  position: relative;
+  animation: fadeIn 0.25s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideFade 0.25s ease;
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation douce */
+@keyframes fadeIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Bouton fermer */
 .qcm-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-}
-
-
-#detail-panel {
-  position: fixed;
-  left: 0;
-  bottom: -100%;
-  width: 100%;
-  height: 80vh;
-
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -10px 40px rgba(0,0,0,0.25);
-
-  transition: bottom 0.35s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-/* états */
-
-#detail-panel.half {
-  bottom: -30%;
-}
-
-#detail-panel.full {
-  bottom: 0
-}
-
-/* poignée */
-
-#drag-handle {
-  width: 40px;
-  height: 5px;
-  background: #ccc;
-  border-radius: 10px;
-  margin: 10px auto;
-  cursor: grab;
-}
-
-/* header */
-
-#panel-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 20px;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-}
-
-#close-panel {
+  top: 12px;
+  right: 12px;
+  background: transparent;
   border: none;
-  background: none;
+  color: #aaa;
   font-size: 18px;
   cursor: pointer;
 }
 
-/* contenu */
+.qcm-close:hover {
+  color: white;
+}
 
-#panel-content {
-  overflow-y: auto;
-  padding: 20px;
-  flex: 1;
+.qcm-start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Bouton moderne */
+#start-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4f8cff, #6a5cff);
+  border: none;
+  border-radius: 999px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#start-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(80,120,255,0.4);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #2a2f3a;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4f8cff, #6a5cff);
+  transition: width 0.3s ease;
 }
 
 #graph-container {
@@ -288,42 +304,28 @@
 }
 
 .choice {
-  padding: 12px;
+  background: #2a2f3a;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 10px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.2s ease;
 }
 
 .choice:hover {
-  background: #f5f5f5;
+  background: #343a48;
 }
 
 .choice.selected {
-  border-color: #007bff;
-  background: #e7f1ff;
-  border-width:3px;
+  border: 2px solid #4f8cff;
 }
 
 .choice.correct {
-  background: #d4edda;
-  border-color: #28a745;
-}
-
-
-.choice.correct.selected {
-  background: #d4edda;
-  border-color: #007bff;
+  background: #2e7d32;
 }
 
 .choice.wrong {
-  background: #f8d7da;
-  border-color: #dc3545;
-}
-
-.choice.wrong.selected{
-  background: #f8d7da;
-  border-color: #007bff;
+  background: #c62828;
 }
 
 .choice-feedback{
