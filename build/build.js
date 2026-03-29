@@ -244,8 +244,9 @@ function build() {
         prereqs: [],
       },
       classes: ['chapter-node'],
-      grabbable: true, // A enlever 
-      selectable: false
+      grabbable: false, 
+      selectable: false,
+      pannable: true,
     });
     nodes.push({
       data : {
@@ -256,8 +257,9 @@ function build() {
         prereqs: [],
       },
       classes : ['chapter-label'],
-      grabbable: true,
-      selectable: false
+      grabbable: false,
+      selectable: false,
+      pannable: true,
     })
   const subfolders = getDirectories(path.join(NODES_DIR, folder))
   subfolders.forEach(subfolder=>{
@@ -273,8 +275,9 @@ function build() {
             prereqs: [],
           },
           classes: ['subchapter-node'],
-          grabbable: true, // A enlever 
-          selectable: false
+          grabbable: false, // A enlever 
+          selectable: false,
+          pannable:true,
         });
         nodes.push({
           data : {
@@ -286,7 +289,8 @@ function build() {
           },
           classes : ['subchapter-label'],
           grabbable: true,
-          selectable: false
+          selectable: false,
+          pannable: true,
         })
   });
 
@@ -333,7 +337,10 @@ function build() {
       tooltip: tooltip,
       quizz : qcms
           },
-      classes: ['item-cours']
+      classes: ['item-cours'],
+      selectable: true,
+      pannable: true,
+      grabbable: false,
       })
                
     /*

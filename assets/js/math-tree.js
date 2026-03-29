@@ -198,7 +198,7 @@ var klayOptions = {
     routeSelfLoopInside: false, // Whether a self-loop is routed around or inside its node.
     separateConnectedComponents: true, // Whether each connected component should be processed separately
     spacing: 40, // Overall setting for the minimal amount of space to be left between objects
-    thoroughness: 7 // How much effort should be spent to produce a nice layout..
+    thoroughness: 10 // How much effort should be spent to produce a nice layout..
   },
   priority: function( edge ){ return null; }, // Edges with a non-nil value are skipped when greedy edge cycle breaking is enabled
 };
@@ -369,6 +369,7 @@ const cy = cytoscape({
       }
     }
   ],
+  wheelSensitivity: 4,
 });
 
 
@@ -902,6 +903,7 @@ window.addEventListener("beforeunload", function(e){
 
 function saveProgress() {
   localStorage.setItem("questionProgress", JSON.stringify(questionProgress));
+  localStorage.setItem("mathProgress", JSON.stringify(progress));
 }
 
 

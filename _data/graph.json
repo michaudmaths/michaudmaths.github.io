@@ -10,8 +10,9 @@
       "classes": [
         "chapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -24,8 +25,9 @@
       "classes": [
         "chapter-label"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -37,8 +39,9 @@
       "classes": [
         "chapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -51,8 +54,9 @@
       "classes": [
         "chapter-label"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -65,8 +69,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -80,7 +85,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -93,8 +99,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -108,7 +115,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -121,8 +129,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -136,7 +145,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -149,8 +159,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -164,7 +175,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -176,8 +188,9 @@
       "classes": [
         "chapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -190,8 +203,9 @@
       "classes": [
         "chapter-label"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -204,8 +218,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -219,7 +234,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -232,8 +248,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -247,7 +264,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -260,8 +278,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -275,7 +294,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -288,8 +308,9 @@
       "classes": [
         "subchapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -303,7 +324,8 @@
         "subchapter-label"
       ],
       "grabbable": true,
-      "selectable": false
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -315,8 +337,9 @@
       "classes": [
         "chapter-node"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -329,8 +352,9 @@
       "classes": [
         "chapter-label"
       ],
-      "grabbable": true,
-      "selectable": false
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
     },
     {
       "data": {
@@ -348,7 +372,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -365,7 +392,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -382,7 +412,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -397,7 +430,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -418,7 +454,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -439,7 +478,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -461,7 +503,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -482,7 +527,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -499,7 +547,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -516,7 +567,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -536,7 +590,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -555,7 +612,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -579,7 +639,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -596,7 +659,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -618,7 +684,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -707,7 +776,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -726,7 +798,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -748,7 +823,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -771,7 +849,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -790,7 +871,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -809,7 +893,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -828,7 +915,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -845,7 +935,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -862,7 +955,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -879,7 +975,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -900,7 +999,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -919,7 +1021,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -966,7 +1071,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -984,7 +1092,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1007,7 +1118,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1028,7 +1142,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1046,7 +1163,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1066,7 +1186,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1084,7 +1207,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1104,7 +1230,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1122,7 +1251,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1143,7 +1275,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1161,7 +1296,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1181,7 +1319,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1199,7 +1340,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1217,7 +1361,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1237,7 +1384,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1255,7 +1405,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1274,7 +1427,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1294,7 +1450,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1312,7 +1471,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1333,7 +1495,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1351,7 +1516,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1369,7 +1537,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1397,7 +1568,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1416,7 +1590,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1433,7 +1610,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1452,7 +1632,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1471,7 +1654,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1491,7 +1677,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1508,7 +1697,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1530,7 +1722,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1548,7 +1743,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1567,7 +1765,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1592,7 +1793,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1609,7 +1813,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1630,7 +1837,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1650,7 +1860,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1681,7 +1894,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1700,7 +1916,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1718,7 +1937,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1737,7 +1959,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1761,7 +1986,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1779,7 +2007,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1799,7 +2030,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1816,7 +2050,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1837,7 +2074,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1855,7 +2095,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1876,7 +2119,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1894,7 +2140,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1919,7 +2168,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1939,7 +2191,34 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
+    },
+    {
+      "data": {
+        "id": "n_uplet",
+        "parent": "subchapter_Op_rations_sur_les_ensembles",
+        "prereqs": [
+          "famille"
+        ],
+        "chapter": "3 - Ensembles et applications",
+        "label": "n-uplet",
+        "unlocked": [
+          "arrangement",
+          "couple",
+          "produit_cartesien"
+        ],
+        "tooltip": "",
+        "quizz": []
+      },
+      "classes": [
+        "item-cours"
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1957,7 +2236,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1976,7 +2258,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -1996,7 +2281,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2016,7 +2304,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2041,28 +2332,10 @@
       },
       "classes": [
         "item-cours"
-      ]
-    },
-    {
-      "data": {
-        "id": "n_uplet",
-        "parent": "subchapter_Op_rations_sur_les_ensembles",
-        "prereqs": [
-          "famille"
-        ],
-        "chapter": "3 - Ensembles et applications",
-        "label": "n-uplet",
-        "unlocked": [
-          "arrangement",
-          "couple",
-          "produit_cartesien"
-        ],
-        "tooltip": "",
-        "quizz": []
-      },
-      "classes": [
-        "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2082,7 +2355,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2102,7 +2378,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2123,7 +2402,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2141,7 +2423,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2160,7 +2445,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2179,7 +2467,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2196,7 +2487,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2214,7 +2508,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2233,7 +2530,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2253,7 +2553,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2270,7 +2573,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2287,7 +2593,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2312,7 +2621,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2337,7 +2649,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2354,7 +2669,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2371,7 +2689,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2390,7 +2711,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2408,7 +2732,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2426,7 +2753,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2444,7 +2774,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2461,7 +2794,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2478,7 +2814,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2495,7 +2834,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2522,7 +2864,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     },
     {
       "data": {
@@ -2539,7 +2884,10 @@
       },
       "classes": [
         "item-cours"
-      ]
+      ],
+      "selectable": true,
+      "pannable": true,
+      "grabbable": false
     }
   ],
   "edges": [
@@ -3942,6 +4290,17 @@
     },
     {
       "data": {
+        "id": "famille_to_n_uplet",
+        "source": "famille",
+        "target": "n_uplet"
+      },
+      "classes": [],
+      "grabbable": false,
+      "selectable": false,
+      "pannable": true
+    },
+    {
+      "data": {
         "id": "arrangement_to_nombre_arrangements",
         "source": "arrangement",
         "target": "nombre_arrangements"
@@ -4055,17 +4414,6 @@
         "id": "ensemble_comprehension_to_union",
         "source": "ensemble_comprehension",
         "target": "union"
-      },
-      "classes": [],
-      "grabbable": false,
-      "selectable": false,
-      "pannable": true
-    },
-    {
-      "data": {
-        "id": "famille_to_n_uplet",
-        "source": "famille",
-        "target": "n_uplet"
       },
       "classes": [],
       "grabbable": false,

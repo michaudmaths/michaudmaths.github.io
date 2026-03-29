@@ -162,6 +162,6 @@ function openQCM(nodeData) {
 }
 
 function updateProgress(n){
-  progress[n] = questionProgress[n].bestScore === questionProgress[n].qcmlength
+  progress[n] = (questionProgress[n].bestScore === questionProgress[n].qcmlength) && isAccessible(n)
   updateColors(n)
 }
