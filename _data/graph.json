@@ -368,7 +368,7 @@
           "fonction_sinus"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -388,7 +388,7 @@
         "label": "Fonction cosinus",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -408,7 +408,7 @@
         "label": "Fonction sinus",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -426,7 +426,7 @@
         "label": "Périodicité",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -450,7 +450,7 @@
           "intersection"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -474,7 +474,7 @@
           "lois_de_morgan_ensembles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -499,7 +499,7 @@
           "difference_ensembles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -523,7 +523,7 @@
           "union"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -543,7 +543,7 @@
         "label": "Condition nécessaire",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -563,7 +563,7 @@
         "label": "Condition suffisante",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -586,7 +586,7 @@
           "complementaire_inclusion"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -608,7 +608,7 @@
           "negation_implication"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -635,7 +635,7 @@
           "inclusion"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -655,7 +655,7 @@
         "label": "Négation d'une implication",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -680,7 +680,7 @@
           "egalite_ensembles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -707,7 +707,7 @@
           "principe_recurrence"
         ],
         "tooltip": "",
-        "quizz": [
+        "quiz": [
           {
             "type": "qcm",
             "question": "Quelles phrases ci-dessous peuvent être considérées comme des propositions mathématiques ?",
@@ -715,35 +715,41 @@
               {
                 "text": "1000 est un grand nombre.",
                 "correct": false,
-                "feedback": "Les termes sont mal définis, il faudrait s'accorder sur une définition de ce qu'est un \"grand\" nombre."
+                "feedback": "Les termes sont mal définis, il faudrait s'accorder sur une définition de ce qu'est un \"grand\" nombre.",
+                "id": 0
               },
               {
                 "text": "5 est strictement plus grand que 2",
                 "correct": true,
-                "feedback": "C'est bien une proposition, et elle est vraie."
+                "feedback": "C'est bien une proposition, et elle est vraie.",
+                "id": 1
               },
               {
                 "text": "Tout entier naturel élevé au carré donne un nombre strictement négatif.",
                 "correct": true,
-                "feedback": "C'est bien une proposition, et elle est fausse."
+                "feedback": "C'est bien une proposition, et elle est fausse.",
+                "id": 2
               },
               {
                 "text": "La recette originale de la carbonara ne contient pas de crème fraîche.",
                 "correct": false,
-                "feedback": "Définition ambigüe : qu'est ce que LA recette originale ?"
+                "feedback": "Définition ambigüe : qu'est ce que LA recette originale ?",
+                "id": 3
               },
               {
                 "text": "Aujourd'hui nous sommes lundi",
                 "correct": false,
-                "feedback": "Cette proposition change de statut de vérité selon le jour où on la prononce, ce n'est pas une proposition."
+                "feedback": "Cette proposition change de statut de vérité selon le jour où on la prononce, ce n'est pas une proposition.",
+                "id": 4
               },
               {
                 "text": "Le nombre de jours dans une semaine de sept jours est pair.",
                 "correct": true,
-                "feedback": ""
+                "feedback": "",
+                "id": 5
               }
             ],
-            "explanation": "Une proposition doit être soit vraie, soit fausse, et ne contenir aucune ambiguÏté. Son statut de vérité doit dépendre uniquement de la proposition elle même et pas de paramètres extérieurs."
+            "explanation": ""
           },
           {
             "type": "qcm",
@@ -752,22 +758,26 @@
               {
                 "text": "Le principe du tiers exclu",
                 "correct": true,
-                "feedback": "C'est la bonne réponse"
+                "feedback": "C'est la bonne réponse",
+                "id": 0
               },
               {
                 "text": "Le principe de non contradiction",
                 "correct": false,
-                "feedback": "Le principe de non contradiction dit qu'une proposition et son contraire ne peuvent pas être vraie simultanément."
+                "feedback": "Le principe de non contradiction dit qu'une proposition et son contraire ne peuvent pas être vraie simultanément.",
+                "id": 1
               },
               {
                 "text": "Le modus ponens",
                 "correct": false,
-                "feedback": "C'est le principe de base de tout raisonnement : si A est vrai et si A implique B alors B est vrai."
+                "feedback": "C'est le principe de base de tout raisonnement : si A est vrai et si A implique B alors B est vrai.",
+                "id": 2
               },
               {
                 "text": "Le raisonnement par l'absurde",
                 "correct": false,
-                "feedback": "C'est un type de raisonnement qui repose sur le principe de non contradiction et le principe du tiers exclu."
+                "feedback": "C'est un type de raisonnement qui repose sur le principe de non contradiction et le principe du tiers exclu.",
+                "id": 3
               }
             ],
             "explanation": ""
@@ -794,7 +804,7 @@
         "label": "Négation d'une proposition quantifiée",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -819,7 +829,7 @@
           "union_quelconque"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -845,7 +855,7 @@
           "egalite_ensembles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -867,7 +877,7 @@
           "raisonner_contraposee"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -889,7 +899,7 @@
           "raisonner_double_implication"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -911,7 +921,7 @@
           "raisonner_equivalence"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -931,7 +941,7 @@
         "label": "Raisonner par contraposée",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -951,7 +961,7 @@
         "label": "Raisonner par double implication",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -971,7 +981,7 @@
         "label": "Raisonner par équivalence",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -995,7 +1005,7 @@
           "implication_logique"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1017,7 +1027,7 @@
           "bijection_et_identite"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1067,7 +1077,7 @@
           null
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1088,7 +1098,7 @@
         "label": "Bijection et application identité",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1114,7 +1124,7 @@
           "ensemble_denombrable"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1138,7 +1148,7 @@
           "composition_surjectivite"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1159,7 +1169,7 @@
         "label": "Composée de bijections",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1182,7 +1192,7 @@
           "proprietes_image_directe"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1203,7 +1213,7 @@
         "label": "Ensemble image réciproque",
         "unlocked": [],
         "tooltip": "Si $f:E\\rightarrow F$ et $B\\subset F$, $f^{-1}(B):=\\{x\\in E\\ ,\\ f(x)\\in B\\}$",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1226,7 +1236,7 @@
           "somme_produit_symboles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1247,7 +1257,7 @@
         "label": "Injectivité et composition",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1271,7 +1281,252 @@
           "composition_injectivite"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": [
+          {
+            "type": "puzzle",
+            "question": "Soit $f:E\\rightarrow F$ une application. Donner la définition de \"$f$ est injective\"",
+            "solutions": [
+              [
+                "$\\forall$",
+                "$(x,y)$",
+                "$\\in$",
+                "$E^2$",
+                "$f(x)$",
+                "$=$",
+                "$f(y)$",
+                "$\\Rightarrow$",
+                "$x$",
+                "$=$",
+                "$y$"
+              ],
+              [
+                "$\\forall$",
+                "$(x,y)$",
+                "$\\in$",
+                "$E^2$",
+                "$f(x)$",
+                "$=$",
+                "$f(y)$",
+                "$\\Rightarrow$",
+                "$y$",
+                "$=$",
+                "$x$"
+              ],
+              [
+                "$\\forall$",
+                "$(x,y)$",
+                "$\\in$",
+                "$E^2$",
+                "$f(y)$",
+                "$=$",
+                "$f(x)$",
+                "$\\Rightarrow$",
+                "$x$",
+                "$=$",
+                "$y$"
+              ],
+              [
+                "$\\forall$",
+                "$(x,y)$",
+                "$\\in$",
+                "$E^2$",
+                "$f(y)$",
+                "$=$",
+                "$f(x)$",
+                "$\\Rightarrow$",
+                "$y$",
+                "$=$",
+                "$x$"
+              ]
+            ],
+            "distractors": [
+              "$F^2$",
+              "$\\exists$",
+              "$f(x,y)$",
+              "$\\Leftrightarrow$"
+            ],
+            "pieces": [
+              {
+                "id": 0,
+                "text": "$\\forall$"
+              },
+              {
+                "id": 1,
+                "text": "$(x,y)$"
+              },
+              {
+                "id": 2,
+                "text": "$\\in$"
+              },
+              {
+                "id": 3,
+                "text": "$E^2$"
+              },
+              {
+                "id": 4,
+                "text": "$f(x)$"
+              },
+              {
+                "id": 5,
+                "text": "$=$"
+              },
+              {
+                "id": 6,
+                "text": "$f(y)$"
+              },
+              {
+                "id": 7,
+                "text": "$\\Rightarrow$"
+              },
+              {
+                "id": 8,
+                "text": "$x$"
+              },
+              {
+                "id": 9,
+                "text": "$y$"
+              },
+              {
+                "id": 10,
+                "text": "$F^2$"
+              },
+              {
+                "id": 11,
+                "text": "$\\exists$"
+              },
+              {
+                "id": 12,
+                "text": "$f(x,y)$"
+              },
+              {
+                "id": 13,
+                "text": "$\\Leftrightarrow$"
+              }
+            ],
+            "solutionIdsList": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                5,
+                9
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                9,
+                5,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                6,
+                5,
+                4,
+                7,
+                8,
+                5,
+                9
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                6,
+                5,
+                4,
+                7,
+                9,
+                5,
+                8
+              ]
+            ]
+          },
+          {
+            "type": "qcm",
+            "question": "Soit $f:E\\rightarrow F$ une application injective. Quelle(s) proposition(s) ci-dessous sont-elles vraies ?",
+            "choices": [
+              {
+                "text": "Tout élément de $F$ admet au moins un antécédent par $f$ dans $E$",
+                "correct": false,
+                "feedback": "",
+                "id": 0
+              },
+              {
+                "text": "Tout élément de $F$ admet au plus un antécédent par $f$ dans $E$",
+                "correct": true,
+                "feedback": "",
+                "id": 1
+              },
+              {
+                "text": "Un élément de $F$ peut admettre deux antécédents distincts par $f$ dans $E$",
+                "correct": false,
+                "feedback": "",
+                "id": 2
+              },
+              {
+                "text": "Un élément de $F$ peut n'admettre aucun antécédent par $f$ dans $E$",
+                "correct": true,
+                "feedback": "",
+                "id": 3
+              }
+            ],
+            "explanation": ""
+          },
+          {
+            "type": "qcm",
+            "question": "Parmi les applications suivantes, sélectionner toutes celles qui sont injectives :",
+            "choices": [
+              {
+                "text": "$f:\\R\\rightarrow\\R,x\\mapsto x^2$",
+                "correct": false,
+                "feedback": "",
+                "id": 0
+              },
+              {
+                "text": "$f:\\R\\rightarrow\\R,x\\mapsto x^3$",
+                "correct": true,
+                "feedback": "",
+                "id": 1
+              },
+              {
+                "text": "$f:\\R^+\\rightarrow\\R^+,x\\mapsto x^2$",
+                "correct": true,
+                "feedback": "",
+                "id": 2
+              },
+              {
+                "text": "$f:\\R\\rightarrow\\R,x\\mapsto \\ee^x$",
+                "correct": true,
+                "feedback": "",
+                "id": 3
+              },
+              {
+                "text": "$f:\\R\\rightarrow\\R,x\\mapsto x^2+2x-1$",
+                "correct": false,
+                "feedback": "",
+                "id": 4
+              }
+            ],
+            "explanation": ""
+          }
+        ]
       },
       "classes": [
         "item-cours"
@@ -1292,7 +1547,7 @@
         "label": "Prolongement d'une application",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1315,7 +1570,7 @@
         "label": "Propriétés de l'ensemble image directe",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1336,7 +1591,7 @@
         "label": "Restriction d'une application",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1357,7 +1612,7 @@
         "label": "Surjectivité et composition",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1380,7 +1635,7 @@
           "composition_surjectivite"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1401,7 +1656,7 @@
         "label": "Égalité de deux applications",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1423,7 +1678,7 @@
           "nombre_arrangements"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1446,7 +1701,7 @@
           "cardinal_ensemble_parties"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1467,7 +1722,7 @@
         "label": "Cardinal d'un produit cartésien",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1491,7 +1746,7 @@
           "cardinal_ensemble_partitionne"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1512,7 +1767,7 @@
         "label": "Cardinal de l'ensemble des parties d'en ensemble",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1533,7 +1788,7 @@
         "label": "Cardinal et inclusion",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1564,7 +1819,7 @@
           "nombre_combinaisons"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1586,7 +1841,7 @@
           "nombre_combinaisons"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1606,7 +1861,7 @@
         "label": "Dénombrement et injection, surjection, bijection",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1628,7 +1883,7 @@
         "label": "Formule du crible",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1650,7 +1905,7 @@
         "label": "Inclusion et égalité des cardinaux",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1673,7 +1928,7 @@
           "cardinal_ensemble_partitionne"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1693,7 +1948,7 @@
         "label": "Principe des tiroirs",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1718,7 +1973,7 @@
           "difference_ensembles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1739,7 +1994,7 @@
         "label": "Double inclusion",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1761,7 +2016,7 @@
           "cardinal_ensemble_parties"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1789,7 +2044,7 @@
           "union"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1809,7 +2064,7 @@
         "label": "Ensemble défini en extension",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1833,7 +2088,7 @@
           "ensembles_disjoints"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1856,7 +2111,7 @@
           "ensemble_extension"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1890,7 +2145,7 @@
           "egalite_double_inclusion"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1912,7 +2167,7 @@
         "label": "Passage au complémentaire dans une inclusion",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1933,7 +2188,7 @@
         "label": "Propriétés de l'ensemble vide",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1955,7 +2210,7 @@
           "combinaison"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -1982,7 +2237,7 @@
           "egalite_double_inclusion"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2003,7 +2258,7 @@
         "label": "Égalité par double inclusion",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2026,7 +2281,7 @@
           "lois_de_morgan_ensembles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2046,7 +2301,7 @@
         "label": "Couple",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2070,7 +2325,7 @@
           "complementaire"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2091,7 +2346,7 @@
         "label": "Distributivité (Ensembles)",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2115,7 +2370,7 @@
           "partition_ensemble"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2136,7 +2391,7 @@
         "label": "Intersection quelconque",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2164,7 +2419,7 @@
           "lois_de_morgan_ensembles"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2187,7 +2442,7 @@
         "label": "Lois de De Morgan (Ensembles)",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2211,7 +2466,7 @@
           "produit_cartesien"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2232,7 +2487,7 @@
         "label": "Nombre d'arrangements",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2254,7 +2509,7 @@
         "label": "Nombre de combinaisons",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2277,7 +2532,7 @@
           "cardinal_produit_cartesien"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2300,7 +2555,7 @@
           "partition_ensemble"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2328,7 +2583,7 @@
           "union_quelconque"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2351,7 +2606,7 @@
           "formule_binome_reels"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2374,7 +2629,7 @@
           "relation_pascal"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2398,7 +2653,7 @@
           "principe_recurrence"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2419,7 +2674,7 @@
           "operations_N_Z"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2441,7 +2696,7 @@
         "label": "Ensemble dénombrable",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2463,7 +2718,7 @@
           "coefficients_binomiaux"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2483,7 +2738,7 @@
         "label": "Formule de factorisation",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2504,7 +2759,7 @@
         "label": "Formule du binôme de Newton",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2526,7 +2781,7 @@
           "produit_de_sommes"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2549,7 +2804,7 @@
           "voc_entiers"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2569,7 +2824,7 @@
         "label": "Principe de récurrence double",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2589,7 +2844,7 @@
         "label": "Principe de récurrence forte",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2617,7 +2872,7 @@
           "somme_puissances_reel"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2645,7 +2900,7 @@
           "somme_puissances_reel"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2665,7 +2920,7 @@
         "label": "Produit de deux sommes",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2685,7 +2940,7 @@
         "label": "Relation de Chasles dans une somme et un produit",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2707,7 +2962,7 @@
           "formule_binome_reels"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2728,7 +2983,7 @@
         "label": "Somme des carrés et cubes des n premiers entiers",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2749,7 +3004,7 @@
         "label": "Somme des n premiers entiers",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2770,7 +3025,7 @@
         "label": "Somme des puissances consécutives d'un réel",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2790,7 +3045,7 @@
         "label": "Somme double sur un triangle",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2810,7 +3065,7 @@
         "label": "Somme double à bornes fixes",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2830,7 +3085,7 @@
         "label": "Sommes télescopiques",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2860,7 +3115,7 @@
           "sommes_telescopiques"
         ],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"
@@ -2880,7 +3135,7 @@
         "label": "Vocabulaire sur les entiers",
         "unlocked": [],
         "tooltip": "",
-        "quizz": []
+        "quiz": []
       },
       "classes": [
         "item-cours"

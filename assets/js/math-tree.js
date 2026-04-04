@@ -772,7 +772,7 @@ cy.on('tap', 'node', function (event) {
   if (focusedOn === event.target){
     const node = event.target;
     const data = node.data()
-    openQCM(data);
+    runQuiz(data);
   } else {
     const node = event.target;
     if (node.isParent()) return;

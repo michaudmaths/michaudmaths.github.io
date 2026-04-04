@@ -324,8 +324,8 @@ function build() {
     const unlocked = unlockedMap[id] || []
     const label = filename || ""
     const tooltip = meta.tooltip || ""
-    const qcms = extractQCMs(body)
-    const cleanBody = removeQCMBlocks(body)
+    const quiz = extractQuizBlocks(body);
+    const cleanBody = removeQuizBlocks(body);
     
     nodes.push({data : {
       id: id,
@@ -335,7 +335,7 @@ function build() {
       label: label,
       unlocked: unlocked,
       tooltip: tooltip,
-      quizz : qcms
+      quiz : quiz
           },
       classes: ['item-cours'],
       selectable: true,
@@ -429,62 +429,149 @@ function renderMarkdown(md, filenameToId){
   
   }
 
-  // QCM PARSER
-  function extractQCMs(md) {
-    const regex = /:::qcm([\s\S]*?):::/g;
-    const matches = [...md.matchAll(regex)];
-  
-    return matches.map(match => {
-      const block = match[1].trim();
-      const lines = block.split("\n");
-  
-      let question = "";
-      let explanation = "";
-      const choices = [];
-  
-      lines.forEach(rawLine => {
-        const line = rawLine.trim();
-  
-        if (!line) return;
-  
-        // question (tolérant)
-        if (line.toLowerCase().startsWith("question")) {
-          question = line.split(":").slice(1).join(":").trim();
-          return;
-        }
-  
-        // explanation (tolérant)
-        if (line.toLowerCase().startsWith("explication")) {
-          explanation = line.split(":").slice(1).join(":").trim();
-          return;
-        }
-  
-        // choix
-        const choiceMatch = line.match(/- \[(x| )\] (.*)/i);
-        if (choiceMatch) {
-          const fullText = choiceMatch[2].trim();
-  
-          const parts = fullText.split("|");
-          const text = parts[0]?.trim() || "";
-          const feedback = parts[1]?.trim() || "";
-  
-          choices.push({
-            text,
-            correct: choiceMatch[1].toLowerCase() === "x",
-            feedback
-          });
-        }
+function extractQuizBlocks(md) {
+  const regex = /:::(qcm|puzzle)([\s\S]*?):::/g;
+  const matches = [...md.matchAll(regex)];
+
+  return matches.map(match => {
+    const type = match[1];
+    const block = match[2].trim();
+
+    if (type === "qcm") return parseQCM(block);
+    if (type === "puzzle") return parsePuzzle(block);
+  });
+}
+
+function parseQCM(block) {
+  const lines = block.split("\n");
+
+  let question = "";
+  let explanation = "";
+  const choices = [];
+
+  lines.forEach(rawLine => {
+    const line = rawLine.trim();
+    if (!line) return;
+
+    if (line.toLowerCase().startsWith("question")) {
+      question = line.split(":").slice(1).join(":").trim();
+      return;
+    }
+
+    if (line.toLowerCase().startsWith("explanation")) {
+      explanation = line.split(":").slice(1).join(":").trim();
+      return;
+    }
+
+    const match = line.match(/- \[(x| )\] (.*)/i);
+    if (match) {
+      const [text, feedback] = match[2].split("|").map(s => s.trim());
+
+      choices.push({
+        text,
+        correct: match[1].toLowerCase() === "x",
+        feedback: feedback || "",
+        id: choices.length
       });
-  
-      return {
-        type: "qcm",
-        question,
-        choices,
-        explanation
-      };
-    });
+    }
+  });
+
+  return {
+    type: "qcm",
+    question,
+    choices,
+    explanation
+  };
+}
+
+function parsePuzzle(block) {
+  const lines = block.split("\n");
+
+  let question = "";
+  let solutions = [];
+  let distractors = [];
+
+  let inSolutions = false;
+  let inDistractors = false;
+
+  lines.forEach(rawLine => {
+    const line = rawLine.trim();
+    if (!line) return;
+
+    if (line.toLowerCase().startsWith("question")) {
+      question = line.split(":").slice(1).join(":").trim();
+      return;
+    }
+
+    if (line.toLowerCase().startsWith("solutions")) {
+      inSolutions = true;
+      inDistractors = false;
+      return;
+    }
+
+    if (line.toLowerCase().startsWith("distractors")) {
+      inSolutions = false;
+      inDistractors = true;
+      return;
+    }
+
+    if (inSolutions) {
+      const m = line.match(/- (.*)/);
+      if (m) {
+        solutions.push(
+          m[1].split("|").map(s => s.trim())
+        );
+      }
+    }
+
+    if (inDistractors) {
+      const m = line.match(/- (.*)/);
+      if (m) distractors.push(m[1].trim());
+    }
+  });
+
+  return buildPuzzleData({
+    type: "puzzle",
+    question,
+    solutions,
+    distractors
+  });
+}
+
+function buildPuzzleData(puzzle) {
+  let id = 0;
+  const pieces = [];
+  const solutionIdsList = [];
+
+  const map = new Map(); // text → id
+
+  function getId(text) {
+    if (map.has(text)) return map.get(text);
+
+    const newId = id++;
+    map.set(text, newId);
+    pieces.push({ id: newId, text });
+    return newId;
   }
 
-function removeQCMBlocks(md) {
-  return md.replace(/:::qcm[\s\S]*?:::/g, "");
+  // solutions → ids
+  puzzle.solutions.forEach(sol => {
+    const ids = sol.map(text => getId(text));
+    solutionIdsList.push(ids);
+  });
+
+  // distractors
+  puzzle.distractors.forEach(text => {
+    getId(text);
+  });
+
+  return {
+    ...puzzle,
+    pieces,
+    solutionIdsList
+  };
+}
+
+function removeQuizBlocks(md) {
+  return md.replace(/:::(qcm|puzzle)[\s\S]*?:::/g, "");
 }

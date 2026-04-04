@@ -11,7 +11,7 @@ permalink: /arbre/
   const treeData = {{ site.data.graph | jsonify }};
   const nodePositions = {{ site.data.node_positions | jsonify }} 
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+<!-- <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
 <!-- <script src="https://unpkg.com/layout-base/layout-base.js"></script>
 <script src="https://unpkg.com/cose-base/cose-base.js"></script>
@@ -24,6 +24,7 @@ permalink: /arbre/
 <script src="https://cdn.jsdelivr.net/npm/cytoscape-klay@3.1.4/cytoscape-klay.min.js"></script>
 <script src="/assets/js/math-tree.js" defer></script>
 <script src="/assets/js/qcms.js"  defer></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <div id="graph-container">
 <div id="graph"></div>  
