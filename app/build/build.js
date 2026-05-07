@@ -1,0 +1,629 @@
+const fs = require("fs");
+const path = require("path");
+const { marked } = require("marked")
+const yaml = require("js-yaml");
+
+
+const NODES_DIR = "../nodes";
+const OUTPUT = "../_data/graph.json";
+
+/*
+Sous-dossiers autorisés
+*/
+const ALLOWED_FOLDERS = [
+  "1 - Trigonométrie",
+  "2 - Logique",
+  "3 - Ensembles et applications",
+  "4 - Entiers, sommes, récurrence",
+  "5 - Nombres réels",
+  "6 - Suites numériques",
+  "7 - Fonction réelle de la variable réelle"
+];
+
+
+const getDirectories = source =>
+  fs.readdirSync(source, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name)
+
+
+const files = getMarkdownFiles(NODES_DIR);
+const filenameToId = createFilenameToIdMap()
+const prereqsMap = createPrereqsMap()
+const minimumPrereqsMap = createMinimumPrereqsMap() 
+const unlockedMap = createUnlockedMap() 
+const nodes = [];
+const edges = [];
+
+/*
+PASS 1 : lire les id
+*/
+
+
+
+
+//  prereqsMap[id] = list of id
+function createPrereqsMap(){
+  var prereqsMap = {}
+    files.forEach(file =>{
+    const filename = path.basename(file, ".md");
+    id = filenameToId[filename]
+    const raw = fs.readFileSync(file, "utf8");
+    const { meta, body } = parseFrontmatter(raw);
+    if (!meta.prerequis){return;}
+    prereqNames = extractLinks(meta.prerequis);
+    prereqsMap[id] = prereqNames
+    .map(name => filenameToId[name])
+    .filter(Boolean);
+  })
+  return prereqsMap;
+}
+
+function createMinimumPrereqsMap(){
+  var minimumPrereqsMap = {}
+  files.forEach(file=>{
+    const filename = path.basename(file, ".md");
+    const id = filenameToId[filename];
+    minimumPrereqsMap[id] = getMinimumPrereqs(id, prereqsMap)
+  })
+  return minimumPrereqsMap;
+}
+
+function createUnlockedMap(){
+  var unlockedMap = {}
+  files.forEach(file => {
+    const filename = path.basename(file, ".md");
+    id_source = filenameToId[filename]
+    unlockedMap[id_source] = []
+    files.forEach(file =>{
+      const filename = path.basename(file, ".md");
+      id_target = filenameToId[filename]
+      if (minimumPrereqsMap[id_target].includes(id_source)) {
+        unlockedMap[id_source].push(id_target)
+      }
+    })
+  })
+  return unlockedMap;
+}
+  
+// filenamToId[id] = id
+function createFilenameToIdMap(){
+  var filenameToId = {}
+  files.forEach(file => {
+    const folder = getTopFolder(file);
+    if (ALLOWED_FOLDERS.length && !ALLOWED_FOLDERS.includes(folder))
+      return;
+    const raw = fs.readFileSync(file, "utf8");
+    const { meta } = parseFrontmatter(raw);
+    if (!meta.id) return;
+    const filename = path.basename(file, ".md");
+    filenameToId[filename] = meta.id.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  });
+  return filenameToId;
+}
+
+// Fonction récursive pour nettoyer les relations de prérequis
+function getMinimumPrereqs(id, prereqsMap) {
+  const prereqs = prereqsMap[id] || [];
+
+  function reachable(from, target) {
+    const stack = [...(prereqsMap[from] || [])];
+    const visited = new Set();
+
+    while (stack.length) {
+      const n = stack.pop();
+      if (n === target) return true;
+
+      if (!visited.has(n)) {
+        visited.add(n);
+        stack.push(...(prereqsMap[n] || []));
+      }
+    }
+
+    return false;
+  }
+
+  return prereqs.filter(p =>
+    !prereqs.some(q => q !== p && reachable(q, p))
+  );
+}
+
+
+/*
+Lire tous les markdown récursivement
+*/
+function getMarkdownFiles(dir) {
+
+  let results = [];
+
+  const list = fs.readdirSync(dir);
+
+  list.forEach(file => {
+
+    const filepath = path.join(dir, file);
+    const stat = fs.statSync(filepath);
+
+    if (stat.isDirectory()) {
+      results = results.concat(getMarkdownFiles(filepath));
+    }
+
+    else if (file.endsWith(".md")) {
+      results.push(filepath);
+    }
+
+  });
+
+  return results;
+}
+
+/*
+Dossier principal
+*/
+function getTopFolder(filepath) {
+
+  const relative = path.relative(NODES_DIR, filepath);
+  const parts = relative.split(path.sep);
+
+  if (parts.length > 1) return parts[0];
+
+  return "root";
+}
+
+function getSubFolder(filepath) {
+  const relative = path.relative(NODES_DIR, filepath);
+  const parts = relative.split(path.sep);
+  if (parts.length >2) {return parts[1]}
+  else {return false}
+}
+
+/*
+Frontmatter simple
+*/
+function parseFrontmatter(content) {
+
+  const match = content.match(/^---([\s\S]*?)---/);
+
+  if (!match) {
+    return { meta: {}, body: content };
+  }
+
+  let meta = {};
+
+  try {
+    meta = yaml.load(match[1]) || {};
+  } catch (e) {
+    console.error("Erreur YAML dans frontmatter:", e);
+  }
+
+  /*
+  Normalisation de prerequis
+  */
+
+  if (meta.prerequis) {
+
+    if (Array.isArray(meta.prerequis)) {
+
+      // liste YAML → string compatible extractLinks
+      meta.prerequis = meta.prerequis.join(" ");
+
+    } else {
+
+      // s'assurer que c'est une string
+      meta.prerequis = String(meta.prerequis);
+
+    }
+
+  }
+
+  const body = content.slice(match[0].length).trim();
+
+  return { meta, body };
+
+}
+
+/*
+Extraire [[links]]
+*/
+function extractLinks(text) {
+  const matches = [...text.matchAll(/\[\[(.*?)\]\]/g)];
+  return matches.map(m => m[1].trim());
+
+}
+
+function build() {
+  // Noeuds et sous noeud parents pour chaque folder
+  ALLOWED_FOLDERS.forEach(folder => {
+    const id = `chapter_${folder.replace(/[^a-zA-Z0-9]/g,'_').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')}`;
+    filenameToId[folder] = id;
+
+
+    // Création des noeuds parents par chapitre et sous-parties et des noeuds labels de chapitre
+    nodes.push({
+      data: {
+        id: id,
+        label: folder,
+        chapter: folder,
+        prereqs: [],
+      },
+      classes: ['chapter-node'],
+      grabbable: false, 
+      selectable: false,
+      pannable: true,
+    });
+    nodes.push({
+      data : {
+        id : id+"_label",
+        parent: id,
+        chapter: folder,
+        label: folder,
+        prereqs: [],
+      },
+      classes : ['chapter-label'],
+      grabbable: false,
+      selectable: false,
+      pannable: true,
+    })
+  const subfolders = getDirectories(path.join(NODES_DIR, folder))
+  subfolders.forEach(subfolder=>{
+      const subId = `subchapter_${subfolder.replace(/[^a-zA-Z0-9]/g,'_')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')}`;
+        nodes.push({
+          data: {
+            id: subId,
+            label: subfolder,
+            chapter: folder,
+            parent: id,
+            prereqs: [],
+          },
+          classes: ['subchapter-node'],
+          grabbable: false, // A enlever 
+          selectable: false,
+          pannable:true,
+        });
+        nodes.push({
+          data : {
+            id : subId+"_label",
+            parent: subId,
+            chapter: folder,
+            label: subfolder,
+            prereqs: [],
+          },
+          classes : ['subchapter-label'],
+          grabbable: true,
+          selectable: false,
+          pannable: true,
+        })
+  });
+
+  })
+
+
+  /*
+  PASS 2 : construire les nodes
+  */
+
+  files.forEach(file => {
+    const folder = getTopFolder(file);
+    const subfolder = getSubFolder(file);
+    if (ALLOWED_FOLDERS.length && !ALLOWED_FOLDERS.includes(folder))
+      return;
+    
+    const raw = fs.readFileSync(file, "utf8");
+    const { meta, body } = parseFrontmatter(raw);
+  
+    if (!meta.id) return;
+    const id = meta.id.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    if (!subfolder){
+      var parentId = `chapter_${folder.replace(/[^a-zA-Z0-9]/g,'_').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')}`;
+    } else{
+      var parentId = `subchapter_${subfolder.replace(/[^a-zA-Z0-9]/g,'_').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')}`;
+    }
+    const filename = path.basename(file, ".md");
+    const prereqs = minimumPrereqsMap[id] || []
+    const unlocked = unlockedMap[id] || []
+    const label = filename || ""
+    const tooltip = meta.tooltip || ""
+    const quiz = extractQuizBlocks(body);
+    const cleanBody = removeQuizBlocks(body);
+    const fontSize = setLabelSizeByLength(label) || 30;
+    
+
+    nodes.push({data : {
+      id: id,
+      parent:  parentId,
+      prereqs: prereqs,
+      chapter: folder, 
+      label: label,
+      unlocked: unlocked,
+      tooltip: tooltip,
+      quiz : quiz,
+      fontSize: fontSize,
+          },
+      classes: ['item-cours'],
+      selectable: true,
+      pannable: true,
+      grabbable: false,
+      })
+               
+    /*
+    4️⃣ création des edges
+    */
+    
+    prereqs.forEach(pr => {
+      if (!pr){return;}
+      edges.push({
+        data: {
+          id: `${pr}_to_${id}`,
+          source: pr,
+          target: id
+        },
+        classes: [],
+        grabbable: false,
+        selectable: false,
+        pannable: true,
+      });
+    });
+  
+    /*
+    contenu HTML
+    */
+  
+    const html = renderMarkdown(body, filenameToId);
+    writeContentFile(id, html);
+  });
+   
+  // Ecriture et enregistrement du graphe au format json 
+  const graph = {
+    nodes,
+    edges
+  };
+  fs.writeFileSync(
+    OUTPUT,
+    JSON.stringify(graph, null, 2)
+  );
+  console.log(`Graph généré : ${nodes.length} noeuds`);
+
+}
+
+build();
+
+function writeContentFile(id, html){
+
+  const dir="../content/nodes";
+  
+  if(!fs.existsSync(dir)){
+  fs.mkdirSync(dir,{recursive:true});
+  }
+  
+  fs.writeFileSync(
+  `${dir}/${id}.html`,
+  html
+  );
+  
+  }
+
+function convertWikiLinks(text, filenameToId){
+
+  return text.replace(/\[\[(.*?)\]\]/g,(match,content)=>{
+  
+  let [name,label] = content.split("|")
+  
+  name=name.trim()
+  label=(label || name).trim()
+  
+  const id = filenameToId[name]
+  
+  if(!id){
+  console.warn("Lien inconnu :", name)
+  return label
+  }
+  
+  return `<a href="#" data_node="${id}">${label}</a>`
+  
+})}
+
+
+function renderMarkdown(md, filenameToId){
+
+  const withWikiLinks = convertWikiLinks(md, filenameToId)
+  
+  return marked.parse(withWikiLinks)
+  
+  }
+
+function extractQuizBlocks(md) {
+  const regex = /:::(qcm|puzzle)([\s\S]*?):::/gi;
+  const matches = [...md.matchAll(regex)];
+
+  return matches.map(match => {
+    const type = match[1].toLowerCase();
+    const block = escapeMarkdownBraces(match[2].trim());
+
+    if (type === "qcm") return parseQCM(block);
+    if (type === "puzzle") return parsePuzzle(block);
+  });
+}
+
+function parseQCM(block) {
+  const lines = block.split("\n");
+
+  let questionRaw = "";
+  let explanationRaw = "";
+  const choices = [];
+
+  // On identifie les sections sans tout découper brutalement
+  let currentSection = "question";
+
+  lines.forEach(rawLine => {
+    const line = rawLine.trim();
+    
+    if (line.toLowerCase().startsWith("question")) {
+      questionRaw = line.replace(/^question\s*:/i, "").trim();
+      currentSection = "question";
+      return;
+    }
+
+    if (line.toLowerCase().startsWith("explication")) {
+      explanationRaw = line.replace(/^explication\s*:/i, "").trim();
+      currentSection = "explication";
+      return;
+    }
+
+    const match = rawLine.match(/^\s*- \[(x| )\] (.*)/i);
+    if (match) {
+      const [text, feedback] = match[2].split("|").map(s => s.trim());
+
+      choices.push({
+        // On rend le Markdown en HTML pour le texte de l'option
+        text: marked.parseInline(text), 
+        correct: match[1].toLowerCase() === "x",
+        // On rend le Markdown en HTML pour le feedback
+        feedback: feedback ? marked.parseInline(feedback) : "",
+        id: choices.length
+      });
+      return;
+    }
+
+    // Si on n'est pas dans un choix, on accumule le texte (pour les tableaux ou multi-lignes)
+    if (currentSection === "question") {
+      questionRaw += "\n" + rawLine;
+    } else if (currentSection === "explication") {
+      explanationRaw += "\n" + rawLine;
+    }
+  });
+
+  return {
+    type: "qcm",
+    // Conversion finale du Markdown en HTML
+    question: marked.parse(questionRaw.trim()),
+    choices,
+    explanation: marked.parse(explanationRaw.trim())
+  };
+}
+
+function parsePuzzle(block) {
+  
+  const lines = block.split("\n");
+
+  let questionRaw = "";
+  let solutions = [];
+  let distractors = [];
+
+  // On identifie les sections sans tout découper brutalement
+  let currentSection = "question";
+
+  lines.forEach(rawLine => {
+    const line = rawLine.trim();
+    
+    if (line.toLowerCase().startsWith("question")) {
+      questionRaw = line.replace(/^question\s*:/i, "").trim();
+      currentSection = "question";
+      return;
+    }
+
+    if (line.toLowerCase().startsWith("solutions")) {
+      currentSection = "solutions";
+      return;
+    }
+
+    if (line.toLowerCase().startsWith("distractors")) {
+      currentSection = "distractors";
+      return;
+    }
+
+    if (currentSection === "solutions") {
+      const m = line.match(/- (.*)/);
+      if (m) {
+        solutions.push(
+          m[1].split("|").map(s => s.trim())
+        );
+      }
+    }
+
+    if (currentSection === "distractors") {
+      const m = line.match(/- (.*)/);
+      if (m) distractors.push(m[1].trim());
+    }
+
+
+    // Si on n'est pas dans un choix, on accumule le texte (pour les tableaux ou multi-lignes)
+    if (currentSection === "question") {
+      questionRaw += "\n" + rawLine;
+    }
+  });
+
+  return buildPuzzleData({
+    type: "puzzle",
+    question: marked.parse(questionRaw.trim()),
+    solutions,
+    distractors
+  });
+}
+
+function buildPuzzleData(puzzle) {
+  let id = 0;
+  const pieces = [];
+  const solutionIdsList = [];
+
+  const map = new Map(); // text → id
+
+  function getId(text) {
+    if (map.has(text)) return map.get(text);
+
+    const newId = id++;
+    map.set(text, newId);
+    pieces.push({ id: newId, text });
+    return newId;
+  }
+
+  // solutions → ids
+  puzzle.solutions.forEach(sol => {
+    const ids = sol.map(text => getId(text));
+    solutionIdsList.push(ids);
+  });
+
+  // distractors
+  puzzle.distractors.forEach(text => {
+    getId(text);
+  });
+
+  return {
+    ...puzzle,
+    pieces,
+    solutionIdsList
+  };
+}
+
+function removeQuizBlocks(md) {
+  return md.replace(/:::(qcm|puzzle)[\s\S]*?:::/gi, "");
+}
+
+function escapeMarkdownBraces(text){
+  return text.replace(/\{/g, "\\{").replace(/\}/g, "\\}");
+}
+
+
+function setLabelSizeByLength(label) {
+  const text = label.toString();
+  const maxWordLength = Math.max(...text.split(' ').map(word => word.length));
+  const length = text.length;
+
+  const config = [
+    { max: 14, size: 45 },
+    { max: 25, size: 38 },
+    { max: 50, size: 30 },
+    { max: 75, size: 20 },
+    { max: Infinity, size: 10 }
+  ];
+
+  const match = config.find(c => length <= c.max);
+  
+  if (match.size >= 38 && maxWordLength >= 14) {
+    match.size = 35;
+  }
+  return match.size;
+}

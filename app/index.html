@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="arbre.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+    <script src="https://unpkg.com/klayjs@0.4.1/klay.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-klay@3.1.4/cytoscape-klay.min.js"></script>
+    <script src="math-tree.js" defer></script>
+    <script src="qcms.js"  defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    </head>
+    <body>
+
+
+<div id="graph-container">
+<div id="graph"></div>  
+<div id="overlay"></div>
+<div id="tooltip"></div>
+<div id="math-tooltip"></div>
+
+
+
+<div id="settings-menu">
+    <div id="gear-btn">
+    <img
+      src="/assets/svg/gear.svg"
+      height="35"
+      width="35"/>
+    </div>
+    <div id="menu-graph-dropdown" class="hidden">
+      <button onclick="downloadProgress()" class="graph-menu-item">Télécharger ma progression</button>
+      <label for="input_progress" class="graph-menu-item">Charger la progression</label>
+      <input type="file" id = "input_progress" onchange="loadProgress(event)" class="hidden">
+      <button onclick="downloadNodePositions()" class="graph-menu-item">Télécharger position des noeuds </button>
+      <label for="input_positions" class="graph-menu-item"> Charger la position des noeuds</label>
+      <input type="file" id = "input_positions" onchange="loadNodePositions(event)" class="hidden" >
+      <button onclick="reset()" class="graph-menu-item">Réinitialiser la progression</button>
+      <label class="menu-checkbox graph-menu-item" >
+        <input type="checkbox" id="toggle-chapter-nodes" checked>
+        Afficher les chapitres
+      </label>
+      <label class="menu-checkbox graph-menu-item" >
+        <input type="checkbox" id="toggle-accessibles-nodes" checked>
+        Afficher les noeuds inaccessibles
+      </label>
+      <label class="menu-checkbox graph-menu-item" >
+        <input type="checkbox" id="toggle-tooltips" checked>
+        Activer les tooltips
+      </label>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
