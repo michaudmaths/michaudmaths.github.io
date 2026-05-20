@@ -138,6 +138,18 @@ kholles_hk :
   - numero : 24
     date_debut : '04/05/26'
     date_fin : '08/05/26'
+  - numero : 25
+    date_debut : '25/05/26'
+    date_fin : '29/05/26'
+  - numero : 26
+    date_debut : '01/06/26'
+    date_fin : '05/06/26'
+  - numero : 27
+    date_debut : '08/06/26'
+    date_fin : '12/06/26'
+  - numero : 28
+    date_debut : '15/06/26'
+    date_fin : '19/06/26'
 
 td_khagne :
   - title : Révisions d'algèbre linéaire
