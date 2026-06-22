@@ -5,9 +5,9 @@
 layout: page
 ---
 
-<h1 class="titre">Page professionnelle de Robin Michaud </h1> 
+<h2 class="titre">Page professionnelle de Robin Michaud </h2> 
 
-<h1 class="titre">Cours de mathématiques en BL (lettres et sciences sociales)</h1>
+<h3 class="titre">Cours de mathématiques en BL (lettres et sciences sociales)</h3>
 
 <div id="intro">
 Vous trouverez sur ce site les principaux documents de cours, fiches d'exercices et programmes de khôlles du cours de mathématiques d'Hypokhâgne BL que je donne au lycée Sainte-Marie de Neuilly. 
