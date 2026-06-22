@@ -23,7 +23,7 @@ Les <a href="{{site.baseurl}}/cours/">cours</a> d'Hypokhâgne BL correspondent a
 
 ## Les exercices
 
-Il y en a deux catégories. Les exercices de cours, à la fin de chaque chapitre, servent à illustrer le cours par des exemples. Ce sont en général des exercices d'application directe, ils servent à illustrer les principaux résultats du cours et à vérifier que vous avez compris comment les utiliser.
+Il y en a deux catégories. Les exercices de cours, à la fin de chaque chapitre. Ce sont en général des exercices d'application directe, ils servent à illustrer les principaux résultats du cours et à vérifier que vous avez compris comment les utiliser, avec en priorité un travail sur les méthodes de base correspondant à chaque notion.
 
 Les exercices de TD sont des exercices d'approfondissement. Les plus faciles d'entre eux sont de difficulté semblable aux exercices de cours, et les plus ardus vous donneront certainement du fil à retordre. Il faut les travailler d'abord sans correction, avec le cours sous les yeux pour y chercher des idées. Ce n'est qu'en pratiquant ces exercices que vous apprendrez à produire des raisonnements mathématiques clairs et précis.
 
