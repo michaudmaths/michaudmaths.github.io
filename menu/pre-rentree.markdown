@@ -27,4 +27,4 @@ Ces notions seront toutes revues au cours de l'année d'hypokhâgne mais le ryth
 
 **Pour tous les futurs étudiants :** profitez de l'été pour entretenir un peu vos acquis en travaillant les exercices qui vous intéressent. Certains exercices peuvent vous sembler très difficile, il ne faut pas s'en inquiéter. Il n'est absolument pas recommandé de faire tous les exercices, il faut aussi profiter de l'été pour se reposer et arriver en pleine forme à la rentrée !
 
-**Remarque :** La partie VII des exercices porte sur les nombres complexes. Au lycée cette notion est vue uniquement en maths experte. Cette partie fera l'objet d'un chapitre de cours en Hypokhâgne BL, il n'est pas nécessaire (ou en tout cas pas prioritaire) de travailler ce chapitre seul si vous n'avez pas suivi l'option maths experte.
+**Remarque :** La partie VII des exercices porte sur les nombres complexes. Au lycée cette notion est vue uniquement en option maths expertes. Cette partie fera l'objet d'un chapitre de cours en Hypokhâgne BL, il n'est pas nécessaire (ou en tout cas pas prioritaire) de travailler ce chapitre seul si vous n'avez pas suivi l'option maths expertes.
