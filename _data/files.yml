@@ -4,27 +4,21 @@ annexes_folder : 'pdf/annexes hk'
 kholles_folder : 'pdf/kholles hk'
 
 chapitres_hk:
-  - title : Trigonométrie
+  - title : Ensembles et logique
     annexes :
 
-  - title : Logique
+  - title : Entiers, dénombrement, sommes et récurrences
     annexes :
 
-  - title : Ensembles et applications
+  - title : Nombres réels et complexes
     annexes :
       
-  - title : Entiers, sommes, récurrences
-    annexes :
-
-  - title : Nombres réels
-    annexes :
-
   - title : Suites numériques
     annexes : 
       - name : Opérations sur les limites
         path : 'poster_operations_limites'
 
-  - title : Analyse réelle
+  - title : Limites de fonctions, continuité
     annexes :
       - name : Limites
         path : 'poster_limites'
@@ -62,143 +56,24 @@ chapitres_hk:
       - name : Tableau de primitives
         path : 'tableau_primitives'
 
-  - title : Nombres complexes
-    annexes :
 
 kholles_hk :    
   - numero : 1
     date_debut : '15/09/25'
     date_fin : '19/09/25'
-  - numero : 2
-    date_debut : '22/09/25'
-    date_fin : '26/09/25'
-  - numero : 3
-    date_debut : '29/09/25'
-    date_fin : '03/10/25'
-  - numero : 4
-    date_debut :  '06/10/25'
-    date_fin : '10/10/25'
-  - numero : 5
-    date_debut : '13/10/25'
-    date_fin : '17/10/25'
-  - numero : 6
-    date_debut : '03/11/25'
-    date_fin : '07/11/25'
-  - numero : 7
-    date_debut : '10/11/25'
-    date_fin : '14/11/25'
-  - numero : 8
-    date_debut : '24/11/25'
-    date_fin : '28/11/25'
-  - numero : 9
-    date_debut : '01/12/25'
-    date_fin : '05/12/25'
-  - numero : 10
-    date_debut : '08/12/25'
-    date_fin : '12/12/25'
-  - numero : 11
-    date_debut : '05/01/26'
-    date_fin : '09/01/26'
-  - numero : 12
-    date_debut : '12/01/26'
-    date_fin : '16/01/26'
-  - numero : 13
-    date_debut : '19/01/26'
-    date_fin : '23/01/26'
-  - numero : 14
-    date_debut : '26/01/26'
-    date_fin : '30/01/26'
-  - numero : 15
-    date_debut : '02/02/26'
-    date_fin : '06/02/26'
-  - numero : 16
-    date_debut : '09/02/26'
-    date_fin : '13/02/26'
-  - numero : 17
-    date_debut : '16/02/26'
-    date_fin : '20/02/26'
-  - numero : 18
-    date_debut : '09/03/26'
-    date_fin : '13/03/26'
-  - numero : 19
-    date_debut : '16/03/26'
-    date_fin : '20/03/26'
-  - numero : 20
-    date_debut : '23/03/26'
-    date_fin : '27/03/26'
-  - numero : 21
-    date_debut : '30/03/26'
-    date_fin : '03/04/26'
-  - numero : 22
-    date_debut : '06/04/26'
-    date_fin : '10/04/26'
-  - numero : 23
-    date_debut : '13/04/26'
-    date_fin : '17/04/26'
-  - numero : 24
-    date_debut : '04/05/26'
-    date_fin : '08/05/26'
-  - numero : 25
-    date_debut : '25/05/26'
-    date_fin : '29/05/26'
-    demo : 
-      - 2
-  - numero : 26
-    date_debut : '01/06/26'
-    date_fin : '05/06/26'
-    demo : 
-      - 2
-  - numero : 27
-    date_debut : '08/06/26'
-    date_fin : '12/06/26'
-  - numero : 28
-    date_debut : '15/06/26'
-    date_fin : '19/06/26'
 
 td_khagne :
   - title : Révisions d'algèbre linéaire
-  - title : Sommes et projecteurs
-  - title : Projecteurs et symétries
-  - title : Diagonalisation (1)
-  - title : Diagonalisation (2)
-  - title : Diagonalisation (3)
-  - title : Diagonalisation (4)
-  - title : Analyse réelle (1)
-  - title : Analyse réelle (2)
-  - title : Variables à densité (1)
-  - title : Variables à densité (2)
-  -
-  -
-  -
-  -
-  - title : Fonctions de deux variables
-  - title : "Révisions : les variables aléatoires discrètes"
-  - title : "Révisions : nombres complexes, variables à densité"
-  - title : "Révisions : intégrales impropres"
-  - title : "Colles publiques 1"
-  - title : "Colles publiques 2"
 
 dst:
- - date : '27/09/25'
- - date : '22/11/25'
- - date : '16/12/25'
- - date : '31/01/26'
- - date : '21/02/26'
- - date : '28/03/26'
- - date : '19/05/26'
+ - date : '03/10/26'
 
 dm:
- - date : '03/11/25'
- - date : '08/03/26'
- - date : '04/05/26'
  
 interro:
- - date : '09/25'
- - date : '08/12/25'
- - date : '20/02/26'
 
 
 anciens_devoirs :
-  - year : 24
+  - year : 25
     nombre_dst : 6
     nombre_dm : 3

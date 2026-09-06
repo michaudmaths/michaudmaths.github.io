@@ -4,7 +4,6 @@ title: Cours & TD (Hypokhâgne)
 permalink: /cours/
 ---
 
-
 {% assign cours_folder = site.data.files.cours_folder %}
 {% assign exercices_folder = site.data.files.exercices_folder %}
 {% assign annexes_folder = site.data.files.annexes_folder %}

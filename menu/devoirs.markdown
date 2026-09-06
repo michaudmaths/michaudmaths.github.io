@@ -9,7 +9,7 @@ permalink: /devoirs/
 {% assign compteur_dst = 1 %}
 {% assign compteur_dm = 1 %}
 {% assign compteur_interro = 1%}
-{% assign annee = 25 %}
+{% assign annee = 26 %}
 
 <div class="chapter">
 	<h1 class="chapter-title"> DST </h1> 
