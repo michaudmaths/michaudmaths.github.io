@@ -11,7 +11,7 @@ permalink: /cours_mathex/
 						<i class="ri-book-2-fill"></i> 
 						<span> Cours </span> 
 					</a> 
-		<a href="{{ site.baseurl }}/pdf/cours mathex/mathex_TD_1_web.pdf"> 
+		<a href="{{ site.baseurl }}/pdf/cours mathex/mathex_TD1_web.pdf"> 
 						<i class="ri-puzzle-fill"></i> 
 						<span> TD n°1 </span> 
 					</a> 
