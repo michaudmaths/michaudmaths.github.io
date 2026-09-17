@@ -47,8 +47,8 @@ permalink: /cours/
 {% assign subfolder = chapitre_counter| append: "-" | append: chapter.title %}
 
 {% assign chapitre_prefixe = "cours_hk_" | append : chapitre_counter | append : "_" %}
-{% assign exercice_prefixe = "exercices_approfondissement_hk_" | append : chapitre_counter | append : "_" %}
-{% assign correction_exercice_prefixe = "corr_exercices_approfondissement_hk_" | append : chapitre_counter | append : "_" %}
+{% assign exercice_prefixe = "td_hk_" | append : chapitre_counter | append : "_" %}
+{% assign correction_exercice_prefixe = "corr_td_hk_" | append : chapitre_counter | append : "_" %}
 {% assign exercices_existe = 0 %}
 <div class="chapter">
 	<h1 class="chapter-title">{{chapitre_counter}} - {{chapter.title}}</h1> 

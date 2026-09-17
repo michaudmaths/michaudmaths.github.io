@@ -59,11 +59,12 @@ chapitres_hk:
 
 kholles_hk :    
   - numero : 1
-    date_debut : '15/09/25'
-    date_fin : '19/09/25'
+    date_debut : '21/09/26'
+    date_fin : '25/09/26'
 
 td_khagne :
   - title : Révisions d'algèbre linéaire
+  - title : Somme directe, supplémentaire
 
 dst:
  - date : '03/10/26'
