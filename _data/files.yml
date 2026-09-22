@@ -65,6 +65,7 @@ kholles_hk :
 td_khagne :
   - title : Révisions d'algèbre linéaire
   - title : Somme directe, supplémentaire
+  - title : Projecteurs et symétries
 
 dst:
  - date : '03/10/26'
