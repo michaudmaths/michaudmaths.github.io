@@ -57,7 +57,7 @@ permalink: /td_khagne/
                     <span>Énoncé</span>
                 </div>
             {% endif %}
-            {% if correction_existe %}
+            {% if indication_existe %}
                 {% for item2 in site.static_files %}
                     {% if item2.path contains ind_name%}
                         <a href="{{item2.path}}">
