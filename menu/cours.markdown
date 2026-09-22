@@ -46,44 +46,64 @@ permalink: /cours/
 {% for chapter in site.data.files.chapitres_hk %}
 {% assign subfolder = chapitre_counter| append: "-" | append: chapter.title %}
 
-{% assign chapitre_prefixe = "cours_hk_" | append : chapitre_counter | append : "_" %}
+{% assign cours_prefixe = "cours_hk_" | append : chapitre_counter | append : "_" %}
 {% assign exercice_prefixe = "td_hk_" | append : chapitre_counter | append : "_" %}
-{% assign correction_exercice_prefixe = "corr_td_hk_" | append : chapitre_counter | append : "_" %}
+{% assign correction_prefixe = "corr_td_hk_" | append : chapitre_counter | append : "_" %}
+{% assign correction_existe = 0 %}
 {% assign exercices_existe = 0 %}
+{% assign cours_existe = 0 %}
 <div class="chapter">
 	<h1 class="chapter-title">{{chapitre_counter}} - {{chapter.title}}</h1> 
 	<div class="link-container">
 		<div class="cours-exo">
 		{% for item in site.static_files %}
-			{% if item.path contains chapitre_prefixe %}
+			{% if item.path contains cours_prefixe %}
+				{% assign cours_existe = 1 %}
+			{% endif %}
+			{% if item.path contains correction_prefixe %}
+				{% assign correction_existe = 1 %}
+			{% endif %}
+			{% if item.path contains exercice_prefixe %}
+				{% assign exercices_existe = 1 %}
+			{% endif %}
+		{% endfor %}
+		{% if cours_existe == 1 %}
+		{% for item in site.static_files %}
+			{% if item.path contains cours_prefixe %}
 				<a href="{{item.path}}"> 
 					<i class="ri-book-2-fill"></i> 
 					<span> Cours </span> 
 				</a> 
 			{% endif %}
 		{% endfor %}
-		{% for item in site.static_files %}
-			{% if item.path contains exercice_prefixe %}
-			{% if item.path contains correction_exercice_prefixe %}
+		{% else %}
+			<div class="link-placeholder"> <i class="ri-book-2-fill"></i> Cours </div>
+		{% endif %}
+		{% if exercices_existe == 1 %}
+			{% if correction_existe == 0 %}
+				{% for item in site.static_files %}
+					{% if item.path contains exercice_prefixe %}
+					{% if item.path contains correction_prefixe %}
+					{% else %}
+						<a href="{{item.path}}">
+							<i class="ri-puzzle-fill"></i>
+							<span> TD {{chapitre_counter}} </span>
+						</a>
+					{% endif %}
+					{% endif %}
+				{% endfor %}
 			{% else %}
-				{% assign exercices_existe = 1 %}
-				<a href="{{item.path}}">
-					<i class="ri-puzzle-fill"></i>
-					<span> TD {{chapitre_counter}} </span>
-				</a>
+				{% for item in site.static_files %}
+					{% if item.path contains correction_prefixe %}
+						<a href="{{item.path}}" class ="correction">
+							<span> TD {{chapitre_counter}} (avec corrigé)</span>
+						</a>
+					{% endif %}
+				{% endfor %}
 			{% endif %}
-			{% endif %}
-		{% endfor %}
-		{% if exercices_existe == 0 %}
+		{% else %}
 				<div class="link-placeholder"> <i class="ri-puzzle-fill"></i> TD {{chapitre_counter}}</div>
 		{% endif %}
-		{% for item in site.static_files %}
-			{% if item.path contains correction_exercice_prefixe %}
-				<a href="{{item.path}}" class ="correction">
-					<span> (Correction) </span>
-				</a>
-			{% endif %}
-		{% endfor %}
 		</div>
 		<div class="annexes">
 		{% if chapter.annexes %}
@@ -97,8 +117,7 @@ permalink: /cours/
 			{% endfor %}
 			</div>
 		{% endif %}
-	</div>
-	</div>
+		</div>
 </div>
 {% assign chapitre_counter = chapitre_counter | plus:1 %}
 {% endfor %}
