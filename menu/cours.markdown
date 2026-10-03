@@ -96,6 +96,7 @@ permalink: /cours/
 				{% for item in site.static_files %}
 					{% if item.path contains correction_prefixe %}
 						<a href="{{item.path}}" class ="correction">
+      <i class="ri-puzzle-fill"></i>
 							<span> TD {{chapitre_counter}} (avec corrigé)</span>
 						</a>
 					{% endif %}
