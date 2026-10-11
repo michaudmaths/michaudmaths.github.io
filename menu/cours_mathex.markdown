@@ -8,13 +8,16 @@ permalink: /cours_mathex/
 	<h1 class="chapter-title">1 - Nombres complexes I</h1> 
 	<div class="link-container">
 		<a href="{{ site.baseurl }}/cours mathex/pdf/cours mathex/cours_maths_exp_nombres_complexes1_web.pdf"> 
-						<i class="ri-book-2-fill"></i> 
-						<span> Cours </span> 
-					</a> 
+			<i class="ri-book-2-fill"></i> 
+			<span> Cours </span> 
+		</a> 
 		<a href="{{ site.baseurl }}/pdf/cours mathex/mathex_TD1_web.pdf"> 
-						<i class="ri-puzzle-fill"></i> 
-						<span> TD n°1 </span> 
-					</a> 
-		
+			<i class="ri-puzzle-fill"></i> 
+			<span> TD n°1 </span> 
+		</a>
+		<a href="{{ site.baseurl }}/pdf/cours mathex/mathex_TD2_web.pdf"> 
+			<i class="ri-puzzle-fill"></i> 
+			<span> TD n°2 </span> 
+		</a> 		
 	</div>
 </div>
