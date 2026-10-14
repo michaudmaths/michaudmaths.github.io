@@ -18,7 +18,9 @@ permalink: /devoirs/
 		<li> 
 		{% assign devoir_filename = annee | append : "_DST"  | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_filename = annee | append : "_correction_DST" | append : compteur_dst | append : "_web.pdf" %}
+		{% assign rapport_filename = annee | append : "_rapport_DST" | append : compteur_dst | append : "_web.pdf" %}
 		{% assign correction_existe = 0 %}
+		
 
 		{% for item in site.static_files %}
 			{% if item.name == devoir_filename %}
@@ -32,6 +34,13 @@ permalink: /devoirs/
 				{% assign correction_existe = 1 %}
 				<a href="{{item.path}}">
 					<span> Corrigé </span>
+				</a>
+			{% endif %}
+		{% endfor %}
+		{% for item in site.static_files %}
+			{% if item.name == rapport_filename %}
+				<a href="{{item.path}}">
+					<span> Rapport </span>
 				</a>
 			{% endif %}
 		{% endfor %}
