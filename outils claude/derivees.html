@@ -1,0 +1,21 @@
+---
+layout: default
+title: Entraînement au calcul de dérivées
+permalink: /exerciseur_dérivées/
+---
+<link rel="stylesheet" href="{{ '/assets/css/derivees.css' | relative_url }}">
+
+<p>Entraînez-vous au calcul de dérivées : compositions de une à trois fonctions (polynômes, exponentielle, logarithme, racine, cosinus, sinus, tangente, arctangente, inverse). Les questions sont générées au hasard.</p>
+
+<div id="deriv">
+<div class="card row">
+<div class="seg"><button data-m="free" class="on">Saisie libre</button><button data-m="qcm">QCM</button></div>
+<label>Fonctions composées <select id="dv-nc"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="m" selected>1 à 3</option></select></label>
+</div>
+<div id="dv-sc" class="mu"></div>
+<div id="dv-qa"></div>
+<div id="dv-kp" class="kp"></div>
+<p><small>Clavier physique : chiffres, x, + − *, / pour une fraction, ^ pour un exposant, ( ), flèches, Retour arrière, Entrée pour valider.</small></p>
+</div>
+
+<script src="{{ '/assets/js/derivees.js' | relative_url }}" defer></script>

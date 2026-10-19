@@ -20,6 +20,10 @@ permalink: /cours/
 				<i class="ri-file-fill"></i> 
 				<span> Tableau de dérivées </span>
 			</a>
+			<a href="{{site.baseurl}}/{{annexes_folder}}/poster_operations_limites_web.pdf">
+				<i class="ri-file-fill"></i> 
+				<span> Limites de référence, opérations, croissances comparées </span>
+			</a>
 			<a href="{{site.baseurl}}/{{annexes_folder}}/fonctions_reference_merged_web.pdf">
 				<i class="ri-file-fill"></i> 
 				<span> Fonctions de références </span>
