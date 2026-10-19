@@ -157,16 +157,16 @@ let saved=loadSaved();
 let cur=null,done=false,choice=null,tot=0,good=0,streak=0;
 function clearChoice(){choice=null;choiceIds.forEach(id=>{$(id).classList.remove('sel');$(id).setAttribute('aria-pressed','false')})}
 function selectChoice(val,id){if(done)return;$('inp').value='';$('inp').style.borderColor='';clearChoice();choice=val;$(id).classList.add('sel');$(id).setAttribute('aria-pressed','true')}
-function updateSavedUI(){const hit=cur&&saved.some(x=>questionKey(x.q)===questionKey(cur));$('lim-save').disabled=!cur||hit;$('lim-save').classList.toggle('saved',!!hit);$('lim-save').textContent=hit?'Enregistrée':'Enregistrer';$('lim-saved-toggle').textContent=`Questions enregistrées (${saved.length})`}
+function updateSavedUI(){const save=$('lim-save'),toggle=$('lim-saved-toggle');if(!save||!toggle)return;const hit=cur&&saved.some(x=>questionKey(x.q)===questionKey(cur));save.disabled=!cur||hit;save.classList.toggle('saved',!!hit);save.textContent=hit?'Enregistrée':'Enregistrer';toggle.textContent=`Questions enregistrées (${saved.length})`}
 function showQ(f){cur=f;done=false;$('q').textContent=limT_(f.pt,f.tex);typeset($('q'));
 $('inp').value='';clearChoice();['inp','ok','pinf','minf','zero'].forEach(i=>$(i).disabled=false);
 $('fb').className='';$('fb').innerHTML='';$('next').style.display='none';updateSavedUI();$('inp').focus()}
 function newQ(){const mode=$('mode').value;let f=null;
 for(let i=0;i<2000&&!f;i++){f=mode==='A'?(Math.random()<.5?genA():genC()):mode==='B'?genB():(()=>{const r=Math.random();return r<.2?genA():r<.45?genC():genB()})()}
 showQ(f)}
-function renderSaved(){const list=$('lim-saved-list');list.replaceChildren();if(!saved.length){const p=document.createElement('p');p.textContent='Aucune question enregistrée.';list.append(p);return}
+function renderSaved(){const list=$('lim-saved-list');if(!list)return;list.replaceChildren();if(!saved.length){const p=document.createElement('p');p.textContent='Aucune question enregistrée.';list.append(p);return}
 saved.forEach(item=>{const box=document.createElement('div');box.className='saved-item';const formula=document.createElement('div');formula.className='q';formula.textContent=limT_(item.q.pt,item.q.tex);const acts=document.createElement('div');acts.className='saved-actions';const open=document.createElement('button');open.type='button';open.textContent='Ouvrir';open.onclick=()=>{showQ(unpack(pack(item.q)));list.hidden=true};const del=document.createElement('button');del.type='button';del.textContent='Supprimer';del.onclick=()=>{saved=saved.filter(x=>x.id!==item.id);storeSaved();renderSaved();updateSavedUI()};acts.append(open,del);box.append(formula,acts);list.append(box)});typeset(list)}
-function saveCurrent(){if(!cur||saved.some(x=>questionKey(x.q)===questionKey(cur)))return;const item={id:`${Date.now()}-${Math.random()}`,q:unpack(pack(cur))};saved.unshift(item);if(!storeSaved()){saved.shift();return}updateSavedUI();if(!$('lim-saved-list').hidden)renderSaved()}
+function saveCurrent(){if(!cur||saved.some(x=>questionKey(x.q)===questionKey(cur)))return;const item={id:`${Date.now()}-${Math.random()}`,q:unpack(pack(cur))};saved.unshift(item);if(!storeSaved()){saved.shift();return}updateSavedUI();const list=$('lim-saved-list');if(list&&!list.hidden)renderSaved()}
 function parse(s){s=s.trim().replace('−','-').replace(',','.');
 const m=s.match(/^(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)$/);if(m)return+m[1]/+m[2];
 return s===''?NaN:Number(s)}
@@ -186,8 +186,9 @@ $('pinf').onclick=()=>selectChoice(INF,'pinf');
 $('minf').onclick=()=>selectChoice(-INF,'minf');
 $('zero').onclick=()=>selectChoice(0,'zero');
 $('next').onclick=newQ;
-$('lim-save').onclick=saveCurrent;
-$('lim-saved-toggle').onclick=()=>{const list=$('lim-saved-list'),open=list.hidden;if(open)renderSaved();list.hidden=!open};
+const saveButton=$('lim-save'),savedToggle=$('lim-saved-toggle');
+if(saveButton)saveButton.onclick=saveCurrent;
+if(savedToggle)savedToggle.onclick=()=>{const list=$('lim-saved-list');if(!list)return;const open=list.hidden;if(open)renderSaved();list.hidden=!open};
 $('inp').addEventListener('input',()=>{if(!done)clearChoice()});
 $('inp').addEventListener('keydown',e=>{if(e.key==='Enter')submit(null)});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&done&&(document.activeElement===document.body||$('limites').contains(document.activeElement)))newQ()});

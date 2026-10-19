@@ -79,8 +79,8 @@ const KEYS=[['7','n',t('7')],['8','n',t('8')],['9','n',t('9')],['<span class="fr
 ['4','n',t('4')],['5','n',t('5')],['6','n',t('6')],['×','',t('*')],['<i class="v">x</i><sup>▯</sup>','f',()=>put(pw(''))],['AC','',clr],
 ['1','n',t('1')],['2','n',t('2')],['3','n',t('3')],['−','',t('-')],['<i class="v">x</i><sup>2</sup>','f',()=>ins(pw(2))],['√','f',()=>put(sq([]))],
 ['0','n',t('0')],['.','n',t('.')],['( )','f',()=>put(pa([]))],['+','',t('+')],['e<sup><i class="v">x</i></sup>','f',()=>put(ex([]))],['ln','f',()=>put(fn('ln',[]))],
-['cos','f',()=>put(fn('cos',[]))],['sin','f',()=>put(fn('sin',[]))],['tan','f',()=>put(fn('tan',[]))],['arctan','f',()=>put(fn('atan',[]))],['◀','',left],['▶','',right],
-['▲','',up],['▼','',down]];
+['cos','f',()=>put(fn('cos',[]))],['sin','f',()=>put(fn('sin',[]))],['tan','f',()=>put(fn('tan',[]))],['arctan','f',()=>put(fn('atan',[]))],['&#x25C0;&#xFE0E;','arr',left],['&#x25B6;&#xFE0E;','arr',right],
+['&#x25B2;&#xFE0E;','arr',up],['&#x25BC;&#xFE0E;','arr',down]];
 /* état de l’exercice */
 const savedKey='michaudmaths.derivees.saved.v1',clone=v=>JSON.parse(JSON.stringify(v));
 function loadSaved(){try{const a=JSON.parse(localStorage.getItem(savedKey)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}}
@@ -88,12 +88,12 @@ function storeSaved(){try{localStorage.setItem(savedKey,JSON.stringify(saved));r
 const questionKey=x=>x?JSON.stringify(x.L):'';
 let saved=loadSaved();
 let q,mode='free',solved=false,counted=false,ms=null,pk=-1;const SC={ok:0,n:0,s:0};
-function updateSavedUI(){const hit=q&&saved.some(x=>JSON.stringify(x.L)===questionKey(q));$('#dv-save').disabled=!q||hit;$('#dv-save').classList.toggle('saved',!!hit);$('#dv-save').textContent=hit?'Enregistrée':'Enregistrer';$('#dv-saved-toggle').textContent=`Questions enregistrées (${saved.length})`}
+function updateSavedUI(){const save=$('#dv-save'),toggle=$('#dv-saved-toggle');if(!save||!toggle)return;const hit=q&&saved.some(x=>JSON.stringify(x.L)===questionKey(q));save.disabled=!q||hit;save.classList.toggle('saved',!!hit);save.textContent=hit?'Enregistrée':'Enregistrer';toggle.textContent=`Questions enregistrées (${saved.length})`}
 function showQuestion(question){q=question;newEd();solved=false;counted=false;ms=null;pk=-1;draw();updateSavedUI()}
 function next(){showQuestion(gen())}
-function renderSaved(){const list=$('#dv-saved-list');list.replaceChildren();if(!saved.length){const p=document.createElement('p');p.textContent='Aucune question enregistrée.';list.append(p);return}
+function renderSaved(){const list=$('#dv-saved-list');if(!list)return;list.replaceChildren();if(!saved.length){const p=document.createElement('p');p.textContent='Aucune question enregistrée.';list.append(p);return}
 saved.forEach(item=>{let preview;try{preview=build(item.L)}catch(e){return}const box=document.createElement('div');box.className='saved-item';const formula=document.createElement('div');formula.className='m';formula.textContent=MP(FQ+' = ',preview.expr);const acts=document.createElement('div');acts.className='saved-actions';const open=document.createElement('button');open.type='button';open.className='b';open.textContent='Ouvrir';open.onclick=()=>{const restored=build(clone(item.L));restored.o=item.o?clone(item.o):opts(restored);showQuestion(restored);list.hidden=true};const del=document.createElement('button');del.type='button';del.className='b';del.textContent='Supprimer';del.onclick=()=>{saved=saved.filter(x=>x.id!==item.id);storeSaved();renderSaved();updateSavedUI()};acts.append(open,del);box.append(formula,acts);list.append(box)});typeset(list)}
-function saveCurrent(){if(!q||saved.some(x=>JSON.stringify(x.L)===questionKey(q)))return;const item={id:`${Date.now()}-${Math.random()}`,L:clone(q.L),o:clone(q.o)};saved.unshift(item);if(!storeSaved()){saved.shift();return}updateSavedUI();if(!$('#dv-saved-list').hidden)renderSaved()}
+function saveCurrent(){if(!q||saved.some(x=>JSON.stringify(x.L)===questionKey(q)))return;const item={id:`${Date.now()}-${Math.random()}`,L:clone(q.L),o:clone(q.o)};saved.unshift(item);if(!storeSaved()){saved.shift();return}updateSavedUI();const list=$('#dv-saved-list');if(list&&!list.hidden)renderSaved()}
 function fin(good){if(!counted){counted=true;SC.n++;if(good){SC.ok++;SC.s++}else SC.s=0}solved=true;draw()}
 function check(){if(solved||mode!=='free')return;let h;try{h=parseRow(ed.root)}catch(e){ms={t:'Expression incomplète ou invalide : remplis toutes les cases.',c:'ko'};draw();return}
 if(eq(h,q.g)){ms={t:'Correct !',c:'ok'};fin(true)}else{if(!counted){counted=true;SC.n++;SC.s=0}ms={t:'Pas encore : ce n’est pas la bonne dérivée. Corrigez votre réponse ou affiche la solution.',c:'ko'};draw()}}
@@ -113,8 +113,9 @@ $('#dv-qa').innerHTML=h;typeset($('#dv-qa'));$('#dv-kp').hidden=!free||solved;ed
 KEYS.forEach(([l,c,f])=>{const b=document.createElement('button');b.innerHTML=l;b.className=c;b.onclick=()=>{if(!solved){f();ed2()}};$('#dv-kp').append(b)});
 $('#dv-qa').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='next')next();else if(b.dataset.a==='val')check();else if(b.dataset.a==='sol'){ms=null;fin(false)}else if(b.dataset.j&&!solved){pk=+b.dataset.j;const g=pk===q.o.ci;ms={t:g?'Bonne réponse.':'Ce n’est pas la bonne réponse : compare avec la solution ci-dessous.',c:g?'ok':'ko'};fin(g)}};
 document.querySelectorAll('#deriv .seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#deriv .seg button').forEach(x=>x.classList.toggle('on',x===b));mode=b.dataset.m;draw()});
-$('#dv-save').onclick=saveCurrent;
-$('#dv-saved-toggle').onclick=()=>{const list=$('#dv-saved-list'),open=list.hidden;if(open)renderSaved();list.hidden=!open};
+const saveButton=$('#dv-save'),savedToggle=$('#dv-saved-toggle');
+if(saveButton)saveButton.onclick=saveCurrent;
+if(savedToggle)savedToggle.onclick=()=>{const list=$('#dv-saved-list');if(!list)return;const open=list.hidden;if(open)renderSaved();list.hidden=!open};
 document.addEventListener('mousedown',e=>{if(e.target.closest('#deriv button'))e.preventDefault()});
 document.addEventListener('keydown',e=>{if(mode!=='free'||e.ctrlKey||e.metaKey||e.altKey)return;const T=e.target.tagName,k=e.key;if(T==='SELECT'||T==='INPUT'||T==='TEXTAREA'||(T==='BUTTON'&&k==='Enter'))return;
 if(solved){if(k==='Enter'){e.preventDefault();next()}return}
